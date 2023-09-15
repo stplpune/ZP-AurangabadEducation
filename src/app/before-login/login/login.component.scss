@@ -1,0 +1,30 @@
+.login-wrapper {
+    background-image: url('../../../assets/images/login-bg.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+}
+
+.login {
+    padding: 20px;
+}
+
+.login .mat-mdc-form-field .mat-icon {
+    padding: 0 10px !important;
+    font-size: 1.2rem;
+    height: 20px;
+}
