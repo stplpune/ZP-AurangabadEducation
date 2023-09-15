@@ -1,0 +1,24 @@
+/* default font and font size set */
+.mdc-form-field,
+.mdc-tab__content,
+.mdc-floating-label,
+.mat-mdc-input-element,
+.mdc-list-item__primary-text,
+.mat-mdc-menu-item-text,
+.mat-mdc-select-value,
+.mat-select-search-input {
+    font-family: 'Rubik', sans-serif !important;
+    font-size: 0.85rem !important;
+    letter-spacing: normal !important;
+    color: #000;
+}
+
+/* mat controls label color set */
+.mdc-floating-label mat-label {
+    color: #000;
+}
+
+/* label in form controls position changed */
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    top: 16px !important;
+}
