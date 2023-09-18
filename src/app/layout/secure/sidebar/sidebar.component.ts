@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WebStorageService } from 'src/app/services/web-storage.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  constructor(private webStorage: WebStorageService) {
 
+  }
+
+  onCloseSidebar() {
+    this.webStorage.setSidebarState(!this.webStorage.getSidebarState());
+  }
 }

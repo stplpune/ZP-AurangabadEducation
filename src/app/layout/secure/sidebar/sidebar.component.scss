@@ -1,0 +1,9 @@
+.btn-sidebar-close {
+    display: none;
+}
+
+@media only screen and (max-width: 420px) {
+    .btn-sidebar-close {
+        display: block;
+    }
+}
