@@ -1,10 +1,12 @@
 <div class="wrapper">
-    <div class="sidebar-wrapper bg-success" [ngClass]="{'open' : getSideBarState()}">
+    <div class="sidebar-wrapper bg-main" [ngClass]="{'open' : getSideBarState()}">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="content-wrapper bg-danger">
+    <div class="content-wrapper">
         <app-header></app-header>
-        <router-outlet></router-outlet>
-        <app-footer></app-footer>
+        <div class="data-container scrollbar">
+            <router-outlet></router-outlet>
+            <app-footer></app-footer>
+        </div>
     </div>
 </div>
