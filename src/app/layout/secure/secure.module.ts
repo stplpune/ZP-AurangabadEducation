@@ -6,6 +6,8 @@ import { SecureComponent } from './secure.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
-    SecureRoutingModule
+    SecureRoutingModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class SecureModule { }
