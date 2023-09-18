@@ -7,3 +7,23 @@
         display: block;
     }
 }
+
+#sidebar {
+    height: 100%;
+}
+
+#sidebar .sidebar-header {
+    border-bottom: solid 1px var(--main-dark-color);
+    padding: 13.5px 9px;
+}
+
+#sidebar .sidebar-header img {
+    width: 165px;
+}
+
+#sidebar .sidebar-body {
+    padding: 10px;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

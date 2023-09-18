@@ -1,5 +1,82 @@
-<button mat-icon-button class="btn-icon btn-sidebar-close" (click)="onCloseSidebar()">
-    <span class="material-symbols-rounded">
-        close
-    </span>
-</button>
+<div id="sidebar">
+    <div class="sidebar-header">
+        <img src="assets/images/logo.svg">
+        <button mat-icon-button class="btn-icon btn-sidebar-close" (click)="onCloseSidebar()">
+            <span class="material-symbols-rounded">
+                close
+            </span>
+        </button>
+    </div>
+    <div class="sidebar-body">
+        <ul>
+            <li><a routerLink="#">Dashboard</a></li>
+            <li>
+                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseMaster" role="button"
+                    aria-expanded="false" aria-controls="collapseMaster">Master</a>
+                <div class="collapse" id="collapseMaster">
+                    <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but
+                        revealed
+                        when the user activates the relevant trigger.
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseReport" role="button"
+                    aria-expanded="false" aria-controls="collapseReport">Report</a>
+                <div class="collapse" id="collapseReport">
+                    <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but
+                        revealed
+                        when the user activates the relevant trigger.
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseSettings" role="button"
+                    aria-expanded="false" aria-controls="collapseSettings">Settings</a>
+                <div class="collapse" id="collapseSettings">
+                    <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but
+                        revealed
+                        when the user activates the relevant trigger.
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseAssetMgmt" role="button"
+                    aria-expanded="false" aria-controls="collapseAssetMgmt">Asset Management</a>
+                <div class="collapse" id="collapseAssetMgmt">
+                    <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but
+                        revealed
+                        when the user activates the relevant trigger.
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseAttendance" role="button"
+                    aria-expanded="false" aria-controls="collapseAttendance">Attendance</a>
+                <div class="collapse" id="collapseAttendance">
+                    <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but
+                        revealed
+                        when the user activates the relevant trigger.
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseCCTV" role="button"
+                    aria-expanded="false" aria-controls="collapseCCTV">CCTV Registration</a>
+                <div class="collapse" id="collapseCCTV">
+                    <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but
+                        revealed
+                        when the user activates the relevant trigger.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
