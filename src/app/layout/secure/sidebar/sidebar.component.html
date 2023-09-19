@@ -8,72 +8,247 @@
         </button>
     </div>
     <div class="sidebar-body">
-        <ul>
-            <li><a routerLink="#">Dashboard</a></li>
+        <ul class="menu">
             <li>
-                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseMaster" role="button"
-                    aria-expanded="false" aria-controls="collapseMaster">Master</a>
+                <a routerLink="#">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/dashboard.svg">
+                        Dashboard
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a data-bs-toggle="collapse" href="#collapseMaster" role="button" aria-expanded="false"
+                    aria-controls="collapseMaster">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/master.svg">
+                        Master
+                    </div>
+                    <span class="dropdown-toggle"></span>
+                </a>
                 <div class="collapse" id="collapseMaster">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but
-                        revealed
-                        when the user activates the relevant trigger.
+                    <div class="card card-body bg-main-dark border-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Designation Master
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                School Registration
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Teacher Registration
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Student Registration
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Office User Registration
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Other Registration
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
 
             <li>
-                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseReport" role="button"
-                    aria-expanded="false" aria-controls="collapseReport">Report</a>
+                <a data-bs-toggle="collapse" href="#collapseReport" role="button" aria-expanded="false"
+                    aria-controls="collapseReport">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/reports.svg">
+                        Report
+                    </div>
+                    <span class="dropdown-toggle"></span>
+                </a>
                 <div class="collapse" id="collapseReport">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but
-                        revealed
-                        when the user activates the relevant trigger.
+                    <div class="card card-body bg-main-dark border-0">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Student Report
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Officer Report
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                School Report
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseSettings" role="button"
-                    aria-expanded="false" aria-controls="collapseSettings">Settings</a>
+                <a data-bs-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false"
+                    aria-controls="collapseSettings">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/settings.svg">
+                        Settings
+                    </div>
+                    <span class="dropdown-toggle"></span>
+                </a>
                 <div class="collapse" id="collapseSettings">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but
-                        revealed
-                        when the user activates the relevant trigger.
+                    <div class="card card-body bg-main-dark border-0">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Page Right Access
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Help
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseAssetMgmt" role="button"
-                    aria-expanded="false" aria-controls="collapseAssetMgmt">Asset Management</a>
+                <a data-bs-toggle="collapse" href="#collapseAssetMgmt" role="button" aria-expanded="false"
+                    aria-controls="collapseAssetMgmt">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/assets.svg">
+                        Asset Management
+                    </div>
+                    <span class="dropdown-toggle"></span>
+                </a>
                 <div class="collapse" id="collapseAssetMgmt">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but
-                        revealed
-                        when the user activates the relevant trigger.
+                    <div class="card card-body bg-main-dark border-0">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Category
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Sub Category
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Item
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Inward Item
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Outward Item
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Store Stock Report
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseAttendance" role="button"
-                    aria-expanded="false" aria-controls="collapseAttendance">Attendance</a>
+                <a data-bs-toggle="collapse" href="#collapseAttendance" role="button" aria-expanded="false"
+                    aria-controls="collapseAttendance">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/attendance.svg">
+                        Attendance
+                    </div>
+                    <span class="dropdown-toggle"></span>
+                </a>
                 <div class="collapse" id="collapseAttendance">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but
-                        revealed
-                        when the user activates the relevant trigger.
+                    <div class="card card-body bg-main-dark border-0">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Tasksheet
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Holiday Master
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Attendance Report
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                Attendance Approval
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapseCCTV" role="button"
-                    aria-expanded="false" aria-controls="collapseCCTV">CCTV Registration</a>
+                <a data-bs-toggle="collapse" href="#collapseCCTV" role="button" aria-expanded="false"
+                    aria-controls="collapseCCTV">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/cctv.svg">
+                        CCTV Registration
+                    </div>
+                    <span class="dropdown-toggle"></span>
+                </a>
                 <div class="collapse" id="collapseCCTV">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but
-                        revealed
-                        when the user activates the relevant trigger.
+                    <div class="card card-body bg-main-dark border-0">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                CCTV Location Registration
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span class="material-symbols-rounded">
+                                    east
+                                </span>
+                                CCTV
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
