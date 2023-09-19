@@ -8,6 +8,7 @@
 
 body {
     font-family: 'Rubik', sans-serif !important;
+    background-color: #eee;
 }
 
 :root {
@@ -103,6 +104,22 @@ a.text-main:hover {
     line-height: 1 !important;
     overflow: unset;
     margin: 0 !important;
+}
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.page-heading .page-name {
+    font-weight: 500;
+}
+
+.page-heading .mat-mdc-form-field-subscript-wrapper {
+    display: none;
 }
 
 .scrollbar {
