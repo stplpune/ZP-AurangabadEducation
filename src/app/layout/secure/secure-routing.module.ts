@@ -11,6 +11,9 @@ const routes: Routes = [
   { path: 'student-registration', loadChildren: () => import('../../modules/masters/student-registration/student-registration.module').then(m => m.StudentRegistrationModule) },
   { path: 'office-user-registration', loadChildren: () => import('../../modules/masters/office-user-registration/office-user-registration.module').then(m => m.OfficeUserRegistrationModule) },
   { path: 'other-registration', loadChildren: () => import('../../modules/masters/other-registration/other-registration.module').then(m => m.OtherRegistrationModule) },
+  { path: 'student-report', loadChildren: () => import('../../modules/reports/student-report/student-report.module').then(m => m.StudentReportModule) },
+  { path: 'officer-report', loadChildren: () => import('../../modules/reports/officer-report/officer-report.module').then(m => m.OfficerReportModule) },
+  { path: 'school-report', loadChildren: () => import('../../modules/reports/school-report/school-report.module').then(m => m.SchoolReportModule) },
 
 ];
 
