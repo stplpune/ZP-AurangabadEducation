@@ -141,6 +141,42 @@ a.text-main:hover {
     padding: 15px !important;
 }
 
+.dashboard-table {
+    @include mat.all-component-densities(-1);
+    font-family: 'Rubik', sans-serif !important;
+    box-shadow: none;
+}
+
+.dashboard-table thead th {
+    background-color: var(--main-light-color) !important;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    font-family: 'Rubik', sans-serif !important;
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
+.dashboard-table .profile-photo {
+    width: 36px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .scrollbar {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
