@@ -122,6 +122,25 @@ a.text-main:hover {
     display: none;
 }
 
+.plain-card {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.plain-card .card-header {
+    padding: 10px 15px !important;
+    font-weight: 500;
+    border-bottom: solid 1px #e0e0e0;
+}
+
+.plain-card .card-header-control .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+}
+
+.plain-card .card-body {
+    padding: 15px !important;
+}
+
 .scrollbar {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
