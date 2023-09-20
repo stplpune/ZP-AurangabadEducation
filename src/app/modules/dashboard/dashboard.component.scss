@@ -1,0 +1,43 @@
+#dash-stats .dash-icon {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#dash-stats .dash-icon.red {
+    background-color: rgb(253, 215, 215);
+}
+
+#dash-stats .dash-icon.green {
+    background-color: rgb(204, 229, 204);
+}
+
+#dash-stats .dash-icon.blue {
+    background-color: rgb(225, 225, 255);
+}
+
+#dash-stats .dash-icon.cyan {
+    background-color: rgb(228, 255, 255);
+}
+
+#dash-stats .dash-icon img {
+    width: 24px;
+}
+
+#dash-stats .card-body {
+    padding: 20px !important;
+}
+
+#dash-stats h2 {
+    color: #232323;
+}
+
+#dash-stats p {
+    margin: 0;
+    color: #777;
+}
