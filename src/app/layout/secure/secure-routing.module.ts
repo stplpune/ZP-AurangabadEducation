@@ -14,6 +14,8 @@ const routes: Routes = [
   { path: 'student-report', loadChildren: () => import('../../modules/reports/student-report/student-report.module').then(m => m.StudentReportModule) },
   { path: 'officer-report', loadChildren: () => import('../../modules/reports/officer-report/officer-report.module').then(m => m.OfficerReportModule) },
   { path: 'school-report', loadChildren: () => import('../../modules/reports/school-report/school-report.module').then(m => m.SchoolReportModule) },
+  { path: 'page-right-access', loadChildren: () => import('../../modules/settings/page-right-access/page-right-access.module').then(m => m.PageRightAccessModule) },
+  { path: 'help-access', loadChildren: () => import('../../modules/settings/help-access/help-access.module').then(m => m.HelpAccessModule) },
 
 ];
 
