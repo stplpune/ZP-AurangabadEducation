@@ -92,6 +92,14 @@
     transition: none;
     padding: 5px 0;
     justify-content: start !important;
+    color: #dfdfdf !important;
+    font-weight: 300;
+}
+
+.list-group a.list-group-item.active,
+.list-group a.list-group-item:active,
+.list-group a.list-group-item:hover {
+    color: #fff !important;
 }
 
 .list-group a.list-group-item:hover .material-symbols-rounded {
