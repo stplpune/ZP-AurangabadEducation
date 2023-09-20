@@ -16,6 +16,17 @@ const routes: Routes = [
   { path: 'school-report', loadChildren: () => import('../../modules/reports/school-report/school-report.module').then(m => m.SchoolReportModule) },
   { path: 'page-right-access', loadChildren: () => import('../../modules/settings/page-right-access/page-right-access.module').then(m => m.PageRightAccessModule) },
   { path: 'help-access', loadChildren: () => import('../../modules/settings/help-access/help-access.module').then(m => m.HelpAccessModule) },
+  { path: 'category', loadChildren: () => import('../../modules/asset-management/category/category.module').then(m => m.CategoryModule) },
+  { path: 'sub-category', loadChildren: () => import('../../modules/asset-management/sub-category/sub-category.module').then(m => m.SubCategoryModule) },
+  { path: 'item', loadChildren: () => import('../../modules/asset-management/item/item.module').then(m => m.ItemModule) },
+  { path: 'inward-item', loadChildren: () => import('../../modules/asset-management/inward-item/inward-item.module').then(m => m.InwardItemModule) },
+  { path: 'outward-item', loadChildren: () => import('../../modules/asset-management/outward-item/outward-item.module').then(m => m.OutwardItemModule) },
+  { path: 'store-stock-report', loadChildren: () => import('../../modules/asset-management/store-stock-report/store-stock-report.module').then(m => m.StoreStockReportModule) },
+  { path: 'tasksheet', loadChildren: () => import('../../modules/attendance/tasksheet/tasksheet.module').then(m => m.TasksheetModule) },
+  { path: 'holiday-master', loadChildren: () => import('../../modules/attendance/holiday-master/holiday-master.module').then(m => m.HolidayMasterModule) },
+  { path: 'attendance-report', loadChildren: () => import('../../modules/attendance/attendance-report/attendance-report.module').then(m => m.AttendanceReportModule) },
+  { path: 'attendance-approval', loadChildren: () => import('../../modules/attendance/attendance-approval/attendance-approval.module').then(m => m.AttendanceApprovalModule) },
+
 
 ];
 
