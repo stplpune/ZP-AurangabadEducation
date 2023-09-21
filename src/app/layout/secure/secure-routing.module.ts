@@ -26,7 +26,9 @@ const routes: Routes = [
   { path: 'holiday-master', loadChildren: () => import('../../modules/attendance/holiday-master/holiday-master.module').then(m => m.HolidayMasterModule) },
   { path: 'attendance-report', loadChildren: () => import('../../modules/attendance/attendance-report/attendance-report.module').then(m => m.AttendanceReportModule) },
   { path: 'attendance-approval', loadChildren: () => import('../../modules/attendance/attendance-approval/attendance-approval.module').then(m => m.AttendanceApprovalModule) },
-
+  { path: 'teacher-transfer', loadChildren: () => import('../../modules/settings/teacher-transfer/teacher-transfer.module').then(m => m.TeacherTransferModule) },
+  { path: 'student-transfer', loadChildren: () => import('../../modules/settings/student-transfer/student-transfer.module').then(m => m.StudentTransferModule) },
+  { path: 'assessment-crateria', loadChildren: () => import('../../modules/settings/assessment-crateria/assessment-crateria.module').then(m => m.AssessmentCrateriaModule) },
 
 ];
 
