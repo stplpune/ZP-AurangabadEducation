@@ -1,30 +1,48 @@
 .login-wrapper {
-    background-image: url('../../../assets/images/login-bg.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
     height: 100vh;
+    max-height: 100vh;
     display: flex;
     align-items: center;
+    background: linear-gradient(to right, #077947 0%, #077947 50%, #E6EAF3 50%, #E6EAF3 100%);
 }
 
-.login-box {
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 30px;
+.login-wrapper .login-box {
+    background: linear-gradient(to right, #077947 0%, #077947 50%, #E6EAF3 50%, #E6EAF3 100%);
+    box-shadow: 0px 0px 20px #455E8F33;
+    border-radius: 15px;
 }
 
-.login {
-    padding: 20px;
+.login-wrapper .login-box #left-side {
+    backdrop-filter: blur(9px) saturate(180%);
+    -webkit-backdrop-filter: blur(9px) saturate(180%);
+    background-color: rgba(37, 152, 102, 0.963);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-image: url('../../../assets/images/login-bg.svg');
 }
 
-.login .mat-mdc-form-field .mat-icon {
+.login-wrapper .login-box #right-side {
+    padding: 50px;
+    position: relative;
+}
+
+.login-wrapper .login-box #right-side .logo {
+    padding: 5px;
+    display: inline-flex;
+    position: absolute;
+    text-align: center;
+    top: -40px;
+    left: 40%;
+    background-color: #fff;
+}
+
+.login-wrapper .login-box #right-side .logo img {
+    width: 80px;
+}
+
+.login-wrapper .login-box #right-side .mat-mdc-form-field .mat-icon {
     padding: 0 0 0 10px !important;
     font-size: 1.2rem;
     height: 20px;
+    color: var(--main-color);
 }

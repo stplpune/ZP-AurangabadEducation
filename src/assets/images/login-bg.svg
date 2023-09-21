@@ -1,110 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 5000 2916" style="enable-background:new 0 0 5000 2916;" xml:space="preserve">
-<g>
-	<g>
-		<g>
-			<g>
-				<defs>
-					<rect id="SVGID_1_" width="5000" height="2916"/>
-				</defs>
-				<clipPath id="SVGID_3_">
-					<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-				</clipPath>
-				
-					<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="1062.4369" y1="478.7054" x2="3927.9861" y2="-2584.468" gradientTransform="matrix(1 0 0 1 0 2516)">
-					<stop  offset="0" style="stop-color:#00A7CE"/>
-					<stop  offset="1" style="stop-color:#00CCFF"/>
-				</linearGradient>
-				<rect style="clip-path:url(#SVGID_3_);fill:url(#SVGID_5_);" width="5000" height="2916"/>
-			</g>
-		</g>
-	</g>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0" y="1172.54" width="3893.18" height="1743.46">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="0" y="1172.54" width="3893.18" height="1743.46" id="SVGID_2_">
-		<g style="filter:url(#Adobe_OpacityMaskFilter);">
-			
-				<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="2177.1199" y1="-1228.6346" x2="1837.8549" y2="-68.1576" gradientTransform="matrix(1 0 0 1 0 2484.3628)">
-				<stop  offset="0" style="stop-color:#FFFFFF"/>
-				<stop  offset="1" style="stop-color:#000000"/>
-			</linearGradient>
-			<rect y="1172.54" style="fill:url(#SVGID_7_);" width="3893.18" height="1743.46"/>
-		</g>
-	</mask>
-	<path style="mask:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#008AAA;" d="M3893.18,2916
-		C1829.55,2815.89,2264.96,1758.29,0,1172.54V2916H3893.18z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="0" y="1756.18" width="1580.9" height="1159.82">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="0" y="1756.18" width="1580.9" height="1159.82" id="SVGID_4_">
-		<g style="filter:url(#Adobe_OpacityMaskFilter_1_);">
-			
-				<linearGradient id="SVGID_9_" gradientUnits="userSpaceOnUse" x1="999.4061" y1="-879.6191" x2="712.8591" y2="123.2953" gradientTransform="matrix(1 0 0 1 0 2484.3628)">
-				<stop  offset="0" style="stop-color:#FFFFFF"/>
-				<stop  offset="1" style="stop-color:#000000"/>
-			</linearGradient>
-			<rect y="1756.18" style="fill:url(#SVGID_9_);" width="1580.9" height="1159.82"/>
-		</g>
-	</mask>
-	<path style="mask:url(#SVGID_4_);fill-rule:evenodd;clip-rule:evenodd;fill:#008AAA;" d="M1580.9,2916
-		C944.41,2658.8,787.66,2052.71,0,1756.18V2916H1580.9z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_2_" filterUnits="userSpaceOnUse" x="0" y="0" width="5000" height="2916">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="0" y="0" width="5000" height="2916" id="SVGID_6_">
-		<g style="filter:url(#Adobe_OpacityMaskFilter_2_);">
-			
-				<linearGradient id="SVGID_11_" gradientUnits="userSpaceOnUse" x1="2147.0684" y1="-13.9775" x2="2805.687" y2="-1903.2264" gradientTransform="matrix(1 0 0 1 0 2484.3628)">
-				<stop  offset="0" style="stop-color:#FFFFFF"/>
-				<stop  offset="1" style="stop-color:#000000"/>
-			</linearGradient>
-			<rect style="fill:url(#SVGID_11_);" width="5000" height="2916"/>
-		</g>
-	</mask>
-	<path style="mask:url(#SVGID_6_);fill-rule:evenodd;clip-rule:evenodd;fill:#00CCFF;" d="M0,0
-		c4688.17,266.75,3527.95,2485.04,5000,2916V0H0z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_3_" filterUnits="userSpaceOnUse" x="3349.01" y="0" width="1650.99" height="1646.73">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="3349.01" y="0" width="1650.99" height="1646.73" id="SVGID_8_">
-		<g style="filter:url(#Adobe_OpacityMaskFilter_3_);">
-			
-				<linearGradient id="SVGID_12_" gradientUnits="userSpaceOnUse" x1="2785.8354" y1="-1349.3994" x2="4070.4253" y2="-1448.214" gradientTransform="matrix(1 0 0 1 677.8341 2227.4441)">
-				<stop  offset="0" style="stop-color:#FFFFFF"/>
-				<stop  offset="1" style="stop-color:#000000"/>
-			</linearGradient>
-			<rect x="3349.01" style="fill:url(#SVGID_12_);" width="1650.99" height="1646.73"/>
-		</g>
-	</mask>
-	<path style="mask:url(#SVGID_8_);fill-rule:evenodd;clip-rule:evenodd;fill:#00CCFF;" d="M3349.01,0
-		C4336.56,546.35,4599.43,1206.01,5000,1646.73V0H3349.01z"/>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_4_" filterUnits="userSpaceOnUse" x="2453.96" y="0" width="2546.04" height="2211.59">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="2453.96" y="0" width="2546.04" height="2211.59" id="SVGID_10_">
-		<g style="filter:url(#Adobe_OpacityMaskFilter_4_);">
-			
-				<linearGradient id="SVGID_13_" gradientUnits="userSpaceOnUse" x1="3101.0557" y1="-868.1027" x2="3521.885" y2="-2065.9194" gradientTransform="matrix(1 0 0 1 496.6764 2341.7793)">
-				<stop  offset="0" style="stop-color:#FFFFFF"/>
-				<stop  offset="1" style="stop-color:#000000"/>
-			</linearGradient>
-			<rect x="2453.96" style="fill:url(#SVGID_13_);" width="2546.04" height="2211.59"/>
-		</g>
-	</mask>
-	<path style="mask:url(#SVGID_10_);fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M5000,2211.59V0H2453.96
-		C3509.25,714.1,4770.19-253.81,5000,2211.59"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="452.5" viewBox="0 0 480 452.5">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#259866"/>
+      <stop offset="1" stop-color="#3cb681"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#259866"/>
+      <stop offset="1" stop-color="#3db782"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="0.26" y1="0.092" x2="0.766" y2="0.941" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c0fdfa"/>
+      <stop offset="1" stop-color="#63e4fb"/>
+    </linearGradient>
+    <filter id="Ellipse_24" x="295" y="56" width="32" height="32" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_25" x="24" y="101" width="48" height="48" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_5043" data-name="Group 5043" transform="translate(-128 -122)">
+    <path id="Intersection_1" data-name="Intersection 1" d="M-4737.281,27.962h69.752A35,35,0,0,1-4702.4,60,35,35,0,0,1-4737.281,27.962Z" transform="translate(4867.404 94.038)" fill="#3bb580"/>
+    <g id="Group_5040" data-name="Group 5040" transform="translate(413 -50.538)">
+      <circle id="Ellipse_6" data-name="Ellipse 6" cx="1.5" cy="1.5" r="1.5" transform="translate(141 580.038)" fill="#fff"/>
+      <circle id="Ellipse_7" data-name="Ellipse 7" cx="1.5" cy="1.5" r="1.5" transform="translate(158 580.038)" fill="#fff"/>
+      <circle id="Ellipse_14" data-name="Ellipse 14" cx="1.5" cy="1.5" r="1.5" transform="translate(175 580.038)" fill="#fff"/>
+      <circle id="Ellipse_18" data-name="Ellipse 18" cx="1.5" cy="1.5" r="1.5" transform="translate(192 580.038)" fill="#fff"/>
+      <circle id="Ellipse_8" data-name="Ellipse 8" cx="1.5" cy="1.5" r="1.5" transform="translate(141 594.038)" fill="#fff"/>
+      <circle id="Ellipse_9" data-name="Ellipse 9" cx="1.5" cy="1.5" r="1.5" transform="translate(158 594.038)" fill="#fff"/>
+      <circle id="Ellipse_15" data-name="Ellipse 15" cx="1.5" cy="1.5" r="1.5" transform="translate(175 594.038)" fill="#fff"/>
+      <circle id="Ellipse_19" data-name="Ellipse 19" cx="1.5" cy="1.5" r="1.5" transform="translate(192 594.038)" fill="#fff"/>
+      <circle id="Ellipse_10" data-name="Ellipse 10" cx="1.5" cy="1.5" r="1.5" transform="translate(141 608.038)" fill="#fff"/>
+      <circle id="Ellipse_11" data-name="Ellipse 11" cx="1.5" cy="1.5" r="1.5" transform="translate(158 608.038)" fill="#fff"/>
+      <circle id="Ellipse_16" data-name="Ellipse 16" cx="1.5" cy="1.5" r="1.5" transform="translate(175 608.038)" fill="#fff"/>
+      <circle id="Ellipse_20" data-name="Ellipse 20" cx="1.5" cy="1.5" r="1.5" transform="translate(192 608.038)" fill="#fff"/>
+      <circle id="Ellipse_12" data-name="Ellipse 12" cx="1.5" cy="1.5" r="1.5" transform="translate(141 622.038)" fill="#fff"/>
+      <circle id="Ellipse_13" data-name="Ellipse 13" cx="1.5" cy="1.5" r="1.5" transform="translate(158 622.038)" fill="#fff"/>
+      <circle id="Ellipse_17" data-name="Ellipse 17" cx="1.5" cy="1.5" r="1.5" transform="translate(175 622.038)" fill="#fff"/>
+      <circle id="Ellipse_21" data-name="Ellipse 21" cx="1.5" cy="1.5" r="1.5" transform="translate(192 622.038)" fill="#fff"/>
+    </g>
+    <g id="Group_5042" data-name="Group 5042">
+      <circle id="Ellipse_2" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(128 173.038)" fill="#fff"/>
+      <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(142 173.038)" fill="#fff"/>
+      <circle id="Ellipse_2-3" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(156 173.038)" fill="#fff"/>
+      <circle id="Ellipse_2-4" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(170 173.038)" fill="#fff"/>
+      <circle id="Ellipse_2-5" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(184 173.038)" fill="#fff"/>
+      <circle id="Ellipse_2-6" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(198 173.038)" fill="#fff"/>
+      <circle id="Ellipse_2-7" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(128 187.038)" fill="#fff"/>
+      <circle id="Ellipse_2-8" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(142 187.038)" fill="#fff"/>
+      <circle id="Ellipse_2-9" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(156 187.038)" fill="#fff"/>
+      <circle id="Ellipse_2-10" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(170 187.038)" fill="#fff"/>
+      <circle id="Ellipse_2-11" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(184 187.038)" fill="#fff"/>
+      <circle id="Ellipse_2-12" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(198 187.038)" fill="#fff"/>
+      <circle id="Ellipse_2-13" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(128 201.038)" fill="#fff"/>
+      <circle id="Ellipse_2-14" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(142 201.038)" fill="#fff"/>
+      <circle id="Ellipse_2-15" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(156 201.038)" fill="#fff"/>
+      <circle id="Ellipse_2-16" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(170 201.038)" fill="#fff"/>
+      <circle id="Ellipse_2-17" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(184 201.038)" fill="#fff"/>
+      <circle id="Ellipse_2-18" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(198 201.038)" fill="#fff"/>
+      <circle id="Ellipse_2-19" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(128 215.038)" fill="#fff"/>
+      <circle id="Ellipse_2-20" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(142 215.038)" fill="#fff"/>
+      <circle id="Ellipse_2-21" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(156 215.038)" fill="#fff"/>
+      <circle id="Ellipse_2-22" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(170 215.038)" fill="#fff"/>
+      <circle id="Ellipse_2-23" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(184 215.038)" fill="#fff"/>
+      <circle id="Ellipse_2-24" data-name="Ellipse 2" cx="1.5" cy="1.5" r="1.5" transform="translate(198 215.038)" fill="#fff"/>
+    </g>
+    <path id="Union_1" data-name="Union 1" d="M-4742.959,51H-4743V-10h24V51h-.041A12,12,0,0,1-4731,62,12,12,0,0,1-4742.959,51Z" transform="translate(4971 147.038)" fill="url(#linear-gradient)"/>
+    <path id="Union_2" data-name="Union 2" d="M-4742.935,86.583H-4743V-10h38V86.583h-.065A19,19,0,0,1-4724,104,19,19,0,0,1-4742.935,86.583Z" transform="translate(5022 157)" fill="url(#linear-gradient-2)"/>
+    <path id="Subtraction_6" data-name="Subtraction 6" d="M-3169,124a18.94,18.94,0,0,1-12.9-5.051,18.931,18.931,0,0,1-6.033-12.366H-3188V48h1v57.748l.062.753a17.934,17.934,0,0,0,5.716,11.714A17.945,17.945,0,0,0-3169,123a17.945,17.945,0,0,0,12.222-4.785,17.931,17.931,0,0,0,5.716-11.714l.062-.753V48h1v58.584h-.066a18.932,18.932,0,0,1-6.033,12.366A18.941,18.941,0,0,1-3169,124Z" transform="translate(3445 74)" fill="#fff"/>
+    <circle id="Ellipse_22" data-name="Ellipse 22" cx="10" cy="10" r="10" transform="translate(374 173.038)" fill="#3bb480"/>
+    <path id="Subtraction_7" data-name="Subtraction 7" d="M-3179.9,37.052a20.867,20.867,0,0,1-14.806-6.109A20.868,20.868,0,0,1-3200.9,16.18h1a19.862,19.862,0,0,0,1.571,7.656,19.933,19.933,0,0,0,4.287,6.358,19.954,19.954,0,0,0,6.357,4.287,19.883,19.883,0,0,0,7.785,1.57,19.882,19.882,0,0,0,7.785-1.57,19.963,19.963,0,0,0,6.358-4.287,19.941,19.941,0,0,0,4.286-6.358,19.868,19.868,0,0,0,1.572-7.785,19.865,19.865,0,0,0-1.572-7.784,19.93,19.93,0,0,0-4.286-6.358,19.944,19.944,0,0,0-6.358-4.287,19.867,19.867,0,0,0-7.785-1.571c-.23,0-.465,0-.7.012q0-.331,0-.666l0-.334c.247-.008.484-.012.7-.012A20.862,20.862,0,0,1-3165.055,1.2a20.863,20.863,0,0,1,6.15,14.849,20.864,20.864,0,0,1-6.15,14.85A20.862,20.862,0,0,1-3179.9,37.052Z" transform="translate(3563.904 166.986)" fill="#fff"/>
+    <g transform="matrix(1, 0, 0, 1, 128, 122)" filter="url(#Ellipse_24)">
+      <circle id="Ellipse_24-2" data-name="Ellipse 24" cx="7" cy="7" r="7" transform="translate(304 62)" fill="url(#linear-gradient-3)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 128, 122)" filter="url(#Ellipse_25)">
+      <circle id="Ellipse_25-2" data-name="Ellipse 25" cx="15" cy="15" r="15" transform="translate(33 107)" fill="url(#linear-gradient-3)"/>
+    </g>
+  </g>
 </svg>
