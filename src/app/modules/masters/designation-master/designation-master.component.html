@@ -22,14 +22,14 @@
                     <mat-icon>
                         description
                     </mat-icon>
-                </button>
+               </button>
 
-                <button mat-flat-button class="btn-main">
-                    <mat-icon>add</mat-icon>
+                 <!-- <button mat-flat-button class="btn-main">
+                    <mat-icon class="material-symbols-rounded">add</mat-icon>
                     <span>
                         Designation
                     </span>
-                </button>
+                </button> -->
             </div>
         </div>
     </mat-card-header>
@@ -92,21 +92,21 @@
                     <div class="d-flex gap-2">
                         <ng-container>
                             <button mat-icon-button>
-                                <mat-icon class="text-main">
+                                <mat-icon class="text-main material-symbols-rounded">
                                     edit
                                 </mat-icon>
                             </button>
                         </ng-container>
                         <ng-container>
                             <button mat-icon-button>
-                                <mat-icon class="text-primary">
+                                <mat-icon class="text-primary material-symbols-rounded">
                                     visibility
                                 </mat-icon>
                             </button>
                         </ng-container>
                         <ng-container>
                             <button mat-icon-button>
-                                <mat-icon class="text-danger">
+                                <mat-icon class="text-danger material-symbols-rounded">
                                     delete
                                 </mat-icon>
                             </button>
@@ -121,50 +121,47 @@
     </mat-card-content>
     </div>
 <div class="col-sm-4">
-    <h6 class="mb-3 text-main">Designation Registration</h6>
         <mat-card class="plain-card">
-            <!-- <mat-card-header class="card-header">
-                <div class="d-flex justify-content-between align-items-center w-100">
-                    <h6 class="text-main mb-0 fw-bold">designation</h6>
-                    <h6 class="text-main mb-0 fw-bold">designation</h6>
-                    <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
-                        <mat-icon>
-                            close
-                        </mat-icon>
-                    </button>
-                </div>
-            </mat-card-header> -->
-
+            <mat-card-header class="card-header">
+                 <h1 class="mb-3 text-main">Designation Registration</h1>
+            </mat-card-header>
             <mat-card-content class="card-body">
                 <div class="mb-1">
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Designation Level</mat-label>
+                        <mat-label>Select Dependant Designation Level</mat-label>
                         <mat-select>
-                            <mat-option>designation_master</mat-option>
+                            <mat-option>Taluka</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="mb-1">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Select Dependant Designationl</mat-label>
+                        <mat-select>
+                            <mat-option>Block Education Officer</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="mb-0">
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Designation
+                        <mat-label>Add Designation Name
                         </mat-label>
                         <input minlength="2" maxlength="50" matInput>
                     </mat-form-field>
                 </div>
                 <div class="mb-1">
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Designation (Marathi)
-                        </mat-label>
-                        <input minlength="2" maxlength="50" matInput>
-                    </mat-form-field>
-                </div>
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Set Desired Designationl Level</mat-label>
+                      <mat-select>
+                          <mat-option>Taluka</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
             </mat-card-content>
             <mat-card-footer class="card-footer mb-3" align="end">
                 <div class="d-flex justify-content-end align-items-center w-100">
-                    <button type="button" mat-flat-button class="btn-second me-2">clear</button>
+                    <button type="button" mat-flat-button class="btn-main-light me-2">clear</button>
                     <button mat-flat-button type="submit" class="btn-main">Submit</button>
-                   <!--  <button mat-flat-button type="submit" class="btn-main" *ngIf="data">{{'common.update' |
-                        translate}}</button> -->
                 </div>
             </mat-card-footer>
         </mat-card>
