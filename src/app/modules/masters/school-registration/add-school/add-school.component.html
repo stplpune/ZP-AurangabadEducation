@@ -31,10 +31,8 @@
             </div>
             <div class="col-sm-4">
                 <div class="d-flex">
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>School Name</mat-label>
-                        <input matInput minlength="10" maxlength="500">
-                    </mat-form-field>
+                        <div class="form-label">School is Kendra?</div>
+                        <mat-checkbox class="example-margin">Yes</mat-checkbox>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -67,69 +65,123 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>School Name</mat-label>
-                    <input matInput minlength="10" maxlength="500">
+                    <textarea matInput rows="2"
+                    ></textarea>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>School category Name</mat-label>
+                    <mat-label>School Name(Marathi)</mat-label>
+                    <textarea matInput rows="2"
+                    ></textarea>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6 ">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>School Code</mat-label>
+                  <input matInput>
+              </mat-form-field>
+          </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>School Management</mat-label>
                     <mat-select>
                         <mat-option>
-                            categoryName
+                            one
+                        </mat-option>
+                        <mat-option>
+                            two
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Gender</mat-label>
+                    <mat-label>Lowest Class</mat-label>
                     <mat-select>
                         <mat-option>
-                            Male
+                            1
                         </mat-option>
                         <mat-option>
-                            Female
+                            2
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>School Class</mat-label>
+                    <mat-label>Highest Class</mat-label>
                     <mat-select>
                         <mat-option>
-                            1st
+                            2
                         </mat-option>
                         <mat-option>
-                            2nd
+                            3
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Class To</mat-label>
+                    <mat-label>School Category</mat-label>
                     <mat-select>
                         <mat-option>
-                            1 to 4
+                            Primary
+                        </mat-option>
+                        <mat-option>
+                          Primary with Upper Primary
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4">
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>School Id</mat-label>
-                    <input matInput>
-                </mat-form-field>
+            <div class="col-sm-6">
+                <div class="file-upload">
+                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden"
+                      />
+                    <button type="button" mat-flat-button class="btn-main" id="fileupload-button"
+                       data-toggle="tooltip" data-placement="right">Upload Profile
+                        Photo</button>
+                    <!-- <div class="d-flex gap-2">
+                        <button type="button" mat-flat-button
+                            class="bg-primary text-primary bg-opacity-10 btn-icon" matTooltip="view">
+                            <mat-icon class="material-symbols-outlined">
+                                preview
+                            </mat-icon>
+                        </button>
+                        <button type="button" mat-flat-button (click)="deleteImg()" *ngIf="imgResponse"
+                            class="bg-danger bg-opacity-10 text-danger btn-icon" matTooltip="delete">
+                            <mat-icon class="material-symbols-outlined">
+                                delete
+                            </mat-icon>
+                        </button>
+                    </div> -->
+                </div>
+
             </div>
-            <div class="col-sm-8">
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>School Address</mat-label>
-                    <textarea matInput></textarea>
-                </mat-form-field>
+            <div class="col-sm-6">
+              <div class="file-upload">
+                <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden"
+                  />
+                <button type="button" mat-flat-button class="btn-main" id="fileupload-button"
+                   data-toggle="tooltip" data-placement="right">Upload School Documents</button>
+                <!-- <div class="d-flex gap-2">
+                    <button type="button" mat-flat-button
+                        class="bg-primary text-primary bg-opacity-10 btn-icon" matTooltip="view">
+                        <mat-icon class="material-symbols-outlined">
+                            preview
+                        </mat-icon>
+                    </button>
+                    <button type="button" mat-flat-button (click)="deleteImg()" *ngIf="imgResponse"
+                        class="bg-danger bg-opacity-10 text-danger btn-icon" matTooltip="delete">
+                        <mat-icon class="material-symbols-outlined">
+                            delete
+                        </mat-icon>
+                    </button>
+                </div> -->
+            </div>
             </div>
         </div>
     </mat-card-content>
