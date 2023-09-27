@@ -7,7 +7,7 @@
           </button>
       </div>
   </mat-card-header>
-  <mat-card-content class="card-body">
+  <mat-card-content class="card-body scrollbar">
       <div class="row">
          <h6>Personal Details</h6>
           <div class="col-sm-4">
@@ -126,19 +126,39 @@
               </mat-select>
           </mat-form-field>
       </div>
+      <div class="col-sm-6 ">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Current Address</mat-label>
+          <textarea matInput rows="2"
+          ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 ">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Permanent Address</mat-label>
+        <textarea matInput rows="2"
+        ></textarea>
+    </mat-form-field>
+  </div>
           <div class="col-sm-12 text-end">
             <mat-checkbox class="example-margin">Same as Current Address</mat-checkbox>
           </div>
           </div>
           <div class="row">
             <h6>Educational Qualification</h6>
-          <div class="col-sm-6 ">
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Permanent Address</mat-label>
-              <textarea matInput rows="2"
-              ></textarea>
-          </mat-form-field>
-        </div>
+            <div class="col-sm-4">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Educational Qualification</mat-label>
+                  <mat-select>
+                      <mat-option>
+                          BSC
+                      </mat-option>
+                      <mat-option>
+                          HSC
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div>
         </div>
         <div class="row">
           <h6>Professional Qualification</h6>
