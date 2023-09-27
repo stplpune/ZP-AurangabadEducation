@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'teacher-transfer', loadChildren: () => import('../../modules/settings/teacher-transfer/teacher-transfer.module').then(m => m.TeacherTransferModule) },
   { path: 'student-transfer', loadChildren: () => import('../../modules/settings/student-transfer/student-transfer.module').then(m => m.StudentTransferModule) },
   { path: 'assessment-crateria', loadChildren: () => import('../../modules/settings/assessment-crateria/assessment-crateria.module').then(m => m.AssessmentCrateriaModule) },
+  { path: 'add-student', loadChildren: () => import('../../modules/masters/student-registration/add-student/add-student.module').then(m => m.AddStudentModule) },
 
 ];
 
