@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { SchoolReportRoutingModule } from './school-report-routing.module';
 import { SchoolReportComponent } from './school-report.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,7 +35,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatMenuModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatTableModule
+    MatTableModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ]
 })
 export class SchoolReportModule { }
