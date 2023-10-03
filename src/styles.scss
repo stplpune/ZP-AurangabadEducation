@@ -212,6 +212,15 @@ button.btn-modal-close {
     justify-content: space-between;
 }
 
+.file-upload .btn {
+    background-color: var(--main-light-color) !important;
+    letter-spacing: normal;
+    font-family: 'Public Sans', sans-serif !important;
+    font-size: 0.85rem;
+    height: 36px !important;
+    color: var(--main-color) !important;
+}
+
 .file-upload input[type=file] {
     font-size: 100px;
     position: absolute;

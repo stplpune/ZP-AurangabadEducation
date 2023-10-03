@@ -6,7 +6,7 @@
         </button>
     </div>
 </div>
-<mat-dialog-content class="modal-body">
+<mat-dialog-content class="modal-body scrollbar">
     <div class="row g-2">
         <div class="col-sm-4">
             <mat-form-field appearance="outline" class="w-100">
@@ -149,8 +149,8 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="file-upload">
-                <button type="button" mat-flat-button class="btn btn-main" id="fileupload-button" data-toggle="tooltip"
+            <div class="file-upload border rounded-2 p-1">
+                <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
                     data-placement="right">
                     Upload Profile Photo
                 </button>
@@ -174,9 +174,9 @@
 
         </div>
         <div class="col-sm-6">
-            <div class="file-upload">
+            <div class="file-upload border rounded-2 p-1">
                 <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
-                <button type="button" mat-flat-button class="btn-main" id="fileupload-button" data-toggle="tooltip"
+                <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
                     data-placement="right">Upload School Documents</button>
                 <div class="d-flex gap-2">
                     <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon"
