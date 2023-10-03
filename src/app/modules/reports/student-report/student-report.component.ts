@@ -25,7 +25,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./student-report.component.scss']
 })
 export class StudentReportComponent {
-  Exam: any;
+ 
   displayedColumns: string[] = ['srno', 'District', 'Taluka', 'Center', 'SchoolCode', 'SchoolName','FullName','StudentGender','Standard','Exam','Assessment','Management'];
   dataSource = ELEMENT_DATA;
 }
