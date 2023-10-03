@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddSchoolComponent } from './add-school/add-school.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatAutocompleteModule,
     MatTooltipModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class SchoolRegistrationModule { }
