@@ -177,7 +177,57 @@ ol.breadcrumb {
     width: 36px;
 }
 
+.modal-header {
+    font-family: 'Public Sans', sans-serif !important;
+    font-size: 0.85rem;
+    background-color: var(--main-light-color);
+    padding: 5px 15px !important;
+}
 
+.mdc-dialog__title::before {
+    height: 0 !important;
+    display: none !important;
+}
+
+.modal-body {
+    padding: 10px 15px !important;
+}
+
+button.btn-modal-close {
+    @include mat.all-component-densities(-3);
+    padding: 0 !important;
+}
+
+.btn-modal-close .material-symbols-rounded {
+    font-size: 1.3rem !important;
+    height: 18px !important;
+    width: 19px !important;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-upload .btn {
+    background-color: var(--main-light-color) !important;
+    letter-spacing: normal;
+    font-family: 'Public Sans', sans-serif !important;
+    font-size: 0.85rem;
+    height: 36px !important;
+    color: var(--main-color) !important;
+}
+
+.file-upload input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
 
 
 
