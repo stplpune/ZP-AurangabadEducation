@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '', component: PublicComponent, loadChildren: () => import('./layout/public/public.module').then(m => m.PublicModule) },
   { path: '', component: SecureComponent, loadChildren: () => import('./layout/secure/secure.module').then(m => m.SecureModule) },
- 
+
 
 ];
 
