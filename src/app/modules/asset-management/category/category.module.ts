@@ -14,6 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatMenuModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ]
 })
 export class CategoryModule { }
