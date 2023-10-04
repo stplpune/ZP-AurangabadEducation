@@ -8,6 +8,7 @@ export interface PeriodicElement {
   Teacher: any;
   Mobile: any;
   Email: any;
+  District:any;
   Taluka: any;
   Cluster: any;
   Unblock: any;
@@ -15,9 +16,9 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {srno: 1, TeacherNum: 'Teacher', Teacher: 'School', Mobile: 'Head Master', Email:'Anjangaon Bari', Taluka:'Jaoli',Cluster:'AMBI',Unblock: '', Action: 'H'},
-  {srno: 2, TeacherNum: 'Head Master', Teacher: 'Kendra', Mobile: 'Cluster Resource Person', Email:'Anjangaon Bari',Taluka:'Jaoli',Cluster:'AMBI',Unblock: '',   Action: 'H'},
-  {srno: 3, TeacherNum: 'IED Teacher', Teacher: 'Taluka', Mobile: 'Block Resource Person', Email:'Anjangaon Bari',Taluka:'Jaoli',Cluster:'AMBI',Unblock: '',   Action: 'H'},
+  {srno: 1, TeacherNum: 'Teacher', Teacher: 'School', Mobile: 'Head Master', Email:'Anjangaon Bari', District:'Pune',Taluka:'Jaoli',Cluster:'AMBI',Unblock: '', Action: 'H'},
+  {srno: 2, TeacherNum: 'Head Master', Teacher: 'Kendra', Mobile: 'Cluster Resource Person', Email:'Anjangaon Bari', District:'Pune',Taluka:'Jaoli',Cluster:'AMBI',Unblock: '',   Action: 'H'},
+  {srno: 3, TeacherNum: 'IED Teacher', Teacher: 'Taluka', Mobile: 'Block Resource Person', Email:'Anjangaon Bari', District:'Pune',Taluka:'Jaoli',Cluster:'AMBI',Unblock: '',   Action: 'H'},
 ];
 @Component({
   selector: 'app-teacher-registration',
@@ -28,7 +29,7 @@ export class TeacherRegistrationComponent {
   constructor(public dialog: MatDialog,){
 
   }
-  displayedColumns: string[] = ['srno', 'TeacherNum', 'Teacher', 'Mobile', 'Email', 'Taluka','Cluster','Unblock','Action'];
+  displayedColumns: string[] = ['srno', 'TeacherNum', 'Teacher', 'Mobile', 'Email','District','Taluka','Cluster','Unblock','Action'];
   dataSource = ELEMENT_DATA;
   AddTeacher(data?: any) {
     const dialogRef = this.dialog.open(AddTeacherComponent, {
