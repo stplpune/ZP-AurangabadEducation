@@ -11,11 +11,19 @@
           <h6 class="text-main mb-2 mb-lg-0 fw-bold">
 Attendance Report List</h6>
           <div class="d-flex align-items-center gap-2">
-              <button mat-flat-button class="bg-danger btn-icon text-white">
-                  <mat-icon>
-                      description
-                  </mat-icon>
-              </button>
+            <button mat-flat-button class="bg-primary-subtle btn-icon">
+              <mat-icon class="material-symbols-rounded text-primary">
+                  table_view
+              </mat-icon>
+          </button>
+          <button mat-flat-button class="bg-dark-subtle btn-icon">
+              <mat-icon class="material-symbols-rounded text-dark">account_tree</mat-icon>
+          </button>
+          <button mat-flat-button class="bg-danger-subtle btn-icon">
+              <mat-icon class="material-symbols-rounded text-danger">
+                  description
+              </mat-icon>
+          </button>
           </div>
       </div>
   </mat-card-header>
@@ -24,6 +32,14 @@ Attendance Report List</h6>
 <mat-card-header class="card-header pb-0 border-bottom-0">
   <ng-container>
     <div class="row align-items-start w-100 justify-content-start mb-3 mb-lg-0 gx-2">
+      <div class="col-sm-2">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>District</mat-label>
+            <mat-select>
+                <mat-option>Amravati</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
       <div class="col-sm-2">
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Taluka</mat-label>
