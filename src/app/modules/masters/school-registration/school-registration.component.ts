@@ -5,6 +5,7 @@ export interface PeriodicElement {
   srno: any;
   UDISE: any;
   School: any;
+  District:any;
   Taluka: any;
   Kendra: any;
   Village: any;
@@ -12,9 +13,9 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { srno: 1, UDISE: '12343', School: 'Teacher', Taluka: 'School', Kendra: 'Head Master', Village: 'Anjangaon Bari', Action: 'H' },
-  { srno: 2, UDISE: '22321', School: 'Head Master', Taluka: 'Kendra', Kendra: 'Cluster Resource Person', Village: 'Anjangaon Bari', Action: 'H' },
-  { srno: 3, UDISE: '12122', School: 'IED Teacher', Taluka: 'Taluka', Kendra: 'Block Resource Person', Village: 'Anjangaon Bari', Action: 'H' },
+  { srno: 1, UDISE: '12343', School: 'Teacher', District:'Pune',Taluka: 'School', Kendra: 'Head Master', Village: 'Anjangaon Bari', Action: 'H' },
+  { srno: 2, UDISE: '22321', School: 'Head Master',District:'Pune', Taluka: 'Kendra', Kendra: 'Cluster Resource Person', Village: 'Anjangaon Bari', Action: 'H' },
+  { srno: 3, UDISE: '12122', School: 'IED Teacher',District:'Pune', Taluka: 'Taluka', Kendra: 'Block Resource Person', Village: 'Anjangaon Bari', Action: 'H' },
 ];
 @Component({
   selector: 'app-school-registration',
@@ -25,7 +26,7 @@ export class SchoolRegistrationComponent {
   constructor(public dialog: MatDialog,) {
 
   }
-  displayedColumns: string[] = ['srno', 'UDISE', 'School', 'Taluka', 'Kendra', 'Village', 'Action'];
+  displayedColumns: string[] = ['srno', 'UDISE', 'School','District', 'Taluka', 'Kendra', 'Village', 'Action'];
   dataSource = ELEMENT_DATA;
   AddSchool(data?: any) {
     const dialogRef = this.dialog.open(AddSchoolComponent, {
