@@ -51,3 +51,8 @@
     background-color: var(--main-color) !important;
     color: #fff !important;
 }
+
+/* icon in mat switch toggle button hide */
+.mdc-switch__icons {
+    display: none !important;
+}
