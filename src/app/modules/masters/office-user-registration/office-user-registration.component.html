@@ -10,11 +10,19 @@
           <h6 class="text-main mb-2 mb-lg-0 fw-bold">
             Office User Registration</h6>
           <div class="d-flex align-items-center gap-2">
-              <button mat-flat-button class="bg-danger btn-icon text-white">
-                  <mat-icon>
-                      description
-                  </mat-icon>
-              </button>
+              <button mat-flat-button class="bg-primary-subtle btn-icon">
+                <mat-icon class="material-symbols-rounded text-primary">
+                    table_view
+                </mat-icon>
+            </button>
+            <!-- <button mat-flat-button class="bg-dark-subtle btn-icon">
+                <mat-icon class="material-symbols-rounded text-dark">account_tree</mat-icon>
+            </button> -->
+            <button mat-flat-button class="bg-danger-subtle btn-icon">
+                <mat-icon class="material-symbols-rounded text-danger">
+                    description
+                </mat-icon>
+            </button>
                <button mat-flat-button class="btn-main" (click)="AddUser()">
                   <mat-icon class="material-symbols-rounded">add</mat-icon>
                   <span>
@@ -33,6 +41,14 @@
                               <mat-label>User Type</mat-label>
                               <mat-select>
                                   <mat-option>NGO</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-sm-2">
+                          <mat-form-field appearance="outline" class="w-100">
+                              <mat-label>District</mat-label>
+                              <mat-select>
+                                  <mat-option>Pune</mat-option>
                               </mat-select>
                           </mat-form-field>
                       </div>
