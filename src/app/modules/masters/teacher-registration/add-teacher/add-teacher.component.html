@@ -1,13 +1,12 @@
-<mat-card class="plain-card">
-  <mat-card-header class="card-header">
-      <div class="d-flex justify-content-between align-items-center w-100">
-          <h6 class="text-main mb-0 fw-bold">Teacher Registration</h6>
-          <button mat-icon-button class="btn-modal-close material-symbols-rounded" [mat-dialog-close]="true">
-              <mat-icon>close</mat-icon>
-          </button>
-      </div>
-  </mat-card-header>
-  <mat-card-content class="card-body scrollbar">
+ <div mat-dialog-title class="modal-header">
+    <div class="d-flex justify-content-between align-items-center w-100">
+        <h6 class="text-main mb-0 fw-bold">Teacher Registration</h6>
+        <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
+            <mat-icon class="material-symbols-rounded">close</mat-icon>
+        </button>
+    </div>
+</div>
+<mat-dialog-content class="modal-body scrollbar">
       <div class="row">
          <h6>Personal Details</h6>
           <div class="col-sm-4">
@@ -62,27 +61,30 @@
               <mat-datepicker #topicker></mat-datepicker>
           </mat-form-field>
           </div>
-          <div class="col-sm-8">
-            <div class="file-upload">
-              <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden"
-                />
-              <button type="button" mat-flat-button class="btn-main" id="fileupload-button"
-                 data-toggle="tooltip" data-placement="right">Upload Photo</button>
-              <!-- <div class="d-flex gap-2">
-                  <button type="button" mat-flat-button
-                      class="bg-primary text-primary bg-opacity-10 btn-icon" matTooltip="view">
-                      <mat-icon class="material-symbols-outlined">
+          <div class="col-sm-4">
+            <div class="file-upload border rounded-2 p-1">
+              <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
+                  data-placement="right">
+                  Upload Photo
+              </button>
+              <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
+
+              <div class="d-flex gap-2">
+                  <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon"
+                      matTooltip="view">
+                      <mat-icon class="material-symbols-rounded">
                           preview
                       </mat-icon>
                   </button>
-                  <button type="button" mat-flat-button (click)="deleteImg()" *ngIf="imgResponse"
-                      class="bg-danger bg-opacity-10 text-danger btn-icon" matTooltip="delete">
-                      <mat-icon class="material-symbols-outlined">
+                  <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon"
+                      matTooltip="delete">
+                      <mat-icon class="material-symbols-rounded">
                           delete
                       </mat-icon>
                   </button>
-              </div> -->
+              </div>
           </div>
+
           </div>
           </div>
           <div class="row">
@@ -242,12 +244,11 @@
           </div>
 
       </div>
-  </mat-card-content>
-  <mat-card-footer class="card-footer mb-3 me-2">
-      <div class="d-flex align-items-center justify-content-end w-100">
-          <button mat-flat-button class="btn-main-light me-2" type="button">
-              Cancel</button>
-          <button mat-flat-button class="btn-main" type="submit">Submit</button>
+  </mat-dialog-content>
+  <mat-dialog-actions class="modal-footer">
+      <div class="d-flex align-items-center justify-content-end w-100 gap-2">
+        <button mat-flat-button class="btn-main-light" type="button">Cancel</button>
+        <button mat-flat-button class="btn-main" type="submit">Submit</button>
       </div>
-  </mat-card-footer>
-</mat-card>
+  </mat-dialog-actions>
+
