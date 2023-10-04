@@ -6,7 +6,7 @@
 </nav>
 <mat-card class="plain-card">
   <mat-card-header class="card-header">
-      <div class="d-lg-flex d-block justify-content-between align-items-center w-100">
+      <div class="d-flex justify-content-between align-items-center w-100">
           <h6 class="text-main mb-2 mb-lg-0 fw-bold">
             Other Registration List</h6>
           <div class="d-flex align-items-center gap-2">
@@ -32,9 +32,7 @@
           </div>
       </div>
   </mat-card-header>
-  <div class="row">
           <mat-card-header class="card-header pb-0 border-bottom-0">
-              <ng-container>
                   <div class="row align-items-start w-100 justify-content-start mb-3 mb-lg-0 gx-2">
                       <div class="col-sm-3">
                         <mat-form-field appearance="outline" class="w-100">
@@ -47,7 +45,6 @@
                           <button mat-flat-button class="btn-main-light">Clear</button>
                       </div>
                   </div>
-              </ng-container>
           </mat-card-header>
           <mat-card-content class="card-body pt-0">
               <table mat-table [dataSource]="dataSource" class="dashboard-table">
@@ -98,7 +95,7 @@
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
           </mat-card-content>
-  </div>
+
 </mat-card>
 
 
