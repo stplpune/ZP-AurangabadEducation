@@ -1,145 +1,144 @@
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-      <li class="breadcrumb-item" aria-current="page">Master</li>
-      <li class="breadcrumb-item active" aria-current="page">Student Registration</li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Master</li>
+        <li class="breadcrumb-item active" aria-current="page">Student Registration</li>
+    </ol>
 </nav>
 <mat-card class="plain-card">
-  <mat-card-header class="card-header">
-      <div class="d-flex justify-content-between align-items-center w-100">
-          <h6 class="text-main mb-2 mb-lg-0 fw-bold">
-              Student List</h6>
-          <div class="d-flex align-items-center gap-2">
-            <button mat-flat-button class="bg-primary-subtle btn-icon">
-              <mat-icon class="material-symbols-rounded text-primary">
-                  table_view
-              </mat-icon>
-          </button>
-          <!-- <button mat-flat-button class="bg-dark-subtle btn-icon">
+    <mat-card-header class="card-header">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <h6 class="text-main mb-2 mb-lg-0 fw-bold">
+                Student List</h6>
+            <div class="d-flex align-items-center gap-2">
+                <button mat-flat-button class="bg-primary-subtle btn-icon">
+                    <mat-icon class="material-symbols-rounded text-primary">
+                        table_view
+                    </mat-icon>
+                </button>
+                <!-- <button mat-flat-button class="bg-dark-subtle btn-icon">
               <mat-icon class="material-symbols-rounded text-dark">account_tree</mat-icon>
           </button> -->
-          <button mat-flat-button class="bg-danger-subtle btn-icon">
-              <mat-icon class="material-symbols-rounded text-danger">
-                  description
-              </mat-icon>
-          </button>
-               <button mat-flat-button class="btn-main" [routerLink]="['../add-student']">
-                  <mat-icon class="material-symbols-rounded">add</mat-icon>
-                  <span>
-                      Add Student
-                  </span>
-              </button>
-          </div>
-      </div>
-  </mat-card-header>
-          <mat-card-header class="card-header-control pt-0">
-                  <div class="row align-items-center w-100 justify-content-start g-2">
-                      <div class="col-sm">
-                          <mat-form-field appearance="outline" class="w-100">
-                              <mat-label>District</mat-label>
-                              <mat-select>
-                                  <mat-option>Amravati</mat-option>
-                              </mat-select>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-sm">
-                          <mat-form-field appearance="outline" class="w-100">
-                              <mat-label>Taluka</mat-label>
-                              <mat-select>
-                                  <mat-option>Amravati</mat-option>
-                              </mat-select>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-sm">
-                          <mat-form-field appearance="outline" class="w-100">
-                              <mat-label>Kendra</mat-label>
-                              <mat-select>
-                                  <mat-option>Amravati</mat-option>
-                              </mat-select>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-sm">
-                          <mat-form-field appearance="outline" class="w-100">
-                              <mat-label>Village</mat-label>
-                              <mat-select>
-                                  <mat-option>Anjangaon</mat-option>
-                              </mat-select>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-sm">
-                          <mat-form-field appearance="outline" class="w-100">
-                              <mat-label>School</mat-label>
-                              <mat-select>
-                                  <mat-option>Village</mat-option>
-                              </mat-select>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-sm-3">
-                        <mat-form-field appearance="outline" class="w-100">
-                          <mat-label>Student Name/Parent Mobile No.</mat-label>
-                          <input matInput>
-                      </mat-form-field>
-                      </div>
-                      <div class="col-sm-auto text-end">
-                          <button mat-flat-button class="btn-main me-2">Search</button>
-                          <button mat-flat-button class="btn-main-light">Clear</button>
-                      </div>
-                  </div>
-          </mat-card-header>
-          <mat-card-content class="card-body pt-0">
-              <table mat-table [dataSource]="dataSource" class="dashboard-table">
-                  <ng-container matColumnDef="srno">
-                      <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-                      <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
-                  </ng-container>
+                <button mat-flat-button class="bg-danger-subtle btn-icon">
+                    <mat-icon class="material-symbols-rounded text-danger">
+                        description
+                    </mat-icon>
+                </button>
+                <button mat-flat-button class="btn-main" [routerLink]="['../add-student']">
+                    <mat-icon class="material-symbols-rounded">add</mat-icon>
+                    <span>
+                        Add Student
+                    </span>
+                </button>
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-header class="card-header-control pt-0">
+        <div class="row align-items-center w-100 justify-content-start g-2">
+            <div class="col-sm">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>District</mat-label>
+                    <mat-select>
+                        <mat-option>Amravati</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Taluka</mat-label>
+                    <mat-select>
+                        <mat-option>Amravati</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Kendra</mat-label>
+                    <mat-select>
+                        <mat-option>Amravati</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Village</mat-label>
+                    <mat-select>
+                        <mat-option>Anjangaon</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>School</mat-label>
+                    <mat-select>
+                        <mat-option>Village</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Student Name/Parent Mobile No.</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-auto text-end">
+                <button mat-flat-button class="btn-main me-2">Search</button>
+                <button mat-flat-button class="btn-main-light">Clear</button>
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-content class="card-body pt-0">
+        <table mat-table [dataSource]="dataSource" class="dashboard-table">
+            <ng-container matColumnDef="srno">
+                <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
+            </ng-container>
 
-                  <ng-container matColumnDef="Student">
-                      <th mat-header-cell *matHeaderCellDef> Student Name </th>
-                      <td mat-cell *matCellDef="let element"> {{element.Student}} </td>
-                  </ng-container>
-
-
-                  <ng-container matColumnDef="Standard">
-                      <th mat-header-cell *matHeaderCellDef> Standard </th>
-                      <td mat-cell *matCellDef="let element"> {{element.Standard}} </td>
-                  </ng-container>
+            <ng-container matColumnDef="Student">
+                <th mat-header-cell *matHeaderCellDef> Student Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.Student}} </td>
+            </ng-container>
 
 
-                  <ng-container matColumnDef="Mobile">
-                      <th mat-header-cell *matHeaderCellDef> Parent Mobile No.
-                      </th>
-                      <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
-                  </ng-container>
+            <ng-container matColumnDef="Standard">
+                <th mat-header-cell *matHeaderCellDef> Standard </th>
+                <td mat-cell *matCellDef="let element"> {{element.Standard}} </td>
+            </ng-container>
 
 
-                  <ng-container matColumnDef="Gender">
-                      <th mat-header-cell *matHeaderCellDef> Gender
+            <ng-container matColumnDef="Mobile">
+                <th mat-header-cell *matHeaderCellDef> Parent Mobile No.
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
+            </ng-container>
 
-                      </th>
-                      <td mat-cell *matCellDef="let element"> {{element.Gender
-                      }} </td>
-                  </ng-container>
 
-                  <ng-container matColumnDef="Action">
-                      <th mat-header-cell *matHeaderCellDef> Action
-                      </th>
-                      <td mat-cell *matCellDef="let element let i=index">
-                          <div class="d-flex gap-2">
-                              <ng-container>
-                                  <button mat-icon-button>
-                                      <mat-icon class="text-main material-symbols-rounded">
-                                          edit
-                                      </mat-icon>
-                                  </button>
-                              </ng-container>
-                          </div>
-                      </td>
-                  </ng-container>
+            <ng-container matColumnDef="Gender">
+                <th mat-header-cell *matHeaderCellDef> Gender
 
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-          </mat-card-content>
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.Gender
+                    }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Action
+                </th>
+                <td mat-cell *matCellDef="let element let i=index">
+                    <div class="d-flex gap-2">
+                        <ng-container>
+                            <button mat-icon-button>
+                                <mat-icon class="text-main material-symbols-rounded">
+                                    edit_square
+                                </mat-icon>
+                            </button>
+                        </ng-container>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
 
 </mat-card>
-
