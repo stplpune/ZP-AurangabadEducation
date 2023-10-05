@@ -19,6 +19,7 @@ import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatRadioModule
 
   ]
 })
