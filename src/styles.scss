@@ -222,9 +222,16 @@ button.btn-modal-close {
     background-color: var(--main-light-color) !important;
     letter-spacing: normal;
     font-family: 'Public Sans', sans-serif !important;
-    font-size: 0.85rem;
-    height: 36px !important;
+    font-size: 0.8rem;
+    height: 26px !important;
     color: var(--main-color) !important;
+}
+
+.file-upload .btn-action {
+    height: 26px !important;
+    width: 26px !important;
+    padding: 0;
+    min-width: 26px !important;
 }
 
 .file-upload input[type=file] {
