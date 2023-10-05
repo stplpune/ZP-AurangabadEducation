@@ -222,9 +222,17 @@ button.btn-modal-close {
     background-color: var(--main-light-color) !important;
     letter-spacing: normal;
     font-family: 'Public Sans', sans-serif !important;
-    font-size: 0.85rem;
-    height: 36px !important;
+    font-size: 0.8rem;
+    height: 26px !important;
     color: var(--main-color) !important;
+    font-weight: 500;
+}
+
+.file-upload .btn-action {
+    height: 26px !important;
+    width: 26px !important;
+    padding: 0;
+    min-width: 26px !important;
 }
 
 .file-upload input[type=file] {
@@ -233,6 +241,31 @@ button.btn-modal-close {
     left: 0;
     top: 0;
     opacity: 0;
+}
+
+.section-head {
+    font-family: 'Public Sans', sans-serif !important;
+    background-color: var(--main-light-color);
+    color: var(--main-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 15px;
+}
+
+.form-container .form-label {
+    font-family: 'Public Sans', sans-serif !important;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    letter-spacing: normal;
+}
+
+.form-container .form-data {
+    font-family: 'Public Sans', sans-serif !important;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: normal;
 }
 
 
