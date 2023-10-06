@@ -10,37 +10,37 @@
             <h6 class="text-main mb-2 mb-lg-0 fw-bold">
                 Student List</h6>
             <div class="d-flex align-items-center gap-2">
-              <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
-                  <span class="material-symbols-rounded">
-                      download
-                  </span>
-              </button>
-              <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
-                  <button mat-menu-item>
-                      <span class="material-symbols-rounded text-success">
-                          description
-                      </span>
-                      <span class="text-success">PDF</span>
-                  </button>
-                  <button mat-menu-item>
-                      <span class="material-symbols-rounded text-danger">
-                          table
-                      </span>
-                      <span class="text-danger">Excel</span>
-                  </button>
-              </mat-menu>
-              <button mat-flat-button class="btn-main" [routerLink]="['../add-student']">
-                  <mat-icon class="material-symbols-rounded">add</mat-icon>
-                  <span>
-                      Add Student
-                  </span>
-              </button>
-          </div>
+                <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
+                    <span class="material-symbols-rounded">
+                        download
+                    </span>
+                </button>
+                <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
+                    <button mat-menu-item>
+                        <span class="material-symbols-rounded text-success">
+                            description
+                        </span>
+                        <span class="text-success">PDF</span>
+                    </button>
+                    <button mat-menu-item>
+                        <span class="material-symbols-rounded text-danger">
+                            table
+                        </span>
+                        <span class="text-danger">Excel</span>
+                    </button>
+                </mat-menu>
+                <button mat-flat-button class="btn-main" [routerLink]="['../add-student']">
+                    <mat-icon class="material-symbols-rounded">add</mat-icon>
+                    <span>
+                        Add Student
+                    </span>
+                </button>
+            </div>
         </div>
     </mat-card-header>
     <mat-card-header class="card-header-control pt-0">
         <div class="row align-items-center w-100 justify-content-start g-2">
-            <div class="col-sm">
+            <div class="col-sm-2">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>District</mat-label>
                     <mat-select>
@@ -48,7 +48,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-2">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Taluka</mat-label>
                     <mat-select>
@@ -56,7 +56,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-3">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Kendra</mat-label>
                     <mat-select>
@@ -64,7 +64,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-2">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Village</mat-label>
                     <mat-select>
@@ -72,7 +72,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-3">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>School</mat-label>
                     <mat-select>
@@ -80,19 +80,29 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Student Name/Parent Mobile No.</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
-            <div class="col-sm-auto text-end">
-                <button mat-flat-button class="btn-main me-2">Search</button>
-                <button mat-flat-button class="btn-main-light">Clear</button>
+            <div class="col-sm-auto">
+                <div class="d-flex gap-2">
+                    <button mat-flat-button class="btn-main btn-icon">
+                        <span class="material-symbols-rounded">
+                            search
+                        </span>
+                    </button>
+                    <button mat-flat-button class="btn-main-light btn-icon">
+                        <span class="material-symbols-rounded">
+                            close
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
     </mat-card-header>
-    <mat-card-content class="card-body pt-0">
+    <mat-card-content class="card-body">
         <table mat-table [dataSource]="dataSource" class="dashboard-table">
             <ng-container matColumnDef="srno">
                 <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
@@ -146,5 +156,4 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </mat-card-content>
-
 </mat-card>
