@@ -9,27 +9,48 @@
         <div class="d-flex justify-content-between align-items-center w-100">
             <h6 class="text-main mb-2 mb-lg-0 fw-bold">
                 Office User Registration</h6>
-            <div class="d-flex align-items-center gap-2">
-                <button mat-flat-button class="bg-primary-subtle btn-icon">
-                    <mat-icon class="material-symbols-rounded text-primary">
-                        table_view
-                    </mat-icon>
-                </button>
-                <!-- <button mat-flat-button class="bg-dark-subtle btn-icon">
-                <mat-icon class="material-symbols-rounded text-dark">account_tree</mat-icon>
-            </button> -->
-                <button mat-flat-button class="bg-danger-subtle btn-icon">
-                    <mat-icon class="material-symbols-rounded text-danger">
-                        description
-                    </mat-icon>
-                </button>
-                <button mat-flat-button class="btn-main" (click)="AddUser()">
-                    <mat-icon class="material-symbols-rounded">add</mat-icon>
-                    <span>
-                        Add User
-                    </span>
-                </button>
-            </div>
+                <div class="d-flex align-items-center gap-2">
+                  <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
+                      <span class="material-symbols-rounded">
+                          download
+                      </span>
+                  </button>
+                  <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
+                      <button mat-menu-item>
+                          <span class="material-symbols-rounded text-success">
+                              description
+                          </span>
+                          <span class="text-success">PDF</span>
+                      </button>
+                      <button mat-menu-item>
+                          <span class="material-symbols-rounded text-danger">
+                              table
+                          </span>
+                          <span class="text-danger">Excel</span>
+                      </button>
+                  </mat-menu>
+
+
+                  <!-- <button mat-flat-button class="bg-primary-subtle btn-icon">
+                      <mat-icon class="material-symbols-rounded text-primary">
+                          table_view
+                      </mat-icon>
+                  </button> -->
+                  <!-- <button mat-flat-button class="bg-dark-subtle btn-icon">
+                  <mat-icon class="material-symbols-rounded text-dark">account_tree</mat-icon>
+              </button> -->
+                  <!-- <button mat-flat-button class="bg-danger-subtle btn-icon">
+                      <mat-icon class="material-symbols-rounded text-danger">
+                          description
+                      </mat-icon>
+                  </button> -->
+                  <button mat-flat-button class="btn-main" (click)="AddUser()">
+                      <mat-icon class="material-symbols-rounded">add</mat-icon>
+                      <span>
+                          Add User
+                      </span>
+                  </button>
+              </div>
         </div>
     </mat-card-header>
 
@@ -149,14 +170,14 @@
                     <div class="d-flex gap-2">
                         <ng-container>
                             <button mat-icon-button>
-                                <mat-icon class="text-main material-symbols-rounded">
+                                <mat-icon class="text-warning material-symbols-rounded">
                                     edit_square
                                 </mat-icon>
                             </button>
                         </ng-container>
                         <ng-container>
                             <button mat-icon-button>
-                                <mat-icon class="text-main material-symbols-rounded">
+                                <mat-icon class="text-dark material-symbols-rounded">
                                     visibility
                                 </mat-icon>
                             </button>
