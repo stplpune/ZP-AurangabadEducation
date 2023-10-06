@@ -1,95 +1,96 @@
 <div mat-dialog-title class="modal-header">
-  <div class="d-flex justify-content-between align-items-center w-100">
-      <h6 class="text-main mb-0 fw-bold">User Registration</h6>
-      <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
-          <mat-icon class="material-symbols-rounded">close</mat-icon>
-      </button>
-  </div>
+    <div class="d-flex justify-content-between align-items-center w-100">
+        <h6 class="text-main mb-0 fw-bold">User Registration</h6>
+        <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
+            <mat-icon class="material-symbols-rounded">close</mat-icon>
+        </button>
+    </div>
 </div>
 <mat-dialog-content class="modal-body scrollbar">
-      <div class="row">
-          <div class="col-sm-6">
-              <mat-form-field appearance="outline" class="w-100">
-                  <mat-label>User Type</mat-label>
-                  <mat-select>
-                      <mat-option>
-                          NGO
-                      </mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
-          <div class="col-sm-6">
-              <mat-form-field appearance="outline" class="w-100">
-                  <mat-label>Level</mat-label>
-                  <mat-select>
-                      <mat-option>
-                          taluka
-                      </mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
-          <div class="col-sm-6">
-              <mat-form-field appearance="outline" class="w-100">
-                  <mat-label>NGO Name</mat-label>
-                  <mat-select>
-                      <mat-option>
+    <div class="row form-container">
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>User Type</mat-label>
+                <mat-select>
+                    <mat-option>
+                        NGO
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Level</mat-label>
+                <mat-select>
+                    <mat-option>
+                        taluka
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>NGO Name</mat-label>
+                <mat-select>
+                    <mat-option>
                         New Shiksha Abhiyan Chandrapur
-                      </mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
-          <div class="col-sm-6">
-              <mat-form-field appearance="outline" class="w-100">
-                  <mat-label>District</mat-label>
-                  <mat-select>
-                      <mat-option>
-                          Chandrapur
-                      </mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
-          <div class="col-sm-6">
-              <mat-form-field appearance="outline" class="w-100">
-                  <mat-label>Taluka</mat-label>
-                  <mat-select>
-                      <mat-option>
-                          Amravati
-                      </mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
-          <div class="col-sm-6 ">
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>District</mat-label>
+                <mat-select>
+                    <mat-option>
+                        Chandrapur
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Taluka</mat-label>
+                <mat-select>
+                    <mat-option>
+                        Amravati
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6 ">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Name</mat-label>
                 <input matInput>
             </mat-form-field>
         </div>
-          <div class="col-sm-6 ">
+        <div class="col-sm-6 ">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Mobile Number</mat-label>
                 <input matInput>
             </mat-form-field>
         </div>
 
-          <div class="col-sm-6 ">
-            <mat-radio-group aria-label="Select an option">
-              <mat-label>Gender</mat-label>
-              <mat-radio-button value="1">Male</mat-radio-button>
-              <mat-radio-button value="2">Female</mat-radio-button>
-            </mat-radio-group>
+        <div class="col-sm-6 ">
+            <div class="d-flex mt-1">
+                <mat-label class="form-data">Gender :</mat-label>
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="2">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
         </div>
-          <div class="col-sm-6 ">
+        <div class="col-sm-6 ">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Email ID</mat-label>
                 <input matInput>
             </mat-form-field>
         </div>
-      </div>
+    </div>
 </mat-dialog-content>
-<mat-dialog-actions class="modal-footer">
-  <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-      <button mat-flat-button class="btn-main-light" type="button">Cancel</button>
-      <button mat-flat-button class="btn-main" type="submit">Submit</button>
-  </div>
-  </mat-dialog-actions>
-
+<mat-dialog-actions class="modal-footer pt-0">
+    <div class="d-flex align-items-center justify-content-end w-100 gap-2">
+        <button mat-flat-button class="btn-main-light" type="button">Cancel</button>
+        <button mat-flat-button class="btn-main" type="submit">Submit</button>
+    </div>
+</mat-dialog-actions>
