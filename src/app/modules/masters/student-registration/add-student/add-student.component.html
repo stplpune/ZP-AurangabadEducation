@@ -10,251 +10,242 @@
             <h6 class="text-main mb-0 fw-bold">Student Registration</h6>
         </div>
     </mat-card-header>
-    <div class="row">
-        <mat-card-header class="card-header pb-0 border-bottom-0">
-            <ng-container>
-                <div class="row align-items-start w-100 justify-content-start mb-3 mb-lg-0 gx-2">
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>District</mat-label>
-                            <mat-select>
-                                <mat-option>Amravati</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Taluka</mat-label>
-                            <mat-select>
-                                <mat-option>Amravati</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Kendra</mat-label>
-                            <mat-select>
-                                <mat-option>Amravati</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Village</mat-label>
-                            <mat-select>
-                                <mat-option>Anjangaon</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>School</mat-label>
-                            <mat-select>
-                                <mat-option>zp Aurangabad</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Standard</mat-label>
-                            <mat-select>
-                                <mat-option>1st</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <h6 class="section-head">Student Details</h6>
-                    </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>First Name</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Middle Name</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Last Name</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>First Name(Marathi)</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Middle Name(Marathi)</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Last Name(Marathi)</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Birth Date</mat-label>
-                                <input matInput [matDatepicker]="topicker" (click)="topicker.open()">
-                                <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
-                                <mat-datepicker #topicker></mat-datepicker>
-                            </mat-form-field>
-                        </div>
+    <mat-card-content class="card-body pb-0">
+        <div class="row w-100 g-2">
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>District</mat-label>
+                    <mat-select>
+                        <mat-option>Amravati</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Taluka</mat-label>
+                    <mat-select>
+                        <mat-option>Amravati</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Kendra</mat-label>
+                    <mat-select>
+                        <mat-option>Amravati</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Village</mat-label>
+                    <mat-select>
+                        <mat-option>Anjangaon</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>School</mat-label>
+                    <mat-select>
+                        <mat-option>zp Aurangabad</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Standard</mat-label>
+                    <mat-select>
+                        <mat-option>1st</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <h6 class="section-head">Student Details</h6>
+        </div>
+        <div class="row g-2">
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>First Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Middle Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>First Name (Marathi)</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Middle Name (Marathi)</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Last Name (Marathi)</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Birth Date</mat-label>
+                    <input matInput [matDatepicker]="topicker" (click)="topicker.open()">
+                    <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
+                    <mat-datepicker #topicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Gender</mat-label>
+                    <mat-select>
+                        <mat-option>Male</mat-option>
+                        <mat-option>Female</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <div class="file-upload border rounded-2 p-1">
+                    <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
+                        data-placement="right">
+                        Upload Photo
+                    </button>
+                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
 
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Gender</mat-label>
-                                <mat-select>
-                                    <mat-option>Male</mat-option>
-                                    <mat-option>Female</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="file-upload border rounded-2 p-1">
-                            <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
-                                data-placement="right">
-                                Upload Photo
-                            </button>
-                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
-
-                            <div class="d-flex gap-2">
-                                <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
-                                    matTooltip="view">
-                                    <mat-icon class="material-symbols-rounded">
-                                        preview
-                                    </mat-icon>
-                                </button>
-                                <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
-                                    matTooltip="delete">
-                                    <mat-icon class="material-symbols-rounded">
-                                        delete
-                                    </mat-icon>
-                                </button>
-                            </div>
-                        </div>
-                            <!-- <br><small>Note: Upload only jpg,jpeg,png format and accept size less than 2 MB</small> -->
-
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Religion</mat-label>
-                                <mat-select>
-                                    <mat-option>Hindu</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Category</mat-label>
-                                <mat-select>
-                                    <mat-option>xyz</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Caste</mat-label>
-                                <mat-select>
-                                    <mat-option>xyz</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Saral ID</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Aadhaar No.</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="file-upload border rounded-2 p-1">
-                            <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
-                                data-placement="right">
-                                Upload Aadhaar Card
-                            </button>
-                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
-
-                            <div class="d-flex gap-2">
-                                <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
-                                    matTooltip="view">
-                                    <mat-icon class="material-symbols-rounded">
-                                        preview
-                                    </mat-icon>
-                                </button>
-                                <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
-                                    matTooltip="delete">
-                                    <mat-icon class="material-symbols-rounded">
-                                        delete
-                                    </mat-icon>
-                                </button>
-                            </div>
-                        </div>
-
-                            <!-- <br><small>Note: Upload only jpg,jpeg,png format and accept size less than 2 MB</small> -->
-
-                        </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <h6 class="section-head">Guardian Details</h6>
-                    </div>
-                       <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Name</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Name(Marathi)</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Mobile No.</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <div class="d-flex">
-                        <mat-form-field appearance="outline" class="w-100 me-2">
-                            <mat-label>Relations</mat-label>
-                            <mat-select>
-                                <mat-option>Mother</mat-option>
-                                <mat-option>Father</mat-option>
-                                <mat-option>Brother</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                            <button mat-flat-button class="btn-main" [routerLink]="['../add-student']">
-                                <mat-icon class="material-symbols-rounded">add</mat-icon>
-                                <!-- <span>
-                                    Add Guardian
-                                </span> -->
-                            </button>
-                        </div>
-                        </div>
-                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
+                            matTooltip="view">
+                            <mat-icon class="material-symbols-rounded">
+                                preview
+                            </mat-icon>
+                        </button>
+                        <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
+                            matTooltip="delete">
+                            <mat-icon class="material-symbols-rounded">
+                                delete
+                            </mat-icon>
+                        </button>
                     </div>
                 </div>
-            </ng-container>
-        </mat-card-header>
-    </div>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Religion</mat-label>
+                    <mat-select>
+                        <mat-option>Hindu</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Category</mat-label>
+                    <mat-select>
+                        <mat-option>xyz</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Caste</mat-label>
+                    <mat-select>
+                        <mat-option>xyz</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Saral ID</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Aadhaar No.</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <div class="file-upload border rounded-2 p-1">
+                    <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
+                        data-placement="right">
+                        Upload Aadhaar Card
+                    </button>
+                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
+
+                    <div class="d-flex gap-2">
+                        <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
+                            matTooltip="view">
+                            <mat-icon class="material-symbols-rounded">
+                                preview
+                            </mat-icon>
+                        </button>
+                        <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
+                            matTooltip="delete">
+                            <mat-icon class="material-symbols-rounded">
+                                delete
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <h6 class="section-head">Guardian Details</h6>
+        </div>
+        <div class="row g-2">
+            <div class="col-sm">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Name (Marathi)</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Mobile No.</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline" class="w-100 me-2">
+                    <mat-label>Relations</mat-label>
+                    <mat-select>
+                        <mat-option>Mother</mat-option>
+                        <mat-option>Father</mat-option>
+                        <mat-option>Brother</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-auto">
+                <button mat-flat-button class="btn-main btn-icon" [routerLink]="['../add-student']">
+                    <mat-icon class="material-symbols-rounded">add</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="card-footer" align="end">
+        <div class="d-flex justify-content-end align-items-center w-100">
+            <button type="button" mat-flat-button class="btn-main-light me-2">Clear</button>
+            <button mat-flat-button type="submit" class="btn-main">Submit</button>
+        </div>
+    </mat-card-actions>
 </mat-card>

@@ -12,9 +12,11 @@ body {
 }
 
 :root {
-    --main-color: #3b374b; //#2065ae
-    --main-dark-color: #2f2c3c;
-    --main-light-color: #c4c3c9;
+    --sidebar-bg-color: #3b374b; //#2065ae
+    --sidebar-bg-dark-color: #2f2c3c;
+    --main-color: #7267EF; //#2065ae
+    --main-dark-color: #5b52bf;
+    --main-light-color: #e2e0fb;
 }
 
 .bg-main {
@@ -135,7 +137,7 @@ ol.breadcrumb {
 
 .plain-card .card-header,
 .plain-card .card-footer {
-    padding: 10px 15px !important;
+    padding: 10px 15px;
     font-weight: 500;
 }
 
@@ -144,7 +146,7 @@ ol.breadcrumb {
 }
 
 .plain-card .card-body {
-    padding: 15px !important;
+    padding: 15px;
 }
 
 .dashboard-table {
@@ -245,13 +247,14 @@ button.btn-modal-close {
 
 .section-head {
     font-family: 'Rubik', sans-serif !important;
-    background-color: var(--main-light-color);
-    color: var(--main-color);
-    font-weight: 600;
+    background-color: #eee;
+    color: #000;
+    font-weight: 400;
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     margin-bottom: 15px;
+    letter-spacing: normal;
 }
 
 .form-container .form-label {
