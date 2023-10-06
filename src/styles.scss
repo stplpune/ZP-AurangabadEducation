@@ -7,14 +7,14 @@
 @import url('assets/css/MaterialStyleSheet.scss');
 
 body {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     background-color: #eee;
 }
 
 :root {
-    --main-color: #077947; //#2065ae
-    --main-dark-color: #056038;
-    --main-light-color: #e6f1ec;
+    --main-color: #3b374b; //#2065ae
+    --main-dark-color: #2f2c3c;
+    --main-light-color: #c4c3c9;
 }
 
 .bg-main {
@@ -54,7 +54,7 @@ a.text-main:hover {
 .btn-main,
 .btn-main-light,
 .btn-main-dark {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     letter-spacing: 0px !important;
 }
 
@@ -149,7 +149,7 @@ ol.breadcrumb {
 
 .dashboard-table {
     @include mat.all-component-densities(-3);
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     box-shadow: none;
 }
 
@@ -159,7 +159,7 @@ ol.breadcrumb {
 
 .dashboard-table th,
 .dashboard-table td {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     font-size: 0.85rem;
     vertical-align: middle;
 }
@@ -178,13 +178,13 @@ ol.breadcrumb {
 }
 
 .modal-footer {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     font-size: 0.85rem;
     padding: 5px 15px !important;
 }
 
 .modal-header {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     font-size: 0.85rem;
     background-color: var(--main-light-color);
     padding: 5px 15px !important;
@@ -221,7 +221,7 @@ button.btn-modal-close {
 .file-upload .btn {
     background-color: var(--main-light-color) !important;
     letter-spacing: normal;
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     font-size: 0.8rem;
     height: 26px !important;
     color: var(--main-color) !important;
@@ -244,7 +244,7 @@ button.btn-modal-close {
 }
 
 .section-head {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     background-color: var(--main-light-color);
     color: var(--main-color);
     font-weight: 600;
@@ -255,14 +255,14 @@ button.btn-modal-close {
 }
 
 .form-container .form-label {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     font-size: 0.8rem;
     margin-bottom: 3px;
     letter-spacing: normal;
 }
 
 .form-container .form-data {
-    font-family: 'Public Sans', sans-serif !important;
+    font-family: 'Rubik', sans-serif !important;
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: normal;
