@@ -32,6 +32,7 @@ const routes: Routes = [
   { path: 'add-student', loadChildren: () => import('../../modules/masters/student-registration/add-student/add-student.module').then(m => m.AddStudentModule) },
   { path: 'view-stock-report', loadChildren: () => import('../../modules/asset-management/store-stock-report/view-stock-report/view-stock-report.module').then(m => m.ViewStockReportModule) },
   { path: 'my-profile', loadChildren: () => import('../../modules/profile/my-profile/my-profile.module').then(m => m.MyProfileModule) },
+  { path: 'school-profile-details', loadChildren: () => import('../../modules/masters/school-registration/school-profile-details/school-profile-details.module').then(m => m.SchoolProfileDetailsModule) },
 
 ];
 
