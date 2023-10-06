@@ -56,7 +56,7 @@
     border-radius: 5px;
     padding-right: 10px;
     margin-bottom: 2px;
-    background: linear-gradient(to right, var(--main-dark-color) 50%, transparent 0%);
+    background: linear-gradient(to right, var(--sidebar-bg-dark-color) 50%, transparent 0%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all 0.4s ease;
@@ -90,9 +90,10 @@
     margin-right: 10px;
 }
 
-.collapse .card-body {
-    background-color: var(--main-dark-color);
-    border: none;
+.submenu {
+    background-color: var(--sidebar-bg-dark-color);
+    padding: 15px;
+    border-radius: 5px;
 }
 
 .list-group a.list-group-item {
