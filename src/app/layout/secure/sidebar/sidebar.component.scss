@@ -13,15 +13,15 @@
 }
 
 #sidebar .sidebar-header {
-    border-bottom: solid 1px var(--main-dark-color);
     padding: 7.5px 9px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 #sidebar .sidebar-header img {
-    width: 50px;
+    min-width: 60px;
+    max-width: 60%;
     flex-shrink: 0;
     margin-bottom: 3px;
 }
