@@ -80,3 +80,13 @@
     font-size: 1.2rem;
     margin-right: 5px;
 }
+
+/* error message css */
+.error,
+.mat-mdc-form-field-error {
+    color: rgb(220, 53, 69);
+    font-size: 0.7rem;
+    font-family: 'Public Sans', sans-serif !important;
+    letter-spacing: normal;
+    margin-top: -5px;
+}
