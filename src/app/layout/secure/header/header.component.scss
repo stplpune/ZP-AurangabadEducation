@@ -38,6 +38,15 @@
     color: #555;
 }
 
+.dropdown button img {
+    width: 20px;
+}
+
+.dropdown-menu .dropdown-item img {
+    height: 14px;
+    margin-right: 10px;
+}
+
 .dropdown-menu {
     font-size: 0.85rem;
 }
