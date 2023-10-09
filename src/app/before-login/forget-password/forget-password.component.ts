@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent {
-
+  hide = true;
 }

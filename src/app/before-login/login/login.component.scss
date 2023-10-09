@@ -40,9 +40,8 @@
     width: 80px;
 }
 
-.login-wrapper .login-box #right-side .mat-mdc-form-field .mat-icon {
-    padding: 0 0 0 10px !important;
-    font-size: 1.2rem;
-    height: 20px;
-    color: var(--main-color);
+#captcha {
+    background-image: url('../../../assets/images/captcha_bg.jpg');
+    border-radius: 0.375rem;
+    height: 36px;
 }
