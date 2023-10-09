@@ -8,6 +8,12 @@
     <mat-card-header class="card-header">
         <div class="d-flex justify-content-between align-items-center w-100">
             <h6 class="text-main mb-0 fw-bold">Student Registration</h6>
+            <button class="btn btn-back" type="button">
+                <span class="material-symbols-rounded">
+                    keyboard_double_arrow_left
+                </span>
+                Back
+            </button>
         </div>
     </mat-card-header>
     <mat-card-content class="card-body pb-0">
@@ -240,64 +246,47 @@
                     <mat-icon class="material-symbols-rounded">add</mat-icon>
                 </button>
             </div>
-            <mat-card-content class="card-body">
-              <table mat-table [dataSource]="dataSource" class="dashboard-table">
-                  <ng-container matColumnDef="srno">
-                      <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-                      <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="Name">
-                      <th mat-header-cell *matHeaderCellDef> Name </th>
-                      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                  </ng-container>
-
-
-                  <ng-container matColumnDef="Mobile">
-                      <th mat-header-cell *matHeaderCellDef> Mobile No.
-                      </th>
-                      <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
-                  </ng-container>
-
-
-                  <ng-container matColumnDef="Realtion">
-                      <th mat-header-cell *matHeaderCellDef> Realtion
-
-                      </th>
-                      <td mat-cell *matCellDef="let element"> {{element.Realtion
-                          }} </td>
-                  </ng-container>
-
-
-                  <ng-container matColumnDef="IsHead">
-                      <th mat-header-cell *matHeaderCellDef> Is Head
-
-                      </th>
-                      <td mat-cell *matCellDef="let element"><mat-checkbox class="example-margin"></mat-checkbox>
-                      </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="Action">
-                      <th mat-header-cell *matHeaderCellDef> Action
-                      </th>
-                      <td mat-cell *matCellDef="let element let i=index">
-                          <div class="d-flex gap-2">
-                              <ng-container>
-                                  <button mat-icon-button>
-                                    <mat-icon class="text-danger material-symbols-rounded">
-                                      delete
-                                  </mat-icon>
-                                  </button>
-                              </ng-container>
-                          </div>
-                      </td>
-                  </ng-container>
-
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-          </mat-card-content>
         </div>
+        <table mat-table [dataSource]="dataSource" class="dashboard-table">
+            <ng-container matColumnDef="srno">
+                <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Mobile">
+                <th mat-header-cell *matHeaderCellDef> Mobile No.
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Realtion">
+                <th mat-header-cell *matHeaderCellDef> Realtion
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.Realtion
+                    }} </td>
+            </ng-container>
+            <ng-container matColumnDef="IsHead">
+                <th mat-header-cell *matHeaderCellDef> Is Head
+                </th>
+                <td mat-cell *matCellDef="let element"><mat-checkbox class="example-margin"></mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Action
+                </th>
+                <td mat-cell *matCellDef="let element let i=index">
+                    <button mat-icon-button>
+                        <mat-icon class="text-danger material-symbols-rounded">
+                            delete
+                        </mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     </mat-card-content>
     <mat-card-actions class="card-footer" align="end">
         <div class="d-flex justify-content-end align-items-center w-100">
