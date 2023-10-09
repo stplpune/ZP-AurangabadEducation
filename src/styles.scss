@@ -33,6 +33,10 @@ body {
     color: #fff;
 }
 
+.fs-main {
+    font-size: 0.85rem;
+}
+
 .text-main,
 a.text-main {
     color: var(--main-color) !important;
@@ -271,7 +275,9 @@ button.btn-modal-close {
     letter-spacing: normal;
 }
 
-
+.no-subscript-wrapper .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+}
 
 
 
