@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 export interface PeriodicElement {
   srno: any;
   Standard: any;
-  Subject: any;
+  Subject: any;               
   Action: any;
 }
 
