@@ -105,3 +105,8 @@
     font-size: 1.2rem;
     height: 19px;
 }
+
+/* svg icon in datepicker height adjusted */
+.mat-datepicker-toggle svg {
+    height: 18px !important;
+}
