@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'school-profile-details', loadChildren: () => import('../../modules/masters/school-registration/school-profile-details/school-profile-details.module').then(m => m.SchoolProfileDetailsModule) },
   { path: 'add-standard-subject', loadChildren: () => import('../../modules/settings/add-standard-subject/add-standard-subject.module').then(m => m.AddStandardSubjectModule) },
   { path: 'add-question', loadChildren: () => import('../../modules/settings/assessment-crateria/add-question/add-question.module').then(m => m.AddQuestionModule) },
+  { path: 'registration-approval', loadChildren: () => import('../../modules/settings/registration-approval/registration-approval.module').then(m => m.RegistrationApprovalModule) },
 
 ];
 
