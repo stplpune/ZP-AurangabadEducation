@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddAssessmentCrateriaComponent } from './add-assessment-crateria/add-assessment-crateria.component';
-import { Router } from '@angular/router';
+import { AddQuestionListComponent } from './add-question-list/add-question-list.component';
 export interface PeriodicElement {
   srno: any;
   District: any;
@@ -18,27 +17,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { srno: 3, District: '12122', Standard: 'IED Teacher',Subject:'Pune', QuestionType: 'Taluka', MultipleOption: 'Block Resource Person', Action: 'H' },
 ];
 @Component({
-  selector: 'app-assessment-crateria',
-  templateUrl: './assessment-crateria.component.html',
-  styleUrls: ['./assessment-crateria.component.scss']
+  selector: 'app-add-question',
+  templateUrl: './add-question.component.html',
+  styleUrls: ['./add-question.component.scss']
 })
-export class AssessmentCrateriaComponent {
-  activeModal: any;
-  success: any
-  constructor(public dialog: MatDialog,
-    private router: Router,) {
+export class AddQuestionComponent {
+  constructor(public dialog: MatDialog,) {
 
   }
   displayedColumns: string[] = ['srno', 'District', 'Standard','Subject', 'QuestionType', 'MultipleOption', 'Action'];
   dataSource = ELEMENT_DATA;
-  AddAssessmentCrateria(data?: any) {
-    const dialogRef = this.dialog.open(AddAssessmentCrateriaComponent, {
+  AddQuestionList(data?: any) {
+    const dialogRef = this.dialog.open(AddQuestionListComponent, {
       width: '800px',
       data: data,
-      disableClose:false    });
+    });
+
     dialogRef.afterClosed().subscribe(() => {
       dialogRef.close();
     })
   }
-  closeModal() { this.activeModal.close( this.success ); }
 }

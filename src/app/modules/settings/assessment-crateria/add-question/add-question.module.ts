@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AssessmentCrateriaRoutingModule } from './assessment-crateria-routing.module';
-import { AssessmentCrateriaComponent } from './assessment-crateria.component';
+import { AddQuestionRoutingModule } from './add-question-routing.module';
+import { AddQuestionComponent } from './add-question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,17 +16,17 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AddAssessmentCrateriaComponent } from './add-assessment-crateria/add-assessment-crateria.component';
+import { AddQuestionListComponent } from './add-question-list/add-question-list.component';
 
 
 @NgModule({
   declarations: [
-    AssessmentCrateriaComponent,
-    AddAssessmentCrateriaComponent
+    AddQuestionComponent,
+    AddQuestionListComponent
   ],
   imports: [
     CommonModule,
-    AssessmentCrateriaRoutingModule,
+    AddQuestionRoutingModule,
     MatCardModule,
     MatSelectModule,
     MatIconModule,
@@ -43,4 +43,4 @@ import { AddAssessmentCrateriaComponent } from './add-assessment-crateria/add-as
     MatRadioModule
   ]
 })
-export class AssessmentCrateriaModule { }
+export class AddQuestionModule { }
