@@ -10,20 +10,26 @@
       <div class="d-lg-flex d-block justify-content-between align-items-center w-100">
           <h6 class="text-main mb-2 mb-lg-0 fw-bold">
 Attendance Report List</h6>
-          <div class="d-flex align-items-center gap-2">
-            <button mat-flat-button class="bg-primary-subtle btn-icon">
-              <mat-icon class="material-symbols-rounded text-primary">
-                  table_view
-              </mat-icon>
-          </button>
-          <button mat-flat-button class="bg-dark-subtle btn-icon">
-              <mat-icon class="material-symbols-rounded text-dark">account_tree</mat-icon>
-          </button>
-          <button mat-flat-button class="bg-danger-subtle btn-icon">
-              <mat-icon class="material-symbols-rounded text-danger">
-                  description
-              </mat-icon>
-          </button>
+<div class="d-flex align-items-center gap-2">
+  <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
+      <span class="material-symbols-rounded">
+          download
+      </span>
+  </button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
+      <button mat-menu-item>
+          <span class="material-symbols-rounded text-success">
+              description
+          </span>
+          <span class="text-success">PDF</span>
+      </button>
+      <button mat-menu-item>
+          <span class="material-symbols-rounded text-danger">
+              table
+          </span>
+          <span class="text-danger">Excel</span>
+      </button>
+  </mat-menu>
           </div>
       </div>
   </mat-card-header>
