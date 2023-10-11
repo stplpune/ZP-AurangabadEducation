@@ -1,1 +1,140 @@
-<p>registration-approval works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Setting</li>
+        <li class="breadcrumb-item active" aria-current="page">registration-approval</li>
+    </ol>
+</nav>
+<div class="row g-2">
+    <div class="col-sm-12">
+        <mat-card class="plain-card">
+            <mat-card-header class="card-header-control pt-0 mt-3">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h6 class="text-main mb-2 mb-lg-0 fw-bold">
+                        Registration Approval</h6>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
+                            <span class="material-symbols-rounded">
+                                download
+                            </span>
+                        </button>
+                        <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
+                            <button mat-menu-item>
+                                <span class="material-symbols-rounded text-success">
+                                    description
+                                </span>
+                                <span class="text-success">PDF</span>
+                            </button>
+                            <button mat-menu-item>
+                                <span class="material-symbols-rounded text-danger">
+                                    table
+                                </span>
+                                <span class="text-danger">Excel</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </mat-card-header>
+            <div class="main-data-wrapper">
+                    <div class="form-container">
+                       <div class="row">
+                         <div class="col-sm-5">
+                            <mat-card-header class="card-header-control mb-3">
+                                <div class="row align-items-start w-100 justify-content-start mb-3 mb-lg-0 g-2">
+                                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                        <mat-button-toggle class="btn-main-light background toggle-width" value="bold"
+                                            (click)="ApprovedRegistration()">New Request</mat-button-toggle>
+                                        <mat-button-toggle value="italic" class="toggle-width">Aprroved</mat-button-toggle>
+                                        <mat-button-toggle value="underline" class="toggle-width">Rejected</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                </div>
+                            </mat-card-header>
+                        </div>
+                       </div>
+                    </div>
+            </div>
+            <mat-card-content class="card-body pt-0">
+                <table mat-table [dataSource]="dataSource" class="dashboard-table">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="srno">
+                        <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
+                    </ng-container>
+
+                    <!-- Name Category -->
+                    <ng-container matColumnDef="Approved">
+                        <th mat-header-cell *matHeaderCellDef> Approved List </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Approved}} </td>
+                    </ng-container>
+
+                    <!-- Name Category -->
+                    <ng-container matColumnDef="Designation">
+                        <th mat-header-cell *matHeaderCellDef> Designation </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Designation}} </td>
+                    </ng-container>
+
+                    <!-- Name Category -->
+                    <ng-container matColumnDef="Rejected">
+                        <th mat-header-cell *matHeaderCellDef> Rejected List </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Rejected}} </td>
+                    </ng-container>
+
+
+                    <!-- Action -->
+                    <ng-container matColumnDef="Action">
+                        <th mat-header-cell *matHeaderCellDef> Action</th>
+                        <td mat-cell *matCellDef="let element let i=index">
+                            <div class="d-flex gap-2">
+                                <button mat-flat-button class="btn-main" type="submit">Approve</button>
+                                <button mat-flat-button class="btn-main-light" type="submit">Delete</button>
+                                <!-- <button mat-icon-button>
+                                      <mat-icon class="text-danger material-symbols-rounded">
+                                          delete
+                                      </mat-icon>
+                                  </button> -->
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+
+    <!-- <div class="col-sm-4">
+      <mat-card class="plain-card">
+          <mat-card-header class="card-header">
+              <div class="d-lg-flex d-block justify-content-between align-items-center w-100">
+                  <h6 class="text-main mb-2 mb-lg-0 fw-bold">
+                      Add Category</h6>
+              </div>
+          </mat-card-header>
+          <mat-card-content class="card-body">
+              <div class="mb-1">
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Category
+                      </mat-label>
+                      <input minlength="2" maxlength="50" matInput>
+                  </mat-form-field>
+              </div>
+              <div class="mb-1">
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Category (Marathi)
+                      </mat-label>
+                      <input minlength="2" maxlength="50" matInput>
+                  </mat-form-field>
+              </div>
+          </mat-card-content>
+          <mat-card-footer class="card-footer mb-3" align="end">
+              <div class="d-flex justify-content-end align-items-center w-100">
+                  <button type="button" mat-flat-button class="btn-main-light me-2">clear</button>
+                  <button mat-flat-button type="submit" class="btn-main">Add</button>
+              </div>
+          </mat-card-footer>
+      </mat-card>
+  </div> -->
+</div>
