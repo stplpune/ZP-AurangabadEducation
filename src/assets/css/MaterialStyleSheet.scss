@@ -110,3 +110,18 @@
 .mat-datepicker-toggle svg {
     height: 18px !important;
 }
+
+/* mat select customize css */
+.mat-mdc-select-panel {
+    border-radius: 0.375rem !important;
+}
+
+.mat-mdc-select-panel .mat-mdc-option {
+    min-height: 36px;
+}
+
+.mat-mdc-option:focus.mdc-list-item,
+.mat-mdc-option.mat-mdc-option-active.mdc-list-item,
+.mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+    background-color: var(--main-light-color) !important;
+}
