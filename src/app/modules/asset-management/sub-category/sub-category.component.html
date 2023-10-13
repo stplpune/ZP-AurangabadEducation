@@ -35,8 +35,8 @@
                   </div>
                 </div>
             </mat-card-header>
-            <mat-card-header class="card-header form-container">
-                <div class="row align-items-start w-100 justify-content-start mb-lg-0 gx-2">
+            <mat-card-header class="card-header-control form-container pt-0">
+              <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
                     <div class="col-sm-5">
                       <label class="form-label">Category/Sub Category</label>
                         <mat-form-field appearance="outline" class="w-100">
@@ -45,10 +45,20 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-auto text-end">
-                        <button mat-flat-button class="btn-main me-2">Search</button>
-                        <button mat-flat-button class="btn-main-light">Clear</button>
-                    </div>
+                    <div class="col-sm-auto">
+                      <div class="d-flex gap-2">
+                          <button mat-flat-button class="btn-main btn-icon">
+                              <span class="material-symbols-rounded">
+                                  search
+                              </span>
+                          </button>
+                          <button mat-flat-button class="btn-main-light btn-icon">
+                              <span class="material-symbols-rounded">
+                                  close
+                              </span>
+                          </button>
+                      </div>
+                  </div>
                 </div>
             </mat-card-header>
 

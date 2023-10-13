@@ -28,7 +28,7 @@ export class WebStorageService {
   getLoggedInLocalstorageData() { //get all logged in data
     if (this.checkUserIsLoggedIn() == true) {
       var decryptData = JSON.parse(this.AESEncryptDecryptService.decrypt(localStorage['loggedInData']));
-      let data = decryptData;
+      let data = decryptData?.responseData1[0];
       return data;
     }
   }
@@ -43,9 +43,13 @@ export class WebStorageService {
     return data.userTypeId;
   }
 
-  getFfYearId(){
+  getTaluka(){
+    
+  }
+
+  getEduYearId(){
     let data = this.getLoggedInLocalstorageData();
-    return (data.fYearId || 0);
+    return (data.educationYearId || 0);
   }
 
   getUserSubTypeId(){
@@ -56,12 +60,12 @@ export class WebStorageService {
   getAllPageName(){
     if (this.checkUserIsLoggedIn() == true) {      
       let getAllPageName = this.getLoggedInLocalstorageData();
-      return getAllPageName.pageLstModels;
+      return getAllPageName.pageListModels;
     }
   }
 
   getLogo(){
-    
+
   }
 
 

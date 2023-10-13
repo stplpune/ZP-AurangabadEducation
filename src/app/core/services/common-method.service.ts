@@ -60,4 +60,12 @@ export class CommonMethodService {
   
       })
     }
+
+    redirectToLoginHome(flag?: any){    
+      localStorage.clear();
+      sessionStorage.clear();
+      sessionStorage.setItem('language', "Marathi");
+      flag == "Login" ? this.router.navigate(['/login']) : this.router.navigate(['/home']);
+    }
+  
 }

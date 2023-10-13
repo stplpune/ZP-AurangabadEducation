@@ -6,8 +6,32 @@
   </ol>
 </nav>
 <mat-card class="plain-card">
-<mat-card-header class="card-header-control pt-0 mt-3 mb-3 form-container">
-    <div class="row align-items-center w-100 justify-content-start g-2">
+  <mat-card-header class="card-header pb-0">
+    <div class="d-flex align-items-center justify-content-between w-100">
+        <h6 class="text-main mb-2 mb-lg-0 fw-bold">Store Stock Report</h6>
+        <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
+            <span class="material-symbols-rounded">
+                download
+            </span>
+        </button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
+            <button mat-menu-item>
+                <span class="material-symbols-rounded text-success">
+                    description
+                </span>
+                <span class="text-success">PDF</span>
+            </button>
+            <button mat-menu-item>
+                <span class="material-symbols-rounded text-danger">
+                    table
+                </span>
+                <span class="text-danger">Excel</span>
+            </button>
+        </mat-menu>
+    </div>
+</mat-card-header>
+<mat-card-header class="card-header-control form-container pt-0">
+  <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
       <div class="col-sm-2">
         <label class="form-label">District</label>
         <mat-form-field appearance="outline" class="w-100">
@@ -73,33 +97,20 @@
     </mat-form-field>
   </div>
 
-<div class="col-sm-auto">
-  <button mat-flat-button class="btn-main me-2">Search</button>
-  <button mat-flat-button class="btn-main-light me-2">Clear</button>
-  </div>
-  <div class="col-sm-4 text-end">
-    <div class="d-flex align-items-center gap-2">
-      <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
-          <span class="material-symbols-rounded">
-              download
-          </span>
+  <div class="col-sm-auto">
+    <div class="d-flex gap-2">
+      <button mat-flat-button class="btn-main btn-icon">
+        <span class="material-symbols-rounded">
+          search
+        </span>
       </button>
-      <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
-          <button mat-menu-item>
-              <span class="material-symbols-rounded text-success">
-                  description
-              </span>
-              <span class="text-success">PDF</span>
-          </button>
-          <button mat-menu-item>
-              <span class="material-symbols-rounded text-danger">
-                  table
-              </span>
-              <span class="text-danger">Excel</span>
-          </button>
-      </mat-menu>
-      </div>
-</div>
+      <button mat-flat-button class="btn-main-light btn-icon">
+        <span class="material-symbols-rounded">
+          close
+        </span>
+      </button>
+    </div>
+  </div>
     </div>
 
 </mat-card-header>

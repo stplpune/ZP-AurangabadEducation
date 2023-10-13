@@ -19,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [DatePipe, TitleCasePipe],
   bootstrap: [AppComponent]
