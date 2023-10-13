@@ -64,7 +64,7 @@ export class LoginComponent {
   }
 
   captcha() {
-    // this.loginForm.controls['recaptchaReactive'].setValue('');
+    // this.f['captcha'].setValue('');
     this.commonMethod.createCaptchaCarrerPage();
   }
 
