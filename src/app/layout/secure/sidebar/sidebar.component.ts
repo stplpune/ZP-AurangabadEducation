@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WebStorageService } from 'src/app/services/web-storage.service';
+import { WebStorageService } from 'src/app/core/services/web-storage.service';
 
 @Component({
   selector: 'app-sidebar',
