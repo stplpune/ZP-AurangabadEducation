@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class WebStorageService {
+  
   toggled: boolean = false;
 
   constructor() { }
@@ -16,6 +17,13 @@ export class WebStorageService {
   setSidebarState(state: boolean) {
     this.toggled = state;
   }
+
+  checkUserIsLoggedIn() { // check user isLoggedIn or not
+    if (localStorage.getItem('loggedInData'))
+      return true;
+    else return false;
+  }
+
 
 
 }

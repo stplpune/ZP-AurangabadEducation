@@ -6,6 +6,7 @@ import * as CryptoJS from 'crypto-js'
 export class AesencryptDecryptService {
   secretKey = "8080808080808080";
 
+  
   constructor() { }
   encrypt(value : string) : string{
     return CryptoJS.AES.encrypt(value, this.secretKey).toString();
