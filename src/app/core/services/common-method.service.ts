@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class CommonMethodService {
   constructor( 
     private router: Router, 
     private route: ActivatedRoute, 
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe,
+    private snackBar: MatSnackBar) { }
 
     createCaptchaCarrerPage() {
       //clear the contents of captcha div first
@@ -46,5 +48,16 @@ export class CommonMethodService {
 
     checkvalidateCaptcha() {
       return this.codecareerPage;
+    }
+
+    matSnackBar(data: string, status: number) {
+      let snackClassArr: any = ['snack-success', 'snack-danger', 'snack-warning'];
+      this.snackBar.open(data, " ", {
+        duration: 2000,
+        panelClass: [snackClassArr[status]],
+        verticalPosition: 'top', // 'top' | 'bottom'
+        horizontalPosition: 'right', //'start' | 'center' | 'end' | 'left' | 'right'
+  
+      })
     }
 }
