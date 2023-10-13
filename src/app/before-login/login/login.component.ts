@@ -6,6 +6,7 @@ import { AesencryptDecryptService } from 'src/app/core/services/aesencrypt-decry
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { CustomValidatorsService } from 'src/app/core/services/custom-validators.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +22,8 @@ export class LoginComponent {
     private commonMethod: CommonMethodService, 
     private apiService: ApiService,
     private AESEncryptDecryptService: AesencryptDecryptService,
-    private router: Router) { }
+    private router: Router,
+    public validation: ValidationService) { }
 
   ngOnInit() {
     this.formField();
@@ -69,7 +71,6 @@ export class LoginComponent {
   onClickLogin() {
     this.ngxSpinner.show();
     let formValue = this.loginForm.value;
-    console.log("check login: ", formValue);
 
     if(!this.loginForm.valid){
       this.ngxSpinner.hide();
@@ -99,7 +100,14 @@ export class LoginComponent {
         }
       })
     }
-    
+  }
+
+  clearSpace(){
+    let replaceUserName = this.f['userName'].value.replace(/\s/g, "");
+    this.f['userName'].setValue(replaceUserName);
+
+    let replacePassword = this.f['password'].value.replace(/\s/g, "");
+    this.f['password'].setValue(replacePassword);
   }
 
 }
