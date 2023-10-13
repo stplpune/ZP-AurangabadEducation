@@ -7,11 +7,11 @@
             </button>
         </div>
     </mat-card-header>
-    <mat-card-content class="modal-body">
+    <mat-card-content class="modal-body form-container">
         <div class="row">
             <div class="col-sm-6">
+                <label class="form-label">Category</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Category</mat-label>
                     <mat-select>
                         <mat-option>
                             district
@@ -20,8 +20,8 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-6">
+                <label class="form-label">Sub Category</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Sub Category</mat-label>
                     <mat-select>
                         <mat-option>
                             taluka
@@ -30,8 +30,8 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-6">
+                <label class="form-label">Item</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Item</mat-label>
                     <mat-select>
                         <mat-option>
                             Center
@@ -46,38 +46,38 @@
                 </div>
             </div>
             <div class="col-sm-6 ">
+                <label class="form-label">Units</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Units</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
 
-            <div class="col-sm-6 ">
+            <div class="col-sm-6">
+                <label class="form-label">Sell Price</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Sell Price</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
 
-            <div class="col-sm-6 ">
+            <div class="col-sm-6">
+                <label class="form-label">Sell Date</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Sell Date</mat-label>
                     <input matInput [matDatepicker]="picker">
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </div>
 
-            <div class="col-sm-6 ">
+            <div class="col-sm-6">
+                <label class="form-label">Assign To</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Assign To</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
 
             <div class="col-sm-6">
+                <label class="form-label">Remark</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Remark</mat-label>
                     <textarea matInput rows="2"></textarea>
                 </mat-form-field>
             </div>
