@@ -79,6 +79,6 @@ export class ErrorService {
       }
     }
 
-    // this.commonMethods.matSnackBar(msg, 1);
+    this.commonMethods.matSnackBar(msg, 1);
   }
 }
