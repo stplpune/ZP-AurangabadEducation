@@ -9,7 +9,7 @@ import { Injectable, inject } from '@angular/core';
 })
 export class AuthGuard implements CanActivate {
   constructor(private WebStorageService: WebStorageService, private router: Router){}
-  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {    
       if (!this.WebStorageService.checkUserIsLoggedIn()) {
         this.router.navigate(['/login']);
         return false
