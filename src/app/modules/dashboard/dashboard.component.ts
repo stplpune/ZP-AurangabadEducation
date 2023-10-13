@@ -28,4 +28,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DashboardComponent {
   displayedColumns: string[] = ['photo', 'schoolname', 'assessment', 'percentage'];
   dataSource = ELEMENT_DATA;
+
+  constructor(){    
+  }
+
 }
+
