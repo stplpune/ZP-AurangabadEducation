@@ -5,75 +5,75 @@
     </ol>
 </nav>
 <mat-card class="plain-card">
-    <mat-card-header class="card-header-control pt-0 mt-3 mb-3">
+    <mat-card-header class="card-header-control pt-0 mt-3 mb-3 form-container">
         <div class="row align-items-center w-100 justify-content-start gx-2 gy-3">
             <div class="col-sm-2">
+              <label class="form-label">District</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>District</mat-label>
                     <mat-select>
                         <mat-option>Amravati</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Taluka</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Taluka</mat-label>
                     <mat-select>
                         <mat-option>Amravati</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Kendra</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Kendra</mat-label>
                     <mat-select>
                         <mat-option>Amravati</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Village</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Village</mat-label>
                     <mat-select>
                         <mat-option>Anjangaon</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+              <label class="form-label">School</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>School</mat-label>
                     <mat-select>
                         <mat-option>ZP Anjangaon</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Standard</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Standard</mat-label>
                     <mat-select>
                         <mat-option>5st</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Select Subject</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Select Subject</mat-label>
                     <mat-select>
                         <mat-option>Science</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Exam Type</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Exam Type</mat-label>
                     <mat-select>
                         <mat-option>Mid Line</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Academic Year</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Academic Year</mat-label>
                     <mat-select>
                         <mat-option>All Year</mat-option>
                         <mat-option>2022-2023</mat-option>
@@ -82,8 +82,8 @@
                 </mat-form-field>
             </div>
             <div class="col-sm">
+              <label class="form-label">From - To</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>From - To</mat-label>
                     <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
                         <input matStartDate formControlName="start" placeholder="Start date">
                         <input matEndDate formControlName="end" placeholder="End date">
