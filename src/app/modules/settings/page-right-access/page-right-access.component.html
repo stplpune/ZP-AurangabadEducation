@@ -5,8 +5,13 @@
   </ol>
 </nav>
 <mat-card class="plain-card">
-<mat-card-header class="card-header-control pt-0 mt-3 mb-3 form-container">
-    <div class="row align-items-center w-100 justify-content-start g-2">
+  <mat-card-header class="card-header pb-0">
+    <div class="d-flex align-items-center justify-content-between w-100">
+        <h6 class="text-main mb-2 mb-lg-0 fw-bold">Page Right Access</h6>
+    </div>
+    </mat-card-header>
+  <mat-card-header class="card-header-control form-container pt-0">
+    <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
       <div class="col-sm-3">
         <label class="form-label">Designation Level</label>
         <mat-form-field appearance="outline" class="w-100">
@@ -38,9 +43,19 @@
         </mat-form-field>
   </div>
 
-<div class="col-sm-auto text-end">
-  <button mat-flat-button class="btn-main me-2">Search</button>
-  <button mat-flat-button class="btn-main-light">Clear</button>
+  <div class="col-sm-auto">
+    <div class="d-flex gap-2">
+        <button mat-flat-button class="btn-main btn-icon">
+            <span class="material-symbols-rounded">
+                search
+            </span>
+        </button>
+        <button mat-flat-button class="btn-main-light btn-icon">
+            <span class="material-symbols-rounded">
+                close
+            </span>
+        </button>
+    </div>
 </div>
     </div>
 

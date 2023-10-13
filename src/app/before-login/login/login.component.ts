@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AesencryptDecryptService } from 'src/app/core/services/aesencrypt-decrypt.service';
@@ -16,6 +16,7 @@ export class LoginComponent {
   hide = true;
   loginForm !: FormGroup;
   get f() { return this.loginForm.controls };
+  @ViewChild('formDirective') formDirective!: NgForm;
 
   constructor(private fb: FormBuilder,
     private ngxSpinner: NgxSpinnerService, 
@@ -64,11 +65,11 @@ export class LoginComponent {
   }
 
   captcha() {
-    // this.f['captcha'].setValue('');
+    this.f['captcha'].setValue('');
     this.commonMethod.createCaptchaCarrerPage();
   }
 
-  onClickLogin() {
+  onClickLogin(formDirective?: any) {
     this.ngxSpinner.show();
     let formValue = this.loginForm.value;
 
@@ -93,9 +94,11 @@ export class LoginComponent {
             let loginData = this.AESEncryptDecryptService.encrypt(JSON.stringify(res?.responseData?.responseData1));
             localStorage.setItem('loggedInData', loginData);
             this.router.navigate(['/dashboard']);
+            formDirective.resetForm();  
           }
           else{
             this.commonMethod.matSnackBar(res.statusMessage, 1);
+            this.ngxSpinner.hide();
           }
         }
       })

@@ -11,7 +11,7 @@
                             <!-- <div class="logo">
                                 <img src="assets/images/logo.jpg">
                             </div> -->
-                            <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()">
+                            <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()" #formDirective="ngForm">
                             <h4>LOGIN</h4>
                             <p class="mb-4">Please log in to your account.</p>
                             <!-- <mat-form-field appearance="outline" class="w-100">
@@ -45,7 +45,7 @@
                                 f['password'].hasError('hasSpecialCharacters')">
                                         {{
                                         loginForm.controls['password'].hasError('minlength') ?
-                                        'Please Enter Minimum 8 Characters' :
+                                        'Please Enter Minimum 9 Characters' :
                                         loginForm.controls['password'].hasError('hasNumber') ?
                                         'Please Enter at least 1 number' :
                                         loginForm.controls['password'].hasError('hasCapitalCase') ?
