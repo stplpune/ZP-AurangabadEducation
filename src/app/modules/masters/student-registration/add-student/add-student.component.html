@@ -16,51 +16,51 @@
             </button>
         </div>
     </mat-card-header>
-    <mat-card-content class="card-body pb-0">
+    <mat-card-content class="card-body pb-0 form-container">
         <div class="row w-100 g-2">
             <div class="col-sm-2">
+          <label class="form-label">District</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>District</mat-label>
                     <mat-select>
                         <mat-option>Amravati</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Taluka</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Taluka</mat-label>
                     <mat-select>
                         <mat-option>Amravati</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-3">
+              <label class="form-label">Kendra</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Kendra</mat-label>
                     <mat-select>
                         <mat-option>Amravati</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Village</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Village</mat-label>
                     <mat-select>
                         <mat-option>Anjangaon</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-3">
+              <label class="form-label">School</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>School</mat-label>
                     <mat-select>
                         <mat-option>zp Aurangabad</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Standard</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Standard</mat-label>
                     <mat-select>
                         <mat-option>1st</mat-option>
                     </mat-select>
@@ -72,52 +72,52 @@
         </div>
         <div class="row g-2">
             <div class="col-sm-4">
+              <label class="form-label">First Name</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>First Name</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+              <label class="form-label">Middle Name</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Middle Name</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+              <label class="form-label">Last Name</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Last Name</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+              <label class="form-label">First Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>First Name (Marathi)</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+              <label class="form-label">Middle Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Middle Name (Marathi)</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+              <label class="form-label">Last Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Last Name (Marathi)</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Birth Date</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Birth Date</mat-label>
                     <input matInput [matDatepicker]="topicker" (click)="topicker.open()">
                     <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
                     <mat-datepicker #topicker></mat-datepicker>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Gender</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Gender</mat-label>
                     <mat-select>
                         <mat-option>Male</mat-option>
                         <mat-option>Female</mat-option>
@@ -149,38 +149,38 @@
                 </div>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Religion</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Religion</mat-label>
                     <mat-select>
                         <mat-option>Hindu</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Category</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Category</mat-label>
                     <mat-select>
                         <mat-option>xyz</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Caste</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Caste</mat-label>
                     <mat-select>
                         <mat-option>xyz</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Saral ID</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Saral ID</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+              <label class="form-label">Aadhaar No.</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Aadhaar No.</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
@@ -214,26 +214,26 @@
         </div>
         <div class="row g-2">
             <div class="col-sm">
+              <label class="form-label">Name</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Name</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm">
+              <label class="form-label">Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Name (Marathi)</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Mobile No.</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Mobile No.</mat-label>
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
+              <label class="form-label">Relations</label>
                 <mat-form-field appearance="outline" class="w-100 me-2">
-                    <mat-label>Relations</mat-label>
                     <mat-select>
                         <mat-option>Mother</mat-option>
                         <mat-option>Father</mat-option>
