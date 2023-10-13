@@ -7,25 +7,25 @@
             </button>
         </div>
     </mat-card-header>
-    <mat-card-content class="modal-body">
+    <mat-card-content class="modal-body form-container">
         <div class="row">
             <div class="col-sm-12">
+              <label class="form-label">Select Date</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Select Date</mat-label>
                         <input matInput [matDatepicker]="picker">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
             </div>
             <div class="col-sm-12">
+              <label class="form-label">Holiday Name</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Holiday Name</mat-label>
                         <input matInput>
                     </mat-form-field>
             </div>
             <div class="col-sm-12">
+              <label class="form-label">Holiday Name (Marathi)</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Holiday Name (Marathi)</mat-label>
                         <input matInput>
                     </mat-form-field>
             </div>
