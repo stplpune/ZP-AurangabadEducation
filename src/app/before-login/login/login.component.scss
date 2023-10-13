@@ -19,10 +19,12 @@
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     background-image: url('../../../assets/images/login-bg.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .login-wrapper .login-box #right-side {
-    padding: 50px;
+    padding: 40px 50px;
     position: relative;
 }
 

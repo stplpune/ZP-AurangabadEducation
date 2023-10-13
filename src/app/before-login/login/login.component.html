@@ -8,11 +8,20 @@
                             <img src="assets/images/login.svg">
                         </div>
                         <div class="col-sm-6" id="right-side">
-                            <div class="logo">
+                            <!-- <div class="logo">
                                 <img src="assets/images/logo.jpg">
-                            </div>
+                            </div> -->
                             <h4>LOGIN</h4>
                             <p class="mb-4">Please log in to your account.</p>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Select District</mat-label>
+                                <mat-select>
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <mat-option value="option3">Option 3</mat-option>
+                                </mat-select>
+                                <mat-icon matPrefix class="material-symbols-rounded">home_pin</mat-icon>
+                            </mat-form-field>
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Username</mat-label>
                                 <input matInput placeholder="Username">

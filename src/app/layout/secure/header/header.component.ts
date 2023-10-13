@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { WebStorageService } from 'src/app/services/web-storage.service';
 import { ChangePasswordComponent } from 'src/app/modules/profile/change-password/change-password.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { WebStorageService } from 'src/app/core/services/web-storage.service';
 
 @Component({
   selector: 'app-header',
