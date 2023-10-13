@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AesencryptDecryptService } from './aesencrypt-decrypt.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class WebStorageService {
   
   toggled: boolean = false;
 
-  constructor() { }
+  constructor(private AESEncryptDecryptService: AesencryptDecryptService) { }
 
 
   getSidebarState() {
@@ -23,6 +24,59 @@ export class WebStorageService {
       return true;
     else return false;
   }
+
+  getLoggedInLocalstorageData() { //get all logged in data
+    if (this.checkUserIsLoggedIn() == true) {
+      var decryptData = JSON.parse(this.AESEncryptDecryptService.decrypt(localStorage['loggedInData']));
+      let data = decryptData;
+      return data;
+    }
+  }
+
+  getUserId(){
+    let data = this.getLoggedInLocalstorageData();
+    return data ? data.id : 0;
+  }
+
+  getUserTypeId(){
+    let data = this.getLoggedInLocalstorageData();
+    return data.userTypeId;
+  }
+
+  getFfYearId(){
+    let data = this.getLoggedInLocalstorageData();
+    return (data.fYearId || 0);
+  }
+
+  getUserSubTypeId(){
+    let data = this.getLoggedInLocalstorageData();
+    return data.subUserTypeId;
+  }
+
+  getAllPageName(){
+    if (this.checkUserIsLoggedIn() == true) {      
+      let getAllPageName = this.getLoggedInLocalstorageData();
+      return getAllPageName.pageLstModels;
+    }
+  }
+
+  getLogo(){
+    
+  }
+
+
+
+
+  createdByProps(): any {
+    return {
+      "createdBy": this.getUserId() || 0,
+      "modifiedBy": this.getUserId() || 0,
+      "createdDate": new Date(),
+      "modifiedDate": new Date(),
+      "isDeleted": false
+    }
+  }
+
 
 
 
