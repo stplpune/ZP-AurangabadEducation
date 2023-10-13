@@ -33,19 +33,19 @@
       </div>
   </mat-card-header>
 <mat-card class="plain-card">
-<mat-card-header class="card-header-control pt-0 mt-3 mb-3">
+<mat-card-header class="card-header-control pt-0 mt-3 mb-3 form-container">
     <div class="row align-items-center w-100 justify-content-start g-2">
     <div class="col-sm-3">
+      <label class="form-label">Select Date</label>
       <mat-form-field appearance="outline" class="w-100">
-       <mat-label>Select Date</mat-label>
   <input matInput [matDatepicker]="picker">
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
   <div class="col-sm-3">
+    <label class="form-label">Approval Status</label>
     <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Approval Status</mat-label>
       <mat-select>
           <mat-option>All</mat-option>
           <mat-option>Pending</mat-option>
@@ -55,8 +55,8 @@
   </mat-form-field>
 </div>
     <div class="col-sm-3">
+      <label class="form-label">Search</label>
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Search</mat-label>
         <input matInput>
     </mat-form-field>
   </div>
