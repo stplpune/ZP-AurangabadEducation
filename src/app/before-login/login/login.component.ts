@@ -69,7 +69,7 @@ export class LoginComponent {
     this.commonMethod.createCaptchaCarrerPage();
   }
 
-  onClickLogin(formDirective?: any) {
+  onClickLogin() {
     this.ngxSpinner.show();
     let formValue = this.loginForm.value;
 
@@ -91,10 +91,10 @@ export class LoginComponent {
           this.ngxSpinner.hide();
           if(res.statusCode == "200"){
             sessionStorage.setItem('loggedIn', 'true');
-            let loginData = this.AESEncryptDecryptService.encrypt(JSON.stringify(res?.responseData?.responseData1));
+            let loginData = this.AESEncryptDecryptService.encrypt(JSON.stringify(res?.responseData?.responseData1[0]));
             localStorage.setItem('loggedInData', loginData);
             this.router.navigate(['/dashboard']);
-            formDirective.resetForm();  
+            this.formDirective.resetForm();  
           }
           else{
             this.commonMethod.matSnackBar(res.statusMessage, 1);
