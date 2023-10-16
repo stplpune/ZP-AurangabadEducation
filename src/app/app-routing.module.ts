@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('../../src/app/before-login/home/home.module').then(m => m.HomeModule) },
   { path: 'login', loadChildren: () => import('../../src/app/before-login/login/login.module').then(m => m.LoginModule), data: { breadcrumb: [{ title: 'Login', active: true }] } },
   { path: 'forgot-password', loadChildren: () => import('../../src/app/before-login/forget-password/forget-password.module').then(m => m.ForgetPasswordModule), data: { breadcrumb: [{ title: 'ForgotPassword', active: true }] } },
+ 
 
 
 ];
