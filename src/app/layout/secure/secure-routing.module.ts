@@ -36,7 +36,9 @@ const routes: Routes = [
   { path: 'add-standard-subject', loadChildren: () => import('../../modules/settings/add-standard-subject/add-standard-subject.module').then(m => m.AddStandardSubjectModule) },
   { path: 'add-question', loadChildren: () => import('../../modules/settings/assessment-crateria/add-question/add-question.module').then(m => m.AddQuestionModule) },
   { path: 'registration-approval', loadChildren: () => import('../../modules/settings/registration-approval/registration-approval.module').then(m => m.RegistrationApprovalModule) },
-
+  { path: 'teacher-profile', loadChildren: () => import('../../modules/masters/teacher-registration/teacher-profile/teacher-profile.module').then(m => m.TeacherProfileModule) },
+  { path: 'student-profile', loadChildren: () => import('../../modules/masters/student-registration/student-profile/student-profile.module').then(m => m.StudentProfileModule) },
+  { path: 'school-profile', loadChildren: () => import('../../modules/masters/school-registration/school-profile/school-profile.module').then(m => m.SchoolProfileModule) },
 ];
 
 @NgModule({
