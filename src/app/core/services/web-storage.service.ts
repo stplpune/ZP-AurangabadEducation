@@ -28,7 +28,7 @@ export class WebStorageService {
   getLoggedInLocalstorageData() { //get all logged in data
     if (this.checkUserIsLoggedIn() == true) {
       var decryptData = JSON.parse(this.AESEncryptDecryptService.decrypt(localStorage['loggedInData']));
-      let data = decryptData?.responseData1[0];
+      let data = decryptData;
       return data;
     }
   }
