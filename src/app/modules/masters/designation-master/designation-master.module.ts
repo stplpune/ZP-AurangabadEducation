@@ -14,7 +14,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import {MatTableModule} from '@angular/material/table';
     MatMenuModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatTableModule
+    MatTableModule,
+    TranslateModule
   ]
 })
 export class DesignationMasterModule { }
