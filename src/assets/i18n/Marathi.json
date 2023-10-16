@@ -1,0 +1,9 @@
+{
+    "Lables": {
+        "changePassword": "पासवर्ड बदला",
+        "enterCurrentPassword":"सध्याचा पासवर्ड टाका",
+        "enterNewPassword":"नवीन पासवर्ड टाका",
+        "confirmPassword":"पासवर्डची पुष्टी करा",
+        "designationMaster": "पदनाम मास्टर"
+    }
+}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AesencryptDecryptService } from './aesencrypt-decrypt.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,11 @@ import { AesencryptDecryptService } from './aesencrypt-decrypt.service';
 export class WebStorageService {
   
   toggled: boolean = false;
+  languageFlag = 'EN';
+  language = new BehaviorSubject('');
+  numFormat: any;
 
   constructor(private AESEncryptDecryptService: AesencryptDecryptService) { }
-
 
   getSidebarState() {
     return this.toggled;
@@ -64,12 +67,7 @@ export class WebStorageService {
     }
   }
 
-  getLogo(){
-
-  }
-
-
-
+  getLogo(){}
 
   createdByProps(): any {
     return {
@@ -80,6 +78,13 @@ export class WebStorageService {
       "isDeleted": false
     }
   }
+
+  setLanguage(lang: any) {
+    this.language.next(lang);
+    lang == 'English' ? this.languageFlag = 'EN' : this.languageFlag = 'mr-IN';
+    this.numFormat = lang == 'Marathi' ? 'mr-IN' : 'en-IN';
+  }
+
 
 
 

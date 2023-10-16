@@ -9,14 +9,47 @@
                     menu
                 </span>
             </button>
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <button mat-flat-button class="btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="assets/images/language.svg">
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#"><img src="assets/images/english.svg">English</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="assets/images/marathi.svg">Marathi</a></li>
+                    <li><a class="dropdown-item" href="#" (click)="onChangeLanguage('en')"><img src="assets/images/english.svg">English</a></li>
+                    <li><a class="dropdown-item" href="#" (click)="onChangeLanguage('mr')"><img src="assets/images/marathi.svg">Marathi</a></li>
                 </ul>
+            </div> -->
+            <div class="dropdown">
+                <button mat-flat-button class="btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/language.svg">
+                </button>
+                <!-- <div class="dropdown-menu dropdown-menu-end">
+                    <ng-container *ngFor="let getLag of languageArr">
+                        <button class="dropdown-item" (click)="onChangeLanguage(getLag)"
+                            [class.active]="getLag == selectLang">
+                            <div class="d-flex align-items-start">
+                                <img
+                                    [src]="getLag == 'English' ? 'assets/images/english.svg' : 'assets/images/marathi.svg'">
+                                <span>{{getLag}}</span>
+                            </div>
+                        </button>
+                    </ng-container>
+                </div> -->
+                <div class="dropdown-menu dropdown-menu-end">
+                    <button [class]="webStorage.languageFlag == 'EN' ? 'dropdown-item active' : 'dropdown-item'"
+                        (click)="onChangeLanguage('English')">
+                        <div class="d-flex align-items-start">
+                            <img src="assets/images/english.svg">
+                            <span>English</span>
+                        </div>
+                    </button>
+                    <button [class]="webStorage.languageFlag != 'EN' ? 'dropdown-item active' : 'dropdown-item'"
+                        (click)="onChangeLanguage('Marathi')">
+                        <div class="d-flex align-items-start">
+                            <img src="assets/images/marathi.svg">
+                            <span>Marathi</span>
+                        </div>
+                    </button>
+                </div>
             </div>
             <button mat-flat-button class="btn-icon">
                 <span class="material-symbols-rounded">

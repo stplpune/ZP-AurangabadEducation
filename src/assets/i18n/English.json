@@ -1,0 +1,9 @@
+{
+    "Lables": {
+        "changePassword": "Change Password",
+        "enterCurrentPassword":"Enter Current Password",
+        "enterNewPassword":"Enter New Password",
+        "confirmPassword":"Confirm Password",
+        "designationMaster": "Designation Master"
+    }
+}
