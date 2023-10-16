@@ -67,5 +67,15 @@ export class CommonMethodService {
       sessionStorage.setItem('language', "Marathi");
       flag == "Login" ? this.router.navigate(['/login']) : this.router.navigate(['/home']);
     }
+
+    checkDataType(val: any) {
+      let value: any;
+      if (val == "" || val == null || val == "null" || val == undefined || val == "undefined" || val == 'string' || val == 0) {
+        value = false;
+      } else {
+        value = true;
+      }
+      return value;
+    }
   
 }
