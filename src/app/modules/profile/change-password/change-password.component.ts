@@ -6,6 +6,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
@@ -13,11 +14,12 @@ import { CustomValidatorsService } from 'src/app/core/services/custom-validators
 import { ErrorService } from 'src/app/core/services/error.service';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatDialogModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatDialogModule, FormsModule, ReactiveFormsModule, CommonModule, TranslateModule],
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.scss']
 })
@@ -27,6 +29,8 @@ export class ChangePasswordComponent {
   hide2 = true;
   changePasswordForm !: FormGroup;
   get f() { return this.changePasswordForm.controls }
+  lang: any;
+  subscription!: Subscription;
   
   @ViewChild('formDirective') private formDirective!: NgForm;
 
@@ -41,6 +45,10 @@ export class ChangePasswordComponent {
 
   ngOnInit() {
     this.formField();
+    // this.subscription = this.webStorage.language.subscribe((res: any) => {
+    //   this.lang = res ? res : sessionStorage.getItem('language') ? sessionStorage.getItem('language') : 'English';
+    //   this.lang = this.lang == 'English' ? 'en' : 'mr-IN';
+    // })
   }
 
   formField() {
