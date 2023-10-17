@@ -10,6 +10,7 @@ export class WebStorageService {
   toggled: boolean = false;
   languageFlag = 'EN';
   language = new BehaviorSubject('');
+  langNameOnChange = this.language.asObservable();
   numFormat: any;
 
   constructor(private AESEncryptDecryptService: AesencryptDecryptService) { }
