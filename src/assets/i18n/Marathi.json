@@ -14,7 +14,14 @@
         "Atleast1Digits(0-9)" :"किमान १ अंक(0-९)",
         "Atleast1SpecialCharacters(*$@#)" : "किमान एक विशेष वर्ण असणे आवश्यक आहे (@,#,&,$)",
         
-
-        "designationMaster": "पदनाम मास्टर"
+        "master": "मास्टर",
+        "district" : "जिल्हा",
+        "taluka" : "तालुका",
+        "kendra": "केंद्र",
+        "village": "गाव",
+        "UDISECode/SchoolName": "यूडीआयएसई कोड/शाळेचे नाव",
+        "designationMaster": "पदनाम मास्टर",
+        "SchoolRegistration": "शाळा नोंदणी",
+        "AddSchool": "शाळेची नोंदणी"
     }
 }

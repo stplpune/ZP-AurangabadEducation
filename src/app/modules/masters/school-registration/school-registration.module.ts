@@ -16,6 +16,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddSchoolComponent } from './add-school/add-school.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatTooltipModule,
     MatTableModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    GlobalTableComponent,
+    TranslateModule
   ]
 })
 export class SchoolRegistrationModule { }

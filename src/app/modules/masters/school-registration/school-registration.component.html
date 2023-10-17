@@ -1,13 +1,13 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page">Master</li>
-        <li class="breadcrumb-item active" aria-current="page">School Registration</li>
+        <li class="breadcrumb-item" aria-current="page">{{'Lables.master' | translate}}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{'Lables.SchoolRegistration' | translate}}</li>
     </ol>
 </nav>
 <mat-card class="plain-card">
     <mat-card-header class="card-header">
         <div class="d-flex justify-content-between align-items-center w-100">
-            <h6 class="text-main mb-2 mb-lg-0 fw-bold">School Registration</h6>
+            <h6 class="text-main mb-2 mb-lg-0 fw-bold">{{'Lables.SchoolRegistration' | translate}}</h6>
             <div class="d-flex align-items-center gap-2">
                 <div class="d-flex align-items-center gap-2">
                     <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
@@ -45,7 +45,7 @@
                     <button mat-flat-button class="btn-main" (click)="AddSchool()">
                         <mat-icon class="material-symbols-rounded">add</mat-icon>
                         <span>
-                            Add School
+                            {{'Lables.AddSchool' | translate}}
                         </span>
                     </button>
                 </div>
@@ -53,63 +53,67 @@
         </div>
     </mat-card-header>
     <mat-card-header class="card-header-control pt-0 form-container">
+        <form [formGroup]="filterForm">
         <div class="row align-items-end w-100 justify-content-start g-2">
+
             <div class="col-sm-2">
-                <label class="form-label">District</label>
+                <label class="form-label">{{'Lables.district' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Amravati</mat-option>
+                    <mat-select formControlName="districtId" (selectionChange)="getTaluka();">
+                        <mat-option *ngFor="let district of districtArray" [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District: district.district}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-                <label class="form-label">Taluka</label>
+                <label class="form-label">{{'Lables.taluka' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Amravati</mat-option>
+                    <mat-select formControlName="talukaId" (selectionChange)="getCenter();">
+                        <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-                <label class="form-label">Kendra</label>
+                <label class="form-label">{{'Lables.kendra' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Amravati</mat-option>
+                    <mat-select formControlName="centerId" (selectionChange)="getVillage();">
+                        <mat-option *ngFor="let center of centerArray" [value]="center.id">{{webStorage.languageFlag =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-                <label class="form-label">Village</label>
+                <label class="form-label">{{'Lables.village' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Anjangaon</mat-option>
+                    <mat-select formControlName="villageId">
+                        <mat-option *ngFor="let village of villageArray" [value]="village.id">{{webStorage.languageFlag =='mr-IN' ? village.m_Village: village.village}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm">
-                <label class="form-label">UDISE Code/School Name</label>
+                <label class="form-label">{{'Lables.UDISECode/SchoolName' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput placeholder="UDISE Code/School Name">
+                    <input matInput placeholder="{{'Lables.UDISECode/SchoolName' | translate}}" formControlName="textSearch" (keypress)="validation.noSpacesAtStart($event); validation.alphaNumericWithSpacesAndSpecChars($event)" maxlength="50">
                 </mat-form-field>
             </div>
             <div class="col-sm-auto">
                 <div class="d-flex gap-2">
-                    <button mat-flat-button class="btn-main btn-icon">
+                    <button mat-flat-button class="btn-main btn-icon" (click)="getTableData('filter')">
                         <span class="material-symbols-rounded">
                             search
                         </span>
                     </button>
-                    <button mat-flat-button class="btn-main-light btn-icon">
+                    <button mat-flat-button class="btn-main-light btn-icon" (click)="onClear()">
                         <span class="material-symbols-rounded">
                             close
                         </span>
                     </button>
                 </div>
             </div>
+
         </div>
+    </form>
     </mat-card-header>
     <mat-card-content class="card-body">
-        <table mat-table [dataSource]="dataSource" class="dashboard-table">
+        <!-- <table mat-table [dataSource]="dataSource" class="dashboard-table">
             <ng-container matColumnDef="srno">
                 <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
                 <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
@@ -160,6 +164,7 @@
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        </table> -->
+        <app-global-table (recObjToChild)="childCompInfo($event)"></app-global-table>
     </mat-card-content>
 </mat-card>
