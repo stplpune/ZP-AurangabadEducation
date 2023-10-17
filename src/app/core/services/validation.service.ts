@@ -13,7 +13,7 @@ export class ValidationService {
   mobile_No = '[6-9]\\d{9}';
   age = '[0-9]{2,}|[5-9]{1}$';
   aadhar_card = '^[2-9][0-9]{11}$';
-  valPassword = '^(?=.*[a-z0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&#])[A-Za-z0-9\d@$!%*?&#]{6,15}$';
+  valPassword = '^(?=.*[a-z0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[*$@#])[A-Za-z0-9\d*$@#]{6,15}$';
   alphaNumericOnly = '^([ a-zA-Z])[- a-zA-Z0-9]+$';
   combinationAlphaNumericOnly = '^[a-zA-Z0-9]*$';
   alphabetWithSpace = '^[a-zA-Z][a-zA-Z ]*$';
