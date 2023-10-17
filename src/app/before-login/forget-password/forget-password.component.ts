@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/core/services/api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { ValidationService } from 'src/app/core/services/validation.service';
+import { CustomValidatorsService } from 'src/app/core/services/custom-validators.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -12,6 +13,7 @@ import { ValidationService } from 'src/app/core/services/validation.service';
 })
 export class ForgetPasswordComponent {
   hide = true;
+  hide1 = true;
   mobileNoForm !: FormGroup;
   optForm !: FormGroup;
   passwordForm !: FormGroup;
@@ -21,6 +23,9 @@ export class ForgetPasswordComponent {
   verifyOtpFlag: boolean = false;
   interval: any;
   timeLeft: number = 100;
+  otpRes: any;
+  @ViewChild('formDirective') formDirective!: NgForm;
+  get f() { return this.passwordForm.controls }
 
   constructor(private fb: FormBuilder,
     private apiService: ApiService,
@@ -36,7 +41,7 @@ export class ForgetPasswordComponent {
 
   mobileNumberFormField() {
     this.mobileNoForm = this.fb.group({
-      mobileNo: ['', [, Validators.required, Validators.pattern('[6-9]\\d{9}')]]
+      mobileNo: ['', [Validators.required, Validators.pattern('[6-9]\\d{9}')]]
     });
   }
 
@@ -52,8 +57,30 @@ export class ForgetPasswordComponent {
 
   passwordFormField() {
     this.passwordForm = this.fb.group({
-      newPassword: [''],
-      reTypePassword: ['']
+      newPassword: ['', [Validators.required,
+        Validators.compose([
+          // check whether the entered password has a number
+          CustomValidatorsService.patternValidator(/\d/, {
+            hasNumber: true
+          }),
+          // check whether the entered password has upper case letter
+          CustomValidatorsService.patternValidator(/[A-Z]/, {
+            hasCapitalCase: true
+          }),
+          // check whether the entered password has a lower case letter
+          CustomValidatorsService.patternValidator(/[a-z]/, {
+            hasSmallCase: true
+          }),
+          // check whether the entered password has a special character
+          CustomValidatorsService.patternValidator(
+            /[ *$@#]/,
+            {
+              hasSpecialCharacters: true
+            }
+          ),
+          Validators.minLength(9)
+        ])]],
+      reTypePassword: ['', [Validators.required, Validators.pattern(this.validation.valPassword)]]
     });
   }
 
@@ -74,12 +101,11 @@ export class ForgetPasswordComponent {
       "email": ""
     }
 
-    this.ngxSpinner.show();
     if (!this.mobileNoForm.valid) {
-      this.ngxSpinner.hide();
       return
     }
     else {
+      this.ngxSpinner.show();
       this.apiService.setHttp('post', 'ZP-Education/OTPTrans/CreateOTP', false, obj, false, 'zp-Education')
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
@@ -114,17 +140,17 @@ export class ForgetPasswordComponent {
       "email": ""
     }
 
-    this.ngxSpinner.show();
     if(!this.optForm.valid){
-      this.ngxSpinner.hide();
       return;
     }
     else{
+      this.ngxSpinner.show();
       this.apiService.setHttp('post', 'ZP-Education/OTPTrans/VerifyOTP', false, obj, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
         this.ngxSpinner.hide();
         if(res.statusCode == "200"){
+          this.otpRes = res.responseData;
           this.commonMethod.matSnackBar(res.statusMessage, 0);
           this.passwordFlag = true;
             clearInterval(this.interval);
@@ -137,8 +163,6 @@ export class ForgetPasswordComponent {
         }
       })
     }
-
-
   }
 
   startTimer() {
@@ -151,6 +175,38 @@ export class ForgetPasswordComponent {
         this.timeLeft = 100;
       }
     }, 1000)
+  }
+
+  onSubmit(){
+    if(!this.passwordForm.valid){
+      return
+    }
+    else if(this.passwordForm.value.newPassword != this.passwordForm.value.reTypePassword){
+      this.commonMethod.matSnackBar('New Password and Confirm Password does not Match', 1);
+      return
+    }
+    else{
+      this.ngxSpinner.show();
+      let obj = {
+        "userId": this.otpRes,
+        "newPassword": this.passwordForm.value.newPassword
+      }
+
+      this.apiService.setHttp('post', 'ZP-Education/Web-Login/UpdatePassword', false, obj, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => {
+          this.ngxSpinner.hide();
+          if(res.statusCode == "200"){
+            this.formDirective.resetForm();
+            this.commonMethod.matSnackBar(res.statusMessage, 0);
+          }else {
+            this.commonMethod.matSnackBar(res.statusMessage, 1);
+            this.ngxSpinner.hide();
+          }
+        }
+      })
+
+    }
   }
 
 
