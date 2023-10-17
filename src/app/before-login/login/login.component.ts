@@ -36,7 +36,7 @@ export class LoginComponent {
 
   formField() {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
+      userName: ['', [Validators.required]],
       password: ['', [Validators.required, 
         Validators.compose([
           // check whether the entered password has a number

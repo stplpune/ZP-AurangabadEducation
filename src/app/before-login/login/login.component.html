@@ -25,7 +25,7 @@
                             </mat-form-field> -->
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Username</mat-label>
-                                <input matInput placeholder="Username" formControlName="userName" (keypress)="validation.noSpacesAtStart($event);validation.alphaNumeric($event)" (blur)="clearSpace()">
+                                <input matInput placeholder="Username" formControlName="userName" (keypress)="validation.noSpacesAtStart($event);validation.alphaNumeric($event)" (blur)="clearSpace()" maxlength="10">
                                 <mat-icon matPrefix class="material-symbols-rounded">person</mat-icon>
                                 <mat-error *ngIf="f['userName'].hasError('required')">Username is
                                     Required

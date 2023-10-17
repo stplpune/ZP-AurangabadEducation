@@ -41,14 +41,10 @@ export class ChangePasswordComponent {
     private validation: ValidationService, 
     private dialogRef: MatDialogRef<ChangePasswordComponent>,
     private errorService: ErrorService,
-    private webStorage: WebStorageService) { }
+    public webStorage: WebStorageService) { }
 
   ngOnInit() {
     this.formField();
-    // this.subscription = this.webStorage.language.subscribe((res: any) => {
-    //   this.lang = res ? res : sessionStorage.getItem('language') ? sessionStorage.getItem('language') : 'English';
-    //   this.lang = this.lang == 'English' ? 'en' : 'mr-IN';
-    // })
   }
 
   formField() {
@@ -71,7 +67,7 @@ export class ChangePasswordComponent {
           }),
           // check whether the entered password has a special character
           CustomValidatorsService.patternValidator(
-            /[ @$!%*?&#]/,
+            /[ *$@#]/,
             {
               hasSpecialCharacters: true
             }
