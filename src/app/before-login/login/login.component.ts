@@ -53,7 +53,7 @@ export class LoginComponent {
           }),
           // check whether the entered password has a special character
           CustomValidatorsService.patternValidator(
-            /[ @$!%*?&#]/,
+            /[ *$@#]/,
             {
               hasSpecialCharacters: true
             }
