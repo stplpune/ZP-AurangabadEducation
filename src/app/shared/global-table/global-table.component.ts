@@ -54,6 +54,7 @@ export class GlobalTableComponent {
       this.tableInfo = [];
       this.tableSub = this.apiService.tableData.subscribe((res: any) => {
         this.tableInfo = res;
+        
         if (this.tableInfo) {
           this.highlightedRow = this.tableInfo.highlightedRow || this.highlightedRow;
           this.displayedColumns = this.tableInfo.displayedColumns;

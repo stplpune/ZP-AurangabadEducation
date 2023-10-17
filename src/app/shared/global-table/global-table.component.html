@@ -47,7 +47,7 @@
                     <button mat-icon-button *ngIf="tableInfo?.edit"
                         class="btn bg-dark bg-opacity-10 text-dark rounded edit" matTooltip="Edit"
                         (click)="action(element, 'Edit', i)">
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-rounded">
                             edit
                         </span>
                     </button>
@@ -68,7 +68,7 @@
                     <button mat-icon-button *ngIf="tableInfo?.delete"
                         class="btn bg-danger bg-opacity-10 text-danger rounded delete" matTooltip="Delete"
                         (click)="action(element, 'Delete')" [ngClass]="{'disabled': element?.isDeleteButtonFlag== 1}">
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-rounded">
                             delete
                         </span>
                     </button>
