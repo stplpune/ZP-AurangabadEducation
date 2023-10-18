@@ -8,7 +8,6 @@ import { WebStorageService } from 'src/app/core/services/web-storage.service';
 })
 export class SidebarComponent {
   constructor(private webStorage: WebStorageService) {
-
   }
 
   onCloseSidebar() {
