@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-teacher',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AddTeacherComponent {
 
+
+  toppings = new FormControl('');
+  toppingList: string[] = ['Pune', 'Satara', 'Kolhapur', 'Sangli', 'Nagar'];
 }
