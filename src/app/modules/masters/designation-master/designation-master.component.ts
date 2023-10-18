@@ -75,8 +75,8 @@ export class DesignationMasterComponent {
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     
-    let str = `ZP-Education/Designation/GetAll?DesignationLevelId=${this.desigId.value}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
-    let reportStr = `ZP-Education/Designation/GetAll?DesignationLevelId=${this.desigId.value}pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
+    let str = `DesignationLevelId=${this.desigId.value}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
+    let reportStr = `DesignationLevelId=${this.desigId.value}pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
 
     this.apiService.setHttp('get', 'ZP-Education/Designation/GetAll?' + (flag == 'pdfFlag' ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
@@ -86,8 +86,8 @@ export class DesignationMasterComponent {
           flag != 'pdfFlag' ? this.tableDataArray = res.responseData?.responseData1 : this.tableDataArray = this.tableDataArray;
           this.totalCount = res.responseData.responseData2.pageCount;
           this.tableDatasize = res.responseData.responseData2.pageCount;
-          let data: [] = flag == 'pdfFlag' ? res.responseData?.responseData1 : [];
-          flag == 'pdfFlag' ? this.downloadPdf(data) : ''; 
+          let data: [] = (flag == 'pdfFlag' || flag == 'excel') ? res.responseData.responseData1 : [];
+          (flag == 'pdfFlag' || flag == 'excel') ? this.downloadPdf(data, flag) : '';
         }
         else{
           this.ngxSpinner.hide();
@@ -127,7 +127,7 @@ export class DesignationMasterComponent {
     }
   }
 
-  downloadPdf(data: any){
+  downloadPdf(data: any , flag?: any){
 
   }
 
