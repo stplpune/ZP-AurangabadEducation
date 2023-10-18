@@ -105,7 +105,12 @@ export class ValidationService {
   alphaNumericWithSpaces(event: any) {
     const maskSeperator = new RegExp('^([a-zA-Z0-9 ])', 'g');
     return maskSeperator.test(event.key);
-}
+  }
+
+  alphaNumericWithoutSpaces(event: any) {
+    const maskSeperator = new RegExp('^([a-zA-Z0-9])', 'g');
+    return maskSeperator.test(event.key);
+  }
 
 alphaNumericWithSpacesWithDashSlash(event: any) {
   const maskSeperator = new RegExp('^([a-zA-Z0-9/-])', 'g');
