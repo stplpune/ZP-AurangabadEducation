@@ -1,6 +1,8 @@
 {
     "Lables": {
         "cancel": "रद्द करा",
+        "update" : "अपडेट करा",
+        "submit" : "जतन करा",
         "changePassword": "पासवर्ड बदला",
         "enterCurrentPassword":"सध्याचा पासवर्ड टाका",
         "enterNewPassword":"नवीन पासवर्ड टाका",
@@ -18,10 +20,22 @@
         "district" : "जिल्हा",
         "taluka" : "तालुका",
         "kendra": "केंद्र",
+        "bit": "बिट्स",
         "village": "गाव",
         "UDISECode/SchoolName": "यूडीआयएसई कोड/शाळेचे नाव",
         "designationMaster": "पदनाम मास्टर",
         "SchoolRegistration": "शाळा नोंदणी",
-        "AddSchool": "शाळेची नोंदणी"
+        "AddSchool": "शाळेची नोंदणी",
+        "updateSchool": "शाळेची नोंद अपडेट करा",
+        "SchoolType": "शाळेचा प्रकार",
+        "SchoolName": "शाळेचे नाव",
+        "SchoolName(Marathi)": "शाळेचे नाव (मराठी)",
+        "SchoolManagement": "शाळा व्यवस्थापन",
+        "LowestClass": "शेवटचा वर्ग",
+        "HighestClass": "सुरुवातीचा वर्ग",
+        "SchoolCategory": "शाळा श्रेणी",
+        "UDISECode": "यूडीआयएसई कोड",
+        "TypeOfArea": "क्षेत्र प्रकार",
+        "SchoolMedium": "शाळा माध्यम"
     }
 }

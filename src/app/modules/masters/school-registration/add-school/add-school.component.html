@@ -1,207 +1,223 @@
-<div mat-dialog-title class="modal-header">
-    <div class="d-flex justify-content-between align-items-center w-100">
-        <h6 class="text-main mb-0 fw-bold">School Registration</h6>
-        <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
-            <mat-icon class="material-symbols-rounded">close</mat-icon>
-        </button>
-    </div>
-</div>
-<mat-dialog-content class="modal-body scrollbar form-container">
-    <div class="row g-2">
-        <div class="col-sm-4">
-          <label class="form-label">District</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        district
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-4">
-          <label class="form-label">Taluka</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        taluka
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-4">
-            <div class="mt-1">
-                <mat-checkbox>School is Kendra?</mat-checkbox>
-            </div>
-        </div>
-        <div class="col-sm-4">
-          <label class="form-label">Kendra</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        Center
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-4">
-          <label class="form-label">Village</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        Anjangaon
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-4">
-          <label class="form-label">School Type</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        schoolType
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-6">
-          <label class="form-label">School Name</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <textarea matInput rows="2"></textarea>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-6">
-          <label class="form-label">School Name (Marathi)</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <textarea matInput rows="2"></textarea>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-6 ">
-          <label class="form-label">School Code</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <input matInput>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-6">
-          <label class="form-label">School Management</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        one
-                    </mat-option>
-                    <mat-option>
-                        two
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-3">
-          <label class="form-label">Lowest Class</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        1
-                    </mat-option>
-                    <mat-option>
-                        2
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-3">
-          <label class="form-label">Highest Class</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        2
-                    </mat-option>
-                    <mat-option>
-                        3
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-6">
-          <label class="form-label">School Category</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-select>
-                    <mat-option>
-                        Primary
-                    </mat-option>
-                    <mat-option>
-                        Primary with Upper Primary
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-
-        <div class="col-sm-6">
-          <label class="form-label">UDISE Code</label>
-            <mat-form-field appearance="outline" class="w-100">
-                <input matInput>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-6">
-            <div class="mt-1">
-                <mat-radio-group>
-                    <mat-radio-button value="1">Rural</mat-radio-button>
-                    <mat-radio-button value="2">Urban</mat-radio-button>
-                </mat-radio-group>
-            </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="file-upload border rounded-2 p-1">
-            <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
-                data-placement="right">
-                Upload Profile Photo
+<form [formGroup]="schoolRegForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-title class="modal-header">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <h6 class="text-main mb-0 fw-bold">{{data ?('Lables.updateSchool' | translate)
+                    :('Lables.SchoolRegistration' | translate)}}
+            </h6>
+            <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
+                <mat-icon class="material-symbols-rounded">close</mat-icon>
             </button>
-            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
-
-            <div class="d-flex gap-2">
-                <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
-                    matTooltip="view">
-                    <mat-icon class="material-symbols-rounded">
-                        preview
-                    </mat-icon>
-                </button>
-                <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
-                    matTooltip="delete">
-                    <mat-icon class="material-symbols-rounded">
-                        delete
-                    </mat-icon>
-                </button>
-            </div>
-        </div>
-
-        </div>
-        <div class="col-sm-6">
-          <div class="file-upload border rounded-2 p-1">
-            <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
-                data-placement="right">
-                Upload School Documents
-            </button>
-            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
-
-            <div class="d-flex gap-2">
-                <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
-                    matTooltip="view">
-                    <mat-icon class="material-symbols-rounded">
-                        preview
-                    </mat-icon>
-                </button>
-                <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
-                    matTooltip="delete">
-                    <mat-icon class="material-symbols-rounded">
-                        delete
-                    </mat-icon>
-                </button>
-            </div>
-        </div>
         </div>
     </div>
-</mat-dialog-content>
-<mat-dialog-actions class="modal-footer">
-    <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-        <button mat-flat-button class="btn-main-light" type="button">Cancel</button>
-        <button mat-flat-button class="btn-main" type="submit">Submit</button>
-    </div>
-</mat-dialog-actions>
+    <mat-dialog-content class="modal-body scrollbar form-container">
+        <div class="row g-2">
+            <div class="col-sm-4">
+                <label class="form-label">{{'Lables.district' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="districtId" (selectionChange)="getTaluka();">
+                        <mat-option *ngFor="let district of districtArray"
+                            [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District:
+                            district.district}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">{{'Lables.taluka' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="talukaId" (selectionChange)="getCenter();">
+                        <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag
+                            =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <div class="mt-1">
+                    <!-- <mat-checkbox>School is Kendra?</mat-checkbox> -->
+                    <input type="checkbox" name="check" id="check1" class="ms-2" formControlName="isKendraSchool" />
+                    <mat-label>School is Kendra?</mat-label>
+                </div>
+            </div>
+            <div class="col-sm-4" *ngIf="schoolRegForm.value.isKendraSchool == true">
+                <label class="form-label">{{'Lables.bit' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="bitId" (selectionChange)="getVillage();">
+                        <mat-option *ngFor="let bit of bitArray" [value]="bit.id">{{webStorage.languageFlag
+                            =='mr-IN' ? bit.M_BitName: bit.BitName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">{{'Lables.kendra' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="centerId" (selectionChange)="getVillage();">
+                        <mat-option *ngFor="let center of centerArray" [value]="center.id">{{webStorage.languageFlag
+                            =='mr-IN' ? center.m_Center: center.center}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">{{'Lables.village' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="villageId">
+                        <mat-option *ngFor="let village of villageArray" [value]="village.id">{{webStorage.languageFlag
+                            =='mr-IN' ? village.m_Village: village.village}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">{{'Lables.SchoolType' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="s_TypeId">
+                        <mat-option *ngFor="let school of schoolTypeArray" [value]="school.id">{{webStorage.languageFlag
+                            =='mr-IN' ? school.m_SchoolType: school.schoolType}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">{{'Lables.SchoolName' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <textarea matInput rows="2" formControlName="schoolName"
+                        (keypress)="validation.noFirstSpaceAllow($event)" maxlength="100"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">{{'Lables.SchoolName(Marathi)' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <textarea matInput rows="2" formControlName="m_SchoolName" maxlength="100"
+                        (keypress)="validation.noFirstSpaceAllow($event); validation.unicodeMarathiValidation($event);"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">{{'Lables.SchoolManagement' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="s_ManagementId">
+                        <mat-option *ngFor="let school of schoolManagementArray"
+                            [value]="school.id">{{webStorage.languageFlag =='mr-IN' ? school.m_Management_desc:
+                            school.management_desc}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.LowestClass' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="lowestClass" (selectionChange)="getHighestGroupClass();">
+                        <mat-option *ngFor="let lowestGroup of lowestGroupclassArray" [value]="lowestGroup.lowestClass">
+                            {{lowestGroup.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.HighestClass' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="highestClass">
+                        <mat-option *ngFor="let highestGroup of highestGroupclassArray"
+                            [value]="highestGroup.lowestClass">
+                            {{highestGroup.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">{{'Lables.SchoolCategory' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select formControlName="s_CategoryId">
+                        <mat-option *ngFor="let category of categoryArray"
+                            [value]="category.id">{{webStorage.languageFlag =='mr-IN' ? category.m_Category_desc:
+                            category.category_desc}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+                <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput formControlName="schoolCode"
+                        (keypress)="validation.noSpacesAtStart($event); validation.alphaNumericWithoutSpaces($event);"
+                        maxlength="10">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">{{'Lables.TypeOfArea' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select formControlName="S_AreaId">
+                            <mat-option *ngFor="let area of areaArray"
+                                [value]="area.id">{{webStorage.languageFlag =='mr-IN' ? area.m_area:
+                                area.area}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">{{'Lables.SchoolMedium' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select formControlName="s_MediumId">
+                            <mat-option *ngFor="let medium of mediumArray"
+                                [value]="medium.id">{{webStorage.languageFlag =='mr-IN' ? medium.m_SchoolMedium:
+                                medium.schoolMedium}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <div class="file-upload border rounded-2 p-1">
+                    <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
+                        data-placement="right">
+                        Upload Profile Photo
+                    </button>
+                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
+
+                    <div class="d-flex gap-2">
+                        <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
+                            matTooltip="view">
+                            <mat-icon class="material-symbols-rounded">
+                                preview
+                            </mat-icon>
+                        </button>
+                        <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
+                            matTooltip="delete">
+                            <mat-icon class="material-symbols-rounded">
+                                delete
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+                <div class="file-upload border rounded-2 p-1">
+                    <div formArrayName="schoolDocument" *ngFor="let img of multipleImg.controls; let i = index;">
+                        <div [formGroupName]="i">
+                            <button type="button" mat-flat-button class="btn" id="fileupload-button"
+                                data-toggle="tooltip" data-placement="right">
+                                Upload School Documents
+                            </button>
+                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
+
+                            <div class="d-flex gap-2">
+                                <button type="button" mat-flat-button
+                                    class="bg-primary-subtle text-primary btn-icon btn-action" matTooltip="view">
+                                    <mat-icon class="material-symbols-rounded">
+                                        preview
+                                    </mat-icon>
+                                </button>
+                                <button type="button" mat-flat-button
+                                    class="bg-danger-subtle text-danger btn-icon btn-action" matTooltip="delete">
+                                    <mat-icon class="material-symbols-rounded">
+                                        delete
+                                    </mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="modal-footer">
+        <div class="d-flex align-items-center justify-content-end w-100 gap-2">
+            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel' |
+                translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit">{{data ? ('Lables.update' | translate)
+                : ('Lables.submit' | translate)}}</button>
+        </div>
+    </mat-dialog-actions>
+</form>
