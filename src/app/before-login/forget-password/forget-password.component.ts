@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { CustomValidatorsService } from 'src/app/core/services/custom-validators.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
@@ -22,7 +23,7 @@ export class ForgetPasswordComponent {
   passwordFlag: boolean = false;
   verifyOtpFlag: boolean = false;
   interval: any;
-  timeLeft: number = 100;
+  timeLeft: number = 60;
   otpRes: any;
   @ViewChild('formDirective') formDirective!: NgForm;
   get f() { return this.passwordForm.controls }
@@ -31,7 +32,8 @@ export class ForgetPasswordComponent {
     private apiService: ApiService,
     private ngxSpinner: NgxSpinnerService,
     private commonMethod: CommonMethodService,
-    public validation: ValidationService) { }
+    public validation: ValidationService,
+    private router: Router) { }
 
   ngOnInit() {
     this.mobileNumberFormField();
@@ -154,7 +156,7 @@ export class ForgetPasswordComponent {
           this.commonMethod.matSnackBar(res.statusMessage, 0);
           this.passwordFlag = true;
             clearInterval(this.interval);
-            this.timeLeft = 90;
+            this.timeLeft = 50;
         }
         else{
           this.ngxSpinner.hide();
@@ -171,8 +173,10 @@ export class ForgetPasswordComponent {
       --this.timeLeft;
       if (this.timeLeft == 0) {
         this.timerFlag = true;
+        this.optFormField();
+
         clearInterval(this.interval);
-        this.timeLeft = 100;
+        this.timeLeft = 60;
       }
     }, 1000)
   }
@@ -199,6 +203,7 @@ export class ForgetPasswordComponent {
           if(res.statusCode == "200"){
             this.formDirective.resetForm();
             this.commonMethod.matSnackBar(res.statusMessage, 0);
+            this.router.navigate(['/login']);
           }else {
             this.commonMethod.matSnackBar(res.statusMessage, 1);
             this.ngxSpinner.hide();
