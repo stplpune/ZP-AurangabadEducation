@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { ErrorService } from 'src/app/core/services/error.service';
+import { MasterService } from 'src/app/core/services/master.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
 export interface PeriodicElement {
   srno: any;
@@ -24,8 +25,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./designation-master.component.scss']
 })
 export class DesignationMasterComponent {
-  displayedColumns: string[] = ['srno', 'designation', 'designationLevel', 'Action'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns = new Array();
   desigId = new FormControl(0);
   pageNumber: number = 1
   langTypeName: any;
@@ -37,13 +37,14 @@ export class DesignationMasterComponent {
   // displayedColumns = new Array();
   displayedheadersEnglish = ['Sr. No.', 'Designation Name', 'Designation Level', 'Action'];
   displayedheadersMarathi = ['अनुक्रमांक', 'पदनाम', 'पदनाम स्तर', 'कृती'];
+  desigLevelArr = new Array();
 
-
-  constructor(private webStorage: WebStorageService,
+  constructor(public webStorage: WebStorageService,
     private ngxSpinner: NgxSpinnerService,
     private apiService: ApiService,
     private commonMethod: CommonMethodService,
-    private errorsService: ErrorService){
+    private errorsService: ErrorService,
+    private masterService: MasterService){
 
   }
 
@@ -52,8 +53,22 @@ export class DesignationMasterComponent {
       this.langTypeName = lang;
       this.languageChange();
     });
+    this.getAllDesignationLevel();
     this.getTableData()
     
+  }
+
+  // Designation level dropdown 
+  getAllDesignationLevel(){
+    this.desigLevelArr = []
+    this.masterService.getAllDesignationLevel('').subscribe({
+      next:(res: any)=>{
+        res.statusCode == "200" ? (this.desigLevelArr.push({ "id": 0, "designationLevel": "All DesignationLevel", "m_DesignationLevel": "सर्व पदनाम स्तर" }, ...res.responseData)) : this.desigLevelArr = [];
+      },
+      error: ()=>{
+
+      }
+    })
   }
 
   getTableData(flag?: string){

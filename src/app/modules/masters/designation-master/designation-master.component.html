@@ -39,8 +39,8 @@
                     <div class="col-sm-5">
                         <label class="form-label">Designation</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option>Designation</mat-option>
+                            <mat-select [formControl]="desigId">
+                                <mat-option *ngFor="let desiglevel of desigLevelArr" [value]="desiglevel.id">{{langTypeName =='English' ? desiglevel.designationLevel: desiglevel.m_DesignationLevel}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
