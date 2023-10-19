@@ -202,6 +202,7 @@ export class SchoolRegistrationComponent {
     this.talukaArray = [];
     this.centerArray = [];
     this.villageArray = [];
+    this.getTableData();
   }
 
   globalDialogOpen(obj ?: any){
