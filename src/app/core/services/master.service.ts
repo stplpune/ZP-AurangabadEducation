@@ -29,6 +29,16 @@ export class MasterService {
     });
   }
 
+  getAllBit(langFlag?: string, talukaId?: number) {
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetBit?TalukaId='+ talukaId +'&flag_lang=' + langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
   getAllCenter(langFlag?: string, talukaId?: number) {
     return new Observable((obj) => {
       this.apiService.setHttp('GET', 'ZP-education/Master/GetAllCenter?flag_lang=' + langFlag + '&TalukaId=' + talukaId, false, false, false, 'zp-Education');
@@ -78,6 +88,27 @@ export class MasterService {
       });
     });
   }
+
+  getAllSchoolMedium(langFlag?: string) {
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllSchoolMedium?flag_lang=' + langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+  getAllDesignationLevel(langFlag?: string) {
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllDesignationLevel?flag_lang=' + langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
 
 
 

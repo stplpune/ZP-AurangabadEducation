@@ -9,6 +9,7 @@ import { ErrorService } from 'src/app/core/services/error.service';
 import { MasterService } from 'src/app/core/services/master.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ValidationService } from 'src/app/core/services/validation.service';
+import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
 
 @Component({
   selector: 'app-school-registration',
@@ -67,9 +68,10 @@ export class SchoolRegistrationComponent {
   getTableData(flag?: string){
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
+    let formValue = this.filterForm?.value;
     
-    let str = `pageno=${this.pageNumber}&pagesize=10&DistrictId=8&TalukaId=3&VillageId=132&CenterId=2&TextSearch=school&lan=${this.webStorage.languageFlag}`;
-    let reportStr = `pageno=1&pagesize=` + (this.totalCount * 10) + `&DistrictId=8&TalukaId=3&VillageId=132&CenterId=2&TextSearch=school&lan=${this.webStorage.languageFlag}`
+    let str = `pageno=${this.pageNumber}&pagesize=10&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`;
+    let reportStr = `pageno=1&pagesize=` + (this.totalCount * 10) + `&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`
 
     this.apiService.setHttp('get', 'ZP-Education/School/GetAllSchool?' + (flag == 'pdfFlag' ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
@@ -158,12 +160,12 @@ export class SchoolRegistrationComponent {
         this.pageNumber = obj.pageNumber;
         this.getTableData();
         break;
-      // case 'Edit':
-      //   this.addUpdateSchool(obj);
-      //   break;
-      // case 'Delete':
-      //   this.globalDialogOpen(obj);
-      //   break;
+      case 'Edit':
+        this.AddSchool(obj);
+        break;
+      case 'Delete':
+        this.globalDialogOpen(obj);
+        break;
     }
   }
 
@@ -174,8 +176,20 @@ export class SchoolRegistrationComponent {
       disableClose: true
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      dialogRef.close();
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 'yes' && data){
+        this.onClear();
+        this.getTableData();
+        this.getDistrict();
+        this.pageNumber = data.pageNumber;
+      }
+      else if(result == 'yes'){
+        this.getDistrict();
+        this.getTableData();
+        this.onClear();
+      }
+      this.highLightFlag=false;
+      this.languageChange();
     })
   }
 
@@ -189,4 +203,51 @@ export class SchoolRegistrationComponent {
     this.centerArray = [];
     this.villageArray = [];
   }
+
+  globalDialogOpen(obj ?: any){
+    let dialoObj = {
+      header: 'Delete',
+      title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete School Record?' : 'तुम्हाला शाळेचा रेकॉर्ड हटवायचा आहे का?',
+      cancelButton: this.webStorage.languageFlag == 'EN' ? 'Cancel' : 'रद्द करा',
+      okButton: this.webStorage.languageFlag == 'EN' ? 'Ok' : 'ओके'
+    }
+    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
+      width: '320px',
+      data: dialoObj,
+      disableClose: true,
+      autoFocus: false
+    })
+    deleteDialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 'yes') {
+        this.onClickDelete(obj);
+      }
+      this.highLightFlag=false;
+      this.languageChange();
+    })
+  }
+
+  onClickDelete(obj?: any){
+    let webStorageMethod = this.webStorage.createdByProps();
+    let deleteObj = {
+      "id": obj.id,
+      "modifiedBy": webStorageMethod.modifiedBy,
+      "modifiedDate": webStorageMethod.modifiedDate,
+      "lan": this.webStorage.languageFlag
+    }
+
+    this.apiService.setHttp('delete', 'ZP-Education/School/DeleteSchool?lan=' + this.webStorage.languageFlag, false, deleteObj, false, 'zp-Education');
+    this.apiService.getHttp().subscribe({
+      next: (res: any) => {
+        if(res.statusCode == "200"){
+          this.commonMethod.matSnackBar(res.statusMessage, 0);
+          this.getTableData();
+        }
+      },
+      error: (error: any) => {
+        this.commonMethod.checkDataType(error.statusText) == false ? this.errorsService.handelError(error.statusCode) : this.commonMethod.matSnackBar(error.statusText, 1);
+      }
+    });
+  }
+
+
 }

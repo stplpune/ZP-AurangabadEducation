@@ -1,6 +1,8 @@
 {
     "Lables": {
         "cancel": "Cancel",
+        "update" : "Update",
+        "submit" : "Submit",
         "changePassword": "Change Password",
         "enterCurrentPassword":"Enter Current Password",
         "enterNewPassword":"Enter New Password",
@@ -18,10 +20,22 @@
         "district" : "District",
         "taluka" : "Taluka",
         "kendra": "Kendra",
+        "bit": "Bit",
         "village": "Village",
         "UDISECode/SchoolName": "UDISE Code/School Name",
         "designationMaster": "Designation Master",
         "SchoolRegistration": "School Registration",
-        "AddSchool": "Add School"
+        "AddSchool": "Add School",
+        "updateSchool": "Update School Details",
+        "SchoolType": "School Type",
+        "SchoolName": "School Name",
+        "SchoolName(Marathi)": "School Name (Marathi)",
+        "SchoolManagement": "School Management",
+        "LowestClass": "Lowest Class",
+        "HighestClass": "Highest Class",
+        "SchoolCategory": "School Category",
+        "UDISECode": "UDISE Code",
+        "TypeOfArea": "Type of Area",
+        "SchoolMedium": "School Medium"
     }
 }

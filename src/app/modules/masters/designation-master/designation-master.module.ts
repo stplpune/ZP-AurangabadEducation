@@ -15,6 +15,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import { TranslateModule } from '@ngx-translate/core';
+import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatAutocompleteModule,
     MatTooltipModule,
     MatTableModule,
-    TranslateModule
+    TranslateModule,
+    GlobalTableComponent
   ]
 })
 export class DesignationMasterModule { }
