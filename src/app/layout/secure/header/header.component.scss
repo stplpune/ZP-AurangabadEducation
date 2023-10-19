@@ -63,6 +63,8 @@
     margin-right: 7px;
 }
 
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:active,
 .dropdown-menu .dropdown-item:hover {
     background-color: var(--main-light-color);
     color: var(--main-color);
