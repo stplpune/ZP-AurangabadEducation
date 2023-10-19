@@ -12,8 +12,8 @@
                                 <img src="assets/images/logo.jpg">
                             </div> -->
                             <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()" #formDirective="ngForm">
-                            <h4>LOGIN</h4>
-                            <p class="mb-4">Please log in to your account.</p>
+                            <h4 class="text-center">Login</h4>
+                            <!-- <p class="mb-4">Please log in to your account.</p> -->
                             <!-- <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Select District</mat-label>
                                 <mat-select>
@@ -39,7 +39,7 @@
                                     Required
                                 </mat-error>
                                 <mat-error *ngIf="f['password'].errors">
-                                    <span class="text-danger" *ngIf="f['password'].hasError('minlength') ||  f['password'].hasError('hasNumber') || 
+                                    <span class="text-danger" *ngIf="f['password'].hasError('minlength') ||  f['password'].hasError('hasNumber') ||
                                 f['password'].hasError('hasCapitalCase') ||
                                 f['password'].hasError('hasSmallCase') ||
                                 f['password'].hasError('hasSpecialCharacters')">
@@ -63,20 +63,20 @@
                                 </button>
                             </mat-form-field>
 
-                            <div class="row g-2 mb-2">
-                                <div class="col-sm">
+                            <div class="d-flex g-2 mb-2">
+                                <div class="col-sm-5 me-1">
                                     <div id="captcha">
 
                                     </div>
                                 </div>
-                                <div class="col-sm-auto">
+                                <div class="col-sm-2">
                                     <button type="button" mat-flat-button class="btn-icon btn-main" (click)="captcha()">
                                         <mat-icon class="material-symbols-rounded">
                                             autorenew
                                         </mat-icon>
                                     </button>
                                 </div>
-                                <div class="col-sm">
+                                <div class="col-sm-5">
                                     <mat-form-field appearance="outline" class="w-100">
                                         <mat-label>Captcha</mat-label>
                                         <input matInput placeholder="Captcha" formControlName="captcha" autocomplete="off" maxlength="6"
@@ -86,7 +86,7 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <button mat-flat-button class="btn-main w-50">LOGIN</button>
-                                <a routerLink="../forgot-password" class="text-main">Forgot Password</a>
+                                <a class="text-main" href="../forgot-password" class="text-main">Forgot Password?</a>
                             </div>
                         </form>
                         </div>
