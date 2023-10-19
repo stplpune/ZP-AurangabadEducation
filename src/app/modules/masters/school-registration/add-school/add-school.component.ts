@@ -51,12 +51,16 @@ export class AddSchoolComponent {
     ){}
 
   ngOnInit(){
+    this.data ? this.onEdit() : '';
     console.log("onEdit: ", this.data);
     
     this.formField();
     this.getDistrict();
     this.getLowestGroupClass();
     this.getSchoolType();
+    this.getSchoolManagement();
+    this.getCategory();
+    this.getMedium();
     this.getAreaArray();
   }
 
@@ -89,8 +93,8 @@ export class AddSchoolComponent {
           this.fb.group({
               id: 0,
               schoolId: 0,
-              documentId: 0,
-              eventId: 0,
+              documentId: 3,
+              // eventId: 0,
               docPath: [''],
               ...this.webStorage.createdByProps()
           })
@@ -156,7 +160,7 @@ export class AddSchoolComponent {
     this.masterService.getAllSchoolType(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolTypeArray = res.responseData : this.schoolTypeArray = [];
-        this.data ? (this.f['s_TypeId'].setValue(this.data.s_TypeId), this.getSchoolManagement()) : this.getSchoolManagement();
+        this.data ? this.f['s_TypeId'].setValue(this.data.s_TypeId) : '';
       }
     });
   }
@@ -165,7 +169,7 @@ export class AddSchoolComponent {
     this.masterService.getAllSchoolManagement(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolManagementArray = res.responseData : this.schoolManagementArray = [];
-        this.data ? (this.f['s_ManagementId'].setValue(this.data.s_ManagementId), this.getCategory()) : this.getCategory();
+        this.data ? this.f['s_ManagementId'].setValue(this.data.s_ManagementId) : '';
       }
     });
   }
@@ -174,7 +178,7 @@ export class AddSchoolComponent {
     this.masterService.getAllCategory(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.categoryArray = res.responseData : this.categoryArray = [];
-        this.data ? (this.f['s_CategoryId'].setValue(this.data.s_CategoryId), this.getMedium()) : this.getMedium();
+        this.data ? this.f['s_CategoryId'].setValue(this.data.s_CategoryId) : '';
       }
     });
   }
@@ -225,8 +229,11 @@ export class AddSchoolComponent {
     let type = 'jpg, jpeg, png';
     this.fileUpload.uploadDocuments(event, 'Upload', type).subscribe({
       next: (res: any) => {
-        if (res.statusCode == 200) {
+        
+        if (res.statusCode == "200") {
           this.uploadImg = res.responseData;
+          console.log("img upload... : ", this.uploadImg);
+          
           this.schoolRegForm.value.uploadImage = this.uploadImg;      
           this.commonMethod.matSnackBar(res.statusMessage, 0);
         }
@@ -238,10 +245,26 @@ export class AddSchoolComponent {
     });
   }
 
+  viewImg() {
+    if (this.data) {
+      let viewImg = this.data.uploadImage;
+      this.uploadImg ? window.open(this.uploadImg, 'blank') : window.open(viewImg, 'blank')
+    }
+    else {
+      window.open(this.uploadImg, 'blank');
+    }
+  }
+
+  clearImg() {   
+    this.uploadImg = '';
+    this.schoolRegForm.value.uploadImage = '';
+    this.f['uploadImage'].setValue('');
+  }
+
   multipleImgUpload(event: any) {
     this.fileUpload.uploadMultipleDocument(event, 'Upload', 'jpg, jpeg, png').subscribe({
       next: (res: any) => {
-        if (res.statusCode == 200) {
+        if (res.statusCode == "200") {
           this.uploadMultipleImg = res.responseData;        
           this.commonMethod.matSnackBar(res.statusMessage, 0);
           // multiple image 
@@ -266,8 +289,14 @@ export class AddSchoolComponent {
     });
   }
 
+  clearMultipleImg(index: any) {
+    this.imgArray.splice(index, 1);
+  }
+
   onSubmit(){
     let formValue = this.schoolRegForm.value;
+    formValue.uploadImage ? formValue.uploadImage = this.uploadImg : '';
+    formValue.isKendraSchool == false ? formValue.bitId = 0 : '';
     console.log("formValue: ", formValue);
     
     let url = this.data ? 'UpdateSchool' : 'AddSchool';
@@ -288,9 +317,45 @@ export class AddSchoolComponent {
           this.commonMethod.checkDataType(err.statusMessage) == false ? this.errorService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusMessage, 1);
         })
       })
-
     }
+  }
 
+  onEdit(){
+    // this.f['uploadImage'].setValue(this.data?.uploadImage);
+  }
+
+  clearDropdown(dropdown: string) {
+    if (dropdown == 'district') {
+      this.f['talukaId'].setValue('');
+      this.f['bitId'].setValue('');
+      this.f['centerId'].setValue('');
+      this.f['villageId'].setValue('');
+      this.bitArray = [];
+      this.centerArray = [];
+      this.villageArray = [];
+    }
+    else if (dropdown == 'taluka') {
+      this.f['bitId'].setValue('');
+      this.f['centerId'].setValue('');
+      this.f['villageId'].setValue('');
+      this.villageArray = [];
+    }
+    else if (dropdown == 'kendra') {
+      this.f['villageId'].setValue('');
+    }
+    else{
+      this.f['highestClass'].setValue('');
+    }
+  }
+
+  updateValidation(){
+    if(this.f['isKendraSchool'].value == true){
+      this.f['bitId'].setValidators(Validators.required);
+    }
+    else{
+      this.f['bitId'].clearValidators();
+    }
+    this.f['bitId'].updateValueAndValidity();
   }
 
 }

@@ -14,7 +14,7 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.district' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="districtId" (selectionChange)="getTaluka();">
+                    <mat-select formControlName="districtId" (selectionChange)="clearDropdown('district'); getTaluka();">
                         <mat-option *ngFor="let district of districtArray"
                             [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District:
                             district.district}}</mat-option>
@@ -24,7 +24,7 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.taluka' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="talukaId" (selectionChange)="getCenter();">
+                    <mat-select formControlName="talukaId" (selectionChange)="clearDropdown('taluka'); getCenter(); getBit();">
                         <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag
                             =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
                     </mat-select>
@@ -32,24 +32,24 @@
             </div>
             <div class="col-sm-4">
                 <div class="mt-1">
-                    <!-- <mat-checkbox>School is Kendra?</mat-checkbox> -->
-                    <input type="checkbox" name="check" id="check1" class="ms-2" formControlName="isKendraSchool" />
-                    <mat-label>School is Kendra?</mat-label>
+                    <input type="checkbox" name="check" id="check1" class="ms-2" formControlName="isKendraSchool" 
+                    (change)="updateValidation();getBit();"/>
+                    <mat-label>{{'Lables.SchoolIsKendra' | translate}}</mat-label>
                 </div>
             </div>
             <div class="col-sm-4" *ngIf="schoolRegForm.value.isKendraSchool == true">
                 <label class="form-label">{{'Lables.bit' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="bitId" (selectionChange)="getVillage();">
+                    <mat-select formControlName="bitId">
                         <mat-option *ngFor="let bit of bitArray" [value]="bit.id">{{webStorage.languageFlag
-                            =='mr-IN' ? bit.M_BitName: bit.BitName}}</mat-option>
+                            =='mr-IN' ? bit.m_BitName : bit.bitName}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.kendra' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="centerId" (selectionChange)="getVillage();">
+                    <mat-select formControlName="centerId" (selectionChange)="clearDropdown('kendra'); getVillage();">
                         <mat-option *ngFor="let center of centerArray" [value]="center.id">{{webStorage.languageFlag
                             =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                     </mat-select>
@@ -100,7 +100,7 @@
             <div class="col-sm-3">
                 <label class="form-label">{{'Lables.LowestClass' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="lowestClass" (selectionChange)="getHighestGroupClass();">
+                    <mat-select formControlName="lowestClass" (selectionChange)="clearDropdown('highestClass'); getHighestGroupClass();">
                         <mat-option *ngFor="let lowestGroup of lowestGroupclassArray" [value]="lowestGroup.lowestClass">
                             {{lowestGroup.value}}
                         </mat-option>
@@ -160,20 +160,21 @@
             <div class="col-sm-6">
                 <div class="file-upload border rounded-2 p-1">
                     <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
-                        data-placement="right">
-                        Upload Profile Photo
+                        data-placement="right" (click)="uploadImage.click()">
+                        {{'Lables.UploadProfilePhoto' | translate}}
                     </button>
-                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
+                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" #uploadImage
+                    (change)="imgUpload($event)"/>
 
                     <div class="d-flex gap-2">
                         <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
-                            matTooltip="view">
+                            matTooltip="{{'Lables.view' | translate}}" *ngIf="uploadImg" (click)="viewImg()">
                             <mat-icon class="material-symbols-rounded">
                                 preview
                             </mat-icon>
                         </button>
                         <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
-                            matTooltip="delete">
+                            matTooltip="{{'Lables.delete' | translate}}" *ngIf="uploadImg" (click)="clearImg()">
                             <mat-icon class="material-symbols-rounded">
                                 delete
                             </mat-icon>
@@ -187,28 +188,50 @@
                     <div formArrayName="schoolDocument" *ngFor="let img of multipleImg.controls; let i = index;">
                         <div [formGroupName]="i">
                             <button type="button" mat-flat-button class="btn" id="fileupload-button"
-                                data-toggle="tooltip" data-placement="right">
-                                Upload School Documents
+                                data-toggle="tooltip" data-placement="right" (click)="uploadGallImage.click()">
+                                {{'Lables.UploadSchoolDocuments' | translate}}
                             </button>
-                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
+                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" 
+                            #uploadGallImage (change)="multipleImgUpload($event)" multiple/>
 
-                            <div class="d-flex gap-2">
+                            <!-- <div class="d-flex gap-2">
                                 <button type="button" mat-flat-button
-                                    class="bg-primary-subtle text-primary btn-icon btn-action" matTooltip="view">
+                                    class="bg-primary-subtle text-primary btn-icon btn-action" matTooltip="{{'Lables.view' | translate}}">
                                     <mat-icon class="material-symbols-rounded">
                                         preview
                                     </mat-icon>
                                 </button>
                                 <button type="button" mat-flat-button
-                                    class="bg-danger-subtle text-danger btn-icon btn-action" matTooltip="delete">
+                                    class="bg-danger-subtle text-danger btn-icon btn-action" matTooltip="{{'Lables.delete' | translate}}">
                                     <mat-icon class="material-symbols-rounded">
                                         delete
                                     </mat-icon>
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
+
+                <!-- Display Image -->
+                <div class="d-flex flex-wrap gap-4">
+                    <ng-container *ngFor="let item of imgArray; let i = index">
+                        <div class="gallery position-relative">
+                            <img [src]="item.docPath" height="130px" width="130px" class="border">
+                            <span class="position-absolute" style="top:-17px;right:-17px;">
+                                <button type="button" mat-icon-button
+                                    class="bg-danger bg-opacity-25 text-danger material-icons"
+                                    (click)="clearMultipleImg(i)" matTooltip="{{'Lables.delete' | translate}}"
+                                    matTooltipPosition="right" matTooltipClass="tooltip">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Display Image -->
+
+
+
             </div>
         </div>
     </mat-dialog-content>
