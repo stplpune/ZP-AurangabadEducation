@@ -7,7 +7,7 @@
 @import url('assets/css/MaterialStyleSheet.scss');
 
 body {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     background-color: #eee;
 }
 
@@ -64,7 +64,7 @@ a.text-main:hover {
 .btn-main,
 .btn-main-light,
 .btn-main-dark {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     letter-spacing: 0px !important;
 }
 
@@ -179,7 +179,7 @@ ol.breadcrumb {
 
 .dashboard-table {
     @include mat.all-component-densities(-3);
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     box-shadow: none;
 }
 
@@ -190,7 +190,7 @@ ol.breadcrumb {
 
 .dashboard-table th,
 .dashboard-table td {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     font-size: 0.85rem;
     vertical-align: middle;
 }
@@ -209,13 +209,13 @@ ol.breadcrumb {
 }
 
 .modal-footer {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     font-size: 0.85rem;
     padding: 5px 15px !important;
 }
 
 .modal-header {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     font-size: 0.85rem;
     background-color: var(--main-light-color);
     padding: 5px 15px !important;
@@ -252,7 +252,7 @@ button.btn-modal-close {
 .file-upload .btn {
     background-color: var(--main-light-color) !important;
     letter-spacing: normal;
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     font-size: 0.8rem;
     height: 28px !important;
     color: var(--main-color) !important;
@@ -275,7 +275,7 @@ button.btn-modal-close {
 }
 
 .section-head {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     background-color: #eee;
     color: #000;
     font-weight: 400;
@@ -287,16 +287,16 @@ button.btn-modal-close {
 }
 
 .form-container .form-label {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     font-size: 0.85rem;
     margin-bottom: 3px;
     letter-spacing: normal;
     font-weight: 500;
-    color: #858585;
+    color: #656565;
 }
 
 .form-container .form-data {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: normal;
