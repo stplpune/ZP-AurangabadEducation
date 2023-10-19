@@ -1,8 +1,6 @@
 <div class="login-wrapper">
     <div class="container">
         <div class="row justify-content-center align-items-center">
-
-      <div class="div">fasff</div>
             <div class="col-sm-8">
                 <div class="login-box">
                     <div class="row">
@@ -10,21 +8,9 @@
                             <img src="assets/images/login.svg">
                         </div>
                         <div class="col-sm-6" id="right-side">
-                            <!-- <div class="logo">
-                                <img src="assets/images/logo.jpg">
-                            </div> -->
                             <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()" #formDirective="ngForm">
-                                <h4>Login</h4>
+                                <h4>LOGIN</h4>
                                 <p class="mb-4">Please log in to your account.</p>
-                                <!-- <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Select District</mat-label>
-                                <mat-select>
-                                    <mat-option value="option1">Option 1</mat-option>
-                                    <mat-option value="option2">Option 2</mat-option>
-                                    <mat-option value="option3">Option 3</mat-option>
-                                </mat-select>
-                                <mat-icon matPrefix class="material-symbols-rounded">home_pin</mat-icon>
-                            </mat-form-field> -->
                                 <mat-form-field appearance="outline" class="w-100">
                                     <mat-label>Username</mat-label>
                                     <input matInput placeholder="Username" formControlName="userName"
@@ -89,11 +75,18 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
                                     <button mat-flat-button class="btn-main w-50">LOGIN</button>
-                                    <a class="text-main" href="../forgot-password" class="text-main">Forgot
+                                    <a class="text-main" href="../forgot-password">Forgot
                                         Password?</a>
                                 </div>
+                                <a class="d-flex align-items-center text-main justify-content-center gap-1"
+                                    href="../home">
+                                    <mat-icon class="material-symbols-rounded">
+                                        keyboard_double_arrow_left
+                                    </mat-icon>
+                                    <span>Back to Home Page</span>
+                                </a>
                             </form>
                         </div>
                     </div>
