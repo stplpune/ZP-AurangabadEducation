@@ -12,9 +12,9 @@
                                 <img src="assets/images/logo.jpg">
                             </div> -->
                             <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()" #formDirective="ngForm">
-                            <h4 class="text-center">Login</h4>
-                            <!-- <p class="mb-4">Please log in to your account.</p> -->
-                            <!-- <mat-form-field appearance="outline" class="w-100">
+                                <h4>Login</h4>
+                                <p class="mb-4">Please log in to your account.</p>
+                                <!-- <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Select District</mat-label>
                                 <mat-select>
                                     <mat-option value="option1">Option 1</mat-option>
@@ -23,72 +23,76 @@
                                 </mat-select>
                                 <mat-icon matPrefix class="material-symbols-rounded">home_pin</mat-icon>
                             </mat-form-field> -->
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Username</mat-label>
-                                <input matInput placeholder="Username" formControlName="userName" (keypress)="validation.noSpacesAtStart($event);validation.alphaNumeric($event)" (blur)="clearSpace()" maxlength="10">
-                                <mat-icon matPrefix class="material-symbols-rounded">person</mat-icon>
-                                <mat-error *ngIf="f['userName'].hasError('required')">Username is
-                                    Required
-                                </mat-error>
-                            </mat-form-field>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Password</mat-label>
-                                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" maxlength="9" (keypress)="validation.noSpacesAtStart($event)" (blur)="clearSpace()">
-                                <mat-icon matPrefix class="material-symbols-rounded">lock</mat-icon>
-                                <mat-error *ngIf="f['password'].hasError('required')">Password is
-                                    Required
-                                </mat-error>
-                                <mat-error *ngIf="f['password'].errors">
-                                    <span class="text-danger" *ngIf="f['password'].hasError('minlength') ||  f['password'].hasError('hasNumber') ||
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Username</mat-label>
+                                    <input matInput placeholder="Username" formControlName="userName"
+                                        (keypress)="validation.noSpacesAtStart($event);validation.alphaNumeric($event)"
+                                        (blur)="clearSpace()" maxlength="10">
+                                    <mat-icon matPrefix class="material-symbols-rounded">person</mat-icon>
+                                    <mat-error *ngIf="f['userName'].hasError('required')">Username is
+                                        Required
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
+                                        formControlName="password" maxlength="9"
+                                        (keypress)="validation.noSpacesAtStart($event)" (blur)="clearSpace()">
+                                    <mat-icon matPrefix class="material-symbols-rounded">lock</mat-icon>
+                                    <mat-error *ngIf="f['password'].hasError('required')">Password is
+                                        Required
+                                    </mat-error>
+                                    <mat-error *ngIf="f['password'].errors">
+                                        <span class="text-danger" *ngIf="f['password'].hasError('minlength') ||  f['password'].hasError('hasNumber') ||
                                 f['password'].hasError('hasCapitalCase') ||
                                 f['password'].hasError('hasSmallCase') ||
                                 f['password'].hasError('hasSpecialCharacters')">
-                                        {{
-                                        loginForm.controls['password'].hasError('minlength') ?
-                                        'Please Enter Minimum 9 Characters' :
-                                        loginForm.controls['password'].hasError('hasNumber') ?
-                                        'Please Enter at least 1 number' :
-                                        loginForm.controls['password'].hasError('hasCapitalCase') ?
-                                        'Please Enter at least 1 Letter in Capital Case' :
-                                        loginForm.controls['password'].hasError('hasSmallCase') ?
-                                        'Please Enter at least 1 Letter in Small Case' :
-                                        'Please Enter at least 1 Special Character'
-                                        }}
-                                    </span>
-                                </mat-error>
-                                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
-                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                    <mat-icon class="material-symbols-rounded">{{hide ? 'visibility_off' :
-                                        'visibility'}}</mat-icon>
-                                </button>
-                            </mat-form-field>
+                                            {{
+                                            loginForm.controls['password'].hasError('minlength') ?
+                                            'Please Enter Minimum 9 Characters' :
+                                            loginForm.controls['password'].hasError('hasNumber') ?
+                                            'Please Enter at least 1 number' :
+                                            loginForm.controls['password'].hasError('hasCapitalCase') ?
+                                            'Please Enter at least 1 Letter in Capital Case' :
+                                            loginForm.controls['password'].hasError('hasSmallCase') ?
+                                            'Please Enter at least 1 Letter in Small Case' :
+                                            'Please Enter at least 1 Special Character'
+                                            }}
+                                        </span>
+                                    </mat-error>
+                                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon class="material-symbols-rounded">{{hide ? 'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
 
-                            <div class="d-flex g-2 mb-2">
-                                <div class="col-sm-5 me-1">
-                                    <div id="captcha">
-
+                                <div class="row g-1 mb-0 align-items-start">
+                                    <div class="col-sm-5 col-5">
+                                        <div class="w-100" id="captcha"></div>
+                                    </div>
+                                    <div class="col-sm text-center col">
+                                        <button type="button" mat-flat-button class="btn-icon btn-main"
+                                            (click)="captcha()">
+                                            <mat-icon class="material-symbols-rounded">
+                                                autorenew
+                                            </mat-icon>
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-5 col-5">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Captcha</mat-label>
+                                            <input matInput placeholder="Captcha" formControlName="captcha"
+                                                autocomplete="off" maxlength="6" oninput="value = value.toUpperCase()">
+                                        </mat-form-field>
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <button type="button" mat-flat-button class="btn-icon btn-main" (click)="captcha()">
-                                        <mat-icon class="material-symbols-rounded">
-                                            autorenew
-                                        </mat-icon>
-                                    </button>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button mat-flat-button class="btn-main w-50">LOGIN</button>
+                                    <a class="text-main" href="../forgot-password" class="text-main">Forgot
+                                        Password?</a>
                                 </div>
-                                <div class="col-sm-5">
-                                    <mat-form-field appearance="outline" class="w-100">
-                                        <mat-label>Captcha</mat-label>
-                                        <input matInput placeholder="Captcha" formControlName="captcha" autocomplete="off" maxlength="6"
-                                            oninput="value = value.toUpperCase()">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <button mat-flat-button class="btn-main w-50">LOGIN</button>
-                                <a class="text-main" href="../forgot-password" class="text-main">Forgot Password?</a>
-                            </div>
-                        </form>
+                            </form>
                         </div>
                     </div>
                 </div>
