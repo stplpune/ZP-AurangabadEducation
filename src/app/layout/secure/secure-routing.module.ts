@@ -32,7 +32,6 @@ const routes: Routes = [
   { path: 'add-student', loadChildren: () => import('../../modules/masters/student-registration/add-student/add-student.module').then(m => m.AddStudentModule) },
   { path: 'view-stock-report', loadChildren: () => import('../../modules/asset-management/store-stock-report/view-stock-report/view-stock-report.module').then(m => m.ViewStockReportModule) },
   { path: 'my-profile', loadChildren: () => import('../../modules/profile/my-profile/my-profile.module').then(m => m.MyProfileModule) },
-  { path: 'school-profile-details', loadChildren: () => import('../../modules/masters/school-registration/school-profile-details/school-profile-details.module').then(m => m.SchoolProfileDetailsModule) },
   { path: 'add-standard-subject', loadChildren: () => import('../../modules/settings/add-standard-subject/add-standard-subject.module').then(m => m.AddStandardSubjectModule) },
   { path: 'add-question', loadChildren: () => import('../../modules/settings/assessment-crateria/add-question/add-question.module').then(m => m.AddQuestionModule) },
   { path: 'registration-approval', loadChildren: () => import('../../modules/settings/registration-approval/registration-approval.module').then(m => m.RegistrationApprovalModule) },
