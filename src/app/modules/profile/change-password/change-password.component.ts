@@ -130,5 +130,8 @@ export class ChangePasswordComponent {
     }
   }
 
+  DisablePaste(event: any){
+    event.preventDefault();
+  }
 
 }
