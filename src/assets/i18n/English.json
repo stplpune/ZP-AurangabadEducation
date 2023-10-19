@@ -1,6 +1,6 @@
 {
     "Lables": {
-        "cancel": "Cancel",
+        "cancel": "Clear",
         "update" : "Update",
         "submit" : "Submit",
         "changePassword": "Change Password",
@@ -10,7 +10,7 @@
         "passwordsmustcontains": "Passwords must contains",
         "pleaseEnterValidCurrentPassowrd": "Please Enter Valid Current Password",
         "pleaseEnterValidConfirmPassword": "Please Enter Valid Confirm Password",
-        "Atleast8Characterslong" :"Must be 9 characters long",
+        "Atleast8Characterslong" :"At least 9-10 characters long",
         "Atleast1LowercaseCharacters(a-z)" : "At least 1 Lowercase Characters (a-z)",
         "Atleast1UpercaseCharacters(A-Z)" : "At least 1 Uppercase Characters (A-Z)",
         "Atleast1Digits(0-9)" :"At least 1 Digit(0-9)",
