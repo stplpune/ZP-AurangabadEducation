@@ -113,4 +113,8 @@ export class LoginComponent {
     this.f['password'].setValue(replacePassword);
   }
 
+  disablePaste(event: any){
+    event.preventDefault();
+  }
+
 }
