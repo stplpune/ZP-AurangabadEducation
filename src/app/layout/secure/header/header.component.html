@@ -37,14 +37,14 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <button [class]="webStorage.languageFlag == 'EN' ? 'dropdown-item active' : 'dropdown-item'"
                         (click)="onChangeLanguage('English')">
-                        <div class="d-flex align-items-start">
+                        <div class="d-flex align-items-center">
                             <img src="assets/images/english.svg">
                             <span>English</span>
                         </div>
                     </button>
                     <button [class]="webStorage.languageFlag != 'EN' ? 'dropdown-item active' : 'dropdown-item'"
                         (click)="onChangeLanguage('Marathi')">
-                        <div class="d-flex align-items-start">
+                        <div class="d-flex align-items-center">
                             <img src="assets/images/marathi.svg">
                             <span>Marathi</span>
                         </div>
