@@ -4,6 +4,8 @@
         "clear": "Clear",
         "update" : "Update",
         "submit" : "Submit",
+        "view" : "view",
+        "delete": "delete",
         "changePassword": "Change Password",
         "enterCurrentPassword":"Enter Current Password",
         "enterNewPassword":"Enter New Password",
@@ -37,6 +39,9 @@
         "SchoolCategory": "School Category",
         "UDISECode": "UDISE Code",
         "TypeOfArea": "Type of Area",
-        "SchoolMedium": "School Medium"
+        "SchoolMedium": "School Medium",
+        "SchoolIsKendra":"School is Kendra?",
+        "UploadProfilePhoto": "Upload Profile Photo",
+        "UploadSchoolDocuments": "Upload School Documents"
     }
 }
