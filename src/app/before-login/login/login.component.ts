@@ -58,7 +58,7 @@ export class LoginComponent {
               hasSpecialCharacters: true
             }
           ),
-          Validators.minLength(9)
+          Validators.minLength(8), Validators.maxLength(10)
         ])]],
       captcha: ['', [Validators.required, Validators.pattern('^[0-9A-Z]{6}$')]]
     })

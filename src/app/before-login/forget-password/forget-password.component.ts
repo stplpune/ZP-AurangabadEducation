@@ -6,6 +6,7 @@ import { CommonMethodService } from 'src/app/core/services/common-method.service
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { CustomValidatorsService } from 'src/app/core/services/custom-validators.service';
 import { Router } from '@angular/router';
+import { ErrorService } from 'src/app/core/services/error.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -33,7 +34,8 @@ export class ForgetPasswordComponent {
     private ngxSpinner: NgxSpinnerService,
     private commonMethod: CommonMethodService,
     public validation: ValidationService,
-    private router: Router) { }
+    private router: Router,
+    private errorService: ErrorService) { }
 
   ngOnInit() {
     this.mobileNumberFormField();
@@ -80,9 +82,9 @@ export class ForgetPasswordComponent {
               hasSpecialCharacters: true
             }
           ),
-          Validators.minLength(9)
+          Validators.minLength(8), Validators.maxLength(10)
         ])]],
-      reTypePassword: ['', [Validators.required, Validators.pattern(this.validation.valPassword)]]
+      reTypePassword: ['', [Validators.required, Validators.pattern(this.validation.valPassword), Validators.minLength(8), Validators.maxLength(10)]]
     });
   }
 
@@ -119,7 +121,9 @@ export class ForgetPasswordComponent {
           } else {
             this.commonMethod.matSnackBar('Please Enter Registered Mobile Number.', 1);
           }
-        }
+        },error: ((err: any) => {
+          this.commonMethod.checkDataType(err.statusMessage) == false ? this.errorService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusMessage, 1);
+        })
       })
     }
   }
@@ -218,8 +222,8 @@ export class ForgetPasswordComponent {
     this.router.navigate(['./login'])
   }
 
-
-
-
+  disablePaste(event: any){
+    event.preventDefault();
+  }
 
 }

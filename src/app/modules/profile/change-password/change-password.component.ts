@@ -49,7 +49,7 @@ export class ChangePasswordComponent {
 
   formField() {
     this.changePasswordForm = this.fb.group({
-      userId: 1,
+      userId: this.webStorage.getUserId(),
       newPassword: ['',
         [Validators.compose([
           Validators.required,
@@ -72,10 +72,10 @@ export class ChangePasswordComponent {
               hasSpecialCharacters: true
             }
           ),
-          Validators.minLength(9)
+          Validators.minLength(8), Validators.maxLength(10)
         ])]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(9), Validators.pattern(this.validation.valPassword)]],
-      oldPassword: ['', [Validators.required, Validators.minLength(9), Validators.pattern(this.validation.valPassword)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(this.validation.valPassword)]],
+      oldPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(this.validation.valPassword)]],
     })
   }
 
@@ -132,6 +132,10 @@ export class ChangePasswordComponent {
 
   disablePaste(event: any){
     event.preventDefault();
+  }
+
+  onClear(){
+    this.formField();
   }
 
 }

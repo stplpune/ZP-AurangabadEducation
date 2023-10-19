@@ -24,7 +24,7 @@
                                 <mat-form-field appearance="outline" class="w-100">
                                     <mat-label>Password</mat-label>
                                     <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
-                                        formControlName="password" maxlength="9"
+                                        formControlName="password" minlength="8" maxlength="10"
                                         (keypress)="validation.noSpacesAtStart($event)" (blur)="clearSpace()" (paste)="disablePaste($event)">
                                     <mat-icon matPrefix class="material-symbols-rounded">lock</mat-icon>
                                     <mat-error *ngIf="f['password'].hasError('required')">Password is
@@ -37,7 +37,7 @@
                                 f['password'].hasError('hasSpecialCharacters')">
                                             {{
                                             loginForm.controls['password'].hasError('minlength') ?
-                                            'Please Enter Minimum 9 Characters' :
+                                            'Please Enter Minimum 8 Characters' :
                                             loginForm.controls['password'].hasError('hasNumber') ?
                                             'Please Enter at least 1 number' :
                                             loginForm.controls['password'].hasError('hasCapitalCase') ?
