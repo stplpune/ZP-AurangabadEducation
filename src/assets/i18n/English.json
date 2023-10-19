@@ -1,6 +1,7 @@
 {
     "Lables": {
-        "cancel": "Clear",
+        "cancel": "Cancel",
+        "clear": "Clear",
         "update" : "Update",
         "submit" : "Submit",
         "changePassword": "Change Password",

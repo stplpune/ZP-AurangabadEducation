@@ -1,6 +1,7 @@
 {
     "Lables": {
         "cancel": "रद्द करा",
+        "clear": "रद्द करा",
         "update" : "अपडेट करा",
         "submit" : "जतन करा",
         "changePassword": "पासवर्ड बदला",
@@ -15,7 +16,7 @@
         "Atleast1UpercaseCharacters(A-Z)" : "किमान १ अप्परकेस कॅरेक्टर (A-Z) वर्ण असणे आवश्यक आहे",
         "Atleast1Digits(0-9)" :"किमान १ अंक(0-९)",
         "Atleast1SpecialCharacters(*$@#)" : "किमान एक विशेष वर्ण असणे आवश्यक आहे (@,#,&,$)",
-        
+
         "master": "मास्टर",
         "district" : "जिल्हा",
         "taluka" : "तालुका",
