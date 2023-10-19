@@ -3,6 +3,8 @@
         "cancel": "रद्द करा",
         "update" : "अपडेट करा",
         "submit" : "जतन करा",
+        "view" : "दृश्य",
+        "delete": "हटवा",
         "changePassword": "पासवर्ड बदला",
         "enterCurrentPassword":"सध्याचा पासवर्ड टाका",
         "enterNewPassword":"नवीन पासवर्ड टाका",
@@ -36,6 +38,9 @@
         "SchoolCategory": "शाळा श्रेणी",
         "UDISECode": "यूडीआयएसई कोड",
         "TypeOfArea": "क्षेत्र प्रकार",
-        "SchoolMedium": "शाळा माध्यम"
+        "SchoolMedium": "शाळा माध्यम",
+        "SchoolIsKendra":"शाळा केंद्र आहे?",
+        "UploadProfilePhoto": "प्रोफाइल फोटो अपलोड करा",
+        "UploadSchoolDocuments": "शाळेची कागदपत्रे अपलोड करा"
     }
 }
