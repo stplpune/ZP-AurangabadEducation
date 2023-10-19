@@ -42,6 +42,9 @@ a.text-main {
     color: var(--main-color) !important;
     text-decoration: none;
     font-size: 0.85rem;
+}
+
+a.text-main {
     cursor: pointer;
 }
 
@@ -284,15 +287,17 @@ button.btn-modal-close {
 
 .form-container .form-label {
     font-family: 'Rubik', sans-serif !important;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-bottom: 3px;
     letter-spacing: normal;
+    font-weight: 500;
+    color: #858585;
 }
 
 .form-container .form-data {
     font-family: 'Rubik', sans-serif !important;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: normal;
 }
 
