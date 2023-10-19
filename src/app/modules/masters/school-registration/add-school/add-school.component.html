@@ -32,7 +32,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="mt-1">
-                    <input type="checkbox" name="check" id="check1" class="ms-2" formControlName="isKendraSchool" 
+                    <input type="checkbox" name="check" id="check1" class="ms-2" formControlName="isKendraSchool"
                     (change)="updateValidation();getBit();"/>
                     <mat-label>{{'Lables.SchoolIsKendra' | translate}}</mat-label>
                 </div>
@@ -73,6 +73,8 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+            </div>
+            <div class="row">
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolName' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
@@ -191,7 +193,7 @@
                                 data-toggle="tooltip" data-placement="right" (click)="uploadGallImage.click()">
                                 {{'Lables.UploadSchoolDocuments' | translate}}
                             </button>
-                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" 
+                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden"
                             #uploadGallImage (change)="multipleImgUpload($event)" multiple/>
 
                             <!-- <div class="d-flex gap-2">
@@ -213,7 +215,7 @@
                 </div>
 
                 <!-- Display Image -->
-                <div class="d-flex flex-wrap gap-4">
+                <div class="d-flex flex-wrap gap-4 mt-3">
                     <ng-container *ngFor="let item of imgArray; let i = index">
                         <div class="gallery position-relative">
                             <img [src]="item.docPath" height="130px" width="130px" class="border">
@@ -222,7 +224,7 @@
                                     class="bg-danger bg-opacity-25 text-danger material-icons"
                                     (click)="clearMultipleImg(i)" matTooltip="{{'Lables.delete' | translate}}"
                                     matTooltipPosition="right" matTooltipClass="tooltip">
-                                    <mat-icon>delete</mat-icon>
+                                    <mat-icon class="material-symbols-rounded text-danger">delete</mat-icon>
                                 </button>
                             </span>
                         </div>
