@@ -18,6 +18,8 @@
         "Atleast1UpercaseCharacters(A-Z)" : "At least 1 Uppercase Characters (A-Z)",
         "Atleast1Digits(0-9)" :"At least 1 Digit(0-9)",
         "Atleast1SpecialCharacters(*$@#)" :"At least 1 Special Characters (*$@#)",
+        "enterValidSchoolName":"Please enter valid school name",
+        "validschoolNameMarathi" : "Please enter valid school name(Marathi)",
 
         "master": "Master",
         "district" : "District",
