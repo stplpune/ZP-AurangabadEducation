@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { ErrorService } from 'src/app/core/services/error.service';
 import { MasterService } from 'src/app/core/services/master.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
 export interface PeriodicElement {
   srno: any;
@@ -12,6 +13,7 @@ export interface PeriodicElement {
   DesignationLevel: any;
   Linkedto: any;
   Action: any;
+  
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -41,14 +43,18 @@ export class DesignationMasterComponent {
   displayedheadersEnglish = ['Sr. No.', 'Designation Name', 'Designation Level', 'Action'];
   displayedheadersMarathi = ['अनुक्रमांक', 'पदनाम', 'पदनाम स्तर', 'कृती'];
   desigLevelArr = new Array();
+  dependDesigArr = new Array();
+  desireDesigLevelArr = new Array();
 
+  get f (){ return this.desigNationForm.controls }
   constructor(public webStorage: WebStorageService,
     private ngxSpinner: NgxSpinnerService,
     private apiService: ApiService,
     private commonMethod: CommonMethodService,
     private errorsService: ErrorService,
     private masterService: MasterService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public validation: ValidationService
     ){
 
   }
@@ -68,16 +74,16 @@ export class DesignationMasterComponent {
       ...this.webStorage.createdByProps(),
       "id": [0],
       "dependantDesigLevelId": [''], // Not from backend 
+      "linkedDesignationModel": [''],
       "designationLevelId": [0],
       "designation": [''],
       "m_Designation": [''],
       "localId": [0],
       "lan": [''],
-      "linkedDesignationModel": ['']
     })
   }
 
-  // Designation level dropdown 
+  //Dependant Designation level dropdown 
   getAllDesignationLevel(){
     this.desigLevelArr = []
     this.masterService.getAllDesignationLevel('').subscribe({
@@ -85,16 +91,41 @@ export class DesignationMasterComponent {
         res.statusCode == "200" ? (this.desigLevelArr.push({ "id": 0, "designationLevel": "All DesignationLevel", "m_DesignationLevel": "सर्व पदनाम स्तर" }, ...res.responseData)) : this.desigLevelArr = [];
       },
       error: ()=>{
-
       }
     })
+  }
+
+  // Dependant Designation dropdown
+  getAllDepenDesignationByLevelId(){
+    let dependantDesigLevelId = this.f['dependantDesigLevelId'].value
+    this.dependDesigArr = [];
+    this.masterService.getAllDepenDesignationByLevelId('',dependantDesigLevelId).subscribe({
+      next: (res: any)=>{
+        res.statusCode == "200" ? (this.dependDesigArr = res.responseData) : this.dependDesigArr = [];
+      }
+    })
+  }
+
+  //getAllDesireDesignation dropdown
+  getAllDesireDesigLevelBylevel(){
+    let dependantDesigLevelId = this.f['dependantDesigLevelId'].value
+    this.desireDesigLevelArr = [];
+    this.masterService.getAllDesireDesignationsByLevelId('',dependantDesigLevelId).subscribe({
+      next: (res: any)=>{
+        res.statusCode == "200" ? (this.desireDesigLevelArr = res.responseData) : this.desireDesigLevelArr = [];
+      }
+    })
+  }
+
+  submit(){
+
   }
 
   getTableData(flag?: string){
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     
-    let str = `DesignationLevelId=${this.desigId.value}&TextSearch=${this.textSearch}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
+    let str = `DesignationLevelId=${this.desigId.value}&TextSearch=${(this.textSearch.value)?.trim()}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
     let reportStr = `DesignationLevelId=${this.desigId.value}&TextSearch=${this.textSearch}&pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
 
     this.apiService.setHttp('get', 'ZP-Education/Designation/GetAll?' + (flag == 'pdfFlag' ? reportStr : str), false, false, false, 'zp-Education');

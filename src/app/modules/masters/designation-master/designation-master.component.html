@@ -72,7 +72,7 @@
         </mat-card>
     </div>
     <div class="col-sm-4 form-container">
-        <form action="" [formGroup]="desigNationForm">
+        <form action="" [formGroup]="desigNationForm" (ngSubmit)="submit()">
         <mat-card class="plain-card">
             <mat-card-header class="card-header">
                 <div class="text-main">Designation Registration</div>
@@ -80,23 +80,23 @@
             <mat-card-content class="card-body">
                 <label class="form-label">Select Dependant Designation Level</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="dependantDesigLevelId">
-                        <mat-option *ngFor="let desigLevel of desigLevelArr" [value]="desigLevel.id" [disabled]="desigLevel.id == 0">{{langTypeName =='English' ? desigLevel.designationLevel: desigLevel.m_DesignationLevel}}</mat-option>
+                    <mat-select formControlName="dependantDesigLevelId" (selectionChange)="getAllDepenDesignationByLevelId()">
+                        <mat-option *ngFor="let desigLevel of desigLevelArr" [value]="desigLevel.id" [hidden]="desigLevel.id == 0">{{langTypeName =='English' ? desigLevel.designationLevel: desigLevel.m_DesignationLevel}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <label class="form-label">Select Dependant Designation</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="linkedDesignationModel">
-                        <mat-option>Block Education Officer</mat-option>
+                    <mat-select formControlName="linkedDesignationModel" (selectionChange)="getAllDesireDesigLevelBylevel()">
+                        <mat-option *ngFor="let desig of dependDesigArr" [value]="desig.id"> {{langTypeName =='English' ? desig.designation: desig.m_Designation}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 
-                <label class="form-label">Designation Level</label>
-                <mat-form-field appearance="outline" class="w-100" formControlName="designationLevelId">
-                    <mat-select>
-                        <mat-option>Taluka</mat-option>
+                <label class="form-label">Desire Designation Level</label>
+                <mat-form-field appearance="outline" class="w-100" >
+                    <mat-select formControlName="designationLevelId">
+                        <mat-option *ngFor=" let desigLevel of desireDesigLevelArr" [value]="desigLevel.id">{{langTypeName =='English' ? desigLevel.designationLevel: desigLevel.m_DesignationLevel}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <label class="form-label">Designation Name</label>
@@ -105,7 +105,7 @@
                 </mat-form-field>
                 <label class="form-label">Designation Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input minlength="2" maxlength="50" matInput formControlName="m_Designation">
+                    <input minlength="2" maxlength="50" matInput formControlName="m_Designation"  (keypress)="validation.noFirstSpaceAllow($event); validation.unicodeMarathiValidation($event);">
                 </mat-form-field>
                 
 
