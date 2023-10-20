@@ -110,7 +110,7 @@ export class SchoolRegistrationComponent {
     this.displayedColumns = ['srNo', 'schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
-      img: '', blink: '', badge: '', isBlock: '', pagintion: true,
+      // img: '', blink: '', badge: '', isBlock: '', pagintion: true,
       img: '', blink: '', badge: '', isBlock: '', pagintion: this.totalCount > 10 ? true : false,
       displayedColumns: this.displayedColumns,
       tableData: this.tableDataArray,
