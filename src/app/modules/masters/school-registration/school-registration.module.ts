@@ -18,6 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatCheckboxModule,
     MatRadioModule,
     GlobalTableComponent,
-    TranslateModule
+    TranslateModule,
+    GlobalDialogComponent
   ]
 })
 export class SchoolRegistrationModule { }

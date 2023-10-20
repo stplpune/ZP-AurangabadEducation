@@ -8,6 +8,7 @@ import { CommonMethodService } from 'src/app/core/services/common-method.service
 import { TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -49,10 +50,29 @@ export class HeaderComponent {
     });
   }
 
-  logOut() {
-    this.commonMethodsService.redirectToLoginHome('Login')
-  }
+  // logOut() {
+  //   this.commonMethodsService.redirectToLoginHome('Login')
+  // }
 
+  logout() {
+    let dialoObj = {
+      header: 'Logout',
+      title: 'Do You Want To Logout ?',
+      cancelButton: 'Cancel',
+      okButton: 'Logout'
+    }
+    const dialogRef = this.dialog.open(GlobalDialogComponent, {
+      width: '320px',
+      data: dialoObj,
+      disableClose: true,
+      autoFocus: false
+    })
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 'yes') {
+        this.commonMethodsService.redirectToLoginHome('Login')
+      }
+    });
+  }
   onChangeLanguage(lang: any) {
     this.language = lang
     this.translate.use(lang);
