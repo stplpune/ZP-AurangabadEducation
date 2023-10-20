@@ -87,7 +87,7 @@
 
                 <label class="form-label">Select Dependant Designation</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="linkedDesignationModel" (selectionChange)="getAllDesireDesigLevelBylevel()">
+                    <mat-select formControlName="linkedDesignationModel" (selectionChange)="getAllDesireDesigLevelBylevel(); selectMultiple($event);" multiple>
                         <mat-option *ngFor="let desig of dependDesigArr" [value]="desig.id"> {{langTypeName =='English' ? desig.designation: desig.m_Designation}}</mat-option>
                     </mat-select>
                 </mat-form-field>

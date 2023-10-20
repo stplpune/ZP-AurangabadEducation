@@ -13,13 +13,13 @@ export interface PeriodicElement {
   DesignationLevel: any;
   Linkedto: any;
   Action: any;
-  
+
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {srno: 1, Designation: 'Teacher', DesignationLevel: 'School', Linkedto: 'Head Master', Action: 'H'},
-  {srno: 2, Designation: 'Head Master', DesignationLevel: 'Kendra', Linkedto: 'Cluster Resource Person', Action: 'H'},
-  {srno: 3, Designation: 'IED Teacher', DesignationLevel: 'Taluka', Linkedto: 'Block Resource Person', Action: 'H'},
+  { srno: 1, Designation: 'Teacher', DesignationLevel: 'School', Linkedto: 'Head Master', Action: 'H' },
+  { srno: 2, Designation: 'Head Master', DesignationLevel: 'Kendra', Linkedto: 'Cluster Resource Person', Action: 'H' },
+  { srno: 3, Designation: 'IED Teacher', DesignationLevel: 'Taluka', Linkedto: 'Block Resource Person', Action: 'H' },
 ];
 @Component({
   selector: 'app-designation-master',
@@ -31,7 +31,7 @@ export class DesignationMasterComponent {
   desigId = new FormControl(0);
   textSearch = new FormControl('');
 
-  desigNationForm! : FormGroup;
+  desigNationForm!: FormGroup;
   pageNumber: number = 1
   langTypeName: any;
   totalCount!: number;
@@ -45,8 +45,10 @@ export class DesignationMasterComponent {
   desigLevelArr = new Array();
   dependDesigArr = new Array();
   desireDesigLevelArr = new Array();
+  editFlag: boolean = false;
+  linkedDesignationArr = new Array();
 
-  get f (){ return this.desigNationForm.controls }
+  get f() { return this.desigNationForm.controls }
   constructor(public webStorage: WebStorageService,
     private ngxSpinner: NgxSpinnerService,
     private apiService: ApiService,
@@ -56,11 +58,11 @@ export class DesignationMasterComponent {
     private fb: FormBuilder,
     public validation: ValidationService,
     private errorService: ErrorService
-    ){
+  ) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.webStorage.langNameOnChange.subscribe(lang => {
       this.langTypeName = lang;
       this.languageChange();
@@ -85,49 +87,89 @@ export class DesignationMasterComponent {
   }
 
   //Dependant Designation level dropdown 
-  getAllDesignationLevel(){
+  getAllDesignationLevel() {
     this.desigLevelArr = []
     this.masterService.getAllDesignationLevel('').subscribe({
-      next:(res: any)=>{
+      next: (res: any) => {
         res.statusCode == "200" ? (this.desigLevelArr.push({ "id": 0, "designationLevel": "All DesignationLevel", "m_DesignationLevel": "सर्व पदनाम स्तर" }, ...res.responseData)) : this.desigLevelArr = [];
       },
-      error: ()=>{
+      error: () => {
       }
     })
   }
 
   // Dependant Designation dropdown
-  getAllDepenDesignationByLevelId(){
+  getAllDepenDesignationByLevelId() {
     let dependantDesigLevelId = this.f['dependantDesigLevelId'].value
     this.dependDesigArr = [];
-    this.masterService.getAllDepenDesignationByLevelId('',dependantDesigLevelId).subscribe({
-      next: (res: any)=>{
+    this.masterService.getAllDepenDesignationByLevelId('', dependantDesigLevelId).subscribe({
+      next: (res: any) => {
         res.statusCode == "200" ? (this.dependDesigArr = res.responseData) : this.dependDesigArr = [];
       }
     })
   }
 
   //getAllDesireDesignation dropdown
-  getAllDesireDesigLevelBylevel(){
+  getAllDesireDesigLevelBylevel() {
     let dependantDesigLevelId = this.f['dependantDesigLevelId'].value
     this.desireDesigLevelArr = [];
-    this.masterService.getAllDesireDesignationsByLevelId('',dependantDesigLevelId).subscribe({
-      next: (res: any)=>{
+    this.masterService.getAllDesireDesignationsByLevelId('', dependantDesigLevelId).subscribe({
+      next: (res: any) => {
         res.statusCode == "200" ? (this.desireDesigLevelArr = res.responseData) : this.desireDesigLevelArr = [];
       }
     })
   }
 
-  submit(){
-    let formValue = this.desigNationForm.value
-    let url =  'AddSchool';
+  selectMultiple(event: any){
+    console.log("event: ", event.value);
+
+    let linkedDesignationLevelId: any;
+
+    this.dependDesigArr.filter((res: any) => {
+      if(res.id == event.value){
+        linkedDesignationLevelId = res.designationLevelId
+      }
+  });
+
+  let obj = {
+    "linkedDesignationLevelId":  linkedDesignationLevelId,  //designationLevelId,
+    "linkedDesignationId": event.value,   //send id
+    "designationId": 0
+  }
+
+  // this.linkedDesignationArr.push(obj);
+
+  // console.log("linkedDesignationArr: ", this.linkedDesignationArr);
+  
+  }
+
+  submit() {
+    let formValue = this.desigNationForm.value;
+    
+    let obj = {
+      ...this.webStorage.createdByProps(),
+      "id": 0,
+      "designationLevelId": formValue.designationLevelId,
+      "designation": formValue.designation,
+      "m_Designation": formValue.m_Designation,
+      "localId": 0,
+      "lan": this.webStorage.languageFlag,
+      "linkedDesignationModel": [
+        {
+          "linkedDesignationLevelId": 0,
+          "linkedDesignationId": 0,
+          "designationId": 0
+        }
+      ]
+    }
+    let url = this.editFlag ? 'UpdateDesignation' : 'AddDesignation';
     if (!this.desigNationForm.valid) {
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
       return
     }
     else {
       this.ngxSpinner.show();
-      this.apiService.setHttp('post', 'ZP-Education/Designation/AddDesignation/' + url, false, formValue, false, 'zp-Education');
+      this.apiService.setHttp('post', 'ZP-Education/Designation/' + url, false, obj, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
           this.ngxSpinner.hide();
@@ -141,10 +183,10 @@ export class DesignationMasterComponent {
     }
   }
 
-  getTableData(flag?: string){
+  getTableData(flag?: string) {
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
-    
+
     let str = `DesignationLevelId=${this.desigId.value}&TextSearch=${(this.textSearch.value)?.trim()}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
     let reportStr = `DesignationLevelId=${this.desigId.value}&TextSearch=${this.textSearch}&pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
 
@@ -152,14 +194,14 @@ export class DesignationMasterComponent {
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
         this.ngxSpinner.hide();
-        if(res.statusCode == "200"){
+        if (res.statusCode == "200") {
           flag != 'pdfFlag' ? this.tableDataArray = res.responseData?.responseData1 : this.tableDataArray = this.tableDataArray;
           this.totalCount = res.responseData.responseData2.pageCount;
           this.tableDatasize = res.responseData.responseData2.pageCount;
           let data: [] = (flag == 'pdfFlag' || flag == 'excel') ? res.responseData.responseData1 : [];
           (flag == 'pdfFlag' || flag == 'excel') ? this.downloadPdf(data, flag) : '';
         }
-        else{
+        else {
           this.ngxSpinner.hide();
           this.tableDataArray = [];
           this.tableDatasize = 0;
@@ -172,32 +214,32 @@ export class DesignationMasterComponent {
   }
 
 
-  languageChange(){
-    this.highLightFlag=true;
+  languageChange() {
+    this.highLightFlag = true;
     this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'designation' : 'm_Designation', this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
-      img: '', blink: '', badge: '', isBlock: '', pagination: true, 
+      img: '', blink: '', badge: '', isBlock: '', pagination: true,
       displayedColumns: this.displayedColumns,
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
       tableHeaders: this.langTypeName == 'English' ? this.displayedheadersEnglish : this.displayedheadersMarathi,
       edit: true, delete: true
     };
-    this.highLightFlag?this.tableData.highlightedrow=true:this.tableData.highlightedrow=false,
-    this.apiService.tableData.next(this.tableData);
+    this.highLightFlag ? this.tableData.highlightedrow = true : this.tableData.highlightedrow = false,
+      this.apiService.tableData.next(this.tableData);
   }
 
-  childCompInfo(obj: any){
-    switch(obj.label){
+  childCompInfo(obj: any) {
+    switch (obj.label) {
       case 'Pagination':
-      this.pageNumber = obj.pageNumber;
+        this.pageNumber = obj.pageNumber;
         this.getTableData();
         break;
     }
   }
 
-  downloadPdf(data: any , flag?: any){
+  downloadPdf(data: any, flag?: any) {
 
   }
 
