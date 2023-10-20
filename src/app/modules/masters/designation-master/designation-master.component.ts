@@ -47,7 +47,8 @@ export class DesignationMasterComponent {
   desireDesigLevelArr = new Array();
   editFlag: boolean = false;
   linkedDesignationArr = new Array();
-  linkedDesignationModelArr = new Array()
+  linkedDesignationModelArr = new Array();
+  editObj: any;
 
   get f() { return this.desigNationForm.controls }
   constructor(public webStorage: WebStorageService,
@@ -77,13 +78,13 @@ export class DesignationMasterComponent {
     this.desigNationForm = this.fb.group({
       ...this.webStorage.createdByProps(),
       "id": [0],
-      "dependantDesigLevelId": [''], // Not from backend 
-      "linkedDesignationModel": [''],
-      "designationLevelId": [0],
-      "designation": [''],
-      "m_Designation": [''],
+      "dependantDesigLevelId": [this.editObj ? this.editObj.linkedDesignationResponseModel?.[0].linkedDesignationId: ''], // Not from backend 
+      "linkedDesignationModel": [this.editObj ? this.editObj.linkedDesignationModel :''],
+      "designationLevelId": [this.editObj ? this.editObj.designationLevelId :''],
+      "designation": [this.editObj ? this.editObj.designation : ''],
+      "m_Designation": [this.editObj ? this.editObj.m_Designation : ''],
       "localId": [0],
-      "lan": [''],
+      "lan": this.webStorage.languageFlag,
     })
   }
 
@@ -93,6 +94,7 @@ export class DesignationMasterComponent {
     this.masterService.getAllDesignationLevel('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.desigLevelArr.push({ "id": 0, "designationLevel": "All DesignationLevel", "m_DesignationLevel": "सर्व पदनाम स्तर" }, ...res.responseData)) : this.desigLevelArr = [];
+        this.editObj ? (this.f['dependantDesigLevelId'].setValue(this.editObj.linkedDesignationResponseModel?.[0].linkedDesignationId), this.getAllDepenDesignationByLevelId(),this.getAllDesireDesigLevelBylevel()) : '';
       },
       error: () => {
       }
@@ -236,11 +238,23 @@ export class DesignationMasterComponent {
         this.pageNumber = obj.pageNumber;
         this.getTableData();
         break;
+        case 'Edit':
+          this.onEdit(obj);
+          break;
     }
   }
 
   downloadPdf(data: any, flag?: any) {
+    
+  }
 
+  onEdit(obj: any){
+    this.editObj = obj;
+    console.log("edit obj: ", this.editObj);
+    this.defaultDesignationForm();
+    this.getAllDesignationLevel();
+    // patch multisellect drop
+    // this.
   }
 
 
