@@ -17,7 +17,7 @@ import { WebStorageService } from 'src/app/core/services/web-storage.service';
 })
 export class AddSchoolComponent {
 
-  schoolRegForm !: FormGroup;
+  schoolRegForm!: FormGroup;
   districtArray = new Array();
   talukaArray = new Array();
   bitArray = new Array();
@@ -35,7 +35,7 @@ export class AddSchoolComponent {
   uploadImg: any;
   uploadMultipleImg: any;
 
-  get f() { return this.schoolRegForm.controls }
+  get f() { return this.schoolRegForm?.controls }
 
   constructor(private fb: FormBuilder,
     private masterService: MasterService,
@@ -48,12 +48,12 @@ export class AddSchoolComponent {
     private fileUpload: FileUploadService,
     private dialogRef: MatDialogRef<AddSchoolComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    ){}
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.data ? this.onEdit() : '';
     console.log("onEdit: ", this.data);
-    
+
     this.formField();
     this.getDistrict();
     this.getLowestGroupClass();
@@ -64,42 +64,41 @@ export class AddSchoolComponent {
     this.getAreaArray();
   }
 
-  formField(){
+  formField() {
     this.schoolRegForm = this.fb.group({
-        id: [this.data? this.data.id : 0],
-        schoolCode: [this.data? this.data.schoolCode : '', Validators.required],
-        schoolName: [this.data? this.data.schoolName :'', Validators.required],
-        m_SchoolName: [this.data? this.data.m_SchoolName :'', Validators.required],
-        stateId: 0,
-        districtId: ['', Validators.required],
-        talukaId: ['', Validators.required],
-        villageId: ['', Validators.required],
-        centerId: ['', Validators.required],
-        isKendraSchool: [this.data ? this.data.isKendraSchool : false],
-        bitId: [''],
-        s_CategoryId: ['', Validators.required],
-        s_ManagementId: ['', Validators.required],
-        s_TypeId: ['', Validators.required],
-        s_MediumId: 0,
-        uploadImage: [''],
-        lan: this.webStorage.languageFlag,
-        // localID: 0,
-        lowestClass: ['', Validators.required],
-        highestClass: ['', Validators.required],
-        S_AreaId: ['', Validators.required],
-        timesStamp: new Date(),
-        vName: [''],
-        schoolDocument: this.fb.array([
-          this.fb.group({
-              id: 0,
-              schoolId: 0,
-              documentId: 3,
-              // eventId: 0,
-              docPath: [''],
-              ...this.webStorage.createdByProps()
-          })
-        ]),
-        ...this.webStorage.createdByProps()
+      id: [this.data ? this.data.id : 0],
+      schoolCode: [this.data ? this.data.schoolCode : '', [Validators.required]],
+      schoolName: [this.data ? this.data.schoolName : '', [Validators.required, Validators.pattern('^[.,\n() a-zA-Z0-9]+$')]],
+      m_SchoolName: [this.data ? this.data.m_SchoolName : '', [Validators.required, Validators.pattern('^[.,\n()\u0900-\u096F ]+$')]],
+      stateId: 0,
+      districtId: ['', Validators.required],
+      talukaId: ['', Validators.required],
+      villageId: ['', Validators.required],
+      centerId: ['', Validators.required],
+      isKendraSchool: [this.data ? this.data.isKendraSchool : false],
+      bitId: [''],
+      s_CategoryId: ['', Validators.required],
+      s_ManagementId: ['', Validators.required],
+      s_TypeId: ['', Validators.required],
+      s_MediumId: ['', Validators.required],
+      uploadImage: [''],
+      lan: this.webStorage.languageFlag,
+      // localID: 0,
+      lowestClass: ['', Validators.required],
+      highestClass: ['', Validators.required],
+      S_AreaId: ['', Validators.required],
+      timesStamp: new Date(),
+      vName: [''],
+      schoolDocument: this.fb.array([
+        this.fb.group({
+          id: 0,
+          schoolId: 0,
+          documentId: 3,
+          docPath: [''],
+          ...this.webStorage.createdByProps()
+        })
+      ]),
+      ...this.webStorage.createdByProps()
     });
   }
 
@@ -107,7 +106,7 @@ export class AddSchoolComponent {
     return this.schoolRegForm.get('schoolDocument') as FormArray;
   }
 
-  getDistrict(){
+  getDistrict() {
     this.masterService.getAllDistrict(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.districtArray = res.responseData : this.districtArray = [];
@@ -116,17 +115,17 @@ export class AddSchoolComponent {
     });
   }
 
-  getTaluka(){
+  getTaluka() {
     let districtId = this.schoolRegForm.value.districtId;
     this.masterService.getAllTaluka(this.webStorage.languageFlag, districtId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.talukaArray = res.responseData : this.talukaArray = [];
-        this.data ? (this.f['talukaId'].setValue(this.data.talukaId), this.getCenter()) : '';
+        this.data ? (this.f['talukaId'].setValue(this.data.talukaId), this.getCenter(), this.getBit()) : '';
       }
     });
   }
 
-  getBit(){
+  getBit() {
     let talukaId = this.schoolRegForm.value.talukaId;
     this.masterService.getAllBit(this.webStorage.languageFlag, talukaId).subscribe({
       next: (res: any) => {
@@ -136,7 +135,7 @@ export class AddSchoolComponent {
     });
   }
 
-  getCenter(){
+  getCenter() {
     let talukaId = this.schoolRegForm.value.talukaId;
     this.masterService.getAllCenter(this.webStorage.languageFlag, talukaId).subscribe({
       next: (res: any) => {
@@ -146,7 +145,7 @@ export class AddSchoolComponent {
     });
   }
 
-  getVillage(){
+  getVillage() {
     let centerId = this.schoolRegForm.value.centerId;
     this.masterService.getAllVillage(this.webStorage.languageFlag, centerId).subscribe({
       next: (res: any) => {
@@ -156,7 +155,7 @@ export class AddSchoolComponent {
     });
   }
 
-  getSchoolType(){
+  getSchoolType() {
     this.masterService.getAllSchoolType(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolTypeArray = res.responseData : this.schoolTypeArray = [];
@@ -165,7 +164,7 @@ export class AddSchoolComponent {
     });
   }
 
-  getSchoolManagement(){
+  getSchoolManagement() {
     this.masterService.getAllSchoolManagement(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolManagementArray = res.responseData : this.schoolManagementArray = [];
@@ -174,7 +173,7 @@ export class AddSchoolComponent {
     });
   }
 
-  getCategory(){
+  getCategory() {
     this.masterService.getAllCategory(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.categoryArray = res.responseData : this.categoryArray = [];
@@ -183,7 +182,7 @@ export class AddSchoolComponent {
     });
   }
 
-  getMedium(){
+  getMedium() {
     this.masterService.getAllSchoolMedium(this.webStorage.languageFlag).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.mediumArray = res.responseData : this.mediumArray = [];
@@ -206,10 +205,10 @@ export class AddSchoolComponent {
     this.data ? (this.f['lowestClass'].setValue(this.data.lowestClass), this.getHighestGroupClass()) : '';
   }
 
-  getAreaArray(){
+  getAreaArray() {
     this.areaArray = [
-      {id: 1, area: 'Urban', m_area: 'शहरी'},
-      {id: 2, area: 'Rural', m_area: 'ग्रामीण'}
+      { id: 1, area: 'Urban', m_area: 'शहरी' },
+      { id: 2, area: 'Rural', m_area: 'ग्रामीण' }
     ];
     this.data ? this.f['S_AreaId'].setValue(this.data.s_AreaId) : '';
   }
@@ -229,12 +228,12 @@ export class AddSchoolComponent {
     let type = 'jpg, jpeg, png';
     this.fileUpload.uploadDocuments(event, 'Upload', type).subscribe({
       next: (res: any) => {
-        
+
         if (res.statusCode == "200") {
           this.uploadImg = res.responseData;
           console.log("img upload... : ", this.uploadImg);
-          
-          this.schoolRegForm.value.uploadImage = this.uploadImg;      
+
+          this.schoolRegForm.value.uploadImage = this.uploadImg;
           this.commonMethod.matSnackBar(res.statusMessage, 0);
         }
         else {
@@ -255,7 +254,7 @@ export class AddSchoolComponent {
     }
   }
 
-  clearImg() {   
+  clearImg() {
     this.uploadImg = '';
     this.schoolRegForm.value.uploadImage = '';
     this.f['uploadImage'].setValue('');
@@ -265,7 +264,7 @@ export class AddSchoolComponent {
     this.fileUpload.uploadMultipleDocument(event, 'Upload', 'jpg, jpeg, png').subscribe({
       next: (res: any) => {
         if (res.statusCode == "200") {
-          this.uploadMultipleImg = res.responseData;        
+          this.uploadMultipleImg = res.responseData;
           this.commonMethod.matSnackBar(res.statusMessage, 0);
           // multiple image 
           let imgArr = this.uploadMultipleImg.split(',')
@@ -293,18 +292,20 @@ export class AddSchoolComponent {
     this.imgArray.splice(index, 1);
   }
 
-  onSubmit(){
+  onSubmit() {
     let formValue = this.schoolRegForm.value;
-    formValue.uploadImage ? formValue.uploadImage = this.uploadImg : '';
+    formValue.uploadImage = this.uploadImg;
+    formValue.schoolDocument = this.imgArray;  
     formValue.isKendraSchool == false ? formValue.bitId = 0 : '';
+
     console.log("formValue: ", formValue);
     
     let url = this.data ? 'UpdateSchool' : 'AddSchool';
-    if(!this.schoolRegForm.valid){
+    if (!this.schoolRegForm.valid) {
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
       return
     }
-    else{
+    else {
       this.ngxSpinner.show();
       this.apiService.setHttp(this.data ? 'put' : 'post', 'ZP-Education/School/' + url, false, formValue, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
@@ -320,8 +321,21 @@ export class AddSchoolComponent {
     }
   }
 
-  onEdit(){
-    // this.f['uploadImage'].setValue(this.data?.uploadImage);
+  onEdit() {
+    this.formField();
+    this.f['uploadImage'].setValue(this.data?.uploadImage);
+    this.uploadImg = this.data.uploadImage;
+
+    this.data.schoolDocument.filter((res: any) => {
+      let schoolDocumentObj = {
+        id: res.id,
+        schoolId: res.schoolId,
+        documentId: res.documentId,
+        docPath: res.docPath,
+        ...this.webStorage.createdByProps()
+      }
+      this.imgArray.push(schoolDocumentObj);
+    })
   }
 
   clearDropdown(dropdown: string) {
@@ -343,16 +357,16 @@ export class AddSchoolComponent {
     else if (dropdown == 'kendra') {
       this.f['villageId'].setValue('');
     }
-    else{
+    else {
       this.f['highestClass'].setValue('');
     }
   }
 
-  updateValidation(){
-    if(this.f['isKendraSchool'].value == true){
+  updateValidation() {
+    if (this.f['isKendraSchool'].value == true) {
       this.f['bitId'].setValidators(Validators.required);
     }
-    else{
+    else {
       this.f['bitId'].clearValidators();
     }
     this.f['bitId'].updateValueAndValidity();
