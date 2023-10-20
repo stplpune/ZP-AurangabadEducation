@@ -10,6 +10,8 @@ import { MasterService } from 'src/app/core/services/master.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
+import { DownloadPdfExcelService } from 'src/app/core/services/download-pdf-excel.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-school-registration',
@@ -24,7 +26,7 @@ export class SchoolRegistrationComponent {
   totalCount!: number;
   tableDatasize!: number;
   tableDataArray = new Array();
-  resultDownloadArr = new Array();
+  // resultDownloadArr = new Array();
   highLightFlag!: boolean;
   tableData: any;
   langTypeName: any;
@@ -43,7 +45,9 @@ export class SchoolRegistrationComponent {
     private errorsService: ErrorService,
     private masterService: MasterService,
     private fb: FormBuilder,
-    public validation: ValidationService) {}
+    public validation: ValidationService,
+    private downloadFileService: DownloadPdfExcelService,
+    private datepipe: DatePipe) {}
 
   ngOnInit(){
     this.getTableData();
@@ -66,6 +70,8 @@ export class SchoolRegistrationComponent {
   }
 
   getTableData(flag?: string){
+    console.log("table flag:", flag);
+    
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     let formValue = this.filterForm?.value;
@@ -81,7 +87,7 @@ export class SchoolRegistrationComponent {
           flag != 'pdfFlag' ? this.tableDataArray = res.responseData?.responseData1 : this.tableDataArray = this.tableDataArray;
           this.totalCount = res.responseData.responseData2.pageCount;
           this.tableDatasize = res.responseData.responseData2.pageCount;
-          this.resultDownloadArr = [];
+          // this.resultDownloadArr = [];
 
           let data: [] = flag == 'pdfFlag' ? res.responseData?.responseData1 : [];
           flag == 'pdfFlag' ? this.downloadPdf(data) : ''; 
@@ -104,14 +110,14 @@ export class SchoolRegistrationComponent {
     this.displayedColumns = ['srNo', 'schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
-      img: '', blink: '', badge: '', isBlock: '', pagintion: true, 
+      img: '', blink: '', badge: '', isBlock: '', pagintion: this.totalCount > 10 ? true : false, 
       displayedColumns: this.displayedColumns,
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
       tableHeaders: this.langTypeName == 'English' ? this.displayedheadersEnglish : this.displayedheadersMarathi,
       edit: true, delete: true
     };
-    this.highLightFlag?this.tableData.highlightedrow=true:this.tableData.highlightedrow=false,
+    this.highLightFlag ? this.tableData.highlightedrow = true : this.tableData.highlightedrow = false,
     this.apiService.tableData.next(this.tableData);
   }
 
@@ -195,6 +201,33 @@ export class SchoolRegistrationComponent {
 
   downloadPdf(data: any){
     console.log("download data: ", data);
+    let resultDownloadArr: any = [];
+
+    data.find((res: any, i: any) => {
+      let obj = {
+        srNo: i + 1,
+        schoolCode: res.schoolCode,
+        schoolName: res.schoolName,
+        district: res.district,
+        taluka: res.taluka,
+        center: res.center,
+        village: res.village,
+      }
+      resultDownloadArr.push(obj);
+    });
+
+    if (resultDownloadArr.length > 0) {
+      let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
+      let ValueData =
+        resultDownloadArr.reduce(
+          (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
+        );
+      let objData: any = {
+        'topHedingName': 'School List',
+        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
+      }
+      ValueData.length > 0 ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : ''
+    }
   }
 
   onClear(){
@@ -250,5 +283,22 @@ export class SchoolRegistrationComponent {
     });
   }
 
+  clearDropdown(dropdown: string) {
+    if (dropdown == 'district') {
+      this.f['talukaId'].setValue('');
+      this.f['centerId'].setValue('');
+      this.f['villageId'].setValue('');
+      this.centerArray = [];
+      this.villageArray = [];
+    }
+    else if (dropdown == 'taluka') {
+      this.f['centerId'].setValue('');
+      this.f['villageId'].setValue('');
+      this.villageArray = [];
+    }
+    else {
+      this.f['villageId'].setValue('');
+    }
+  }
 
 }
