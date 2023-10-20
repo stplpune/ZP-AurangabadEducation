@@ -109,6 +109,26 @@ export class MasterService {
     });
   }
 
+  getAllDepenDesignationByLevelId(langFlag?: string, desigLevelId?: string) {
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllDesignationByLevelId?flag_lang='+langFlag+'&DesignationLevelId=' + desigLevelId, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+  getAllDesireDesignationsByLevelId(langFlag?: string, desigLevelId?: string) {
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllDesiredDesignationLevel?flag_lang='+langFlag+'&DesignationLevelId=' + desigLevelId, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
 
 
 
