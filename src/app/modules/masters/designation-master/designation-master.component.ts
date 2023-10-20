@@ -54,7 +54,8 @@ export class DesignationMasterComponent {
     private errorsService: ErrorService,
     private masterService: MasterService,
     private fb: FormBuilder,
-    public validation: ValidationService
+    public validation: ValidationService,
+    private errorService: ErrorService
     ){
 
   }
@@ -118,7 +119,26 @@ export class DesignationMasterComponent {
   }
 
   submit(){
-
+    let formValue = this.desigNationForm.value
+    let url =  'AddSchool';
+    if (!this.desigNationForm.valid) {
+      this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
+      return
+    }
+    else {
+      this.ngxSpinner.show();
+      this.apiService.setHttp('post', 'ZP-Education/Designation/AddDesignation/' + url, false, formValue, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => {
+          this.ngxSpinner.hide();
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0)) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+        },
+        error: ((err: any) => {
+          this.ngxSpinner.hide();
+          this.commonMethod.checkDataType(err.statusMessage) == false ? this.errorService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusMessage, 1);
+        })
+      })
+    }
   }
 
   getTableData(flag?: string){
