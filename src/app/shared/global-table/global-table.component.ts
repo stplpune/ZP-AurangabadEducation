@@ -71,7 +71,7 @@ export class GlobalTableComponent {
     action(obj: any, label: string, i?: any, chkLabel?: any) {
       label == 'checkBox' ? (chkLabel == 'readCheck' ? obj.readRight = i.checked : (i.checked == true ? (obj.writeRight = i.checked, obj.readRight = i.checked) : obj.writeRight = i.checked)) : this.highlightedRow = i;
       obj.label = label;
-      obj.pageNumber = (label == 'Edit' || label == 'Delete' || label == 'AssetManage' || label == 'Add') ? this.pageNumber : obj.pageIndex + 1;
+      obj.pageNumber = (label == 'Edit' || label == 'Delete' || label == 'AssetManage' || label == 'Add' || label == 'View') ? this.pageNumber : obj.pageIndex + 1;
       this.pageIndex = obj.pageNumber;
       this.recObjToChild.emit(obj);
     }

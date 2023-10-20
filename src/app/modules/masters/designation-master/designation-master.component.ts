@@ -47,6 +47,7 @@ export class DesignationMasterComponent {
   desireDesigLevelArr = new Array();
   editFlag: boolean = false;
   linkedDesignationArr = new Array();
+  linkedDesignationModelArr = new Array()
 
   get f() { return this.desigNationForm.controls }
   constructor(public webStorage: WebStorageService,
@@ -122,26 +123,27 @@ export class DesignationMasterComponent {
 
   selectMultiple(event: any){
     console.log("event: ", event.value);
-
-    let linkedDesignationLevelId: any;
-
-    this.dependDesigArr.filter((res: any) => {
-      if(res.id == event.value){
-        linkedDesignationLevelId = res.designationLevelId
+    let arrr = event.value;
+    this.linkedDesignationModelArr=[];
+    for (let i = 0; i < arrr.length; i++) {
+      let obj = {
+        "linkedDesignationLevelId": arrr[i]?.designationLevelId,
+        "linkedDesignationId": arrr[i]?.id,
+        "designationId": 0,
       }
-  });
-
-  let obj = {
-    "linkedDesignationLevelId":  linkedDesignationLevelId,  //designationLevelId,
-    "linkedDesignationId": event.value,   //send id
-    "designationId": 0
-  }
-
-  // this.linkedDesignationArr.push(obj);
-
-  // console.log("linkedDesignationArr: ", this.linkedDesignationArr);
+      this.linkedDesignationModelArr.push(obj);
+    }    
+    }
+  //   let dependantObj = this.dependDesigArr.filter((res: any) => {
+  //     if (res.id == event.value) {
+  //       const obj = {
+  //         "linkedDesignationLevelId": res.linkedDesignationLevelId,  //designationLevelId,
+  //         "linkedDesignationId": res.id,   //send id
+  //         "designationId": 0
+  //       }        
+  //     }
+  // });
   
-  }
 
   submit() {
     let formValue = this.desigNationForm.value;
@@ -154,13 +156,7 @@ export class DesignationMasterComponent {
       "m_Designation": formValue.m_Designation,
       "localId": 0,
       "lan": this.webStorage.languageFlag,
-      "linkedDesignationModel": [
-        {
-          "linkedDesignationLevelId": 0,
-          "linkedDesignationId": 0,
-          "designationId": 0
-        }
-      ]
+      "linkedDesignationModel": this.linkedDesignationModelArr
     }
     let url = this.editFlag ? 'UpdateDesignation' : 'AddDesignation';
     if (!this.desigNationForm.valid) {
@@ -173,14 +169,18 @@ export class DesignationMasterComponent {
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
           this.ngxSpinner.hide();
-          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0)) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0), this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
         },
         error: ((err: any) => {
           this.ngxSpinner.hide();
           this.commonMethod.checkDataType(err.statusMessage) == false ? this.errorService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusMessage, 1);
         })
-      })
+      });
     }
+  }
+
+  clearFilerForm(){
+    this.f['desigId']
   }
 
   getTableData(flag?: string) {

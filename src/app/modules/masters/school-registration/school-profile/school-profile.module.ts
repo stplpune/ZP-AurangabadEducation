@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SchoolProfileRoutingModule } from './school-profile-routing.module';
 import { SchoolProfileComponent } from './school-profile.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { SchoolProfileComponent } from './school-profile.component';
   ],
   imports: [
     CommonModule,
-    SchoolProfileRoutingModule
+    SchoolProfileRoutingModule,
+    MatCardModule,
+    MatTabsModule
   ]
 })
 export class SchoolProfileModule { }
