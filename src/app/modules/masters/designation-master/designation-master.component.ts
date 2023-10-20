@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
@@ -27,6 +27,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DesignationMasterComponent {
   displayedColumns = new Array();
   desigId = new FormControl(0);
+  textSearch = new FormControl('');
+
+  desigNationForm! : FormGroup;
   pageNumber: number = 1
   langTypeName: any;
   totalCount!: number;
@@ -44,7 +47,9 @@ export class DesignationMasterComponent {
     private apiService: ApiService,
     private commonMethod: CommonMethodService,
     private errorsService: ErrorService,
-    private masterService: MasterService){
+    private masterService: MasterService,
+    private fb: FormBuilder
+    ){
 
   }
 
@@ -53,9 +58,23 @@ export class DesignationMasterComponent {
       this.langTypeName = lang;
       this.languageChange();
     });
+    this.defaultDesignationForm();
     this.getAllDesignationLevel();
     this.getTableData()
-    
+  }
+
+  defaultDesignationForm() {
+    this.desigNationForm = this.fb.group({
+      ...this.webStorage.createdByProps(),
+      "id": [0],
+      "dependantDesigLevelId": [''], // Not from backend 
+      "designationLevelId": [0],
+      "designation": [''],
+      "m_Designation": [''],
+      "localId": [0],
+      "lan": [''],
+      "linkedDesignationModel": ['']
+    })
   }
 
   // Designation level dropdown 
@@ -75,8 +94,8 @@ export class DesignationMasterComponent {
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     
-    let str = `DesignationLevelId=${this.desigId.value}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
-    let reportStr = `DesignationLevelId=${this.desigId.value}pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
+    let str = `DesignationLevelId=${this.desigId.value}&TextSearch=${this.textSearch}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
+    let reportStr = `DesignationLevelId=${this.desigId.value}&TextSearch=${this.textSearch}&pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
 
     this.apiService.setHttp('get', 'ZP-Education/Designation/GetAll?' + (flag == 'pdfFlag' ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({

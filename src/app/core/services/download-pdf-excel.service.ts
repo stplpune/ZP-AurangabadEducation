@@ -42,4 +42,8 @@ export class DownloadPdfExcelService {
     doc.save(objData.topHedingName);
   }
 
+  downloadExcel(){
+    
+  }
+
 }
