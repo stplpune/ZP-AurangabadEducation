@@ -34,6 +34,7 @@ export class AddSchoolComponent {
   editObj: any;
   uploadImg: any;
   uploadMultipleImg: any;
+  uploadImageFlag: boolean = false;
 
   get f() { return this.schoolRegForm?.controls }
 
@@ -52,8 +53,6 @@ export class AddSchoolComponent {
 
   ngOnInit() {
     this.data ? this.onEdit() : '';
-    console.log("onEdit: ", this.data);
-
     this.formField();
     this.getDistrict();
     this.getLowestGroupClass();
@@ -107,7 +106,8 @@ export class AddSchoolComponent {
   }
 
   getDistrict() {
-    this.masterService.getAllDistrict(this.webStorage.languageFlag).subscribe({
+    this.districtArray = [];
+    this.masterService.getAllDistrict('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.districtArray = res.responseData : this.districtArray = [];
         this.data ? (this.f['districtId'].setValue(this.data.districtId), this.getTaluka()) : '';
@@ -116,8 +116,9 @@ export class AddSchoolComponent {
   }
 
   getTaluka() {
+    this.talukaArray = [];
     let districtId = this.schoolRegForm.value.districtId;
-    this.masterService.getAllTaluka(this.webStorage.languageFlag, districtId).subscribe({
+    this.masterService.getAllTaluka('', districtId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.talukaArray = res.responseData : this.talukaArray = [];
         this.data ? (this.f['talukaId'].setValue(this.data.talukaId), this.getCenter(), this.getBit()) : '';
@@ -126,8 +127,9 @@ export class AddSchoolComponent {
   }
 
   getBit() {
+    this.bitArray = [];
     let talukaId = this.schoolRegForm.value.talukaId;
-    this.masterService.getAllBit(this.webStorage.languageFlag, talukaId).subscribe({
+    this.masterService.getAllBit('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.bitArray = res.responseData : this.bitArray = [];
         this.data ? (this.f['bitId'].setValue(this.data.bitId)) : '';
@@ -136,8 +138,9 @@ export class AddSchoolComponent {
   }
 
   getCenter() {
+    this.centerArray = [];
     let talukaId = this.schoolRegForm.value.talukaId;
-    this.masterService.getAllCenter(this.webStorage.languageFlag, talukaId).subscribe({
+    this.masterService.getAllCenter('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
         this.data ? (this.f['centerId'].setValue(this.data.centerId), this.getVillage()) : '';
@@ -146,17 +149,21 @@ export class AddSchoolComponent {
   }
 
   getVillage() {
+    this.villageArray = [];
     let centerId = this.schoolRegForm.value.centerId;
-    this.masterService.getAllVillage(this.webStorage.languageFlag, centerId).subscribe({
-      next: (res: any) => {
-        res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
-        this.data ? (this.f['villageId'].setValue(this.data.villageId)) : '';
-      }
-    });
+    if (centerId > 0) {
+      this.masterService.getAllVillage('', centerId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
+          this.data ? (this.f['villageId'].setValue(this.data.villageId)) : '';
+        }
+      });
+    }
   }
 
   getSchoolType() {
-    this.masterService.getAllSchoolType(this.webStorage.languageFlag).subscribe({
+    this.schoolTypeArray = [];
+    this.masterService.getAllSchoolType('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolTypeArray = res.responseData : this.schoolTypeArray = [];
         this.data ? this.f['s_TypeId'].setValue(this.data.s_TypeId) : '';
@@ -165,7 +172,8 @@ export class AddSchoolComponent {
   }
 
   getSchoolManagement() {
-    this.masterService.getAllSchoolManagement(this.webStorage.languageFlag).subscribe({
+    this.schoolManagementArray = [];
+    this.masterService.getAllSchoolManagement('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolManagementArray = res.responseData : this.schoolManagementArray = [];
         this.data ? this.f['s_ManagementId'].setValue(this.data.s_ManagementId) : '';
@@ -174,7 +182,8 @@ export class AddSchoolComponent {
   }
 
   getCategory() {
-    this.masterService.getAllCategory(this.webStorage.languageFlag).subscribe({
+    this.categoryArray = [];
+    this.masterService.getAllCategory('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.categoryArray = res.responseData : this.categoryArray = [];
         this.data ? this.f['s_CategoryId'].setValue(this.data.s_CategoryId) : '';
@@ -183,7 +192,8 @@ export class AddSchoolComponent {
   }
 
   getMedium() {
-    this.masterService.getAllSchoolMedium(this.webStorage.languageFlag).subscribe({
+    this.mediumArray = [];
+    this.masterService.getAllSchoolMedium('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.mediumArray = res.responseData : this.mediumArray = [];
         this.data ? this.f['s_MediumId'].setValue(this.data.s_MediumId) : '';
@@ -231,7 +241,7 @@ export class AddSchoolComponent {
 
         if (res.statusCode == "200") {
           this.uploadImg = res.responseData;
-          console.log("img upload... : ", this.uploadImg);
+          this.uploadImageFlag = true;
 
           this.schoolRegForm.value.uploadImage = this.uploadImg;
           this.commonMethod.matSnackBar(res.statusMessage, 0);
@@ -258,6 +268,7 @@ export class AddSchoolComponent {
     this.uploadImg = '';
     this.schoolRegForm.value.uploadImage = '';
     this.f['uploadImage'].setValue('');
+    this.uploadImageFlag = false;
   }
 
   multipleImgUpload(event: any) {
@@ -295,11 +306,9 @@ export class AddSchoolComponent {
   onSubmit() {
     let formValue = this.schoolRegForm.value;
     formValue.uploadImage = this.uploadImg;
-    formValue.schoolDocument = this.imgArray;  
+    formValue.schoolDocument = this.imgArray;
     formValue.isKendraSchool == false ? formValue.bitId = 0 : '';
 
-    console.log("formValue: ", formValue);
-    
     let url = this.data ? 'UpdateSchool' : 'AddSchool';
     if (!this.schoolRegForm.valid) {
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
@@ -325,6 +334,7 @@ export class AddSchoolComponent {
     this.formField();
     this.f['uploadImage'].setValue(this.data?.uploadImage);
     this.uploadImg = this.data.uploadImage;
+    this.uploadImg ? this.uploadImageFlag = true : this.uploadImageFlag = false;
 
     this.data.schoolDocument.filter((res: any) => {
       let schoolDocumentObj = {
