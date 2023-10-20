@@ -35,7 +35,7 @@ export class FileUploadService {
               formData.append('FolderName', folderName);
               formData.append('DocumentType', docExt);
               formData.append('UploadDocPath', file);
-              this.apiService.setHttp('post', 'ZP-Education/Document/UplodFile', false, formData, false, 'zp-Education');
+              this.apiService.setHttp('post', 'ZP-Education/Documents/UplodFile', false, formData, false, 'zp-Education');
               this.apiService.getHttp().subscribe({
                 next: (res: any) => {
                   this.spinner.hide();
@@ -97,7 +97,7 @@ export class FileUploadService {
       }
 
       if (docTypeCheckFlag == true) {
-        this.apiService.setHttp('post', 'ZP-Education/Document/upload-multiple-photos', false, formData, false, 'zp-Education');
+        this.apiService.setHttp('post', 'ZP-Education/Documents/Upload-Multiple-Files', false, formData, false, 'zp-Education');
         this.apiService.getHttp().subscribe({
           next: (res: any) => {
             if (res.statusCode == 200) {
