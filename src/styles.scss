@@ -276,9 +276,9 @@ button.btn-modal-close {
 
 .section-head {
     font-family: 'Noto Sans', sans-serif !important;
-    background-color: #eee;
+    background-color: var(--main-light-color);
     color: #000;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
@@ -351,6 +351,9 @@ button.btn-modal-close {
     width: 21px;
 }
 
+.margin-control {
+    margin-bottom: 21px;
+}
 
 
 

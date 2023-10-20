@@ -17,9 +17,9 @@
         </div>
     </mat-card-header>
     <mat-card-content class="card-body pb-0 form-container">
-        <div class="row w-100 g-2">
+        <div class="row w-100 gx-2">
             <div class="col-sm-2">
-          <label class="form-label">District</label>
+                <label class="form-label">District</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Amravati</mat-option>
@@ -27,15 +27,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Taluka</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Amravati</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-3">
-              <label class="form-label">Kendra</label>
+                <label class="form-label">Taluka</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Amravati</mat-option>
@@ -43,15 +35,23 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Village</label>
+                <label class="form-label">Kendra</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>Amravati</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <label class="form-label">Village</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Anjangaon</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-sm-3">
-              <label class="form-label">School</label>
+            <div class="col-sm-2">
+                <label class="form-label">School</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>zp Aurangabad</mat-option>
@@ -59,7 +59,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Standard</label>
+                <label class="form-label">Standard</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>1st</mat-option>
@@ -67,48 +67,46 @@
                 </mat-form-field>
             </div>
         </div>
-        <div class="col-sm-12">
-            <h6 class="section-head">Student Details</h6>
-        </div>
-        <div class="row g-2">
+        <h6 class="section-head">Student Details</h6>
+        <div class="row gx-2 align-items-end">
             <div class="col-sm-4">
-              <label class="form-label">First Name</label>
+                <label class="form-label">First Name</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Middle Name</label>
+                <label class="form-label">Middle Name</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Last Name</label>
+                <label class="form-label">Last Name</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">First Name (Marathi)</label>
+                <label class="form-label">First Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Middle Name (Marathi)</label>
+                <label class="form-label">Middle Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Last Name (Marathi)</label>
+                <label class="form-label">Last Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Birth Date</label>
+                <label class="form-label">Birth Date</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput [matDatepicker]="topicker" (click)="topicker.open()">
                     <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
@@ -116,7 +114,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Gender</label>
+                <label class="form-label">Gender</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Male</mat-option>
@@ -149,7 +147,7 @@
                 </div>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Religion</label>
+                <label class="form-label">Religion</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Hindu</mat-option>
@@ -157,7 +155,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Category</label>
+                <label class="form-label">Category</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>xyz</mat-option>
@@ -165,7 +163,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Caste</label>
+                <label class="form-label">Caste</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>xyz</mat-option>
@@ -173,19 +171,19 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Saral ID</label>
+                <label class="form-label">Saral ID</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-              <label class="form-label">Aadhaar No.</label>
+                <label class="form-label">Aadhaar No.</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <div class="file-upload border rounded-2 p-1">
+                <div class="file-upload border rounded-2 p-1 margin-control">
                     <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
                         data-placement="right">
                         Upload Aadhaar Card
@@ -209,30 +207,28 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12">
-            <h6 class="section-head">Guardian Details</h6>
-        </div>
-        <div class="row g-2">
+        <h6 class="section-head">Guardian Details</h6>
+        <div class="row gx-2 align-items-end">
             <div class="col-sm">
-              <label class="form-label">Name</label>
+                <label class="form-label">Name</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm">
-              <label class="form-label">Name (Marathi)</label>
+                <label class="form-label">Name (Marathi)</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Mobile No.</label>
+                <label class="form-label">Mobile No.</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-              <label class="form-label">Relations</label>
+                <label class="form-label">Relations</label>
                 <mat-form-field appearance="outline" class="w-100 me-2">
                     <mat-select>
                         <mat-option>Mother</mat-option>
@@ -242,9 +238,11 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-auto">
-                <button mat-flat-button class="btn-main btn-icon" [routerLink]="['../add-student']">
-                    <mat-icon class="material-symbols-rounded">add</mat-icon>
-                </button>
+                <div class="margin-control">
+                    <button mat-flat-button class="btn-main btn-icon" [routerLink]="['../add-student']">
+                        <mat-icon class="material-symbols-rounded">add</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
         <table mat-table [dataSource]="dataSource" class="dashboard-table">
@@ -262,7 +260,7 @@
                 <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
             </ng-container>
             <ng-container matColumnDef="Realtion">
-                <th mat-header-cell *matHeaderCellDef> Realtion
+                <th mat-header-cell *matHeaderCellDef> Relation
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.Realtion
                     }} </td>
