@@ -16,7 +16,7 @@
                         </span>
                     </button>
                     <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="getTableData('pdfFlag')">
                             <span class="material-symbols-rounded text-success">
                                 description
                             </span>
@@ -59,7 +59,7 @@
             <div class="col-sm-2">
                 <label class="form-label">{{'Lables.district' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="districtId" (selectionChange)="getTaluka();">
+                    <mat-select formControlName="districtId" (selectionChange)="clearDropdown('district'); getTaluka();">
                         <mat-option *ngFor="let district of districtArray" [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District: district.district}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -67,7 +67,7 @@
             <div class="col-sm-2">
                 <label class="form-label">{{'Lables.taluka' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="talukaId" (selectionChange)="getCenter();">
+                    <mat-select formControlName="talukaId" (selectionChange)="clearDropdown('taluka'); getCenter();">
                         <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -75,7 +75,7 @@
             <div class="col-sm-2">
                 <label class="form-label">{{'Lables.kendra' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="centerId" (selectionChange)="getVillage();">
+                    <mat-select formControlName="centerId" (selectionChange)="clearDropdown('kendra'); getVillage();">
                         <mat-option *ngFor="let center of centerArray" [value]="center.id">{{webStorage.languageFlag =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -91,7 +91,7 @@
             <div class="col-sm">
                 <label class="form-label">{{'Lables.UDISECode/SchoolName' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput placeholder="{{'Lables.UDISECode/SchoolName' | translate}}" formControlName="textSearch" (keypress)="validation.noSpacesAtStart($event); validation.alphaNumericWithSpacesAndSpecChars($event)" maxlength="50">
+                    <input matInput placeholder="{{'Lables.UDISECode/SchoolName' | translate}}" formControlName="textSearch" (keypress)="validation.noSpacesAtStart($event); validation.alphaNumericWithSpacesAndSpecChars($event)" maxlength="100">
                 </mat-form-field>
             </div>
             <div class="col-sm-auto">
@@ -113,58 +113,6 @@
     </form>
     </mat-card-header>
     <mat-card-content class="card-body">
-        <!-- <table mat-table [dataSource]="dataSource" class="dashboard-table">
-            <ng-container matColumnDef="srno">
-                <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
-            </ng-container>
-            <ng-container matColumnDef="UDISE">
-                <th mat-header-cell *matHeaderCellDef> UDISE Code </th>
-                <td mat-cell *matCellDef="let element"> {{element.UDISE}} </td>
-            </ng-container>
-            <ng-container matColumnDef="School">
-                <th mat-header-cell *matHeaderCellDef> School Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.School}} </td>
-            </ng-container>
-            <ng-container matColumnDef="District">
-                <th mat-header-cell *matHeaderCellDef> District </th>
-                <td mat-cell *matCellDef="let element"> {{element.District}} </td>
-            </ng-container>
-            <ng-container matColumnDef="Taluka">
-                <th mat-header-cell *matHeaderCellDef> Taluka </th>
-                <td mat-cell *matCellDef="let element"> {{element.Taluka}} </td>
-            </ng-container>
-            <ng-container matColumnDef="Kendra">
-                <th mat-header-cell *matHeaderCellDef> Kendra
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.Kendra}} </td>
-            </ng-container>
-            <ng-container matColumnDef="Village">
-                <th mat-header-cell *matHeaderCellDef> Village
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.Village}} </td>
-            </ng-container>
-            <ng-container matColumnDef="Action">
-                <th mat-header-cell *matHeaderCellDef> Action
-                </th>
-                <td mat-cell *matCellDef="let element let i=index">
-                    <div class="d-flex gap-2">
-                        <button mat-icon-button>
-                            <mat-icon class="text-warning material-symbols-rounded">
-                                edit_square
-                            </mat-icon>
-                        </button>
-                        <button mat-icon-button>
-                          <mat-icon class="text-danger material-symbols-rounded">
-                              delete
-                          </mat-icon>
-                      </button>
-                    </div>
-                </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table> -->
         <app-global-table (recObjToChild)="childCompInfo($event)"></app-global-table>
     </mat-card-content>
 </mat-card>
