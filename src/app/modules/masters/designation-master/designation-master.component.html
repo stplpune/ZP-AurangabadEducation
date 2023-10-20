@@ -81,7 +81,7 @@
                 <label class="form-label">Select Dependant Designation Level</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select formControlName="dependantDesigLevelId">
-                        <mat-option *ngFor="let desigLevel of desigLevelArr" [value]="desigLevel.id">{{langTypeName =='English' ? desigLevel.designationLevel: desigLevel.m_DesignationLevel}}</mat-option>
+                        <mat-option *ngFor="let desigLevel of desigLevelArr" [value]="desigLevel.id" [disabled]="desigLevel.id == 0">{{langTypeName =='English' ? desigLevel.designationLevel: desigLevel.m_DesignationLevel}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
