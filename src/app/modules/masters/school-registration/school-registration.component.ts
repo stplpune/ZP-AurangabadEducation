@@ -26,7 +26,7 @@ export class SchoolRegistrationComponent {
   totalCount!: number;
   tableDatasize!: number;
   tableDataArray = new Array();
-  // resultDownloadArr = new Array();
+  resultDownloadArr = new Array();
   highLightFlag!: boolean;
   tableData: any;
   langTypeName: any;
@@ -70,8 +70,6 @@ export class SchoolRegistrationComponent {
   }
 
   getTableData(flag?: string){
-    console.log("table flag:", flag);
-
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     let formValue = this.filterForm?.value;
@@ -79,18 +77,19 @@ export class SchoolRegistrationComponent {
     let str = `pageno=${this.pageNumber}&pagesize=10&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`;
     let reportStr = `pageno=1&pagesize=` + (this.totalCount * 10) + `&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`
 
-    this.apiService.setHttp('get', 'ZP-Education/School/GetAllSchool?' + (flag == 'pdfFlag' ? reportStr : str), false, false, false, 'zp-Education');
+    this.apiService.setHttp('get', 'ZP-Education/School/GetAllSchool?' + ((flag == 'pdfFlag'  || flag == 'excelFlag') ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
         this.ngxSpinner.hide();
         if(res.statusCode == "200"){
-          flag != 'pdfFlag' ? this.tableDataArray = res.responseData?.responseData1 : this.tableDataArray = this.tableDataArray;
+          flag != 'pdfFlag' && flag != 'excelFlag' ? this.tableDataArray = res.responseData?.responseData1 : this.tableDataArray = this.tableDataArray;
           this.totalCount = res.responseData.responseData2.pageCount;
           this.tableDatasize = res.responseData.responseData2.pageCount;
-          // this.resultDownloadArr = [];
+          this.resultDownloadArr = [];
 
-          let data: [] = flag == 'pdfFlag' ? res.responseData?.responseData1 : [];
-          flag == 'pdfFlag' ? this.downloadPdf(data) : '';
+          let data: [] = (flag == 'pdfFlag' || flag == 'excelFlag') ? res.responseData?.responseData1 : [];
+          // flag == 'pdfFlag' ? this.downloadPdf(data) : this.downloadExcel(data);
+          flag == 'pdfFlag' ? this.downloadExcelPDF(data, 'pdfFlag') : flag == 'excelFlag' ? this.downloadExcelPDF(data, 'excelFlag') : '';
         }
         else{
           this.ngxSpinner.hide();
@@ -104,6 +103,86 @@ export class SchoolRegistrationComponent {
     });
   }
 
+  downloadExcelPDF(data?: any, flag?: any){
+    data.find((res: any, i: any) => {
+      let obj = {
+        srNo: i + 1,
+        schoolCode: res.schoolCode,
+        schoolName: res.schoolName,
+        district: res.district,
+        taluka: res.taluka,
+        center: res.center,
+        village: res.village,
+      }
+      this.resultDownloadArr.push(obj);
+    })
+
+    if (this.resultDownloadArr.length > 0) {
+      let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
+      let apiKeys = ['schoolCode', 'schoolName', 'district', 'taluka', 'center', 'village'];
+      let ValueData =
+      this.resultDownloadArr.reduce(
+          (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
+        );
+      let headerKeySize = [10, 20, 40, 20, 20, 20, 20, 20, 20];
+      let objData: any = {
+        'topHedingName': 'School List',
+        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
+      }
+      ValueData.length > 0 && flag == 'pdfFlag' ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : '';
+      ValueData.length > 0 && flag == 'excelFlag' ? this.downloadFileService.generateExcel(keyPDFHeader, apiKeys, ValueData, objData, headerKeySize) : '';
+    }
+  }
+
+  downloadPdf(data: any){
+    let resultDownloadArr: any = [];
+
+    data.find((res: any, i: any) => {
+      let obj = {
+        srNo: i + 1,
+        schoolCode: res.schoolCode,
+        schoolName: res.schoolName,
+        district: res.district,
+        taluka: res.taluka,
+        center: res.center,
+        village: res.village,
+      }
+      resultDownloadArr.push(obj);
+    });
+
+    if (resultDownloadArr.length > 0) {
+      let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
+      let ValueData =
+        resultDownloadArr.reduce(
+          (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
+        );
+      let objData: any = {
+        'topHedingName': 'School List',
+        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
+      }
+      ValueData.length > 0 ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : ''
+    }
+  }
+
+  downloadExcel(data: any){
+
+    let keyHeader = ['Sr. No.', 'UDISE Code', 'School Name', 'District', 'Taluka', 'Kendra', 'Village'];
+    let apiKeys = ['schoolCode', 'schoolName', 'district', 'taluka', 'center', 'village'];
+    let headerKeySize = [10, 20, 40, 20, 20, 20, 20, 20, 20];
+    let nameArr: any;
+
+    if (this.tableDataArray.length > 0) {
+      nameArr = [{
+        'sheet_name': 'School Registration',
+        'excel_name': 'School Registration',
+        'status':'Master'
+      }];
+      this.downloadFileService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
+    } else {
+      this.commonMethod.matSnackBar('No Data Found !!', 1);
+    }
+  }
+
   languageChange(){
     this.highLightFlag=true;
     // let displayedColumnsReadMode = ['srNo', 'schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village'];
@@ -111,7 +190,7 @@ export class SchoolRegistrationComponent {
     this.tableData = {
       pageNumber: this.pageNumber,
       // img: '', blink: '', badge: '', isBlock: '', pagintion: true,
-      img: '', blink: '', badge: '', isBlock: '', pagintion: this.totalCount > 10 ? true : false,
+      img: '', blink: '', badge: '', isBlock: '', pagination: this.totalCount > 10 ? true : false,
       displayedColumns: this.displayedColumns,
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
@@ -122,8 +201,11 @@ export class SchoolRegistrationComponent {
     this.apiService.tableData.next(this.tableData);
   }
 
+  
+
   getDistrict(){
-    this.masterService.getAllDistrict(this.webStorage.languageFlag).subscribe({
+    this.districtArray = [];
+    this.masterService.getAllDistrict('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.districtArray.push({ "id": 0, "district": "All District", "m_District": "सर्व जिल्हा" }, ...res.responseData) : this.districtArray = [];
         this.f['districtId'].setValue(0);
@@ -132,33 +214,42 @@ export class SchoolRegistrationComponent {
   }
 
   getTaluka(){
+    this.talukaArray = [];
     let districtId = this.filterForm.value.districtId;
-    this.masterService.getAllTaluka(this.webStorage.languageFlag, districtId).subscribe({
-      next: (res: any) => {
-        res.statusCode == "200" ? this.talukaArray.push({ "id": 0, "taluka": "All Taluka", "m_Taluka": "सर्व तालुका" }, ...res.responseData) : this.talukaArray = [];
-        this.f['talukaId'].setValue(0);
-      }
-    });
+    if(districtId > 0){
+      this.masterService.getAllTaluka('', districtId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.talukaArray.push({ "id": 0, "taluka": "All Taluka", "m_Taluka": "सर्व तालुका" }, ...res.responseData) : this.talukaArray = [];
+          this.f['talukaId'].setValue(0);
+        }
+      });
+    }
   }
 
   getCenter(){
+    this.centerArray = [];
     let talukaId = this.filterForm.value.talukaId;
-    this.masterService.getAllCenter(this.webStorage.languageFlag, talukaId).subscribe({
-      next: (res: any) => {
-        res.statusCode == "200" ? this.centerArray.push({ "id": 0, "center": "All Center", "m_Center": "सर्व केंद्र" }, ...res.responseData) : this.centerArray = [];
-        this.f['centerId'].setValue(0);
-      }
-    });
+    if(talukaId > 0){
+      this.masterService.getAllCenter('', talukaId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.centerArray.push({ "id": 0, "center": "All Center", "m_Center": "सर्व केंद्र" }, ...res.responseData) : this.centerArray = [];
+          this.f['centerId'].setValue(0);
+        }
+      });
+    }
   }
 
   getVillage(){
+    this.villageArray = [];
     let centerId = this.filterForm.value.centerId;
-    this.masterService.getAllVillage(this.webStorage.languageFlag, centerId).subscribe({
-      next: (res: any) => {
-        res.statusCode == "200" ? this.villageArray.push({ "id": 0, "village": "All Village", "m_Village": "सर्व गाव" }, ...res.responseData) : this.villageArray = [];
-        this.f['villageId'].setValue(0);
-      }
-    });
+    if(centerId){
+      this.masterService.getAllVillage('', centerId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.villageArray.push({ "id": 0, "village": "All Village", "m_Village": "सर्व गाव" }, ...res.responseData) : this.villageArray = [];
+          this.f['villageId'].setValue(0);
+        }
+      });
+    }
   }
 
   childCompInfo(obj: any) {
@@ -198,37 +289,6 @@ export class SchoolRegistrationComponent {
       this.highLightFlag=false;
       this.languageChange();
     })
-  }
-
-  downloadPdf(data: any){
-    console.log("download data: ", data);
-    let resultDownloadArr: any = [];
-
-    data.find((res: any, i: any) => {
-      let obj = {
-        srNo: i + 1,
-        schoolCode: res.schoolCode,
-        schoolName: res.schoolName,
-        district: res.district,
-        taluka: res.taluka,
-        center: res.center,
-        village: res.village,
-      }
-      resultDownloadArr.push(obj);
-    });
-
-    if (resultDownloadArr.length > 0) {
-      let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
-      let ValueData =
-        resultDownloadArr.reduce(
-          (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
-        );
-      let objData: any = {
-        'topHedingName': 'School List',
-        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
-      }
-      ValueData.length > 0 ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : ''
-    }
   }
 
   onClear(){

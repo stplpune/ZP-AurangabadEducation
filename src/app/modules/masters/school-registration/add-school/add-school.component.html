@@ -167,7 +167,7 @@
             <div class="col-sm-6">
                 <div class="file-upload border rounded-2 p-1">
                     <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
-                        data-placement="right" (click)="uploadImage.click()">
+                        data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
                         {{'Lables.UploadProfilePhoto' | translate}}
                     </button>
                     <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" #uploadImage
