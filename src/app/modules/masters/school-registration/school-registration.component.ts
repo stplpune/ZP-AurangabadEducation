@@ -69,7 +69,7 @@ export class SchoolRegistrationComponent {
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     let formValue = this.filterForm?.value;
-    
+
     let str = `pageno=${this.pageNumber}&pagesize=10&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`;
     let reportStr = `pageno=1&pagesize=` + (this.totalCount * 10) + `&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`
 
@@ -84,7 +84,7 @@ export class SchoolRegistrationComponent {
           this.resultDownloadArr = [];
 
           let data: [] = flag == 'pdfFlag' ? res.responseData?.responseData1 : [];
-          flag == 'pdfFlag' ? this.downloadPdf(data) : ''; 
+          flag == 'pdfFlag' ? this.downloadPdf(data) : '';
         }
         else{
           this.ngxSpinner.hide();
@@ -104,7 +104,7 @@ export class SchoolRegistrationComponent {
     this.displayedColumns = ['srNo', 'schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
-      img: '', blink: '', badge: '', isBlock: '', pagintion: true, 
+      img: '', blink: '', badge: '', isBlock: '', pagintion: true,
       displayedColumns: this.displayedColumns,
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
@@ -207,8 +207,8 @@ export class SchoolRegistrationComponent {
 
   globalDialogOpen(obj ?: any){
     let dialoObj = {
-      header: 'Delete',
       title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete School Record?' : 'तुम्हाला शाळेचा रेकॉर्ड हटवायचा आहे का?',
+      header: 'Delete',
       cancelButton: this.webStorage.languageFlag == 'EN' ? 'Cancel' : 'रद्द करा',
       okButton: this.webStorage.languageFlag == 'EN' ? 'Ok' : 'ओके'
     }
