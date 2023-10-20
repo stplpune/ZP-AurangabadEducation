@@ -88,7 +88,7 @@
                 <label class="form-label">Select Dependant Designation</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select formControlName="linkedDesignationModel" (selectionChange)="getAllDesireDesigLevelBylevel(); selectMultiple($event);" multiple>
-                        <mat-option *ngFor="let desig of dependDesigArr" [value]="desig.id"> {{langTypeName =='English' ? desig.designation: desig.m_Designation}}</mat-option>
+                        <mat-option *ngFor="let desig of dependDesigArr" [value]="desig"> {{langTypeName =='English' ? desig.designation: desig.m_Designation}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -113,7 +113,7 @@
             </mat-card-content>
             <mat-card-actions class="card-footer" align="end">
                 <div class="d-flex justify-content-end align-items-center w-100">
-                    <button type="button" mat-flat-button class="btn-main-light me-2">Clear</button>
+                    <button type="button" mat-flat-button class="btn-main-light me-2" (click)="clearFilerForm()">Clear</button>
                     <button mat-flat-button type="submit" class="btn-main">Submit</button>
                 </div>
             </mat-card-actions>
