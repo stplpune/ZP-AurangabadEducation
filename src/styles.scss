@@ -325,6 +325,31 @@ button.btn-modal-close {
     color: #000 !important;
 }
 
+.gallery {
+    position: relative;
+}
+
+.gallery img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.gallery .gallery-buttons {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.gallery .gallery-buttons button {
+    width: 32px;
+    height: 32px;
+}
+
+.gallery .gallery-buttons .material-symbols-rounded {
+    font-size: 1.2rem;
+    width: 21px;
+}
 
 
 
