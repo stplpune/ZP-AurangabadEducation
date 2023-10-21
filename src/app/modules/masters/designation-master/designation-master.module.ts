@@ -37,7 +37,8 @@ import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.c
     MatTooltipModule,
     MatTableModule,
     TranslateModule,
-    GlobalTableComponent
+    GlobalTableComponent,
+
   ]
 })
 export class DesignationMasterModule { }

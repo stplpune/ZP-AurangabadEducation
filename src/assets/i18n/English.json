@@ -44,6 +44,18 @@
         "SchoolMedium": "School Medium",
         "SchoolIsKendra":"School is Kendra?",
         "UploadProfilePhoto": "Upload Profile Photo",
-        "UploadSchoolDocuments": "Upload School Documents"
+        "UploadSchoolDocuments": "Upload School Documents",
+        "DesignationMarathiReq": "Please enter valid designation(Marathi)",
+        "InvalidDesignation": "Please enter valid designation",
+        "DesignationLevel": "Designation Level",
+        "SearchDesignation": "Search Designation",
+        "DesignationRegistration":"Designation Registration",
+        "updateDesignation": "Update Designation",
+        "DependDesigLevel":" Dependant Designation Level",
+        "DependantDesignation": "Dependant Designation",
+        "DesireDesignationLevel": "Desire Designation Level",
+        "Designation": "Designation",
+        "Designation(Marathi)": "Designation (Marathi)"
+
     }
 }

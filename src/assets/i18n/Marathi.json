@@ -44,6 +44,23 @@
         "SchoolMedium": "शाळा माध्यम",
         "SchoolIsKendra":"शाळा केंद्र आहे?",
         "UploadProfilePhoto": "प्रोफाइल फोटो अपलोड करा",
-        "UploadSchoolDocuments": "शाळेची कागदपत्रे अपलोड करा"
+        "UploadSchoolDocuments": "शाळेची कागदपत्रे अपलोड करा",
+        "DesignationMarathiReq":"कृपया वैध पदनाम(मराठी) प्रविष्ट करा",
+        "InvalidDesignation" : "कृपया वैध पदनाम प्रविष्ट करा",
+        "DesignationLevel": "पदनाम स्तर",
+        "SearchDesignation": "पदनाम शोधा",
+        "DesignationRegistration":"पदनाम नोंदणी",
+        "updateDesignation": "पदनाम नोंद अपडेट करा",
+        "DependDesigLevel":" अवलंबित पदनाम स्तर",
+        "DependantDesignation": "अवलंबित पद",
+        "DesireDesignationLevel": "इच्छा पदनाम स्तर",
+        "Designation": "पदनाम",
+        "Designation(marathi)":"पदनाम (मराठी)"
+
+
+
+
+
+
     }
 }
