@@ -34,6 +34,8 @@ export class SchoolProfileComponent {
   constructor(public dialog: MatDialog) { }
 
   openAnalysisDialog() {
-    this.dialog.open(AttendanceAnalysisDetailsComponent);
+    this.dialog.open(AttendanceAnalysisDetailsComponent, {
+      width: '450px',
+    });
   }
 }

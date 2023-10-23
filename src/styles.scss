@@ -11,6 +11,20 @@ body {
     background-color: #eee;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+small,
+.small {
+    font-family: 'Noto Sans', sans-serif !important;
+    letter-spacing: normal;
+}
+
 :root {
     --sidebar-bg-color: #3b374b; //#2065ae
     --sidebar-bg-dark-color: #2f2c3c;
