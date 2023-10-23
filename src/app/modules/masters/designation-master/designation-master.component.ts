@@ -49,7 +49,6 @@ export class DesignationMasterComponent {
   desigLevelArr = new Array();
   dependDesigArr = new Array();
   desireDesigLevelArr = new Array();
-  editFlag: boolean = false;
   linkedDesignationArr = new Array();
   linkedDesignationModelArr = new Array();
   editObj: any;
@@ -182,7 +181,7 @@ export class DesignationMasterComponent {
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
           this.ngxSpinner.hide();
-          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0),this.formDirective.resetForm(),  this.editFlag = false, this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0),this.formDirective.resetForm(), this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
         },
         error: ((err: any) => {
           this.ngxSpinner.hide();
@@ -207,7 +206,7 @@ export class DesignationMasterComponent {
 
   clearForm(){
     this.formDirective.resetForm();
-    this.editFlag = false;
+    this.editObj = null;
   }
 
   getTableData(flag?: string) {
