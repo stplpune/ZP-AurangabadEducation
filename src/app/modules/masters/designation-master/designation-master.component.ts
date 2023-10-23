@@ -168,7 +168,7 @@ export class DesignationMasterComponent {
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
           this.ngxSpinner.hide();
-          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0),this.formDirective.resetForm(), this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0),this.formDirective.resetForm(),this.editObj = null,this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
         },
         error: ((err: any) => {
           this.ngxSpinner.hide();
@@ -212,7 +212,7 @@ export class DesignationMasterComponent {
           this.totalCount = res.responseData.responseData2.pageCount;
           this.tableDatasize = res.responseData.responseData2.pageCount;
           let data: [] = (flag == 'pdfFlag' || flag == 'excel') ? res.responseData.responseData1 : [];
-          ((flag == 'pdfFlag' || flag == 'excel') && this.totalCount > 0) ? this.downloadPdf(data, flag) : '';
+          ((flag == 'pdfFlag' || flag == 'excel')) ? this.downloadPdf(data, flag) : '';
         }
         else {
           this.ngxSpinner.hide();
