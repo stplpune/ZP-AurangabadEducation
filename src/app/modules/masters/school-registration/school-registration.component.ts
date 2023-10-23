@@ -103,51 +103,36 @@ export class SchoolRegistrationComponent {
   downloadExcelPDF(data?: any, flag?: any) {
     console.log("data", data);
 
-    let apiKeys = ['srNo', 'schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village'];
+    let apiKeys = ['schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village'];
     let keyHeader = [this.langTypeName == 'English' ? "Sr.No." : "अनुक्रमांक", this.langTypeName == 'English' ? "UDISE Code" : "यूडीआयएसई कोड", this.langTypeName == 'English' ? "School Name" : "शाळेचे नाव", this.langTypeName == 'English' ? "District" : "जिल्हा", this.langTypeName == 'English' ? "Taluka" : "तालुका", this.langTypeName == 'English' ? "Kendra" : "केंद्र", this.langTypeName == 'English' ? "Village" : "गाव"];
     let resultDownloadArr: any = [];
+    let headerKeySize = [10, 20, 50, 30, 20, 20, 20, 20, 20];
+    let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
 
-    data.find((res: any, i: any) => {
-      let obj = {
-        srNo: (i + 1),
-        "UDISE Code": res.schoolCode,
-        "School Name": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.schoolName : res.m_SchoolName : res.schoolName,
-        "District": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.district : res.m_District : res.district,
-        "Taluka": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.taluka : res.m_Taluka : res.taluka,
-        "Kendra": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.center : res.m_Center : res.center,
-        "Village": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.village : res.m_Village : res.village,
-      }
-      resultDownloadArr.push(obj);
-    })
-
-    if (resultDownloadArr.length > 0) {
-      let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
-      let ValueData =
-        resultDownloadArr.reduce(
-          (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
-        );
-
-      let objData: any = [{
+    if(flag == 'pdfFlag'){
+      let objData: any = {
         'topHedingName': 'School Registration',
-      }]
-      // ValueData.length > 0 ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : '';
+        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
+      }
+      this.downloadFileService.downLoadPdf(keyPDFHeader, apiKeys, data, objData, headerKeySize);
     }
 
-    if (flag == 'excelFlag') {
-      let headerKeySize = [10, 20, 50, 30, 20, 20, 20, 20, 20];
+    else if (flag == 'excelFlag') {
+      
       let nameArr: any;
+      data.map((x:any,i: any)=>{        
+        x.srNo = i+1
+    });  
 
       if (data.length > 0) {
         nameArr = [{
-          'sheet_name': 'School Master',
-          'excel_name': 'School Master',
+          'topHedingName': this.langTypeName == 'English' ? 'School Master' : 'शाळा मास्टर',
+          'sheet_name': this.langTypeName == 'English' ? 'School List' : 'शाळेची यादी',
+          'excel_name': this.langTypeName == 'English' ? 'School List' : 'शाळेची यादी',  
           'languageFlag': this.langTypeName,
-          'status': 'Master'
         }];
         this.downloadFileService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
-      } else {
-        this.commonMethod.matSnackBar('No Data Found !!', 1);
-      }
+      } 
     }
   }
 
