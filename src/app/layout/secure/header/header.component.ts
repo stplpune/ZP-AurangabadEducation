@@ -9,13 +9,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule, RouterModule, CommonModule, TranslateModule],
+  imports: [MatDialogModule, MatButtonModule, RouterModule, CommonModule, TranslateModule,MatIconModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   selectLang!: string;
