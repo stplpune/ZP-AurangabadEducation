@@ -89,7 +89,7 @@
                 <!-- linkedDesignationId -->
                 <label class="form-label">{{'Lables.DependantDesignation' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100"> 
-                    <mat-select  multiple [compareWith]="compareFn" formControlName="depenDesigIds" (selectionChange)="selectMultiple($event);">
+                    <mat-select  multiple [compareWith]="compareFn" formControlName="depenDesigIds">
                         <mat-option *ngFor="let desig of dependDesigArr" [value]="desig"> {{langTypeName =='English' ? desig.designation: desig.m_Designation}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -109,7 +109,6 @@
                 <mat-error
                 *ngIf="f['designation'].hasError('pattern') || f['designation'].hasError('touched')">
                 {{'Lables.InvalidDesignation' | translate}}
-
             </mat-error>
 
                 <label class="form-label">{{'Lables.Designation-marathi' | translate}}</label>

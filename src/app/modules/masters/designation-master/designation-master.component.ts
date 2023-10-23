@@ -11,20 +11,7 @@ import { MasterService } from 'src/app/core/services/master.service';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
 import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
-export interface PeriodicElement {
-  srno: any;
-  Designation: any;
-  DesignationLevel: any;
-  Linkedto: any;
-  Action: any;
 
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { srno: 1, Designation: 'Teacher', DesignationLevel: 'School', Linkedto: 'Head Master', Action: 'H' },
-  { srno: 2, Designation: 'Head Master', DesignationLevel: 'Kendra', Linkedto: 'Cluster Resource Person', Action: 'H' },
-  { srno: 3, Designation: 'IED Teacher', DesignationLevel: 'Taluka', Linkedto: 'Block Resource Person', Action: 'H' },
-];
 @Component({
   selector: 'app-designation-master',
   templateUrl: './designation-master.component.html',
@@ -127,7 +114,7 @@ export class DesignationMasterComponent {
     this.masterService.getAllDesireDesignationsByLevelId('', dependantDesigLevelId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.desireDesigLevelArr = res.responseData) : this.desireDesigLevelArr = [];
-        this.editObj ? this.f['designationLevelId'].setValue(this.editObj.designationLevelId):''
+        this.editObj ? this.f['designationLevelId'].setValue(this.editObj.designationLevelId):'' 
       }
     })
   }
@@ -149,16 +136,16 @@ export class DesignationMasterComponent {
   submit() {
     let formValue = this.desigNationForm.value;
     
-    // let arrr = this.f['depenDesigIds'].value;
-    // this.linkedDesignationModelArr=[];
-    // for (let i = 0; i < arrr.length; i++) {
-    //   let objM = {
-    //     "linkedDesignationLevelId": arrr[i]?.designationLevelId,
-    //     "linkedDesignationId": arrr[i]?.id,
-    //     "designationId": 0,
-    //   }
-    //   this.linkedDesignationModelArr.push(objM);
-    // }    
+    let arrr = this.f['depenDesigIds'].value;
+    this.linkedDesignationModelArr=[];
+    for (let i = 0; i < arrr.length; i++) {
+      let objM = {
+        "linkedDesignationLevelId": arrr[i]?.designationLevelId,
+        "linkedDesignationId": arrr[i]?.id,
+        "designationId": 0,
+      }
+      this.linkedDesignationModelArr.push(objM);
+    }    
 
     let obj = {
       ...this.webStorage.createdByProps(),
@@ -194,7 +181,7 @@ export class DesignationMasterComponent {
   compareFn(object1: any, object2: any) {
     console.log("jdghsdg pass or save time obj and getAll Obj",object1, object2);
     
-    return object1 && object2 && object1.id === object2.id;
+    return object1 && object2 && object1.linkedDesignationId === object2.linkedDesignationId;
   }
 
 
