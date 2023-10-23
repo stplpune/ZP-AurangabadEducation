@@ -11,20 +11,7 @@ import { MasterService } from 'src/app/core/services/master.service';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
 import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
-export interface PeriodicElement {
-  srno: any;
-  Designation: any;
-  DesignationLevel: any;
-  Linkedto: any;
-  Action: any;
 
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { srno: 1, Designation: 'Teacher', DesignationLevel: 'School', Linkedto: 'Head Master', Action: 'H' },
-  { srno: 2, Designation: 'Head Master', DesignationLevel: 'Kendra', Linkedto: 'Cluster Resource Person', Action: 'H' },
-  { srno: 3, Designation: 'IED Teacher', DesignationLevel: 'Taluka', Linkedto: 'Block Resource Person', Action: 'H' },
-];
 @Component({
   selector: 'app-designation-master',
   templateUrl: './designation-master.component.html',
