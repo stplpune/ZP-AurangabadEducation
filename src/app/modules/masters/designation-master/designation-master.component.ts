@@ -31,8 +31,8 @@ export class DesignationMasterComponent {
   highLightFlag!: boolean;
   tableData: any;
   // displayedColumns = new Array();
-  displayedheadersEnglish = ['Sr. No.', 'Designation Name', 'Designation Level', 'Action'];
-  displayedheadersMarathi = ['अनुक्रमांक', 'पदनाम', 'पदनाम स्तर', 'कृती'];
+  displayedheadersEnglish = ['Sr. No.','Designation Level', 'Designation Name',  'Action'];
+  displayedheadersMarathi = ['अनुक्रमांक','पदनाम स्तर', 'पदनाम', 'कृती'];
   desigLevelArr = new Array();
   dependDesigArr = new Array();
   desireDesigLevelArr = new Array();
@@ -203,7 +203,7 @@ export class DesignationMasterComponent {
     let str = `DesignationLevelId=${this.desigId.value}&TextSearch=${(this.textSearch.value)?.trim()}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
     let reportStr = `DesignationLevelId=${this.desigId.value}&TextSearch=${this.textSearch}&pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
 
-    this.apiService.setHttp('get', 'ZP-Education/Designation/GetAll?' + (flag == 'pdfFlag' ? reportStr : str), false, false, false, 'zp-Education');
+    this.apiService.setHttp('get', 'ZP-Education/Designation/GetAll?' + ((flag == 'pdfFlag' || flag == 'excel') ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
         this.ngxSpinner.hide();
@@ -212,7 +212,7 @@ export class DesignationMasterComponent {
           this.totalCount = res.responseData.responseData2.pageCount;
           this.tableDatasize = res.responseData.responseData2.pageCount;
           let data: [] = (flag == 'pdfFlag' || flag == 'excel') ? res.responseData.responseData1 : [];
-          (flag == 'pdfFlag' || flag == 'excel') ? this.downloadPdf(data, flag) : '';
+          ((flag == 'pdfFlag' || flag == 'excel') && this.totalCount > 0) ? this.downloadPdf(data, flag) : '';
         }
         else {
           this.ngxSpinner.hide();
@@ -259,22 +259,23 @@ export class DesignationMasterComponent {
   }
 
   downloadPdf(data: any, _flag?: any) {
-
-    let keyHeader = ['Sr. No.', 'Designation Name', 'Designation Level', 'Action'];
-    let apiKeys = ['srNo', this.langTypeName == 'English' ? 'designation' : 'm_Designation', this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', 'action'];
+    console.log("data", data);
+    
+    let keyHeader = ['Sr. No.', 'Designation Level', 'Designation Name'];
+    let apiKeys = ['srNo',  this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation'];
     // let headerKeySize = ['15', '25', '25', '30', '45', '30', '30'];
     let resultDownloadArr: any = [];
 
     data.find((res: any, i: any) => {
       let obj = {
         srNo: i + 1,
+        "Designation Level": res.designationLevel,
         "Designation Name": res.designation,
-        "Designation Level": res.designationLevel
-            }
+        }
       resultDownloadArr.push(obj);
     });
     if (resultDownloadArr.length > 0) {
-      let keyPDFHeader = ['Sr. No.', 'Designation Name', 'Designation Level'];
+      let keyPDFHeader = ['Sr. No.','Designation Level', 'Designation Name'];
       let ValueData =
         resultDownloadArr.reduce(
           (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
@@ -284,6 +285,26 @@ export class DesignationMasterComponent {
         'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
       }
       ValueData.length > 0 ? this.downloadPdfExcelService.downLoadPdf(keyPDFHeader, ValueData, objData) : ''
+    }
+
+
+    // excel 
+    if(_flag == 'excel'){
+      let headerKeySize = [10, 20, 40, 20, 20, 20, 20, 20, 20];
+      let nameArr: any;
+  
+      if (data.length > 0) {
+        nameArr = [{
+          'sheet_name': 'Designation Master',
+          'excel_name': 'Designation Master',
+          'languageFlag': this.langTypeName,
+          'status':'Master'
+        }];
+        this.downloadPdfExcelService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
+      } else {
+        this.commonMethod.matSnackBar('No Data Found !!', 1);
+      }
+  
     }
 
 
