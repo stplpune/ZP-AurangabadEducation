@@ -3,6 +3,7 @@ import * as FileSaver from 'file-saver';
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import { Workbook } from 'exceljs';
+import { DatePipe } from '@angular/common';
 // declare let Workbook: any; //declare moment
 
 
@@ -12,7 +13,7 @@ import { Workbook } from 'exceljs';
 })
 export class DownloadPdfExcelService {
 
-  constructor() { }
+  constructor(private datepipe: DatePipe) { }
 
   downLoadPdf(keyData: any, apiKeys: any, objData: any) {
     let doc: any = new jsPDF();
@@ -47,17 +48,22 @@ export class DownloadPdfExcelService {
     doc.save(objData.topHedingName);
   }
 
-  generateExcel(keyData: any, apiKeys: any, data: any, name: any, headerKeySize?: any) {    
+  generateExcel(keyData: any, apiKeys: any, data: any, name: any, headerKeySize?: any) {   
+    console.log("keyData: ", keyData);   
+    console.log("apiKeys: ", apiKeys);   
+    console.log("data: ", data);   
+    console.log("name: ", name);   
+    console.log("headerKeySize: ", headerKeySize);
+     
     // Create workbook and worksheet
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet(name[0].sheet_name);
 
     //Add Row and formatting
     worksheet.mergeCells('C2', 'F5');
-    //  worksheet.mergeCells('C5', 'F8');
 
     let titleRow = worksheet.getCell('C2');
-    titleRow.value = name[0].title;
+    titleRow.value = name[0].topHedingName;
     titleRow.font = {
       name: 'Calibri',
       size: 16,
@@ -66,6 +72,12 @@ export class DownloadPdfExcelService {
       color: { argb: '3208' },
     };
     titleRow.alignment = { vertical: 'middle', horizontal: 'center' };
+
+    worksheet.mergeCells('A6:B6');
+    let heading = worksheet.getCell('A6');
+    heading.value = (name[0].languageFlag == 'English' ? 'Created on: ' : 'रोजी तयार केले: ') + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a');
+    heading.font = { name: 'Calibri', size: 10, bold: true, color: { argb: '0000' } };
+    heading.alignment = { vertical: 'middle', horizontal: 'center' };
 
     // worksheet.mergeCells('C1:F1');
     // let heading = worksheet.getCell('C1');
@@ -201,7 +213,6 @@ export class DownloadPdfExcelService {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       });
       FileSaver.saveAs(blob, name[0].excel_name);
-
     });
   }
 
