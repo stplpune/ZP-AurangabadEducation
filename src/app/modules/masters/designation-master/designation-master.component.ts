@@ -114,7 +114,7 @@ export class DesignationMasterComponent {
     this.masterService.getAllDesireDesignationsByLevelId('', dependantDesigLevelId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.desireDesigLevelArr = res.responseData) : this.desireDesigLevelArr = [];
-        this.editObj ? this.f['designationLevelId'].setValue(this.editObj.designationLevelId):''
+        this.editObj ? this.f['designationLevelId'].setValue(this.editObj.designationLevelId):'' 
       }
     })
   }
@@ -136,16 +136,16 @@ export class DesignationMasterComponent {
   submit() {
     let formValue = this.desigNationForm.value;
     
-    // let arrr = this.f['depenDesigIds'].value;
-    // this.linkedDesignationModelArr=[];
-    // for (let i = 0; i < arrr.length; i++) {
-    //   let objM = {
-    //     "linkedDesignationLevelId": arrr[i]?.designationLevelId,
-    //     "linkedDesignationId": arrr[i]?.id,
-    //     "designationId": 0,
-    //   }
-    //   this.linkedDesignationModelArr.push(objM);
-    // }    
+    let arrr = this.f['depenDesigIds'].value;
+    this.linkedDesignationModelArr=[];
+    for (let i = 0; i < arrr.length; i++) {
+      let objM = {
+        "linkedDesignationLevelId": arrr[i]?.designationLevelId,
+        "linkedDesignationId": arrr[i]?.id,
+        "designationId": 0,
+      }
+      this.linkedDesignationModelArr.push(objM);
+    }    
 
     let obj = {
       ...this.webStorage.createdByProps(),
