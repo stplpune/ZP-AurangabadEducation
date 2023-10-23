@@ -58,6 +58,41 @@
                         <span class="form-data">Moshi</span>
                     </li>
                 </ul>
+                <label class="form-label">Latest Event</label>
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://yellowslate.com/blog/wp-content/uploads/2022/10/Best-Schools-in-PUNE-1-1280x720.png"
+                                class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://img.staticmb.com/mbcontent/images/uploads/2021/8/vastu-for-school.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://www.brookings.edu/wp-content/uploads/2020/05/empty-classroom_elementary-school-middle-school-high-school.jpg?w=1500"
+                                class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>
@@ -146,12 +181,81 @@
         <mat-card class="plain-card">
             <mat-card-content class="card-body p-0">
                 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-                    <mat-tab label="Assessment">Content 1</mat-tab>
+                    <mat-tab label="Attendance Analysis">
+                        <div class="row g-2">
+                            <div class="col-sm-3">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Select Month</mat-label>
+                                    <mat-select>
+                                        <mat-option>
+                                            Select Month
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-3">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Select Year</mat-label>
+                                    <mat-select>
+                                        <mat-option>
+                                            Select Year
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <img src="assets/images/chart.PNG" class="img-fluid mb-3">
+                        <table mat-table [dataSource]="dataSource" class="dashboard-table">
+                            <ng-container matColumnDef="saralid">
+                                <th mat-header-cell *matHeaderCellDef> Saral ID </th>
+                                <td mat-cell *matCellDef="let element"> {{element.saralid}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="studentname">
+                                <th mat-header-cell *matHeaderCellDef> Student Name </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <a routerLink="../student-profile"
+                                        class="text-main fw-bold">{{element.studentname}}</a>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="class">
+                                <th mat-header-cell *matHeaderCellDef> Class </th>
+                                <td mat-cell *matCellDef="let element"> {{element.class}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="gender">
+                                <th mat-header-cell *matHeaderCellDef> Gender </th>
+                                <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="absentdates">
+                                <th mat-header-cell *matHeaderCellDef> Absent Dates </th>
+                                <td mat-cell *matCellDef="let element"> {{element.absentdates}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="view">
+                                <th mat-header-cell *matHeaderCellDef> View </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <button mat-icon-button class="btn-icon" (click)="openAnalysisDialog()">
+                                        <mat-icon class="text-dark material-symbols-rounded">
+                                            visibility
+                                        </mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </mat-tab>
                     <mat-tab label="Attendance">Content 2</mat-tab>
+                    <mat-tab label="Assessment">Content 1</mat-tab>
                     <mat-tab label="Teachers List">Content 2</mat-tab>
                     <mat-tab label="Student List">Content 2</mat-tab>
                     <mat-tab label="Events">Content 2</mat-tab>
                 </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-sm-12">
+        <mat-card class="plain-card">
+            <mat-card-content class="card-body">
+                asdf
             </mat-card-content>
         </mat-card>
     </div>
