@@ -106,7 +106,6 @@ export class SchoolRegistrationComponent {
   }
 
   downloadExcelPDF(data?: any, flag?: any){
-    console.log("flag: ", flag);
     
     data.find((res: any, i: any) => {
       let obj = {
