@@ -57,6 +57,8 @@ export class SchoolRegistrationComponent {
     });
     this.getDistrict();
     this.formField();
+    console.log("this.langTypeName ", this.langTypeName);
+    
   }
 
   formField(){
@@ -88,8 +90,8 @@ export class SchoolRegistrationComponent {
           this.resultDownloadArr = [];
 
           let data: [] = (flag == 'pdfFlag' || flag == 'excelFlag') ? res.responseData?.responseData1 : [];
-          flag == 'pdfFlag' ? this.downloadPdf(data) : this.downloadExcel(data);
-          // flag == 'pdfFlag' ? this.downloadExcelPDF(data, 'pdfFlag') : flag == 'excelFlag' ? this.downloadExcelPDF(data, 'excelFlag') : '';
+          // flag == 'pdfFlag' ? this.downloadPdf(data) : this.downloadExcel(data);
+          flag == 'pdfFlag' ? this.downloadExcelPDF(data, 'pdfFlag') : flag == 'excelFlag' ? this.downloadExcelPDF(data, 'excelFlag') : '';
         }
         else{
           this.ngxSpinner.hide();
@@ -104,33 +106,39 @@ export class SchoolRegistrationComponent {
   }
 
   downloadExcelPDF(data?: any, flag?: any){
+    console.log("flag: ", flag);
+    
     data.find((res: any, i: any) => {
       let obj = {
-        srNo: i + 1,
+        srNo: (i + 1),
         schoolCode: res.schoolCode,
-        schoolName: res.schoolName,
-        district: res.district,
-        taluka: res.taluka,
-        center: res.center,
-        village: res.village,
+        schoolName: flag == 'excelFlag' ? this.langTypeName == 'English' ? res.schoolName : res.m_SchoolName : res.schoolName,
+        district: flag == 'excelFlag' ? this.langTypeName == 'English' ? res.district : res.m_District : res.district,
+        taluka: flag == 'excelFlag' ? this.langTypeName == 'English' ? res.taluka : res.m_Taluka : res.taluka,
+        center: flag == 'excelFlag' ? this.langTypeName == 'English' ? res.center : res.m_Center : res.center,
+        village: flag == 'excelFlag' ? this.langTypeName == 'English' ? res.village : res.m_Village : res.village,
       }
       this.resultDownloadArr.push(obj);
     })
 
     if (this.resultDownloadArr.length > 0) {
       let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
-      let apiKeys = ['schoolCode', 'schoolName', 'district', 'taluka', 'center', 'village'];
+      let marathiKeyHeader = ['अनुक्रमांक', 'यूडीआयएसई कोड', 'शाळेचे नाव', 'जिल्हा', 'तालुका', 'केंद्र', 'गाव'];
+      let apiKeys = ['srNo','schoolCode', 'schoolName', 'district', 'taluka', 'center', 'village'];
+      let marathiApiKeys = ['srNo','schoolCode', 'm_SchoolName', 'm_District', 'm_Taluka', 'm_Center', 'm_Village'];
       let ValueData =
       this.resultDownloadArr.reduce(
           (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
         );
-      let headerKeySize = [10, 20, 40, 20, 20, 20, 20, 20, 20];
-      let objData: any = {
-        'topHedingName': 'School List',
-        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
-      }
+      let headerKeySize = [10, 20, 50, 30, 20, 20, 20, 20, 20];
+      let objData: any = [{
+        'topHedingName': this.langTypeName == 'English' ? 'School Registration' : 'शाळा नोंदणी',
+        'languageFlag': this.langTypeName,
+        'sheet_name': this.langTypeName == 'English' ? 'School List' : 'शाळेची यादी',
+        'excel_name': this.langTypeName == 'English' ? 'School List' : 'शाळेची यादी'
+      }]
       ValueData.length > 0 && flag == 'pdfFlag' ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : '';
-      ValueData.length > 0 && flag == 'excelFlag' ? this.downloadFileService.generateExcel(keyPDFHeader, apiKeys, ValueData, objData, headerKeySize) : '';
+      ValueData.length > 0 && flag == 'excelFlag' ? this.downloadFileService.generateExcel(this.langTypeName == 'English' ? keyPDFHeader : marathiKeyHeader, this.langTypeName == 'English' ? apiKeys : marathiApiKeys, data, objData, headerKeySize) : '';
     }
   }
 
@@ -167,7 +175,7 @@ export class SchoolRegistrationComponent {
   downloadExcel(data: any){
 
     let keyHeader = ['Sr. No.', 'UDISE Code', 'School Name', 'District', 'Taluka', 'Kendra', 'Village'];
-    let apiKeys = ['schoolCode', 'schoolName', 'district', 'taluka', 'center', 'village'];
+    let apiKeys = ['srNo', 'schoolCode', 'schoolName', 'district', 'taluka', 'center', 'village'];
     let headerKeySize = [10, 20, 40, 20, 20, 20, 20, 20, 20];
     let nameArr: any;
 
