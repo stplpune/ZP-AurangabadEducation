@@ -181,7 +181,7 @@ export class DesignationMasterComponent {
   compareFn(object1: any, object2: any) {
     console.log("jdghsdg pass or save time obj and getAll Obj",object1, object2);
     
-    return object1 && object2 && object1.id === object2.id;
+    return object1 && object2 && object1.linkedDesignationId === object2.linkedDesignationId;
   }
 
 
