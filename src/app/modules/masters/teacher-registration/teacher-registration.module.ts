@@ -22,6 +22,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
 import { TranslateModule } from '@ngx-translate/core';
+import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatNativeDateModule,
     MatSlideToggleModule,
     MatRadioModule,
-    TranslateModule
+    TranslateModule,
+    GlobalTableComponent
 
   ]
 })

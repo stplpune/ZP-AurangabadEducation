@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
@@ -8,7 +8,26 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
   styleUrls: ['./add-teacher.component.scss']
 })
 export class AddTeacherComponent {
+  teacherRegForm!: FormGroup;
 
+  constructor(private fb: FormBuilder){}
+
+  ngOnInit(){
+    this.formField();
+  }
+
+  formField(){
+    this.teacherRegForm = this.fb.group({
+      teacherName: [''],
+      m_TeacherName: [''],
+      teacherId: [''],
+      genderId: [''],
+      mobileNo: [''],
+      emailId: [''],
+      birthDate: [''],
+      uploadImage: ['']
+    })
+  }
 
   toppings = new FormControl('');
   toppingList: string[] = ['Pune', 'Satara', 'Kolhapur', 'Sangli', 'Nagar'];

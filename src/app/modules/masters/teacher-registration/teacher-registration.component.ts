@@ -337,4 +337,12 @@ export class TeacherRegistrationComponent {
       this.f['villageId'].setValue('');
     }
   }
+
+  onClear() {
+    this.formField();
+    this.talukaArray = [];
+    this.centerArray = [];
+    this.villageArray = [];
+    this.getTableData();
+  }
 }
