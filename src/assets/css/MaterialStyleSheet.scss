@@ -125,3 +125,33 @@
 .mat-mdc-option:hover:not(.mdc-list-item--disabled) {
     background-color: #eee !important;
 }
+
+/* mat tab body scroll issue resolved*/
+.mat-mdc-tab-body-content {
+    padding: 10px 15px;
+}
+
+.mat-mdc-tab-labels {
+    height: 45px !important;
+    background: var(--main-light-color) !important;
+}
+
+.mdc-tab {
+    padding-inline: 11px !important;
+    margin: 5px 5px 0 5px !important;
+    border-radius: 5px !important;
+    height: 34px !important;
+}
+
+.mdc-tab-indicator {
+    display: none !important;
+}
+
+.mdc-tab-indicator--active {
+    background-color: var(--main-color) !important;
+    color: #fff !important;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: #fff !important;
+}
