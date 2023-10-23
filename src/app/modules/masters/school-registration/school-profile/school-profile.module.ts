@@ -9,13 +9,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { AttendanceAnalysisDetailsComponent } from './attendance-analysis-details/attendance-analysis-details.component';
 
 
 @NgModule({
   declarations: [
     SchoolProfileComponent,
-    AttendanceAnalysisDetailsComponent
   ],
   imports: [
     CommonModule,
