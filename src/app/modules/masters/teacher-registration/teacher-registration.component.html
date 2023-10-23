@@ -58,9 +58,9 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-                <label class="form-label">{{'Lables.Cluster' | translate}}</label>
+                <label class="form-label">{{'Lables.kendra' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select formControlName="centerId" (selectionChange)="clearDropdown('cluster'); getVillage();">
+                    <mat-select formControlName="centerId" (selectionChange)="clearDropdown('kendra'); getVillage();">
                         <mat-option *ngFor="let center of centerArray" [value]="center.id">{{webStorage.languageFlag =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                     </mat-select>
                 </mat-form-field>
