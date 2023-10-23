@@ -130,7 +130,7 @@ export class SchoolRegistrationComponent {
       let objData: any = [{
         'topHedingName': 'School Registration',
       }]
-      ValueData.length > 0 ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : '';
+      // ValueData.length > 0 ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : '';
     }
 
     if (flag == 'excelFlag') {
