@@ -11,20 +11,7 @@ import { MasterService } from 'src/app/core/services/master.service';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
 import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
-export interface PeriodicElement {
-  srno: any;
-  Designation: any;
-  DesignationLevel: any;
-  Linkedto: any;
-  Action: any;
 
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { srno: 1, Designation: 'Teacher', DesignationLevel: 'School', Linkedto: 'Head Master', Action: 'H' },
-  { srno: 2, Designation: 'Head Master', DesignationLevel: 'Kendra', Linkedto: 'Cluster Resource Person', Action: 'H' },
-  { srno: 3, Designation: 'IED Teacher', DesignationLevel: 'Taluka', Linkedto: 'Block Resource Person', Action: 'H' },
-];
 @Component({
   selector: 'app-designation-master',
   templateUrl: './designation-master.component.html',
@@ -49,7 +36,6 @@ export class DesignationMasterComponent {
   desigLevelArr = new Array();
   dependDesigArr = new Array();
   desireDesigLevelArr = new Array();
-  editFlag: boolean = false;
   linkedDesignationArr = new Array();
   linkedDesignationModelArr = new Array();
   editObj: any;
@@ -182,7 +168,7 @@ export class DesignationMasterComponent {
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
           this.ngxSpinner.hide();
-          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0),this.formDirective.resetForm(),  this.editFlag = false, this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0),this.formDirective.resetForm(), this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
         },
         error: ((err: any) => {
           this.ngxSpinner.hide();
@@ -207,7 +193,7 @@ export class DesignationMasterComponent {
 
   clearForm(){
     this.formDirective.resetForm();
-    this.editFlag = false;
+    this.editObj = null;
   }
 
   getTableData(flag?: string) {

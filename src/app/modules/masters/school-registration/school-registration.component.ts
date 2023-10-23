@@ -74,8 +74,8 @@ export class SchoolRegistrationComponent {
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     let formValue = this.filterForm?.value;
 
-    let str = `pageno=${this.pageNumber}&pagesize=10&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`;
-    let reportStr = `pageno=1&pagesize=` + (this.totalCount * 10) + `&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch || ''}&lan=${this.webStorage.languageFlag}`
+    let str = `pageno=${this.pageNumber}&pagesize=10&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim() || ''}&lan=${this.webStorage.languageFlag}`;
+    let reportStr = `pageno=1&pagesize=` + (this.totalCount * 10) + `&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim() || ''}&lan=${this.webStorage.languageFlag}`
 
     this.apiService.setHttp('get', 'ZP-Education/School/GetAllSchool?' + ((flag == 'pdfFlag'  || flag == 'excelFlag') ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
@@ -88,8 +88,8 @@ export class SchoolRegistrationComponent {
           this.resultDownloadArr = [];
 
           let data: [] = (flag == 'pdfFlag' || flag == 'excelFlag') ? res.responseData?.responseData1 : [];
-          // flag == 'pdfFlag' ? this.downloadPdf(data) : this.downloadExcel(data);
-          flag == 'pdfFlag' ? this.downloadExcelPDF(data, 'pdfFlag') : flag == 'excelFlag' ? this.downloadExcelPDF(data, 'excelFlag') : '';
+          flag == 'pdfFlag' ? this.downloadPdf(data) : this.downloadExcel(data);
+          // flag == 'pdfFlag' ? this.downloadExcelPDF(data, 'pdfFlag') : flag == 'excelFlag' ? this.downloadExcelPDF(data, 'excelFlag') : '';
         }
         else{
           this.ngxSpinner.hide();

@@ -109,10 +109,9 @@
                 <mat-error
                 *ngIf="f['designation'].hasError('pattern') || f['designation'].hasError('touched')">
                 {{'Lables.InvalidDesignation' | translate}}
-
             </mat-error>
 
-                <label class="form-label">{{'Lables.Designation(marathi)' | translate}}</label>
+                <label class="form-label">{{'Lables.Designation-marathi' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input minlength="2" maxlength="50" matInput formControlName="m_Designation"  (keypress)="validation.noFirstSpaceAllow($event); validation.unicodeMarathiValidation($event);">
                 </mat-form-field>
