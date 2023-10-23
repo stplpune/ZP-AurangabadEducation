@@ -259,12 +259,10 @@ export class DesignationMasterComponent {
   }
 
   downloadPdf(data: any, _flag?: any) {
-    let keyHeader = ['Sr. No.', this.langTypeName == 'English' ?  'Designation Level' : 'पदनाम स्तर', this.langTypeName == 'English' ? 'Designation Name' : 'पदनाम'];
-    let apiKeys = [this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation'];
     let headerKeySize = [10, 20, 40];
-    let keyPDFHeader = ['Sr. No.','Designation Level', 'Designation Name'];        
-    
     if(_flag == 'pdfFlag'){
+      let apiKeys = ['designationLevel', 'designation'];
+      let keyPDFHeader = ['Sr. No.','Designation Level', 'Designation Name'];        
         let objData: any = {
           'topHedingName': 'Designation List',
           'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
@@ -273,6 +271,8 @@ export class DesignationMasterComponent {
       }
     // excel 
     else if(_flag == 'excel'){
+      let apiKeys = ['srNo',this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation'];
+      let keyHeader = ['Sr. No.', this.langTypeName == 'English' ?  'Designation Level' : 'पदनाम स्तर', this.langTypeName == 'English' ? 'Designation Name' : 'पदनाम'];
       let nameArr: any;
       data.map((x:any,i: any)=>{        
         x.srNo = i+1
@@ -287,10 +287,6 @@ export class DesignationMasterComponent {
         this.downloadPdfExcelService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
       }
     }
-     
-
-
-
   }
 
   onEdit(obj: any){
