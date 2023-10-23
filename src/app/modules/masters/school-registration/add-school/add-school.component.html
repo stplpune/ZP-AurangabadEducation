@@ -2,7 +2,7 @@
     <div mat-dialog-title class="modal-header">
         <div class="d-flex justify-content-between align-items-center w-100">
             <h6 class="text-main mb-0 fw-bold">{{data ?('Lables.updateSchool' | translate)
-                :('Lables.SchoolRegistration' | translate)}}
+                :('Lables.AddSchool' | translate)}}
             </h6>
             <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
                 <mat-icon class="material-symbols-rounded">close</mat-icon>
@@ -74,6 +74,8 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+        </div>
+        <div class="row">
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolName' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
