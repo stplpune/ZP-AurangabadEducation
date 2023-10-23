@@ -21,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    TranslateModule
 
   ]
 })
