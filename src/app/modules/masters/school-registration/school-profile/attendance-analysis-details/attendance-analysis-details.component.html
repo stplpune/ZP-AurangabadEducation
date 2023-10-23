@@ -1,1 +1,66 @@
-<p>attendance-analysis-details works!</p>
+<div mat-dialog-title class="modal-header">
+    <div class="d-flex justify-content-between align-items-center w-100">
+        <h6 class="text-main mb-0 fw-bold">Details
+        </h6>
+        <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
+            <mat-icon class="material-symbols-rounded">close</mat-icon>
+        </button>
+    </div>
+</div>
+<mat-dialog-content class="modal-body scrollbar form-container">
+    <div class="d-flex align-items-center mb-2">
+        <div class="flex-shrink-0">
+            <img src="assets/images/user.png" class="student-photo">
+        </div>
+        <div class="flex-grow-1 ms-2">
+            <div class="text-end text-dark small">Saral ID : 64321</div>
+            <h6 class="fw-bold text-dark">Abhijit Rajaram Kambale</h6>
+            <h6 class="fw-bold text-dark mb-0">अभिजित राजाराम कांबळे</h6>
+        </div>
+    </div>
+    <ul class="list-group list-group-flush fs-main mb-0">
+        <!-- <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Saral ID</span>
+            <span class="form-data"># 64321</span>
+        </li> -->
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Gender</span>
+            <span class="form-data">Male</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Class</span>
+            <span class="form-data">1st - (A)</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Class Teacher</span>
+            <span class="form-data">
+                <a routerLink="../teacher-profile" class="text-main">Anil Sunil Bhosale</a>
+            </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Parent/Guardian</span>
+            <span class="form-data">Rajaram Hanmant Kambale</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Parent Mobile No.</span>
+            <span class="form-data">987643210</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Center</span>
+            <span class="form-data">Moshi</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+            <span class="form-label">Absent Days</span>
+            <span class="form-data">3</span>
+        </li>
+        <li class="list-group-item d-flex flex-column px-0">
+            <span class="form-label">Reason for Absent</span>
+            <span class="form-data text-danger">Absent due to health issues.</span>
+        </li>
+    </ul>
+</mat-dialog-content>
+<mat-dialog-actions class="modal-footer">
+    <div class="d-flex align-items-center justify-content-end w-100 gap-2">
+        <button mat-flat-button class="btn-main" type="submit">Close</button>
+    </div>
+</mat-dialog-actions>
