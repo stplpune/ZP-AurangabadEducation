@@ -11,21 +11,21 @@
                 {{'Lables.TeacherRegistration' | translate}}</h6>
             <div class="d-flex align-items-center gap-2">
                 <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
-                    <span class="material-symbols-rounded">
+                    <mat-icon class="material-symbols-rounded">
                         download
-                    </span>
+                    </mat-icon>
                 </button>
                 <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
                     <button mat-menu-item>
-                        <span class="material-symbols-rounded text-success">
+                        <mat-icon class="material-symbols-rounded text-success">
                             description
-                        </span>
+                        </mat-icon>
                         <span class="text-success">PDF</span>
                     </button>
                     <button mat-menu-item>
-                        <span class="material-symbols-rounded text-danger">
+                        <mat-icon class="material-symbols-rounded text-danger">
                             table
-                        </span>
+                        </mat-icon>
                         <span class="text-danger">Excel</span>
                     </button>
                 </mat-menu>
@@ -39,7 +39,7 @@
         </div>
     </mat-card-header>
     <mat-card-header class="card-header-control border-bottom-0 form-container">
-<form [formGroup]="filterForm"> 
+<form [formGroup]="filterForm">
         <div class="row align-items-end w-100 justify-content-start g-2">
             <div class="col-sm-2">
                 <label class="form-label">{{'Lables.district' | translate}}</label>
@@ -76,21 +76,21 @@
             <div class="col-sm">
                 <label class="form-label">{{'Lables.TeacherName/MobileNo.' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput placeholder="{{'Lables.TeacherName/MobileNo.' | translate}}" formControlName="textSearch" 
+                    <input matInput placeholder="{{'Lables.TeacherName/MobileNo.' | translate}}" formControlName="textSearch"
                     (keypress)="validation.noSpacesAtStart($event); validation.alphaNumericWithSpacesAndSpecChars($event)" maxlength="100">
                 </mat-form-field>
             </div>
             <div class="col-sm-auto">
                 <div class="d-flex gap-2">
                     <button mat-flat-button class="btn-main btn-icon">
-                        <span class="material-symbols-rounded">
+                        <mat-icon class="material-symbols-rounded">
                             search
-                        </span>
+                        </mat-icon>
                     </button>
                     <button mat-flat-button class="btn-main-light btn-icon">
-                        <span class="material-symbols-rounded">
+                        <mat-icon class="material-symbols-rounded">
                             close
-                        </span>
+                        </mat-icon>
                     </button>
                 </div>
             </div>

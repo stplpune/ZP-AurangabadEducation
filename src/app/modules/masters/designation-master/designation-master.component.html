@@ -13,21 +13,21 @@
                         {{'Lables.designationMaster' | translate}}</h6>
                     <div class="d-flex align-items-center gap-2">
                         <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark">
-                            <span class="material-symbols-rounded">
+                            <mat-icon class="material-symbols-rounded">
                                 download
-                            </span>
+                            </mat-icon>
                         </button>
                         <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
                             <button mat-menu-item (click)="getTableData('pdfFlag')">
-                                <span class="material-symbols-rounded text-success">
+                                <mat-icon class="material-symbols-rounded text-success">
                                     description
-                                </span>
+                                </mat-icon>
                                 <span class="text-success">PDF</span>
                             </button>
                             <button mat-menu-item  (click)="getTableData('excel')">
-                                <span class="material-symbols-rounded text-danger">
+                                <mat-icon class="material-symbols-rounded text-danger">
                                     table
-                                </span>
+                                </mat-icon>
                                 <span class="text-danger">Excel</span>
                             </button>
                         </mat-menu>
@@ -53,14 +53,14 @@
                     <div class="col-sm-auto">
                         <div class="d-flex gap-2">
                             <button mat-flat-button class="btn-main btn-icon" (click)="getTableData('filter')">
-                                <span class="material-symbols-rounded">
+                                <mat-icon class="material-symbols-rounded">
                                     search
-                                </span>
+                                </mat-icon>
                             </button>
                             <button mat-flat-button class="btn-main-light btn-icon" (click)="clearFilerForm()">
-                                <span class="material-symbols-rounded">
+                                <mat-icon class="material-symbols-rounded">
                                     close
-                                </span>
+                                </mat-icon>
                             </button>
                         </div>
                     </div>
@@ -88,13 +88,13 @@
 
                 <!-- linkedDesignationId -->
                 <label class="form-label">{{'Lables.DependantDesignation' | translate}}</label>
-                <mat-form-field appearance="outline" class="w-100"> 
+                <mat-form-field appearance="outline" class="w-100">
                     <mat-select  multiple [compareWith]="compareFn" formControlName="depenDesigIds">
                         <mat-option *ngFor="let desig of dependDesigArr" [value]="desig"> {{langTypeName =='English' ? desig.designation: desig.m_Designation}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
-                
+
                 <label class="form-label">{{'Lables.DesireDesignationLevel' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100" >
                     <mat-select formControlName="designationLevelId">
@@ -119,9 +119,9 @@
                 <mat-error *ngIf="f['m_Designation'].hasError('pattern') ">
                     {{'Lables.DesignationMarathiReq' | translate}}</mat-error>
 
-                
 
-                
+
+
             </mat-card-content>
             <mat-card-actions class="card-footer" align="end">
                 <div class="d-flex justify-content-end align-items-center w-100">
@@ -132,6 +132,6 @@
                 </div>
             </mat-card-actions>
         </mat-card>
-    </form>    
+    </form>
 </div>
 </div>
