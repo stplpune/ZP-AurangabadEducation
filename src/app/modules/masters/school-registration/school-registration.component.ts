@@ -57,8 +57,6 @@ export class SchoolRegistrationComponent {
     });
     this.getDistrict();
     this.formField();
-    console.log("this.langTypeName ", this.langTypeName);
-    
   }
 
   formField(){
@@ -90,7 +88,6 @@ export class SchoolRegistrationComponent {
           this.resultDownloadArr = [];
 
           let data: [] = (flag == 'pdfFlag' || flag == 'excelFlag') ? res.responseData?.responseData1 : [];
-          // flag == 'pdfFlag' ? this.downloadPdf(data) : this.downloadExcel(data);
           flag == 'pdfFlag' ? this.downloadExcelPDF(data, 'pdfFlag') : flag == 'excelFlag' ? this.downloadExcelPDF(data, 'excelFlag') : '';
         }
         else{
@@ -196,7 +193,6 @@ export class SchoolRegistrationComponent {
     this.displayedColumns = ['srNo', 'schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
-      // img: '', blink: '', badge: '', isBlock: '', pagintion: true,
       img: '', blink: '', badge: '', isBlock: '', pagination: this.totalCount > 10 ? true : false,
       displayedColumns: this.displayedColumns,
       tableData: this.tableDataArray,

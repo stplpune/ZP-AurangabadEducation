@@ -27,6 +27,7 @@
         "kendra": "केंद्र",
         "bit": "बिट्स",
         "village": "गाव",
+        "Cluster": "क्लस्टर",
         "UDISECode/SchoolName": "यूडीआयएसई कोड/शाळेचे नाव",
         "designationMaster": "पदनाम मास्टर",
         "SchoolRegistration": "शाळा नोंदणी",
@@ -55,7 +56,10 @@
         "DependantDesignation": "अवलंबित पद",
         "DesireDesignationLevel": "इच्छा पदनाम स्तर",
         "Designation": "पदनाम",
-        "Designation-marathi":"पदनाम (मराठी)"
+        "Designation-marathi":"पदनाम (मराठी)",
+        "TeacherRegistration": "शिक्षक नोंदणी",
+        "TeacherName/MobileNo.": "शिक्षकाचे नाव/मोबाईल क्र.",
+        "AddTeacher": "शिक्षक नोंदणी"
 
 
 

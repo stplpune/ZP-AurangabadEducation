@@ -27,6 +27,7 @@
         "kendra": "Kendra",
         "bit": "Bit",
         "village": "Village",
+        "Cluster": "Cluster",
         "UDISECode/SchoolName": "UDISE Code/School Name",
         "designationMaster": "Designation Master",
         "SchoolRegistration": "School Registration",
@@ -55,7 +56,11 @@
         "DependantDesignation": "Dependant Designation",
         "DesireDesignationLevel": "Desire Designation Level",
         "Designation": "Designation",
-        "Designation-marathi": "Designation (Marathi)"
+        "Designation-marathi": "Designation (Marathi)",
+        "TeacherRegistration": "Teacher Registration",
+        "TeacherName/MobileNo.": "Teacher Name/Mobile No.",
+        "AddTeacher": "Add Teacher"
+
 
     }
 }
