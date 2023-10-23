@@ -49,12 +49,6 @@ export class DownloadPdfExcelService {
   }
 
   generateExcel(keyData: any, apiKeys: any, data: any, name: any, headerKeySize?: any) {   
-    console.log("keyData: ", keyData);   
-    console.log("apiKeys: ", apiKeys);   
-    console.log("data: ", data);   
-    console.log("name: ", name);   
-    console.log("headerKeySize: ", headerKeySize);
-     
     // Create workbook and worksheet
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet(name[0].sheet_name);
