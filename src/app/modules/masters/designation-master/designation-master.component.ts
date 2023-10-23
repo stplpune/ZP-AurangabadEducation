@@ -201,7 +201,7 @@ export class DesignationMasterComponent {
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
 
     let str = `DesignationLevelId=${this.desigId.value}&TextSearch=${(this.textSearch.value)?.trim()}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
-    let reportStr = `DesignationLevelId=${this.desigId.value}&TextSearch=${this.textSearch}&pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
+    let reportStr = `DesignationLevelId=${this.desigId.value}&TextSearch=${(this.textSearch.value)?.trim()}&pageno=1&pagesize=${(this.totalCount * 10)}&lan=${this.webStorage.languageFlag}`
 
     this.apiService.setHttp('get', 'ZP-Education/Designation/GetAll?' + ((flag == 'pdfFlag' || flag == 'excel') ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
@@ -218,7 +218,7 @@ export class DesignationMasterComponent {
           this.ngxSpinner.hide();
           this.tableDataArray = [];
           this.tableDatasize = 0;
-          this.tableDatasize == 0 && flag == 'pdfFlag' ? this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'No Record Found' : 'रेकॉर्ड उपलब्ध नाही', 1) : '';
+          this.tableDatasize == 0 && (flag == 'pdfFlag'  || flag == 'excel') ? this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'No Record Found' : 'रेकॉर्ड उपलब्ध नाही', 1) : '';
         }
         this.languageChange();
       },
@@ -259,53 +259,35 @@ export class DesignationMasterComponent {
   }
 
   downloadPdf(data: any, _flag?: any) {
-    console.log("data", data);
+    let keyHeader = ['Sr. No.', this.langTypeName == 'English' ?  'Designation Level' : 'पदनाम स्तर', this.langTypeName == 'English' ? 'Designation Name' : 'पदनाम'];
+    let apiKeys = [this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation'];
+    let headerKeySize = [10, 20, 40];
+    let keyPDFHeader = ['Sr. No.','Designation Level', 'Designation Name'];        
     
-    let keyHeader = ['Sr. No.', 'Designation Level', 'Designation Name'];
-    let apiKeys = ['srNo',  this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation'];
-    // let headerKeySize = ['15', '25', '25', '30', '45', '30', '30'];
-    let resultDownloadArr: any = [];
-
-    data.find((res: any, i: any) => {
-      let obj = {
-        srNo: i + 1,
-        "Designation Level": res.designationLevel,
-        "Designation Name": res.designation,
+    if(_flag == 'pdfFlag'){
+        let objData: any = {
+          'topHedingName': 'Designation List',
+          'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
         }
-      resultDownloadArr.push(obj);
-    });
-    if (resultDownloadArr.length > 0) {
-      let keyPDFHeader = ['Sr. No.','Designation Level', 'Designation Name'];
-      let ValueData =
-        resultDownloadArr.reduce(
-          (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
-        );
-      let objData: any = {
-        'topHedingName': 'Designation List',
-        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
+        this.downloadPdfExcelService.downLoadPdf(keyPDFHeader, apiKeys, data, objData, headerKeySize)
       }
-      ValueData.length > 0 ? this.downloadPdfExcelService.downLoadPdf(keyPDFHeader, ValueData, objData) : ''
-    }
-
-
     // excel 
-    if(_flag == 'excel'){
-      let headerKeySize = [10, 20, 40, 20, 20, 20, 20, 20, 20];
+    else if(_flag == 'excel'){
       let nameArr: any;
-  
+      data.map((x:any,i: any)=>{        
+        x.srNo = i+1
+    })    
       if (data.length > 0) {
         nameArr = [{
-          'sheet_name': 'Designation Master',
-          'excel_name': 'Designation Master',
+          'topHedingName': this.langTypeName == 'English' ? 'Designation Master' : 'पदनाम मास्टर',
+          'sheet_name': this.langTypeName == 'English' ? 'Designation List' : 'पदनामची यादी',
+          'excel_name': this.langTypeName == 'English' ? 'Designation List' : 'पदनामची यादी',  
           'languageFlag': this.langTypeName,
-          'status':'Master'
         }];
         this.downloadPdfExcelService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
-      } else {
-        this.commonMethod.matSnackBar('No Data Found !!', 1);
       }
-  
     }
+     
 
 
 
