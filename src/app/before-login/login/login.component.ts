@@ -17,6 +17,7 @@ export class LoginComponent {
   loginForm !: FormGroup;
   get f() { return this.loginForm.controls };
   @ViewChild('formDirective') formDirective!: NgForm;
+  loginFlag: boolean = false;
 
   constructor(private fb: FormBuilder,
     private ngxSpinner: NgxSpinnerService, 
@@ -70,26 +71,26 @@ export class LoginComponent {
   }
 
   onClickLogin() {
-    this.ngxSpinner.show();
+    
     let formValue = this.loginForm.value;
-
     if(!this.loginForm.valid){
-      this.ngxSpinner.hide();
       return;
     }else if ((this.f['captcha']?.value).trim()!= this.commonMethod.checkvalidateCaptcha()) {
+      this.loginFlag = false;
       this.commonMethod.matSnackBar("Please Enter Valid Captcha ", 1);
       this.f['captcha'].setValue('')
       this.captcha();
       this.commonMethod.createCaptchaCarrerPage();
-      this.ngxSpinner.hide();
       return;
     }
     else{
+      this.ngxSpinner.show();
       this.apiService.setHttp('get','ZP-Education/Web-Login/'+ formValue.userName +'/' + formValue.password, false, false, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: ( res: any ) => {
           this.ngxSpinner.hide();
           if(res.statusCode == "200"){
+            this.loginFlag = true;
             sessionStorage.setItem('loggedIn', 'true');
             let loginData = this.AESEncryptDecryptService.encrypt(JSON.stringify(res?.responseData?.responseData1[0]));
             localStorage.setItem('loggedInData', loginData);
@@ -97,12 +98,14 @@ export class LoginComponent {
             this.formDirective.resetForm();  
           }
           else{
+            this.loginFlag = false;
             this.commonMethod.matSnackBar(res.statusMessage, 1);
             this.ngxSpinner.hide();
           }
         }
       })
     }
+    this.loginFlag = false;
   }
 
   clearSpace(){
