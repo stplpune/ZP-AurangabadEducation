@@ -20,8 +20,11 @@ export class AddTeacherComponent {
   uploadImageFlag: boolean = false;
   districtArray = new Array();
   talukaArray = new Array();
+  talukaArrayPQ = new Array();
   villageArray = new Array();
-  checked: boolean = false
+  centerArray = new Array();
+  checked: boolean = false;
+  age: number = 0;
   editObj: any;
   get f() { return this.teacherRegForm.controls }
 
@@ -70,17 +73,17 @@ export class AddTeacherComponent {
 
       // Professional Qualification
       udiseCode: [''],
-      districtIdPF: [''],
-      talukaIdPF: [''],
+      districtIdPQ: [''],
+      talukaIdPQ: [''],
       kendraId: [''],
-      villageIdPF: [''],
+      villageIdPQ: [''],
       schoolId: [''],
       roleId: [''],
       isKendraHead: [''],
       clusterId: [''],
       isClassTeacher: [''],
       classId: [''],
-      division: [''],
+      divisionId: [''],
       assignedClass: ['']
 
     });
@@ -99,19 +102,42 @@ export class AddTeacherComponent {
 
   getTaluka() {
     this.talukaArray = [];
-    let districtId = this.teacherRegForm.value.districtId;
+    let districtId = this.teacherRegForm.value.districtId || this.teacherRegForm.value.districtIdPQ;
     this.masterService.getAllTaluka('', districtId).subscribe({
       next: (res: any) => {
-        res.statusCode == "200" ? this.talukaArray = res.responseData : this.talukaArray = [];
+        (res.statusCode == "200" && this.teacherRegForm.value.districtId > 0) ? this.talukaArray = res.responseData : this.talukaArray = [];
+        (res.statusCode == "200" && this.teacherRegForm.value.districtIdPQ > 0) ? this.talukaArrayPQ = res.responseData : this.talukaArrayPQ = [];
+      }
+    });
+  }
+
+  getVillageByTalukaId() {
+    this.villageArray = [];
+    let talukaId = this.teacherRegForm.value.talukaId;
+    if (talukaId > 0) {
+      this.masterService.getAllVillageByTalukaId('', talukaId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
+        }
+      });
+    }
+  }
+
+  getCenter() {
+    this.centerArray = [];
+    let talukaId = this.teacherRegForm.value.talukaIdPQ;
+    this.masterService.getAllCenter('', talukaId).subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
       }
     });
   }
 
   getVillage() {
     this.villageArray = [];
-    let talukaId = this.teacherRegForm.value.talukaId;
-    if (talukaId > 0) {
-      this.masterService.getAllVillageByTalukaId('', talukaId).subscribe({
+    let kendraId = this.teacherRegForm.value.kendraId;
+    if (kendraId > 0) {
+      this.masterService.getAllVillage('', kendraId).subscribe({
         next: (res: any) => {
           res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
         }
@@ -178,6 +204,14 @@ export class AddTeacherComponent {
       this.f['permentAddress'].setValue(sameAddress);
     } else {
       this.f['permentAddress'].setValue('');
+    }
+  }
+
+  CalculateAge() {
+    let birthDate = this.teacherRegForm.value.birthDate   
+    if (birthDate) {
+      var timeDiff = Math.abs(Date.now() - birthDate);
+      this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
     }
   }
 
