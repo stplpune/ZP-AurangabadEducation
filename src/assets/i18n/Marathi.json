@@ -59,7 +59,10 @@
         "Designation-marathi":"पदनाम (मराठी)",
         "TeacherRegistration": "शिक्षक नोंदणी",
         "TeacherName/MobileNo.": "शिक्षकाचे नाव/मोबाईल क्र.",
-        "AddTeacher": "शिक्षक नोंदणी"
+        "AddTeacher": "शिक्षक नोंदणी",
+        "EditTooltip" : "अपडेट",
+        "DeleteTooltip" : "हटवा",
+        "DownloadTooltip" : "डाउनलोड करा"
 
 
 

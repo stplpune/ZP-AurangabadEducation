@@ -134,7 +134,7 @@
 
 .mat-mdc-tab-labels {
     height: 45px !important;
-    background: var(--main-light-color) !important;
+    background: #fff !important;
 }
 
 .mdc-tab {
@@ -153,6 +153,7 @@
     color: #fff !important;
 }
 
+.mat-mdc-tab:focus .mdc-tab__text-label,
 .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
     color: #fff !important;
 }

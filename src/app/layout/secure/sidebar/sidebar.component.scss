@@ -27,11 +27,12 @@
 }
 
 #sidebar .sidebar-body {
-    padding: 15px;
+    padding: 10px;
     display: flex;
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
+    height: calc(100vh - 150px);
 }
 
 #sidebar .sidebar-body ul.menu {
@@ -42,7 +43,7 @@
 }
 
 #sidebar .sidebar-body ul.menu li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 #sidebar .sidebar-body ul.menu li a {
@@ -60,6 +61,8 @@
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all 0.4s ease;
+    padding-block: 5px;
+    padding-left: 5px;
 }
 
 #sidebar .sidebar-body ul.menu li a[aria-expanded="false"] .dropdown-toggle {
@@ -120,6 +123,8 @@
 .list-group a.list-group-item .material-symbols-rounded {
     font-size: 0.9rem !important;
     margin-right: 10px;
+    height: 13px;
+    width: 13px;
 }
 
 @keyframes bounceright {

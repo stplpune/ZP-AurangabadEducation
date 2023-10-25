@@ -7,7 +7,7 @@
             </span>
         </button> -->
     </div>
-    <div class="sidebar-body">
+    <div class="sidebar-body scrollbar">
         <ul class="menu">
             <li>
                 <a routerLink="dashboard" routerLinkActive="active">
@@ -24,7 +24,7 @@
                         <img src="assets/images/sidebar-icons/master.svg">
                         Master
                     </div>
-                    <mat-icon class="dropdown-toggle"></mat-icon>
+                    <span class="dropdown-toggle"></span>
                 </a>
                 <div class="collapse" id="collapseMaster">
                     <div class="submenu">
@@ -83,7 +83,7 @@
                         <img src="assets/images/sidebar-icons/reports.svg">
                         Report
                     </div>
-                    <mat-icon class="dropdown-toggle"></mat-icon>
+                    <span class="dropdown-toggle"></span>
                 </a>
                 <div class="collapse" id="collapseReport">
                     <div class="submenu">
@@ -120,7 +120,7 @@
                         <img src="assets/images/sidebar-icons/assets.svg">
                         Asset Management
                     </div>
-                    <mat-icon class="dropdown-toggle"></mat-icon>
+                    <span class="dropdown-toggle"></span>
                 </a>
                 <div class="collapse" id="collapseAssetMgmt">
                     <div class="submenu">
@@ -178,7 +178,7 @@
                         <img src="assets/images/sidebar-icons/attendance.svg">
                         Attendance
                     </div>
-                    <mat-icon class="dropdown-toggle"></mat-icon>
+                    <span class="dropdown-toggle"></span>
                 </a>
                 <div class="collapse" id="collapseAttendance">
                     <div class="submenu">
@@ -222,7 +222,7 @@
                         <img src="assets/images/sidebar-icons/cctv.svg">
                         CCTV Registration
                     </div>
-                    <mat-icon class="dropdown-toggle"></mat-icon>
+                    <span class="dropdown-toggle"></span>
                 </a>
                 <div class="collapse" id="collapseCCTV">
                     <div class="submenu">
@@ -243,79 +243,78 @@
                     </div>
                 </div>
             </li>
-
             <li>
-              <a data-bs-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false"
-                  aria-controls="collapseSettings">
-                  <div class="menu-item">
-                      <img src="assets/images/sidebar-icons/settings.svg">
-                      Settings
-                  </div>
-                  <mat-icon class="dropdown-toggle"></mat-icon>
-              </a>
-              <div class="collapse" id="collapseSettings">
-                  <div class="submenu">
-                      <div class="list-group">
-                          <!-- <a routerLink="teacher-transfer" routerLinkActive="active"
+                <a data-bs-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false"
+                    aria-controls="collapseSettings">
+                    <div class="menu-item">
+                        <img src="assets/images/sidebar-icons/settings.svg">
+                        Settings
+                    </div>
+                    <span class="dropdown-toggle"></span>
+                </a>
+                <div class="collapse" id="collapseSettings">
+                    <div class="submenu">
+                        <div class="list-group">
+                            <!-- <a routerLink="teacher-transfer" routerLinkActive="active"
                               class="list-group-item list-group-item-action">
                               <mat-icon class="material-symbols-rounded">
                                   east
                               </mat-icon>
                               Teacher Transfer
                           </a> -->
-                          <!-- <a routerLink="student-transfer" routerLinkActive="active"
+                            <!-- <a routerLink="student-transfer" routerLinkActive="active"
                               class="list-group-item list-group-item-action">
                               <mat-icon class="material-symbols-rounded">
                                   east
                               </mat-icon>
                               Student Transfer
                           </a> -->
-                          <a routerLink="add-standard-subject" routerLinkActive="active"
-                              class="list-group-item list-group-item-action">
-                              <mat-icon class="material-symbols-rounded">
-                                  east
-                              </mat-icon>
-                              Add Standard Subject
-                          </a>
-                          <a routerLink="assessment-crateria" routerLinkActive="active"
-                              class="list-group-item list-group-item-action">
-                              <mat-icon class="material-symbols-rounded">
-                                  east
-                              </mat-icon>
-                              Assessment Crateria
-                          </a>
-                          <a routerLink="registration-approval" routerLinkActive="active"
-                              class="list-group-item list-group-item-action">
-                              <mat-icon class="material-symbols-rounded">
-                                  east
-                              </mat-icon>
-                             Registration Approval
-                          </a>
-                          <a routerLink="event-registration" routerLinkActive="active"
-                              class="list-group-item list-group-item-action">
-                              <mat-icon class="material-symbols-rounded">
-                                  east
-                              </mat-icon>
-                            Event Registration
-                          </a>
-                          <a routerLink="page-right-access" routerLinkActive="active"
-                              class="list-group-item list-group-item-action active" aria-current="true">
-                              <mat-icon class="material-symbols-rounded">
-                                  east
-                              </mat-icon>
-                              Page Right Access
-                          </a>
-                          <a routerLink="help-access" routerLinkActive="active"
-                              class="list-group-item list-group-item-action">
-                              <mat-icon class="material-symbols-rounded">
-                                  east
-                              </mat-icon>
-                              Help
-                          </a>
-                      </div>
-                  </div>
-              </div>
-          </li>
+                            <a routerLink="add-standard-subject" routerLinkActive="active"
+                                class="list-group-item list-group-item-action">
+                                <mat-icon class="material-symbols-rounded">
+                                    east
+                                </mat-icon>
+                                Add Standard Subject
+                            </a>
+                            <a routerLink="assessment-crateria" routerLinkActive="active"
+                                class="list-group-item list-group-item-action">
+                                <mat-icon class="material-symbols-rounded">
+                                    east
+                                </mat-icon>
+                                Assessment Crateria
+                            </a>
+                            <a routerLink="registration-approval" routerLinkActive="active"
+                                class="list-group-item list-group-item-action">
+                                <mat-icon class="material-symbols-rounded">
+                                    east
+                                </mat-icon>
+                                Registration Approval
+                            </a>
+                            <a routerLink="event-registration" routerLinkActive="active"
+                                class="list-group-item list-group-item-action">
+                                <mat-icon class="material-symbols-rounded">
+                                    east
+                                </mat-icon>
+                                Event Registration
+                            </a>
+                            <a routerLink="page-right-access" routerLinkActive="active"
+                                class="list-group-item list-group-item-action active" aria-current="true">
+                                <mat-icon class="material-symbols-rounded">
+                                    east
+                                </mat-icon>
+                                Page Right Access
+                            </a>
+                            <a routerLink="help-access" routerLinkActive="active"
+                                class="list-group-item list-group-item-action">
+                                <mat-icon class="material-symbols-rounded">
+                                    east
+                                </mat-icon>
+                                Help
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </div>

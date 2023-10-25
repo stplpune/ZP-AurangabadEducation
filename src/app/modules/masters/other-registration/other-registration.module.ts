@@ -20,6 +20,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddOtherRegistrationComponent } from './add-other-registration/add-other-registration.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AddOtherRegistrationComponent } from './add-other-registration/add-othe
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    TranslateModule,
   ]
 })
 export class OtherRegistrationModule { }

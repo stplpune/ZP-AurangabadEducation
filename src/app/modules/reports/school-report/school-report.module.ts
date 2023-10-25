@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule,
     MatTableModule,
     MatNativeDateModule,
+    TranslateModule,
     MatDatepickerModule
   ]
 })
