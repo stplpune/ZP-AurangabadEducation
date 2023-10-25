@@ -101,11 +101,8 @@ export class SchoolRegistrationComponent {
   }
 
   downloadExcelPDF(data?: any, flag?: any) {
-    console.log("data", data);
-
     let apiKeys = ['schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village'];
     let keyHeader = [this.langTypeName == 'English' ? "Sr.No." : "अनुक्रमांक", this.langTypeName == 'English' ? "UDISE Code" : "यूडीआयएसई कोड", this.langTypeName == 'English' ? "School Name" : "शाळेचे नाव", this.langTypeName == 'English' ? "District" : "जिल्हा", this.langTypeName == 'English' ? "Taluka" : "तालुका", this.langTypeName == 'English' ? "Kendra" : "केंद्र", this.langTypeName == 'English' ? "Village" : "गाव"];
-    let resultDownloadArr: any = [];
     let headerKeySize = [10, 20, 50, 30, 20, 20, 20, 20, 20];
     let keyPDFHeader = ["Sr.No.", "UDISE Code", "School Name", "District", "Taluka", "Kendra", "Village"];
 
