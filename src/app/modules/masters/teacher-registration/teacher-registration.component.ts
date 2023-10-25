@@ -12,6 +12,7 @@ import { CommonMethodService } from 'src/app/core/services/common-method.service
 import { ErrorService } from 'src/app/core/services/error.service';
 import { DownloadPdfExcelService } from 'src/app/core/services/download-pdf-excel.service';
 import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
+import { DatePipe } from '@angular/common';
 export interface PeriodicElement {
   srno: any;
   TeacherNum: any;
@@ -63,7 +64,8 @@ export class TeacherRegistrationComponent {
     public validation: ValidationService,
     private commonMethod: CommonMethodService,
     private errorsService: ErrorService,
-    private downloadFileService: DownloadPdfExcelService) { }
+    private downloadFileService: DownloadPdfExcelService,
+    private datepipe: DatePipe) { }
 
   ngOnInit() {
     this.formField();
@@ -190,53 +192,35 @@ export class TeacherRegistrationComponent {
 
   //#region ------------------------------------ Download Excel PDF start here -----------------------------------------------------
   downloadExcelPDF(data?: any, flag?: any) {
+    let apiKeys = ['schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village'];
+    let keyHeader = [this.langTypeName == 'English' ? "Sr.No." : "अनुक्रमांक", this.langTypeName == 'English' ? "Teacher Name" : "शिक्षकाचे नाव", this.langTypeName == 'English' ? "Teacher ID" : "शिक्षक आयडी", this.langTypeName == 'English' ? "Mobile No." : "मोबाईल क्र.", this.langTypeName == 'English' ? "Email ID" : "ई-मेल आयडी", this.langTypeName == 'English' ? "District" : "जिल्हा", this.langTypeName == 'English' ? "Taluka" : "तालुका", this.langTypeName == 'English' ? "Kendra" : "केंद्र"];
+    let headerKeySize = [10, 50, 20, 30, 30, 20, 20, 20, 20];
+    let keyPDFHeader = ["Sr.No.", "Teacher Name", "Teacher ID", "Mobile No.", "Email ID", "District", "Taluka", "Kendra"];
 
-    let apiKeys = ['srNo', 'schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village'];
-    let keyHeader = [this.langTypeName == 'English' ? "Sr.No." : "अनुक्रमांक", this.langTypeName == 'English' ? "Teacher Name" : "शिक्षकाचे नाव", this.langTypeName == 'English' ? "Teacher ID" : "शिक्षक आयडी", this.langTypeName == 'English' ? "Mobile No." : "मोबाईल क्र.", this.langTypeName == 'English' ? "Email ID" : "ईमेल आयडी", this.langTypeName == 'English' ? "District" : "जिल्हा", this.langTypeName == 'English' ? "Taluka" : "तालुका", this.langTypeName == 'English' ? "Cluster" : "केंद्र", this.langTypeName == 'English' ? "Unblock/Block" : "अनब्लॉक/ब्लॉक"];
-    let resultDownloadArr: any = [];
-
-    data.find((res: any, i: any) => {
-      let obj = {
-        srNo: (i + 1),
-        "Teacher Name": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.teacherName : res.m_TeacherName : res.teacherName,
-        "Teacher ID": res.teacherId,
-        "Mobile No.": res.mobileNo,
-        "Email ID": res.emailId,
-        "District": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.district : res.m_District : res.district,
-        "Taluka": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.taluka : res.m_Taluka : res.taluka,
-        "Kendra": flag == 'excelFlag' ? this.langTypeName == 'English' ? res.center : res.m_Center : res.center,
-      }
-      resultDownloadArr.push(obj);
-    })
-
-    if (resultDownloadArr.length > 0) {
-      let keyPDFHeader = ["Sr.No.", "Teacher Name", "Teacher ID", "Mobile No.", "Email ID", "District", "Taluka", "Kendra"];
-      let ValueData =
-      resultDownloadArr.reduce(
-          (acc: any, obj: any) => [...acc, Object.values(obj).map((value) => value)], []
-        );
-      
-      let objData: any = [{
+    if(flag == 'pdfFlag'){
+      let objData: any = {
         'topHedingName': 'Teacher Registration',
-      }]
-      // ValueData.length > 0 ? this.downloadFileService.downLoadPdf(keyPDFHeader, ValueData, objData) : '';
+        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
+      }
+      this.downloadFileService.downLoadPdf(keyPDFHeader, apiKeys, data, objData, headerKeySize);
     }
 
-    if(flag == 'excelFlag'){
-      let headerKeySize = [10, 50, 20, 20, 50, 20, 20, 20, 20];
+    else if (flag == 'excelFlag') {
+      
       let nameArr: any;
+      data.map((x:any,i: any)=>{        
+        x.srNo = i+1
+    });  
 
       if (data.length > 0) {
         nameArr = [{
-          'sheet_name': 'Teacher Master',
-          'excel_name': 'Teacher Master',
+          'topHedingName': this.langTypeName == 'English' ? 'Teacher Master' : 'शिक्षक मास्टर',
+          'sheet_name': this.langTypeName == 'English' ? 'Teacher List' : 'शिक्षकांची यादी',
+          'excel_name': this.langTypeName == 'English' ? 'Teacher List' : 'शिक्षकांची यादी',  
           'languageFlag': this.langTypeName,
-          'status':'Master'
         }];
         this.downloadFileService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
-      } else {
-        this.commonMethod.matSnackBar('No Data Found !!', 1);
-      }
+      } 
     }
   }
   //#endregion ------------------------------------ Download Excel PDF end here -----------------------------------------------------
