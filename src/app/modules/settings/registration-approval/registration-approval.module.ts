@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ApprovedRegistrationComponent } from './approved-registration/approved-registration.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ApprovedRegistrationComponent } from './approved-registration/approved-
     MatTooltipModule,
     MatTableModule,
     MatCheckboxModule,
+    TranslateModule,
     MatButtonToggleModule
   ]
 })
