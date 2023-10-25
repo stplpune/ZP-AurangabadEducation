@@ -174,7 +174,7 @@
                         data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
                         {{'Lables.UploadProfilePhoto' | translate}}
                     </button>
-                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" #uploadImage
+                    <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" #uploadImage
                         (change)="imgUpload($event)" />
 
                     <div class="d-flex gap-2">
