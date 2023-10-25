@@ -88,7 +88,7 @@ export class DesignationMasterComponent {
     this.masterService.getAllDesignationLevel('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.desigLevelArr.push({ "id": 0, "designationLevel": "All DesignationLevel", "m_DesignationLevel": "सर्व पदनाम स्तर" }, ...res.responseData)) : this.desigLevelArr = [];
-        this.editObj ? (this.f['dependantDesigLevelId'].setValue(this.editObj.designationLevelId), this.getAllDepenDesignationByLevelId(arr),this.getAllDesireDesigLevelBylevel()) : '';
+        this.editObj ? (this.f['dependantDesigLevelId'].setValue(this.editObj.linkedDesignationResponseModel[0].linkedDesignationLevelId), this.getAllDepenDesignationByLevelId(arr),this.getAllDesireDesigLevelBylevel()) : '';
       },
       error: () => {
       }
@@ -97,6 +97,8 @@ export class DesignationMasterComponent {
 
   // Dependant Designation dropdown
   getAllDepenDesignationByLevelId(arr?: any) {
+    console.log("arr dropdoen edit",arr);
+    
     let dependantDesigLevelId = this.f['dependantDesigLevelId'].value
     this.dependDesigArr = [];
     this.masterService.getAllDepenDesignationByLevelId('', dependantDesigLevelId).subscribe({
@@ -120,7 +122,6 @@ export class DesignationMasterComponent {
   }
 
   selectMultiple(event: any){
-    console.log("eve nt: ", event.value);
     let arrr = event.value;
     this.linkedDesignationModelArr=[];
     for (let i = 0; i < arrr.length; i++) {
@@ -135,8 +136,7 @@ export class DesignationMasterComponent {
 
   submit() {
     let formValue = this.desigNationForm.value;
-    
-    let arrr = this.f['depenDesigIds'].value;
+    let arrr = this.f['depenDesigIds'].value;    
     this.linkedDesignationModelArr=[];
     for (let i = 0; i < arrr.length; i++) {
       let objM = {
@@ -179,9 +179,8 @@ export class DesignationMasterComponent {
   }
 
   compareFn(object1: any, object2: any) {
-    console.log("jdghsdg pass or save time obj and getAll Obj",object1, object2);
-    
-    return object1 && object2 && object1.linkedDesignationId === object2.linkedDesignationId;
+    // linkedDesignationId
+    return object1 && object2 && object1.id === object2.id;
   }
 
 
@@ -357,6 +356,7 @@ export class DesignationMasterComponent {
         if(res.statusCode == "200"){
           this.commonMethod.matSnackBar(res.statusMessage, 0);
           this.getTableData();
+          this.clearForm();
         }
         else{
           this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1)
