@@ -81,20 +81,22 @@
                 <mat-form-field appearance="outline" class="w-100">
                     <textarea matInput rows="2" formControlName="schoolName"
                         (keypress)="validation.noFirstSpaceAllow($event)" maxlength="100"></textarea>
+                    <mat-error *ngIf="f['schoolName'].hasError('pattern')">
+                        {{'Lables.enterValidSchoolName' | translate}}
+                    </mat-error>
                 </mat-form-field>
-                <mat-error *ngIf="f['schoolName'].hasError('pattern')">
-                    {{'Lables.enterValidSchoolName' | translate}}
-                </mat-error>
+
             </div>
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolName(Marathi)' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <textarea matInput rows="2" formControlName="m_SchoolName" maxlength="100"
                         (keypress)="validation.noFirstSpaceAllow($event); validation.unicodeMarathiValidation($event);"></textarea>
+                    <mat-error *ngIf="f['m_SchoolName'].hasError('pattern')">
+                        {{'Lables.validschoolNameMarathi' | translate}}
+                    </mat-error>
                 </mat-form-field>
-                <mat-error *ngIf="f['m_SchoolName'].hasError('pattern')">
-                    {{'Lables.validschoolNameMarathi' | translate}}
-                </mat-error>
+
             </div>
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolManagement' | translate}}</label>
