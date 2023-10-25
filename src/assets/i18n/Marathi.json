@@ -62,7 +62,8 @@
         "AddTeacher": "शिक्षक नोंदणी",
         "EditTooltip" : "अपडेट",
         "DeleteTooltip" : "हटवा",
-        "DownloadTooltip" : "डाउनलोड करा"
+        "DownloadTooltip" : "डाउनलोड करा",
+        "Pagination" : "प्रति पृष्ठ आयटम"
 
 
 
