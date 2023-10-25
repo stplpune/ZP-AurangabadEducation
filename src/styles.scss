@@ -199,7 +199,7 @@ ol.breadcrumb {
 }
 
 .dashboard-table thead th {
-    background-color: var(--main-light-color) !important;
+    background-color: #eee !important;
     font-weight: 500;
 }
 
@@ -221,6 +221,14 @@ ol.breadcrumb {
 
 .dashboard-table .profile-photo {
     width: 36px;
+}
+
+.dashboard-table .class {
+    padding: 5px 10px;
+    background-color: #eee;
+    font-weight: 500;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .modal-footer {

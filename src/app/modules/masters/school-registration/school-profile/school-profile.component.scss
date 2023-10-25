@@ -30,3 +30,43 @@
     font-size: 0.8rem;
     margin-bottom: 0;
 }
+
+#photo-gallery .photo-wrapper {
+    position: relative;
+}
+
+#photo-gallery .photo-wrapper .date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+#photo-gallery .photo-wrapper .description {
+    position: absolute;
+    bottom: 0px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.619);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    opacity: 0;
+    transition: all ease-in 0.5s;
+}
+
+#photo-gallery .photo-wrapper:hover .description {
+    opacity: 1;
+    transition: all ease-in 0.5s;
+}
+
+#photo-gallery .photo {
+    width: 100%;
+    height: 250px;
+    border: solid 1px #ddd;
+    border-radius: 10px;
+}
