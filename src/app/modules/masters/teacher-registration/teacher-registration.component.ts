@@ -320,6 +320,7 @@ export class TeacherRegistrationComponent {
     });
   }
 
+  //#region ------------------------------------ onChange Dropdown method start here -----------------------------------------------------
   clearDropdown(dropdown: string) {
     if (dropdown == 'district') {
       this.f['talukaId'].setValue('');
@@ -337,6 +338,7 @@ export class TeacherRegistrationComponent {
       this.f['villageId'].setValue('');
     }
   }
+  //#endregion ------------------------------------ onChange Dropdown method end here -----------------------------------------------------
 
   onClear() {
     this.formField();
