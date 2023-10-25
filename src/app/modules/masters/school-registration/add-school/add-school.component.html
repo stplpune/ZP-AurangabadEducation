@@ -144,8 +144,8 @@
                 <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="schoolCode"
-                        (keypress)="validation.noSpacesAtStart($event); validation.alphaNumericWithoutSpaces($event);"
-                        maxlength="10">
+                        (keypress)="validation.noSpacesAtStart($event); validation.onlyDigits($event);"
+                        maxlength="20">
                 </mat-form-field>
             </div>
             <div class="col-sm-6">

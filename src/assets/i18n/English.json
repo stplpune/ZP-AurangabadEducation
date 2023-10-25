@@ -62,7 +62,9 @@
         "AddTeacher": "Add Teacher",
         "EditTooltip" : "Edit",
         "DeleteTooltip" : "Delete",
-        "DownloadTooltip" : "Download"
+        "DownloadTooltip" : "Download",
+        "Pagination" : "Items per page"
+
 
 
 
