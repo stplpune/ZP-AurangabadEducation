@@ -2,12 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { WebStorageService } from './web-storage.service';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  tokanExpiredFlag:boolean = false;
+  apibaseURL: string = environment.apibaseURL;
+  tokanExpiredFlag: boolean = false;
   tableData = new Subject<any>();
   profileData = new Subject<any>();
   httpObj: any = {
@@ -18,13 +20,13 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private webStorageService:WebStorageService,
+    private webStorageService: WebStorageService,
   ) { }
 
   getBaseurl(url: string) {
     switch (url) {
       //Demo Url
-      case 'zp-Education': return 'http://apizpsambhajinagar.mahamining.com/'; break;
+      case 'zp-Education': return this.apibaseURL; break;
       default: return ''; break;
     }
   }
@@ -59,7 +61,7 @@ export class ApiService {
 
       }
     }
-  try {
+    try {
     } catch (e) { }
     this.clearHttp();
     this.httpObj.type = type;
@@ -70,8 +72,8 @@ export class ApiService {
       this.httpObj.options.headers = new HttpHeaders(tempObj);
     }
 
-   obj !== false ? this.httpObj.options.body = obj :  this.httpObj.options.body = false;
-   params !== false ? this.httpObj.options.params = params :   this.httpObj.options.params = false;
+    obj !== false ? this.httpObj.options.body = obj : this.httpObj.options.body = false;
+    params !== false ? this.httpObj.options.params = params : this.httpObj.options.params = false;
   }
 
   clearHttp() {
@@ -101,6 +103,6 @@ export class ApiService {
     })
   }
 
-  
+
 
 }
