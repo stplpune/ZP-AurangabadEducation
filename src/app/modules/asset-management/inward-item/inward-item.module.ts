@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddInwardItemsComponent } from './add-inward-items/add-inward-items.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { AddInwardItemsComponent } from './add-inward-items/add-inward-items.com
     MatTooltipModule,
     MatTableModule,
     MatDatepickerModule,
+    TranslateModule,
     MatNativeDateModule
   ]
 })

@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTooltipModule,
     MatTableModule,
     MatDatepickerModule,
+    TranslateModule,
     MatNativeDateModule
   ]
 })
