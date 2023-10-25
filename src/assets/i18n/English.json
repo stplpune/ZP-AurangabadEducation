@@ -59,7 +59,11 @@
         "Designation-marathi": "Designation (Marathi)",
         "TeacherRegistration": "Teacher Registration",
         "TeacherName/MobileNo.": "Teacher Name/Mobile No.",
-        "AddTeacher": "Add Teacher"
+        "AddTeacher": "Add Teacher",
+        "EditTooltip" : "Edit",
+        "DeleteTooltip" : "Delete",
+        "DownloadTooltip" : "Download"
+
 
 
     }

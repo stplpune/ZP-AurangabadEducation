@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatAutocompleteModule,
     MatTooltipModule,
     MatTableModule,
+    TranslateModule,
     MatCheckboxModule
   ]
 })

@@ -45,7 +45,7 @@
             </th>
             <td mat-cell *matCellDef="let element let i=index">
                 <div class="d-flex gap-2">
-                    <button mat-icon-button *ngIf="tableInfo?.edit" matTooltip="Edit"
+                    <button mat-icon-button *ngIf="tableInfo?.edit" matTooltip="{{'Lables.EditTooltip' | translate}}"
                         (click)="action(element, 'Edit', i)">
                         <mat-icon class="material-symbols-rounded text-warning">
                             edit_square
@@ -57,7 +57,7 @@
                             visibility
                         </mat-icon>
                     </button> -->
-                    <button mat-icon-button *ngIf="tableInfo?.delete" matTooltip="Delete"
+                    <button mat-icon-button *ngIf="tableInfo?.delete" matTooltip="{{'Lables.DeleteTooltip' | translate}}"
                         (click)="action(element, 'Delete')" [ngClass]="{'disabled': element?.isDeleteButtonFlag== 1}">
                         <mat-icon class="material-symbols-rounded text-danger">
                             delete

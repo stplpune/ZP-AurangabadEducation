@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddAssessmentCrateriaComponent } from './add-assessment-crateria/add-assessment-crateria.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTableModule,
     MatCheckboxModule,
     MatRadioModule,
+    TranslateModule,
     MatChipsModule
   ]
 })

@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddUserComponent } from './add-user/add-user.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    TranslateModule,
   ]
 })
 export class OfficeUserRegistrationModule { }

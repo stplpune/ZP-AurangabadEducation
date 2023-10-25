@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
 import { ConfigService } from 'src/app/core/services/config.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-global-table',
@@ -27,6 +28,7 @@ import { ConfigService } from 'src/app/core/services/config.service';
           MatSlideToggleModule,
           MatCheckboxModule,
           DashPipe,
+          TranslateModule,
           MatTooltipModule],
   templateUrl: './global-table.component.html',
   styleUrls: ['./global-table.component.scss']
@@ -54,7 +56,7 @@ export class GlobalTableComponent {
       this.tableInfo = [];
       this.tableSub = this.apiService.tableData.subscribe((res: any) => {
         this.tableInfo = res;
-        
+
         if (this.tableInfo) {
           this.highlightedRow = this.tableInfo.highlightedRow || this.highlightedRow;
           this.displayedColumns = this.tableInfo.displayedColumns;
