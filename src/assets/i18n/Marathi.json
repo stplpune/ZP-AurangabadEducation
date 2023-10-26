@@ -73,7 +73,7 @@
         "MobileNo" : "मोबाईल क्र.",
         "EmailID" : "ईमेल आयडी",
         "BirthDate" : "जन्मतारीख",
-        "UploadButton" : "अपलोड बटण",
+        "UploadButton" : "अपलोड फोटो",
         "AddressDetails" : "पत्ता तपशील",
         "CurrentAddress" : "वर्तमान पत्ता",
         "PermanentAddress" : "कायमचा पत्ता",
@@ -97,7 +97,15 @@
         "AssignedClasses" : "नियुक्त वर्ग",
         "division" : "विभाग",
         "Cancel" : "रद्द करा",
-        "Submit" : "सबमिट"
+        "Submit" : "सबमिट",
+        "GovernmentPrimarySchool" : "शासकीय प्राथमिक शाळा",
+        "MyProfile" : "माझे प्रोफाइल",
+        "ChangePassword" : "पासवर्ड बदला",
+        "Logout" : "बाहेर पडणे",
+        "Belwadi" : "बेलवाडी",
+        "Headmaster" : "मुख्याध्यापक",
+        "RameshKambale" : "रमेश कांबळे"
+
 
 
 

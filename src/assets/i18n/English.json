@@ -73,7 +73,7 @@
         "MobileNo" : "Mobile No.",
         "EmailID" : " Email ID",
         "BirthDate" : "Birth Date",
-        "UploadButton" : "Upload Button",
+        "UploadButton" : "Upload Photo",
         "AddressDetails" : "Address Details",
         "CurrentAddress" : "Current Details",
         "PermanentAddress" : "Permanent Details",
@@ -97,7 +97,14 @@
         "AssignedClasses" : "Assigned Classes",
         "division" : "Division",
         "Cancel" : "Cancel",
-        "Submit" : "Submit"
+        "Submit" : "Submit",
+        "GovernmentPrimarySchool" : "Government Primary School",
+        "MyProfile" : "My Profile",
+        "ChangePassword" : "Change Password",
+        "Logout" : "Logout",
+        "Belwadi" : "Belwadi",
+        "Headmaster" : "Headmaster",
+        "RameshKambale" : "Ramesh Kambale"
 
 
 
