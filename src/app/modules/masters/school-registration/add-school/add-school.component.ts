@@ -67,8 +67,8 @@ export class AddSchoolComponent {
     this.schoolRegForm = this.fb.group({
       id: [this.data ? this.data.id : 0],
       schoolCode: [this.data ? this.data.schoolCode : '', [Validators.required]],
-      schoolName: [this.data ? this.data.schoolName : '', [Validators.required, Validators.pattern('^[.,\n() a-zA-Z0-9]+$')]],
-      m_SchoolName: [this.data ? this.data.m_SchoolName : '', [Validators.required, Validators.pattern('^[.,\n()\u0900-\u096F ]+$')]],
+      schoolName: [this.data ? this.data.schoolName : '', [Validators.required, Validators.pattern('^[a-zA-Z0-9 .,\/()_-]+$')]],
+      m_SchoolName: [this.data ? this.data.m_SchoolName : '', [Validators.required, Validators.pattern(this.validation.marathiAlphanumeric)]],
       stateId: 0,
       districtId: ['', Validators.required],
       talukaId: ['', Validators.required],
