@@ -68,6 +68,7 @@ export class SchoolRegistrationComponent {
     })
   }
 
+  //#region -------------------------------------------------- Table start here-----------------------------------------------------
   getTableData(flag?: string) {
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
@@ -99,7 +100,9 @@ export class SchoolRegistrationComponent {
       error: ((err: any) => { this.commonMethod.checkDataType(err.statusText) == false ? this.errorsService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusText, 1); })
     });
   }
+  //#endregion -------------------------------------------------- Table end here-----------------------------------------------------
 
+  //#region ------------------------------------------------ Download excel pdf start here-----------------------------------------------
   downloadExcelPDF(data?: any, flag?: any) {
     let apiKeys = ['schoolCode', 'schoolName', 'district', 'taluka', 'center', 'village'];
     let keyHeader = [this.langTypeName == 'English' ? "Sr.No." : "अनुक्रमांक", this.langTypeName == 'English' ? "UDISE Code" : "यूडीआयएसई कोड", this.langTypeName == 'English' ? "School Name" : "शाळेचे नाव", this.langTypeName == 'English' ? "District" : "जिल्हा", this.langTypeName == 'English' ? "Taluka" : "तालुका", this.langTypeName == 'English' ? "Kendra" : "केंद्र", this.langTypeName == 'English' ? "Village" : "गाव"];
@@ -133,6 +136,7 @@ export class SchoolRegistrationComponent {
       } 
     }
   }
+  //#endregion ------------------------------------------------ Download excel pdf end here-----------------------------------------------
 
   languageChange() {
     this.highLightFlag = true;
@@ -151,6 +155,7 @@ export class SchoolRegistrationComponent {
       this.apiService.tableData.next(this.tableData);
   }
 
+  //#region ----------------------------------------------- Dropdown with depencies start here-----------------------------------------------
   getDistrict() {
     this.districtArray = [];
     this.masterService.getAllDistrict('').subscribe({
@@ -199,6 +204,7 @@ export class SchoolRegistrationComponent {
       });
     }
   }
+  //#endregion ----------------------------------------------- Dropdown with depencies end here-----------------------------------------------
 
   childCompInfo(obj: any) {
     switch (obj.label) {
@@ -239,14 +245,7 @@ export class SchoolRegistrationComponent {
     })
   }
 
-  onClear() {
-    this.formField();
-    this.talukaArray = [];
-    this.centerArray = [];
-    this.villageArray = [];
-    this.getTableData();
-  }
-
+  //#region ------------------------------------------ Open dialog and delete method start here-----------------------------------------------
   globalDialogOpen(obj?: any) {
     let dialoObj = {
       title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete School Record?' : 'तुम्हाला शाळेचा रेकॉर्ड हटवायचा आहे का?',
@@ -291,6 +290,16 @@ export class SchoolRegistrationComponent {
       }
     });
   }
+  //#endregion ------------------------------------------ Open dialog and delete method end here-----------------------------------------------
+
+  //#region --------------------------------------- Clear form and on change clear dropdown start here-----------------------------------------
+  onClear() {
+    this.formField();
+    this.talukaArray = [];
+    this.centerArray = [];
+    this.villageArray = [];
+    this.getTableData();
+  }
 
   clearDropdown(dropdown: string) {
     if (dropdown == 'district') {
@@ -309,5 +318,6 @@ export class SchoolRegistrationComponent {
       this.f['villageId'].setValue('');
     }
   }
+  //#endregion --------------------------------------- Clear form and on change clear dropdown end here-----------------------------------------
 
 }
