@@ -20,7 +20,6 @@
         "Atleast1SpecialCharacters(*$@#)" :"At least 1 Special Characters (*$@#)",
         "enterValidSchoolName":"Please enter valid school name",
         "validschoolNameMarathi" : "Please enter valid school name(Marathi)",
-
         "master": "Master",
         "district" : "District",
         "taluka" : "Taluka",
@@ -73,7 +72,7 @@
         "MobileNo" : "Mobile No.",
         "EmailID" : " Email ID",
         "BirthDate" : "Birth Date",
-        "UploadButton" : "Upload Photo",
+        "UploadPhoto" : "Upload Photo",
         "AddressDetails" : "Address Details",
         "CurrentAddress" : "Current Details",
         "PermanentAddress" : "Permanent Details",
@@ -104,7 +103,40 @@
         "Logout" : "Logout",
         "Belwadi" : "Belwadi",
         "Headmaster" : "Headmaster",
-        "RameshKambale" : "Ramesh Kambale"
+        "RameshKambale" : "Ramesh Kambale",
+        "StudentName" : "Student Name",
+        "StudentRegistration" : "Student Registration",
+        "StudentName/ParentMobileNo" : "Student Name/Parent Mobile No.",
+        "Standard" : "Standard",
+        "School" : "School",
+        "AddStudent" : "AddStudent",
+        "StudentDetails": "Student Details",
+        "FirstName" : "First Name",
+        "MiddleName" : "Middle Name",
+        "LastName" : "Last Name",
+        "FirstName(Marathi)" : "First Name (Marathi)",
+        "MiddleName(Marathi)" : "Middle Name (Marathi)",
+        "LastName(Marathi)" : "Last Name (Marathi)",
+        "Religion" : "Religion",
+        "Category" : "Category",
+        "Caste" : "Caste",
+        "SaralID" : "Saral ID",
+        "AadhaarNo" : "Aadhaar No.",
+        "UploadAadharCard" : "Upload Aadhar Card",
+        "GuardianDetails" : "Guardian Details",
+        "Name" : "Name",
+        "Name(Marathi)" : "Name (Marathi)",
+        "Relations" : "Relations",
+        "Back" : "Back",
+        "IsHead" : "Is Head",
+        "Action" : "Action",
+        "SrNo" : "Sr. No.",
+        "StudentList" : "Student List"
+
+
+
+
+
 
 
 

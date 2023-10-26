@@ -76,7 +76,7 @@
                 <div class="file-upload border rounded-2 p-1 margin-control">
                     <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
                         data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
-                        {{'Lables.UploadButton' | translate}}
+                        {{'Lables.UploadPhoto' | translate}}
                     </button>
                     <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file"
                         hidden="hidden" #uploadImage (change)="imgUpload($event)" />
