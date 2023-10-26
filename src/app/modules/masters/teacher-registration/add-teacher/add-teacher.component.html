@@ -1,7 +1,8 @@
 <form [formGroup]="teacherRegForm">
     <div mat-dialog-title class="modal-header">
         <div class="d-flex justify-content-between align-items-center w-100">
-            <h6 class="text-main mb-0 fw-bold">Teacher Registration</h6>
+            <h6 class="text-main mb-0 fw-bold">{{data ?('Lables.updateSchool' | translate)
+              :('Lables.TeacherRegistration' | translate)}}</h6>
             <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
                 <mat-icon class="material-symbols-rounded">close</mat-icon>
             </button>
@@ -10,28 +11,28 @@
     <mat-dialog-content class="modal-body scrollbar form-container">
         <div class="row gx-2 align-items-end">
             <div class="col-sm-12">
-                <h6 class="section-head">Personal Details</h6>
+                <h6 class="section-head">{{'Lables.Details' | translate}}</h6>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Teacher Name</label>
+                <label class="form-label">{{'Lables.Teacher' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="teacherName">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Teacher Name (Marathi)</label>
+                <label class="form-label">{{'Lables.Teacher(Marathi)' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="m_TeacherName">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Teacher ID</label>
+                <label class="form-label">{{'Lables.TeacherID' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="teacherId">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Gender</label>
+                <label class="form-label">{{'Lables.Gender' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select formControlName="genderId">
                         <mat-option>
@@ -44,19 +45,19 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Mobile No.</label>
+                <label class="form-label">{{'Lables.MobileNo' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="mobileNo">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Email ID</label>
+                <label class="form-label">{{'Lables.EmailID' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="emailId">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Birth Date</label>
+                <label class="form-label">{{'Lables.BirthDate' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input formControlName="birthDate" matInput [matDatepicker]="topicker" (click)="topicker.open()"
                         readonly (dateChange)="CalculateAge()">
@@ -75,7 +76,7 @@
                 <div class="file-upload border rounded-2 p-1 margin-control">
                     <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
                         data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
-                        Upload Photo
+                        {{'Lables.UploadButton' | translate}}
                     </button>
                     <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file"
                         hidden="hidden" #uploadImage (change)="imgUpload($event)" />
@@ -100,7 +101,7 @@
             <!-- <div class="d-flex align-items-center gap-2"> -->
             <div class="row gx-2 align-items-end">
                 <div class="col-sm-12">
-                    <h6 class="section-head">Address Details</h6>
+                    <h6 class="section-head">{{'Lables.AddressDetails' | translate}}</h6>
                 </div>
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.district' | translate}}</label>
@@ -132,7 +133,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-6 ">
-                    <label class="form-label">Current Address</label>
+                    <label class="form-label">{{'Lables.CurrentAddress' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <textarea matInput rows="3" maxlength="100" formControlName="currentAddress"
                             (keypress)="validation.noFirstSpaceAllow($event)"
@@ -142,9 +143,9 @@
                 <div class="col-sm-6 ">
                     <label class="form-label w-100">
                         <div class="d-flex justify-content-between w-100 align-items-center">
-                            <span>Permanent Address</span>
+                            <span>{{'Lables.PermanentAddress' | translate}}</span>
                             <mat-checkbox class="example-margin" [disabled]="!f['currentAddress'].value"
-                                (change)="setSameAddress($event)">Same as Current Address</mat-checkbox>
+                                (change)="setSameAddress($event)">{{'Lables.SameAsCurrentAdd' | translate}}</mat-checkbox>
                         </div>
                     </label>
                     <mat-form-field appearance="outline" class="w-100">
@@ -154,10 +155,10 @@
             </div>
             <div class="row gx-2 align-items-end">
                 <div class="col-sm-12">
-                    <h6 class="section-head">Highest Educational Qualification</h6>
+                    <h6 class="section-head">{{'Lables.HighestEducation' | translate}}</h6>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Educational Qualification</label>
+                    <label class="form-label">{{'Lables.EducationalQualification' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="educationalQualificationId">
                             <mat-option>
@@ -185,7 +186,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Stream</label>
+                    <label class="form-label">{{'Lables.Stream' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="streamId">
                             <mat-option>
@@ -204,7 +205,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Degree Specilization</label>
+                    <label class="form-label">{{'Lables.DegreeSpecilization' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="degreeId">
                             <mat-option>
@@ -223,7 +224,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Board</label>
+                    <label class="form-label">{{'Lables.Board' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="boardId">
                             <mat-option>
@@ -239,7 +240,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Degree University</label>
+                    <label class="form-label">{{'Lables.DegreeUniversity' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="degreeUniversityId">
                             <mat-option>
@@ -255,13 +256,13 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Marks/Percentage</label>
+                    <label class="form-label">{{'Lables.Marks/Percentage' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput placeholder="Marks/Percentage" formControlName="marks">
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Passing Year</label>
+                    <label class="form-label">{{'Lables.PassingYear' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput placeholder="Passing Year" formControlName="passingYear" maxlength="4">
                     </mat-form-field>
@@ -269,7 +270,7 @@
             </div>
             <div class="row gx-2 form-container align-items-end">
                 <div class="col-sm-12">
-                    <h6 class="section-head">Professional Qualification</h6>
+                    <h6 class="section-head">{{'Lables.ProfessionalQualification' | translate}}</h6>
                 </div>
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.district' | translate}}</label>
@@ -302,7 +303,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Village</label>
+                    <label class="form-label">{{'Lables.village' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="villageIdPQ">
                             <mat-option *ngFor="let village of villageArray" [value]="village.id">{{webStorage.languageFlag
@@ -311,13 +312,13 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">UDISE Code</label>
+                    <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput placeholder="UDISE Code" formControlName="udiseCode">
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Working School Name</label>
+                    <label class="form-label">{{'Lables.WorkingSchoolName' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="schoolId">
                             <mat-option>
@@ -330,7 +331,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Select Role</label>
+                    <label class="form-label">{{'Lables.SelectRole' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="roleId">
                             <mat-option>
@@ -342,13 +343,13 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-sm-4 mb-4">
+                <div class="col-sm-4 marginbtm file-upload border rounded-2 p-1 margin-control">
                     <div class="d-flex align-items-center gap-2">
-                        <mat-checkbox class="example-margin" formControlName="isKendraHead">Is Cluster Head?</mat-checkbox>
+                        <mat-checkbox class="example-margin" formControlName="isKendraHead">{{'Lables.IsClusterHead' | translate}}</mat-checkbox>
                     </div>
                 </div>
                 <div class="col-sm-4" *ngIf="f['isKendraHead'].value == true">
-                    <label class="form-label">Select Cluster</label>
+                    <label class="form-label">{{'Lables.SelectCluster' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <!-- <mat-label>Toppings</mat-label> -->
                         <mat-select formControlName="clusterId" multiple>
@@ -356,11 +357,11 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-sm-4 mb-4">
-                    <mat-checkbox class="example-margin" formControlName="isClassTeacher">Is Class Teacher?</mat-checkbox>
+                <div class="col-sm-4 marginbtm file-upload border rounded-2 p-1 margin-control">
+                    <mat-checkbox class="example-margin" formControlName="isClassTeacher">{{'Lables.IsClassTeacher' | translate}}</mat-checkbox>
                 </div>
                 <div class="col-sm-4" *ngIf="f['isClassTeacher'].value == true">
-                    <label class="form-label">Class</label>
+                    <label class="form-label">{{'Lables.Class' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="classId">
                             <mat-option> 1st</mat-option>
@@ -368,7 +369,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4" *ngIf="f['isClassTeacher'].value == true">
-                    <label class="form-label">Division</label>
+                    <label class="form-label">{{'Lables.division' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="divisionId">
                             <mat-option> 1st</mat-option>
@@ -376,7 +377,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Assigned Classes</label>
+                    <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="assignedClass">
                             <mat-option> <mat-checkbox class="example-margin">1st</mat-checkbox></mat-option>
@@ -391,8 +392,8 @@
     </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
         <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">Cancel</button>
-            <button mat-flat-button class="btn-main" type="submit">Submit</button>
+            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.Cancel' | translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit">{{'Lables.Submit' | translate}}</button>
         </div>
     </mat-dialog-actions>
 </form>

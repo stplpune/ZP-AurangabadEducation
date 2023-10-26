@@ -80,18 +80,17 @@
                 <label class="form-label">{{'Lables.SchoolName' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <textarea matInput rows="2" formControlName="schoolName"
-                        (keypress)="validation.noFirstSpaceAllow($event)" maxlength="100"></textarea>
+                        (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpaces($event)" maxlength="100"></textarea>
                     <mat-error *ngIf="f['schoolName'].hasError('pattern')">
                         {{'Lables.enterValidSchoolName' | translate}}
                     </mat-error>
                 </mat-form-field>
-
             </div>
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolName(Marathi)' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <textarea matInput rows="2" formControlName="m_SchoolName" maxlength="100"
-                        (keypress)="validation.noFirstSpaceAllow($event); validation.unicodeMarathiValidation($event);"></textarea>
+                        (keypress)="validation.noFirstSpaceAllow($event); validation.marathiAlphaNumeric($event);"></textarea>
                     <mat-error *ngIf="f['m_SchoolName'].hasError('pattern')">
                         {{'Lables.validschoolNameMarathi' | translate}}
                     </mat-error>
@@ -174,7 +173,7 @@
                         data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
                         {{'Lables.UploadProfilePhoto' | translate}}
                     </button>
-                    <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" #uploadImage
+                    <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png" id="real-file" hidden="hidden" #uploadImage
                         (change)="imgUpload($event)" />
 
                     <div class="d-flex gap-2">
@@ -202,19 +201,19 @@
                                 data-toggle="tooltip" data-placement="right" (click)="uploadGallImage.click()">
                                 {{'Lables.UploadSchoolDocuments' | translate}}
                             </button>
-                            <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden"
+                            <input type="file" accept=".xlsx, .pdf, .doc, .txt" id="real-file" hidden="hidden"
                                 #uploadGallImage (change)="multipleImgUpload($event)" multiple />
                         </div>
                     </div>
                 </div>
                 <!-- Display Image -->
                 <div class="d-flex flex-wrap gap-4 mt-4">
-                    <ng-container *ngFor="let item of imgArray; let i = index">
+                    <ng-container *ngFor="let item of docArray; let i = index">
                         <div class="gallery">
-                            <img [src]="item.docPath" class="border">
+                            <img [src]="item.docPath" class="border" (click)="onViewDoc(i)">
                             <div class="gallery-buttons">
                                 <button type="button" mat-icon-button class="bg-danger-subtle"
-                                    (click)="clearMultipleImg(i)" matTooltip="{{'Lables.delete' | translate}}"
+                                    (click)="clearMultipleDoc(i)" matTooltip="{{'Lables.delete' | translate}}"
                                     matTooltipPosition="right" matTooltipClass="tooltip">
                                     <mat-icon class="material-symbols-rounded text-danger">delete</mat-icon>
                                 </button>
