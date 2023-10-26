@@ -63,7 +63,31 @@
         "EditTooltip" : "अपडेट",
         "DeleteTooltip" : "हटवा",
         "DownloadTooltip" : "डाउनलोड करा",
-        "Pagination" : "प्रति पृष्ठ आयटम"
+        "Pagination" : "प्रति पृष्ठ आयटम",
+        "Details" : "वैयक्तिक माहिती",
+        "Teacher" : "शिक्षकाचे नाव",
+        "TeacherID" : "शिक्षक आयडी",
+        "Teacher(Marathi)" : "शिक्षकाचे नाव(मराठी)",
+        "NoteDocumentsFormat":"टीप: फक्त pdf, doc, txt फॉर्मेट स्वीकारा",
+        "Gender" : "लिंग",
+        "MobileNo" : "मोबाईल क्र.",
+        "EmailID" : "ईमेल आयडी",
+        "BirthDate" : "जन्मतारीख",
+        "UploadButton" : "अपलोड बटण",
+        "AddressDetails" : "पत्ता तपशील",
+        "CurrentAddress" : "वर्तमान पत्ता",
+        "PermanentAddress" : "कायमचा पत्ता",
+        "SameAsCurrentAdd" : "वर्तमान पत्त्याप्रमाणेच",
+        "NoteImgFormat":"टीप: फक्त jpg, jpeg, png फॉर्मेट स्वीकारा",
+        "HighestEducation" : "सर्वोच्च शैक्षणिक पात्रता",
+        "EducationalQualification" : "शैक्षणिक पात्रता",
+        "Stream" : "प्रवाह",
+        "DegreeSpecilization" : "पदवी स्पेशलायझेशन",
+        "Board" : "बोर्ड",
+        "DegreeUniversity" : "पदवी विद्यापीठ",
+        "Marks/Percentage" : "गुण/टक्केवारी",
+        "PassingYear" : "उत्तीर्ण वर्ष"
+
 
 
 
