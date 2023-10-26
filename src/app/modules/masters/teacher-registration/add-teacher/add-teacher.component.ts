@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { ErrorService } from 'src/app/core/services/error.service';
 import { FileUploadService } from 'src/app/core/services/file-upload.service';
@@ -35,6 +36,7 @@ export class AddTeacherComponent {
     private fileUpload: FileUploadService,
     public webStorage: WebStorageService,
     public validation: ValidationService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dateAdapter: DateAdapter<Date>){
       dateAdapter.setLocale("en-GB"); // DD/MM/YYYY
     }
@@ -197,7 +199,7 @@ export class AddTeacherComponent {
 
   setSameAddress(event: any) {
     console.log("onClick: ", event);
-    
+
     this.checked = event.checked;
     if (this.checked == true) {
       let sameAddress = this.teacherRegForm.value.currentAddress
@@ -208,7 +210,7 @@ export class AddTeacherComponent {
   }
 
   CalculateAge() {
-    let birthDate = this.teacherRegForm.value.birthDate   
+    let birthDate = this.teacherRegForm.value.birthDate
     if (birthDate) {
       var timeDiff = Math.abs(Date.now() - birthDate);
       this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
