@@ -7,12 +7,24 @@
     </div>
 </div>
 <mat-dialog-content class="modal-body scrollbar form-container">
-    <div class="mb-2 d-flex align-items-center gap-2">
-        <label class="form-label">Transfer Location : </label>
-        <mat-radio-group>
-            <mat-radio-button value="Inter" class="form-data">Inter District</mat-radio-button>
-            <mat-radio-button value="Intra" class="form-data">Intra District</mat-radio-button>
-        </mat-radio-group>
+    <div class="d-flex align-items-start gap-2 justify-content-between w-100">
+        <div>
+            <label class="form-label">Transfer Location : </label>
+            <div class="d-block">
+                <mat-radio-group>
+                    <mat-radio-button value="Inter" class="form-data">Inter District</mat-radio-button>
+                    <mat-radio-button value="Intra" class="form-data">Intra District</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div>
+            <label class="form-label">Exit Date</label>
+            <mat-form-field appearance="outline" class="w-100">
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
     </div>
     <div class="card mb-2">
         <div class="card-header bg-main-light fs-main fw-bold text-main border-bottom-0">From Location</div>
@@ -41,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div class="card">
+    <div class="card mb-2">
         <div class="card-header bg-main-light fs-main fw-bold text-main border-bottom-0">To Location</div>
         <div class="card-body pb-0">
             <div class="row gx-2">
@@ -98,6 +110,10 @@
             </div>
         </div>
     </div>
+    <label class="form-label">Reason for Exit</label>
+    <mat-form-field class="w-100" appearance="outline">
+        <textarea matInput placeholder="Reason for Exit" rows="3"></textarea>
+    </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions class="modal-footer">
     <div class="d-flex align-items-center justify-content-end w-100 gap-2">
