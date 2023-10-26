@@ -45,6 +45,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatNativeDateModule,
     MatSlideToggleModule,
     TranslateModule,
+    
   ]
 })
 export class StudentRegistrationModule { }
