@@ -40,9 +40,15 @@ export class ValidationService {
   numericWithDecimalForGST = '^[0-9]{1,3}(\\.[0-9]{1,2})?%?$';
   singleDashDotNumeric = '^[-]?[0-9][0-9]*[.]?[0-9]{0,2}$';
   allZeroMatch = /^0+$/;
+  marathiAlphanumeric=('^[\u0900-\u09650-9 .,\/()_-][\u0900-\u09650-9 .,\/()_-]+$');
+
+  marathiAlphaNumeric(event: any) {
+    const maskSeperator = new RegExp('^[\u0900-\u09650-9 .,\/()_-]+$', 'g');
+    return maskSeperator.test(event.key);
+  }
 
   alphabetsWithSpaces(event: any) {
-    const maskSeperator = new RegExp('^([a-zA-Z ])', 'g');
+    const maskSeperator = new RegExp('^([a-zA-Z0-9 .,\/()_-]+$)', 'g');
     return maskSeperator.test(event.key);
   }
 
