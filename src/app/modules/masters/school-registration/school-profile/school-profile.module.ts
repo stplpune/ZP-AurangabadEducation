@@ -11,11 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { AddDocumentComponent } from './add-document/add-document.component';
 
 
 @NgModule({
   declarations: [
     SchoolProfileComponent,
+    AddDocumentComponent,
   ],
   imports: [
     CommonModule,
