@@ -30,7 +30,7 @@ export class AddSchoolComponent {
   lowestGroupclassArray = new Array();
   highestGroupclassArray = new Array();
   areaArray = new Array();
-  imgArray = new Array();
+  docArray = new Array();
   editObj: any;
   uploadImg: any;
   uploadMultipleImg: any;
@@ -105,6 +105,7 @@ export class AddSchoolComponent {
     return this.schoolRegForm.get('schoolDocument') as FormArray;
   }
 
+  //#region -------------------------------------------- Dropdown with dependencies start here-------------------------------------------------
   getDistrict() {
     this.districtArray = [];
     this.masterService.getAllDistrict('').subscribe({
@@ -233,7 +234,9 @@ export class AddSchoolComponent {
     this.highestGroupclassArray = findObj;
     this.data ? this.f['highestClass'].setValue(this.data.highestClass) : '';
   }
+  //#endregion------------------------------------------ Dropdown with dependencies end here------------------------------------------------
 
+  //#region --------------------------------- Upload, view, delete img and multiple document start here-------------------------------------
   imgUpload(event: any) {
     let type = 'jpg, jpeg, png';
     this.fileUpload.uploadDocuments(event, 'Upload', type).subscribe({
@@ -288,7 +291,7 @@ export class AddSchoolComponent {
               docPath: imgArr[i],
               ...this.webStorage.createdByProps()
             }
-            this.imgArray.push(data)
+            this.docArray.push(data)
           }
         }
         else {
@@ -299,14 +302,20 @@ export class AddSchoolComponent {
     });
   }
 
-  clearMultipleImg(index: any) {
-    this.imgArray.splice(index, 1);
+  clearMultipleDoc(index: any) {
+    this.docArray.splice(index, 1);
   }
 
+  onViewDoc(index: any) {
+    window.open(this.docArray[index].docPath, 'blank');
+  }
+  //#endregion--------------------------------- Upload, view, delete img and multiple document end here-------------------------------------
+
+  //#region -------------------------------------------- Submit and Edit start here-----------------------------------------------------
   onSubmit() {
     let formValue = this.schoolRegForm.value;
     formValue.uploadImage = this.uploadImg;
-    formValue.schoolDocument = this.imgArray;
+    formValue.schoolDocument = this.docArray;
     formValue.isKendraSchool == false ? formValue.bitId = 0 : '';
 
     let url = this.data ? 'UpdateSchool' : 'AddSchool';
@@ -344,10 +353,12 @@ export class AddSchoolComponent {
         docPath: res.docPath,
         ...this.webStorage.createdByProps()
       }
-      this.imgArray.push(schoolDocumentObj);
+      this.docArray.push(schoolDocumentObj);
     })
   }
+  //#endregion-------------------------------------------- Submit and Edit end here-----------------------------------------------------
 
+  //#region ----------------------------------------- Clear dropdown on change start here--------------------------------------------------
   clearDropdown(dropdown: string) {
     if (dropdown == 'district') {
       this.f['talukaId'].setValue('');
@@ -371,15 +382,20 @@ export class AddSchoolComponent {
       this.f['highestClass'].setValue('');
     }
   }
+  //#endregion----------------------------------------- Clear dropdown on change end here--------------------------------------------------
 
+  //#region ------------------------------------- Update validation on isKendra School start here-------------------------------------------
   updateValidation() {
     if (this.f['isKendraSchool'].value == true) {
       this.f['bitId'].setValidators(Validators.required);
+      this.f['bitId'].setValue('');
+      this.data.bitId = '';
     }
     else {
       this.f['bitId'].clearValidators();
     }
     this.f['bitId'].updateValueAndValidity();
   }
+  //#endregion------------------------------------- Update validation on isKendra School end here-------------------------------------------
 
 }

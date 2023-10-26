@@ -85,7 +85,6 @@
                         {{'Lables.enterValidSchoolName' | translate}}
                     </mat-error>
                 </mat-form-field>
-
             </div>
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolName(Marathi)' | translate}}</label>
@@ -209,12 +208,12 @@
                 </div>
                 <!-- Display Image -->
                 <div class="d-flex flex-wrap gap-4 mt-4">
-                    <ng-container *ngFor="let item of imgArray; let i = index">
+                    <ng-container *ngFor="let item of docArray; let i = index">
                         <div class="gallery">
-                            <img [src]="item.docPath" class="border">
+                            <img [src]="item.docPath" class="border" (click)="onViewDoc(i)">
                             <div class="gallery-buttons">
                                 <button type="button" mat-icon-button class="bg-danger-subtle"
-                                    (click)="clearMultipleImg(i)" matTooltip="{{'Lables.delete' | translate}}"
+                                    (click)="clearMultipleDoc(i)" matTooltip="{{'Lables.delete' | translate}}"
                                     matTooltipPosition="right" matTooltipClass="tooltip">
                                     <mat-icon class="material-symbols-rounded text-danger">delete</mat-icon>
                                 </button>
