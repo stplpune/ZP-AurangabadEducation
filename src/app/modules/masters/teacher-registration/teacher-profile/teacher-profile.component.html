@@ -5,14 +5,32 @@
         <li class="breadcrumb-item active" aria-current="page">Profile</li>
     </ol>
 </nav>
+<div class="alert alert-danger" role="alert">
+    <h6 class="alert-heading">Suspended</h6>
+    <p class="mb-0 fs-main">
+        This teacher have been suspended from his duty due to unlawful conduct in school.
+    </p>
+</div>
+<div class="alert alert-primary" role="alert">
+    <h6 class="alert-heading">Retired</h6>
+    <p class="mb-0 fs-main">
+        This teacher have been retired from his duty.
+    </p>
+</div>
 <mat-card class="plain-card">
     <mat-card-content class="card-body">
         <div class="row form-container">
             <div class="col-sm-3 border-end">
+                <div class="d-flex justify-content-end mb-2">
+                    <span class="badge bg-success-subtle text-success fw-bold fs-main">Active</span>
+                    <span class="badge bg-primary-subtle text-primary fw-bold fs-main">Retired</span>
+                    <span class="badge bg-danger-subtle text-danger fw-bold fs-main">Suspended</span>
+                </div>
                 <div class="text-center">
                     <img src="assets/images/user.png" class="img-logo">
                     <h6 class="mb-2 text-main fw-bold fs-5">Abhijit Rajaram Kambale</h6>
-                    <h6 class="text-main fw-bold fs-5">अभिजित राजाराम कांबळे</h6>
+                    <h6 class="text-main fw-bold fs-5 mb-0">अभिजित राजाराम कांबळे</h6>
+                    <span class="text-secondary fs-main">(Headmaster)</span>
                 </div>
                 <ul class="list-group list-group-flush fs-main mb-0">
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -103,9 +121,13 @@
                     <div class="card-header bg-transparent fs-main fw-bold text-main">Professional Details</div>
                     <div class="card-body">
                         <div class="row gy-2">
-                            <div class="col-sm-12">
+                            <div class="col-sm-7">
                                 <label class="form-label mb-0">Working at</label>
                                 <div class="form-data">Shri. Manjunath Primary & Secondary School, Aurangabad</div>
+                            </div>
+                            <div class="col-sm-5">
+                                <label class="form-label mb-0">Joining Date</label>
+                                <div class="form-data">10-02-2015</div>
                             </div>
                             <div class="col-sm-3">
                                 <label class="form-label mb-0">Cluster</label>
@@ -164,9 +186,9 @@
                 <div class="card">
                     <div class="card-header bg-transparent fs-main fw-bold text-main">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span>Transfer History</span>
+                            <span>Exit History</span>
                             <button class="btn bg-danger-subtle text-danger btn-sm fs-main fw-bold"
-                                (click)="openTransferDialog()">Transfer</button>
+                                (click)="openTransferDialog()">Exit</button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -176,6 +198,7 @@
                                     <th rowspan="2">Sr. No.</th>
                                     <th colspan="2" class="text-center">Location</th>
                                     <th colspan="2" class="text-center">Duration</th>
+                                    <th rowspan="2">Status</th>
                                     <th rowspan="2">Reason</th>
                                 </tr>
                                 <tr>
@@ -198,6 +221,13 @@
                                     </td>
                                     <td>01-05-2012</td>
                                     <td>04-04-2015</td>
+                                    <td>
+                                        <span class="badge bg-success-subtle text-success fw-bold fs-main">Active</span>
+                                        <span
+                                            class="badge bg-primary-subtle text-primary fw-bold fs-main">Retired</span>
+                                        <span
+                                            class="badge bg-danger-subtle text-danger fw-bold fs-main">Suspended</span>
+                                    </td>
                                     <td>
                                         Due to Health issue
                                     </td>

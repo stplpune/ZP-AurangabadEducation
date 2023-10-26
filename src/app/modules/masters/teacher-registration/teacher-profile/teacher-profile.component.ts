@@ -12,7 +12,7 @@ export class TeacherProfileComponent {
 
   openTransferDialog() {
     this.dialog.open(UserTransferComponent, {
-      width: '600px',
+      width: '650px'
     });
   }
 }
