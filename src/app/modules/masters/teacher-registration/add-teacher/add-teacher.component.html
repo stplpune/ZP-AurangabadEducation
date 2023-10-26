@@ -103,36 +103,9 @@
                 <div class="col-sm-12">
                     <h6 class="section-head">{{'Lables.AddressDetails' | translate}}</h6>
                 </div>
-                <div class="col-sm-4">
-                    <label class="form-label">{{'Lables.district' | translate}}</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="districtId" (selectionChange)="getVillageByTalukaId();">
-                            <mat-option *ngFor="let district of districtArray"
-                                [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District:
-                                district.district}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                    <label class="form-label">{{'Lables.taluka' | translate}}</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="talukaId" (selectionChange)="getVillage();">
-                            <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag
-                                =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                    <label class="form-label">{{'Lables.village' | translate}}</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="villageId">
-                            <mat-option *ngFor="let village of villageArray"
-                                [value]="village.id">{{webStorage.languageFlag
-                                =='mr-IN' ? village.m_Village: village.village}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
+                <div class="row">
                 <div class="col-sm-6 ">
+                <div class="col-sm-12">
                     <label class="form-label">{{'Lables.CurrentAddress' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <textarea matInput rows="3" maxlength="100" formControlName="currentAddress"
@@ -140,7 +113,39 @@
                             (input)="clearAddressCheckBox($event)"></textarea>
                     </mat-form-field>
                 </div>
-                <div class="col-sm-6 ">
+
+ <div class="col-sm-4 w-100">
+  <label class="form-label">{{'Lables.district' | translate}}</label>
+  <mat-form-field appearance="outline" class="w-100">
+      <mat-select formControlName="districtId" (selectionChange)="getVillageByTalukaId();">
+          <mat-option *ngFor="let district of districtArray"
+              [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District:
+              district.district}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>
+<div class="col-sm-4 w-100">
+  <label class="form-label">{{'Lables.taluka' | translate}}</label>
+  <mat-form-field appearance="outline" class="w-100">
+      <mat-select formControlName="talukaId" (selectionChange)="getVillage();">
+          <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag
+              =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>
+<div class="col-sm-4 w-100">
+  <label class="form-label">{{'Lables.village' | translate}}</label>
+  <mat-form-field appearance="outline" class="w-100">
+      <mat-select formControlName="villageId">
+          <mat-option *ngFor="let village of villageArray"
+              [value]="village.id">{{webStorage.languageFlag
+              =='mr-IN' ? village.m_Village: village.village}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>
+                </div>
+                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <label class="form-label w-100">
                         <div class="d-flex justify-content-between w-100 align-items-center">
                             <span>{{'Lables.PermanentAddress' | translate}}</span>
@@ -151,6 +156,37 @@
                     <mat-form-field appearance="outline" class="w-100">
                         <textarea matInput rows="3" formControlName="permentAddress"></textarea>
                     </mat-form-field>
+                </div>
+                <div class="col-sm-4 w-100">
+                  <label class="form-label">{{'Lables.district' | translate}}</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-select formControlName="districtId" (selectionChange)="getVillageByTalukaId();">
+                          <mat-option *ngFor="let district of districtArray"
+                              [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District:
+                              district.district}}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-4 w-100">
+                  <label class="form-label">{{'Lables.taluka' | translate}}</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-select formControlName="talukaId" (selectionChange)="getVillage();">
+                          <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag
+                              =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-4 w-100">
+                  <label class="form-label">{{'Lables.village' | translate}}</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-select formControlName="villageId">
+                          <mat-option *ngFor="let village of villageArray"
+                              [value]="village.id">{{webStorage.languageFlag
+                              =='mr-IN' ? village.m_Village: village.village}}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                </div>
                 </div>
             </div>
             <div class="row gx-2 align-items-end">
