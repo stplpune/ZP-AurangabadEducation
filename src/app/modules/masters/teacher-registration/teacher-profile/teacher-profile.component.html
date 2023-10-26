@@ -163,9 +163,10 @@
                 </div>
                 <div class="card">
                     <div class="card-header bg-transparent fs-main fw-bold text-main">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between align-items-center">
                             <span>Transfer History</span>
-                            <button mat-flat-button class="bg-danger-subtle text-danger">Transfer</button>
+                            <button class="btn bg-danger-subtle text-danger btn-sm fs-main fw-bold"
+                                (click)="openTransferDialog()">Transfer</button>
                         </div>
                     </div>
                     <div class="card-body">
