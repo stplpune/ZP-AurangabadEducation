@@ -1,14 +1,14 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page">Master</li>
-        <li class="breadcrumb-item active" aria-current="page">Student Registration</li>
+        <li class="breadcrumb-item" aria-current="page">{{'Lables.master' | translate}}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{'Lables.StudentRegistration' | translate}}</li>
     </ol>
 </nav>
 <mat-card class="plain-card">
     <mat-card-header class="card-header">
         <div class="d-flex justify-content-between align-items-center w-100">
             <h6 class="text-main mb-2 mb-lg-0 fw-bold">
-                Student List</h6>
+               {{'Lables.StudentList' |translate}}</h6>
             <div class="d-flex align-items-center gap-2">
                 <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
                     <mat-icon class="material-symbols-rounded">
@@ -32,7 +32,7 @@
                 <button mat-flat-button class="btn-main" [routerLink]="['../add-student']">
                     <mat-icon class="material-symbols-rounded">add</mat-icon>
                     <span>
-                        Add Student
+                        {{'Lables.AddStudent' |translate}}
                     </span>
                 </button>
             </div>
@@ -41,7 +41,7 @@
     <mat-card-header class="card-header-control pt-0 form-container">
         <div class="row align-items-end w-100 justify-content-start g-2">
             <div class="col-sm-2">
-                <label class="form-label">District</label>
+                <label class="form-label">{{'Lables.district' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Amravati</mat-option>
@@ -49,7 +49,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-                <label class="form-label">Taluka</label>
+                <label class="form-label">{{'Lables.taluka' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Amravati</mat-option>
@@ -57,7 +57,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-3">
-                <label class="form-label">Kendra</label>
+                <label class="form-label">{{'Lables.kendra' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Amravati</mat-option>
@@ -65,7 +65,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-2">
-                <label class="form-label">Village</label>
+                <label class="form-label">{{'Lables.village' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Anjangaon</mat-option>
@@ -73,7 +73,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-3">
-                <label class="form-label">School</label>
+                <label class="form-label">{{'Lables.School' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>Village</mat-option>
@@ -81,9 +81,9 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Student Name/Parent Mobile No.</label>
+                <label class="form-label">{{'Lables.StudentName/ParentMobileNo' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput placeholder="Student Name/Parent Mobile No.">
+                    <input matInput placeholder="{{'Lables.StudentName/ParentMobileNo' |translate}}">
                 </mat-form-field>
             </div>
             <div class="col-sm-auto">
