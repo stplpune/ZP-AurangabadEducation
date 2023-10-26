@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from './add-user/add-user.component';
+import { MasterService } from 'src/app/core/services/master.service';
 export interface PeriodicElement {
   srno: any;
   Name: any;
@@ -24,11 +25,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./office-user-registration.component.scss']
 })
 export class OfficeUserRegistrationComponent {
-  constructor(public dialog: MatDialog,){
+  constructor(public dialog: MatDialog,
+              private masterService: MasterService){
 
   }
+  
   displayedColumns: string[] = ['srno', 'Name', 'User', 'Level', 'Designation', 'Contact', 'Block','Action'];
   dataSource = ELEMENT_DATA;
+  userTypeArray= new Array();
+
+
+  ngOninit(){
+    this.getuserTypeDropDwn();
+    this
+  }
   AddUser(data?: any) {
     const dialogRef = this.dialog.open(AddUserComponent, {
       width: '600px',
@@ -43,4 +53,16 @@ export class OfficeUserRegistrationComponent {
   color: ThemePalette = 'accent';
   checked = false;
   disabled = false;
+
+
+  getuserTypeDropDwn(){
+    this.userTypeArray = [];
+    this.masterService.getUserType().subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? (this.userTypeArray = res.responseData) : this.userTypeArray = [];
+      },
+    })
+  }
+
+
 }

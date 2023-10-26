@@ -139,6 +139,17 @@ export class MasterService {
     });
   }
 
+  getUserType(langFlag?: string){
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllDesiredDesignationLevel?flag_lang='+langFlag+'&DesignationLevelId=' + '', false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+
+  }
+
 
 
 
