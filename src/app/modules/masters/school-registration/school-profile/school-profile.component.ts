@@ -41,6 +41,8 @@ export class SchoolProfileComponent {
   }
 
   openAddDocumentDialog() {
-    this.dialog.open(AddDocumentComponent);
+    this.dialog.open(AddDocumentComponent, {
+      width: '450px',
+    });
   }
 }
