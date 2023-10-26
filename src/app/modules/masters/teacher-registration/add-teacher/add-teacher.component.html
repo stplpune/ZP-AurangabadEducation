@@ -270,7 +270,7 @@
             </div>
             <div class="row gx-2 form-container align-items-end">
                 <div class="col-sm-12">
-                    <h6 class="section-head">Professional Qualification</h6>
+                    <h6 class="section-head">{{'Lables.ProfessionalQualification' | translate}}</h6>
                 </div>
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.district' | translate}}</label>
@@ -303,7 +303,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Village</label>
+                    <label class="form-label">{{'Lables.village' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="villageIdPQ">
                             <mat-option *ngFor="let village of villageArray" [value]="village.id">{{webStorage.languageFlag
@@ -312,13 +312,13 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">UDISE Code</label>
+                    <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput placeholder="UDISE Code" formControlName="udiseCode">
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Working School Name</label>
+                    <label class="form-label">{{'Lables.WorkingSchoolName' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="schoolId">
                             <mat-option>
@@ -331,7 +331,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Select Role</label>
+                    <label class="form-label">{{'Lables.SelectRole' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="roleId">
                             <mat-option>
@@ -345,11 +345,11 @@
                 </div>
                 <div class="col-sm-4 mb-4">
                     <div class="d-flex align-items-center gap-2">
-                        <mat-checkbox class="example-margin" formControlName="isKendraHead">Is Cluster Head?</mat-checkbox>
+                        <mat-checkbox class="example-margin" formControlName="isKendraHead">{{'Lables.IsClusterHead' | translate}}</mat-checkbox>
                     </div>
                 </div>
                 <div class="col-sm-4" *ngIf="f['isKendraHead'].value == true">
-                    <label class="form-label">Select Cluster</label>
+                    <label class="form-label">{{'Lables.SelectCluster' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <!-- <mat-label>Toppings</mat-label> -->
                         <mat-select formControlName="clusterId" multiple>
@@ -358,10 +358,10 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4 mb-4">
-                    <mat-checkbox class="example-margin" formControlName="isClassTeacher">Is Class Teacher?</mat-checkbox>
+                    <mat-checkbox class="example-margin" formControlName="isClassTeacher">{{'Lables.IsClassTeacher' | translate}}</mat-checkbox>
                 </div>
                 <div class="col-sm-4" *ngIf="f['isClassTeacher'].value == true">
-                    <label class="form-label">Class</label>
+                    <label class="form-label">{{'Lables.Class' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="classId">
                             <mat-option> 1st</mat-option>
@@ -369,7 +369,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4" *ngIf="f['isClassTeacher'].value == true">
-                    <label class="form-label">Division</label>
+                    <label class="form-label">{{'Lables.division' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="divisionId">
                             <mat-option> 1st</mat-option>
@@ -377,7 +377,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                    <label class="form-label">Assigned Classes</label>
+                    <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="assignedClass">
                             <mat-option> <mat-checkbox class="example-margin">1st</mat-checkbox></mat-option>
@@ -392,8 +392,8 @@
     </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
         <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">Cancel</button>
-            <button mat-flat-button class="btn-main" type="submit">Submit</button>
+            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.Cancel' | translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit">{{'Lables.Submit' | translate}}</button>
         </div>
     </mat-dialog-actions>
 </form>

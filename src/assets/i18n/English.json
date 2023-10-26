@@ -86,7 +86,18 @@
         "Board" : "Board",
         "DegreeUniversity" : "Degree Universityn",
         "Marks/Percentage" : "Marks/Percentage",
-        "PassingYear" : "Passing Year"
+        "PassingYear" : "Passing Year",
+        "ProfessionalQualification" : "Professional Qualification",
+        "WorkingSchoolName" : "Working School Name",
+        "SelectRole" : "Select Role",
+        "IsClusterHead" : "Is Cluster Head?",
+        "SelectCluster" : "Select Cluster",
+        "IsClassTeacher" : "Is Class Teacher?",
+        "Class" : "Class",
+        "AssignedClasses" : "Assigned Classes",
+        "division" : "Division",
+        "Cancel" : "Cancel",
+        "Submit" : "Submit"
 
 
 

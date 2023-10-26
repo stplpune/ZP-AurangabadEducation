@@ -86,7 +86,18 @@
         "Board" : "बोर्ड",
         "DegreeUniversity" : "पदवी विद्यापीठ",
         "Marks/Percentage" : "गुण/टक्केवारी",
-        "PassingYear" : "उत्तीर्ण वर्ष"
+        "PassingYear" : "उत्तीर्ण वर्ष",
+        "ProfessionalQualification" : "व्यावसायिक पात्रता",
+        "WorkingSchoolName" : "कार्यरत शाळेचे नाव",
+        "SelectRole" : "भूमिका निवडा",
+        "IsClusterHead" : "क्लस्टर हेड आहे का?",
+        "SelectCluster" : "क्लस्टर निवडा",
+        "IsClassTeacher" : "वर्ग शिक्षक आहे का?",
+        "Class" : "वर्ग",
+        "AssignedClasses" : "नियुक्त वर्ग",
+        "division" : "विभाग",
+        "Cancel" : "रद्द करा",
+        "Submit" : "सबमिट"
 
 
 
