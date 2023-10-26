@@ -228,7 +228,7 @@ export class DesignationMasterComponent {
 
   languageChange() {
     this.highLightFlag = true;
-    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'designation' : 'm_Designation', this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', 'action'];
+    this.displayedColumns = ['srNo',  this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
       img: '', blink: '', badge: '', isBlock: '', pagination: true,
