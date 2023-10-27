@@ -1,28 +1,83 @@
-<div *ngIf="data?.id && !editFlag">
-    <div>
-    <div>District: {{editObj?.district}}</div>
-    <div>Taluka: {{editObj?.taluka}}</div>
-    <div>Kendra: {{editObj?.center}}</div>
+<form  *ngIf="data?.id && !editFlag">
+  <div mat-dialog-title class="modal-header">
+      <div class="d-flex justify-content-between align-items-center w-100">
+          <h6 class="text-main mb-0 fw-bold">{{'Lables.viewSchool' | translate}}
+          </h6>
+          <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
+              <mat-icon class="material-symbols-rounded">close</mat-icon>
+          </button>
+      </div>
+  </div>
+  <mat-dialog-content class="modal-body scrollbar card-body form-container">
+    <div class="row">
+    <div class="col-sm-6">
+    <span class="form-label">District</span>
+    <span class="form-data"> : {{editObj?.district}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">Taluka</span>
+    <span class="form-data"> : {{editObj?.taluka}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">Kendra</span>
+    <span class="form-data"> : {{editObj?.center}}</span>
+    </div>
+    <div class="col-sm-6">
     <!-- <div *ngIf="editObj.isKendraSchool">Bit: {{editObj?.bit}}</div> -->
-    <div>Village: {{editObj?.village}}</div>
-
-    <div>School Type: {{editObj?.schoolType}}</div>
-    <div>School Name: {{editObj?.schoolName}}</div>
-    <div>School Name (Marathi): {{editObj?.m_SchoolName}}</div>
-    <div>School Management: {{'-'}}</div>
-    <div>Lowest Class: {{editObj?.lowestClass}}</div>
-    <div>Highest Class: {{editObj?.highestClass}}</div>
-    <div>School Category: {{'-'}}</div>
-    <div>UDISE Code: {{editObj?.schoolCode}}</div>
-    <div>Type of Area: {{editObj?.schoolArea}}</div>
-    <div>School Medium: {{editObj?.schoolMedium}}</div>
+    <span class="form-label">Village</span>
+    <span class="form-data"> : {{editObj?.village}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">School Type</span>
+    <span class="form-data"> : {{editObj?.schoolType}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">School Management</span>
+    <span class="form-data"> : {{'-'}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">Lowest Class</span>
+    <span class="form-data"> : {{editObj?.lowestClass}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">Highest Class</span>
+    <span class="form-data"> : {{editObj?.highestClass}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">School Category</span>
+    <span class="form-data"> : {{'-'}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">UDISE Code</span>
+    <span class="form-data"> : {{editObj?.schoolCode}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label" class="form-label"v>Type of Area</span>
+    <span class="form-data"> : {{editObj?.schoolArea}}</span>
+    </div>
+    <div class="col-sm-6">
+    <span class="form-label">School Medium</span>
+    <span class="form-data"> : {{editObj?.schoolMedium}}</span>
     </div>
 
-    <div>
+    <div class="col-sm-12">
+      <span class="form-label">School Name</span>
+      <span class="form-data"> : {{editObj?.schoolName}}</span>
+      </div>
+      <div class="col-sm-12">
+      <span class="form-label">School Name (Marathi)</span>
+      <span class="form-data"> : {{editObj?.m_SchoolName}}</span>
+      </div>
+    </div>
+    <mat-dialog-actions class="modal-footer">
+      <div class="d-flex align-items-center justify-content-end w-100 gap-2">
         <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">Cancel</button>
         <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">Edit</button>
-    </div>
-</div>
+      </div>
+  </mat-dialog-actions>
+
+</mat-dialog-content>
+</form>
 
 
 <form [formGroup]="schoolRegForm" (ngSubmit)="onSubmit()" *ngIf="!data?.id || editFlag">
@@ -234,7 +289,7 @@
                     </div>
                 </div>
                 <p style="font-size: 11px;" class="mb-3 pt-1">{{'Lables.NoteDocumentsFormat' | translate}}</p>
-                
+
                 <div class="d-flex flex-wrap gap-4 mt-4">
                     <ng-container *ngFor="let item of docArray; let i = index">
                         <div class="gallery">
@@ -249,7 +304,7 @@
                         </div>
                     </ng-container>
                 </div>
-                
+
             </div> -->
         </div>
     </mat-dialog-content>
