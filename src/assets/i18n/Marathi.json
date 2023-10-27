@@ -154,7 +154,8 @@
         "ContactPersonDetails" : "संपर्क व्यक्ती तपशील",
         "ConactPersonName" : "संपर्क व्यक्तीचे नाव",
         "ContactNo" : "संपर्क क्र.",
-        "Address" : "पत्ता"
+        "Address" : "पत्ता",
+        "viewSchool": "शाळेचे तपशील पहा"
 
 
 
