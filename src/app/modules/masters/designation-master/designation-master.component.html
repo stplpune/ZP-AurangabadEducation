@@ -74,7 +74,23 @@
         </mat-card>
     </div>
     <div class="col-sm-4 form-container">
-        <form action="" [formGroup]="desigNationForm" (ngSubmit)="submit()" #formDirective="ngForm">
+
+        <div *ngIf="editObj?.id && !editFlag">
+            <div>
+            <div>Dependant Designation Level: {{editObj?.designationLevel}}</div>
+            <div *ngFor="let item of editObj.linkedDesignationResponseModel">Dependant Designation: {{item?.linkedDesignationName}}</div>
+            <div>Desire Designation Level: {{editObj?.designationLevel}}</div>
+            <div>Designation: {{editObj?.designation}}</div>
+            <div>Designation (Marathi): {{editObj?.m_Designation}}</div>
+            </div>
+
+            <div>
+                <button mat-flat-button class="btn-main-light" type="button" (click)="editFlag = true">Cancel</button>
+                <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(editObj?.id, 'Edit')">Edit</button>
+            </div>
+        </div>
+
+        <form action="" [formGroup]="desigNationForm" (ngSubmit)="submit()" #formDirective="ngForm" *ngIf="!editObj?.id || editFlag">
             <mat-card class="plain-card">
                 <mat-card-header class="card-header">
                     <div class="text-main">{{editObj ?('Lables.updateDesignation' | translate)

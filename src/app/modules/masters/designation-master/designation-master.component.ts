@@ -31,15 +31,17 @@ export class DesignationMasterComponent {
   highLightFlag!: boolean;
   tableData: any;
   // displayedColumns = new Array();
-  displayedheadersEnglish = ['Sr. No.','Designation Level', 'Designation Name',  'Action'];
-  displayedheadersMarathi = ['अनुक्रमांक','पदनाम स्तर', 'पदनाम', 'कृती'];
+  displayedheadersEnglish = ['Sr. No.', 'Designation Level', 'Designation Name', 'Action'];
+  displayedheadersMarathi = ['अनुक्रमांक', 'पदनाम स्तर', 'पदनाम', 'कृती'];
   desigLevelArr = new Array();
   dependDesigArr = new Array();
   desireDesigLevelArr = new Array();
   linkedDesignationArr = new Array();
   linkedDesignationModelArr = new Array();
   editObj: any;
-  @ViewChild('formDirective')private formDirective!: NgForm;
+  editFlag: boolean = false;
+
+  @ViewChild('formDirective') private formDirective!: NgForm;
   get f() { return this.desigNationForm.controls }
   constructor(public webStorage: WebStorageService,
     private ngxSpinner: NgxSpinnerService,
@@ -71,13 +73,13 @@ export class DesignationMasterComponent {
     this.desigNationForm = this.fb.group({
       ...this.webStorage.createdByProps(),
       "id": [0],
-      "dependantDesigLevelId": ['',[Validators.required]], // Not from backend 
+      "dependantDesigLevelId": ['', [Validators.required]], // Not from backend 
       "linkedDesignationModel": [''],
-      "designationLevelId": ['',[Validators.required]],
+      "designationLevelId": ['', [Validators.required]],
       "designation": [this.editObj ? this.editObj.designation : '', [Validators.required, Validators.pattern(this.validation.alphaNumericOnly)]],
       "m_Designation": [this.editObj ? this.editObj.m_Designation : '', [Validators.required, Validators.pattern('^[-\u0900-\u096F ]+$')]],
       "localId": [0],
-      "depenDesigIds":['', [Validators.required]],
+      "depenDesigIds": ['', [Validators.required]],
       "lan": this.webStorage.languageFlag,
     })
   }
@@ -88,7 +90,7 @@ export class DesignationMasterComponent {
     this.masterService.getAllDesignationLevel('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.desigLevelArr.push({ "id": 0, "designationLevel": "All DesignationLevel", "m_DesignationLevel": "सर्व पदनाम स्तर" }, ...res.responseData)) : this.desigLevelArr = [];
-        this.editObj ? (this.f['dependantDesigLevelId'].setValue(this.editObj.linkedDesignationResponseModel[0].linkedDesignationLevelId), this.getAllDepenDesignationByLevelId(arr),this.getAllDesireDesigLevelBylevel()) : '';
+        this.editObj ? (this.f['dependantDesigLevelId'].setValue(this.editObj.linkedDesignationResponseModel[0].linkedDesignationLevelId), this.getAllDepenDesignationByLevelId(arr), this.getAllDesireDesigLevelBylevel()) : '';
       },
       error: () => {
       }
@@ -97,33 +99,31 @@ export class DesignationMasterComponent {
 
   // Dependant Designation dropdown
   getAllDepenDesignationByLevelId(arr?: any) {
-    console.log("arr dropdoen edit",arr);
-    
     let dependantDesigLevelId = this.f['dependantDesigLevelId'].value
     this.dependDesigArr = [];
     this.masterService.getAllDepenDesignationByLevelId('', dependantDesigLevelId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.dependDesigArr = res.responseData) : this.dependDesigArr = [];
-        this.editObj ? this.f['depenDesigIds'].setValue(arr): ''
+        this.editObj ? this.f['depenDesigIds'].setValue(arr) : ''
       }
     })
   }
 
   //getAllDesireDesignation dropdown
-  getAllDesireDesigLevelBylevel() {    
+  getAllDesireDesigLevelBylevel() {
     let dependantDesigLevelId = this.f['dependantDesigLevelId'].value
     this.desireDesigLevelArr = [];
     this.masterService.getAllDesireDesignationsByLevelId('', dependantDesigLevelId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.desireDesigLevelArr = res.responseData) : this.desireDesigLevelArr = [];
-        this.editObj ? this.f['designationLevelId'].setValue(this.editObj.designationLevelId):'' 
+        this.editObj ? this.f['designationLevelId'].setValue(this.editObj.designationLevelId) : ''
       }
     })
   }
 
-  selectMultiple(event: any){
+  selectMultiple(event: any) {
     let arrr = event.value;
-    this.linkedDesignationModelArr=[];
+    this.linkedDesignationModelArr = [];
     for (let i = 0; i < arrr.length; i++) {
       let obj = {
         "linkedDesignationLevelId": arrr[i]?.designationLevelId,
@@ -131,13 +131,13 @@ export class DesignationMasterComponent {
         "designationId": 0,
       }
       this.linkedDesignationModelArr.push(obj);
-    }    
-    }  
+    }
+  }
 
   submit() {
     let formValue = this.desigNationForm.value;
-    let arrr = this.f['depenDesigIds'].value;    
-    this.linkedDesignationModelArr=[];
+    let arrr = this.f['depenDesigIds'].value;
+    this.linkedDesignationModelArr = [];
     for (let i = 0; i < arrr.length; i++) {
       let objM = {
         "linkedDesignationLevelId": arrr[i]?.designationLevelId,
@@ -145,11 +145,11 @@ export class DesignationMasterComponent {
         "designationId": 0,
       }
       this.linkedDesignationModelArr.push(objM);
-    }    
+    }
 
     let obj = {
       ...this.webStorage.createdByProps(),
-      "id": this.editObj? this.editObj.id : 0,
+      "id": this.editObj ? this.editObj.id : 0,
       "designationLevelId": formValue.designationLevelId,
       "designation": formValue.designation,
       "m_Designation": formValue.m_Designation,
@@ -164,11 +164,11 @@ export class DesignationMasterComponent {
     }
     else {
       this.ngxSpinner.show();
-      this.apiService.setHttp(this.editObj ?'PUT':'post', 'ZP-Education/Designation/' + url, false, obj, false, 'zp-Education');
+      this.apiService.setHttp(this.editObj ? 'PUT' : 'post', 'ZP-Education/Designation/' + url, false, obj, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
           this.ngxSpinner.hide();
-          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0),this.formDirective.resetForm(),this.editObj = null,this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0), this.formDirective.resetForm(), this.editObj = null, this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
         },
         error: ((err: any) => {
           this.ngxSpinner.hide();
@@ -184,13 +184,13 @@ export class DesignationMasterComponent {
   }
 
 
-  clearFilerForm(){
+  clearFilerForm() {
     this.desigId.setValue(0);
     this.textSearch.setValue('')
     this.getTableData();
   }
 
-  clearForm(){
+  clearForm() {
     this.formDirective.resetForm();
     this.editObj = null;
   }
@@ -217,7 +217,7 @@ export class DesignationMasterComponent {
           this.ngxSpinner.hide();
           this.tableDataArray = [];
           this.tableDatasize = 0;
-          this.tableDatasize == 0 && (flag == 'pdfFlag'  || flag == 'excel') ? this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'No Record Found' : 'रेकॉर्ड उपलब्ध नाही', 1) : '';
+          this.tableDatasize == 0 && (flag == 'pdfFlag' || flag == 'excel') ? this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'No Record Found' : 'रेकॉर्ड उपलब्ध नाही', 1) : '';
         }
         this.languageChange();
       },
@@ -228,7 +228,7 @@ export class DesignationMasterComponent {
 
   languageChange() {
     this.highLightFlag = true;
-    this.displayedColumns = ['srNo',  this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation', 'action'];
+    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
       img: '', blink: '', badge: '', isBlock: '', pagination: true,
@@ -248,39 +248,39 @@ export class DesignationMasterComponent {
         this.pageNumber = obj.pageNumber;
         this.getTableData();
         break;
-        case 'Edit':
-          this.onEdit(obj);
-          break;
-          case 'Delete':
-            this.globalDialogOpen(obj);
-          break;
+      case 'Edit':
+        this.onEdit(obj.id, 'View');
+        break;
+      case 'Delete':
+        this.globalDialogOpen(obj);
+        break;
     }
   }
 
   downloadPdf(data: any, _flag?: any) {
     let headerKeySize = [10, 20, 40];
-    if(_flag == 'pdfFlag'){
+    if (_flag == 'pdfFlag') {
       let apiKeys = ['designationLevel', 'designation'];
-      let keyPDFHeader = ['Sr. No.','Designation Level', 'Designation Name'];        
-        let objData: any = {
-          'topHedingName': 'Designation List',
-          'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
-        }
-        this.downloadPdfExcelService.downLoadPdf(keyPDFHeader, apiKeys, data, objData, headerKeySize)
+      let keyPDFHeader = ['Sr. No.', 'Designation Level', 'Designation Name'];
+      let objData: any = {
+        'topHedingName': 'Designation List',
+        'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
       }
+      this.downloadPdfExcelService.downLoadPdf(keyPDFHeader, apiKeys, data, objData, headerKeySize)
+    }
     // excel 
-    else if(_flag == 'excel'){
-      let apiKeys = ['srNo',this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation'];
-      let keyHeader = ['Sr. No.', this.langTypeName == 'English' ?  'Designation Level' : 'पदनाम स्तर', this.langTypeName == 'English' ? 'Designation Name' : 'पदनाम'];
+    else if (_flag == 'excel') {
+      let apiKeys = ['srNo', this.langTypeName == 'English' ? 'designationLevel' : 'm_DesignationLevel', this.langTypeName == 'English' ? 'designation' : 'm_Designation'];
+      let keyHeader = ['Sr. No.', this.langTypeName == 'English' ? 'Designation Level' : 'पदनाम स्तर', this.langTypeName == 'English' ? 'Designation Name' : 'पदनाम'];
       let nameArr: any;
-      data.map((x:any,i: any)=>{        
-        x.srNo = i+1
-    })    
+      data.map((x: any, i: any) => {
+        x.srNo = i + 1
+      })
       if (data.length > 0) {
         nameArr = [{
           'topHedingName': this.langTypeName == 'English' ? 'Designation Master' : 'पदनाम मास्टर',
           'sheet_name': this.langTypeName == 'English' ? 'Designation List' : 'पदनामची यादी',
-          'excel_name': this.langTypeName == 'English' ? 'Designation List' : 'पदनामची यादी',  
+          'excel_name': this.langTypeName == 'English' ? 'Designation List' : 'पदनामची यादी',
           'languageFlag': this.langTypeName,
         }];
         this.downloadPdfExcelService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
@@ -288,35 +288,45 @@ export class DesignationMasterComponent {
     }
   }
 
-  onEdit(obj: any){
-    this.editObj = obj;
-    console.log("edit obj: ", this.editObj);
-    this.defaultDesignationForm();
-    // patch multisellect drop
-    let arr = new Array;
+  onEdit(id: any, flag: string) {
+    flag == 'View' ? this.editFlag = false : this.editFlag = true;
+    this.apiService.setHttp('get', 'ZP-Education/Designation/GetById?Id=' + id + '&lan=' + this.webStorage.languageFlag, false, false, false, 'zp-Education');
+    this.apiService.getHttp().subscribe({
+      next: (res: any) => {
+        if (res.statusCode == "200") {
+          this.editObj = res.responseData;
 
-    let model = this.editObj.linkedDesignationResponseModel
-    if(model.length){
-      for(let i= 0; i<model.length ;i++){
-        let obj ={
-          // "linkedDesignationLevelId": model[i]?.linkedDesignationLevelId,
-          // "linkedDesignationId": model[i]?.linkedDesignationId,
-          // "designationId": 0,     
-          "id": model[i]?.linkedDesignationId,
-          "designation": "",
-          "m_Designation": "",
-          "designationLevelId": model[i]?.linkedDesignationLevelId,
-          "designationLevel": "",
-          "m_DesignationLevel": ""
-           }
-           arr.push(obj);
+          if (flag == 'Edit') {
+            this.defaultDesignationForm();
+            // patch multisellect drop
+            let arr = new Array;
+
+            let model = this.editObj.linkedDesignationResponseModel
+            if (model.length) {
+              for (let i = 0; i < model.length; i++) {
+                let obj = {
+                  // "linkedDesignationLevelId": model[i]?.linkedDesignationLevelId,
+                  // "linkedDesignationId": model[i]?.linkedDesignationId,
+                  // "designationId": 0,     
+                  "id": model[i]?.linkedDesignationId,
+                  "designation": "",
+                  "m_Designation": "",
+                  "designationLevelId": model[i]?.linkedDesignationLevelId,
+                  "designationLevel": "",
+                  "m_DesignationLevel": ""
+                }
+                arr.push(obj);
+              }
+              this.getAllDesignationLevel(arr);
+
+            }
+          }
+        }
       }
-      this.getAllDesignationLevel(arr);
-
-    }
+    });
   }
 
-  globalDialogOpen(obj: any){
+  globalDialogOpen(obj: any) {
     let dialoObj = {
       title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete Designation Record?' : 'तुम्हाला पदनाम रेकॉर्ड हटवायचा आहे का?',
       header: 'Delete',
@@ -333,15 +343,12 @@ export class DesignationMasterComponent {
       if (result == 'yes') {
         this.deleteDesignation(obj);
       }
-      this.highLightFlag=false;
+      this.highLightFlag = false;
       this.languageChange();
     });
-
-
   }
 
-
-  deleteDesignation(obj: any){
+  deleteDesignation(obj: any) {
     let webStorageMethod = this.webStorage.createdByProps();
     let deleteObj = {
       "id": obj.id,
@@ -353,12 +360,12 @@ export class DesignationMasterComponent {
     this.apiService.setHttp('delete', 'ZP-Education/Designation/DeleteDesignation', false, deleteObj, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
-        if(res.statusCode == "200"){
+        if (res.statusCode == "200") {
           this.commonMethod.matSnackBar(res.statusMessage, 0);
           this.getTableData();
           this.clearForm();
         }
-        else{
+        else {
           this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1)
         }
       },
@@ -366,13 +373,5 @@ export class DesignationMasterComponent {
         this.commonMethod.checkDataType(error.statusText) == false ? this.errorsService.handelError(error.statusCode) : this.commonMethod.matSnackBar(error.statusText, 1);
       }
     });
-
   }
-
-
-
-
-
-
-
 }
