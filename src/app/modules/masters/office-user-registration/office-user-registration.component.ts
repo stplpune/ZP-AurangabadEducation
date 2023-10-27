@@ -8,18 +8,18 @@ import { WebStorageService } from 'src/app/core/services/web-storage.service';
 export interface PeriodicElement {
   srno: any;
   Name: any;
-  User: any;
   Level: any;
   Designation: any;
   Contact: any;
+  Email:any;
   Block: any;
   Action: any;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {srno: 1, Name: 'Ngo Demo', User: 'NGO', Level: 'Kendra', Designation:'Kendra Pramukh', Contact:'9878788778', Block:'', Action: ''},
-  {srno: 2, Name: 'Ramajogayya Shastry', User: 'Staff', Level: 'School', Designation:'Block Resource Person', Contact:'9878788778', Block:'',  Action: ''},
-  {srno: 3, Name: 'Prajapati Naidu', User: 'NGO', Level: 'District', Designation:'CEO', Contact:'9878788778',  Block:'',  Action: ''},
+  {srno: 1, Name: 'Ngo Demo', Designation:'Kendra Pramukh', Level: 'Kendra', Contact:'9878788778',Email:'test.gmail.com', Block:'', Action: ''},
+  {srno: 2, Name: 'Ramajogayya Shastry', Designation:'Block Resource Person',  Level: 'School',Contact:'9878788778', Email:'test.gmail.com', Block:'',  Action: ''},
+  {srno: 3, Name: 'Prajapati Naidu', Designation:'CEO',  Level: 'District',Contact:'9878788778',Email:'test.gmail.com',   Block:'',  Action: ''},
 ];
 @Component({
   selector: 'app-office-user-registration',
@@ -27,22 +27,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./office-user-registration.component.scss']
 })
 export class OfficeUserRegistrationComponent {
-  displayedColumns: string[] = ['srno', 'Name', 'User', 'Level', 'Designation', 'Contact', 'Block','Action'];
+  displayedColumns: string[] = ['srno', 'Name', 'Designation',  'Level','Contact', 'Email', 'Block','Action'];
   dataSource = ELEMENT_DATA;
   filterForm!: FormGroup;
   userTypeArray= new Array();
   districtArray = new Array();
   talukaArray = new Array();
   centerArray = new Array();
-  villageArray = new Array(); 
+  villageArray = new Array();
   langTypeName!: string
- 
+
   constructor(public dialog: MatDialog,
               private masterService: MasterService,
               public fb: FormBuilder,
               public webStorage: WebStorageService){ }
-  
- 
+
+
   ngOnInit(){
     this.webStorage.langNameOnChange.subscribe(lang => {
       this.langTypeName = lang;
@@ -65,7 +65,7 @@ export class OfficeUserRegistrationComponent {
   }
 
   get f(){ return this.filterForm.controls }
-  
+
   getuserTypeDropDwn(){
     this.userTypeArray = [];
     this.masterService.getUserType().subscribe({
@@ -142,7 +142,7 @@ export class OfficeUserRegistrationComponent {
 
   AddUser(data?: any) {
     const dialogRef = this.dialog.open(AddUserComponent, {
-      width: '600px',
+      width: '800px',
       data: data,
       disableClose: true
         });
