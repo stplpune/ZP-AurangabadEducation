@@ -34,6 +34,7 @@ export class SchoolRegistrationComponent {
   talukaArray = new Array();
   centerArray = new Array();
   villageArray = new Array();
+  
   get f() { return this.filterForm.controls }
 
   constructor(public dialog: MatDialog,
@@ -46,7 +47,8 @@ export class SchoolRegistrationComponent {
     private fb: FormBuilder,
     public validation: ValidationService,
     private downloadFileService: DownloadPdfExcelService,
-    private datepipe: DatePipe) { }
+    private datepipe: DatePipe,
+    ) { }
 
   ngOnInit() {
     this.getTableData();
@@ -149,7 +151,7 @@ export class SchoolRegistrationComponent {
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
       tableHeaders: this.langTypeName == 'English' ? this.displayedheadersEnglish : this.displayedheadersMarathi,
-      edit: true, delete: true
+      edit: false, delete: true, view: true
     };
     this.highLightFlag ? this.tableData.highlightedrow = true : this.tableData.highlightedrow = false,
       this.apiService.tableData.next(this.tableData);
@@ -213,27 +215,34 @@ export class SchoolRegistrationComponent {
         this.getTableData();
         break;
       case 'Edit':
-        this.AddSchool(obj);
+        this.AddSchool(obj, 'Add');
         break;
       case 'Delete':
         this.globalDialogOpen(obj);
         break;
+        case 'View':
+          this.AddSchool(obj, 'View');
+          break;
     }
   }
 
-  AddSchool(data?: any) {
+  AddSchool(obj?: any, flag?: string) {
+    let Viewobj = {
+      id: obj?.id,
+      flag: flag
+    }
     const dialogRef = this.dialog.open(AddSchoolComponent, {
       width: '800px',
-      data: data,
+      data: flag == 'View' ? Viewobj : '',
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      if (result == 'yes' && data) {
+      if (result == 'yes' && obj) {
         this.onClear();
         this.getTableData();
         this.getDistrict();
-        this.pageNumber = data.pageNumber;
+        // this.pageNumber = data.pageNumber;
       }
       else if (result == 'yes') {
         this.getDistrict();
