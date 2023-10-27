@@ -171,7 +171,11 @@
         "SchoolCode" : "शाळेचा कोड",
         "Center" : "केंद्र",
         "OfficerReport" : "अधिकारी अहवाल",
-        "SchoolReport" : "शाळेचा अहवाल"
+        "SchoolReport" : "शाळेचा अहवाल",
+        "NGO" : "एनजीओ",
+        "contactNo(kendra)" : "संपर्क क्रमांक (केंद्र)",
+        "EmailId(kendra)" : "ईमेल आयडी(केंद्र)"
+
 
 
 

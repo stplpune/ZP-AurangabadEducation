@@ -170,7 +170,11 @@
         "SchoolCode" : "School Code",
         "Center" : "Center",
         "OfficerReport" : "Officer Report",
-        "SchoolReport" : "School Report"
+        "SchoolReport" : "School Report",
+        "NGO" : "NGO",
+        "contactNo(kendra)" : "Contact No. (Kendra)",
+        "EmailId(kendra)" : "Email ID (Kendra)"
+
 
 
 
