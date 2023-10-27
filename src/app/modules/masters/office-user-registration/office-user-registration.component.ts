@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddUserComponent } from './add-user/add-user.component';
 import { MasterService } from 'src/app/core/services/master.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
@@ -209,21 +208,21 @@ export class OfficeUserRegistrationComponent {
 
     else if (flag == 'excelFlag') {
     let apiKeys = ['srNo', this.langTypeName == 'English' ? 'name' : 'm_Name', this.langTypeName == 'English' ? 'designation' : 'm_Designation', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', 'mobileNo', 'emailId'];
-      
+
       let nameArr: any;
-      data.map((x:any,i: any)=>{        
+      data.map((x:any,i: any)=>{
         x.srNo = i+1
-    });  
+    });
 
       if (data.length > 0) {
         nameArr = [{
           'topHedingName': this.langTypeName == 'English' ? 'Office User Master' : 'ऑफिस यूजर मास्टर',
           'sheet_name': this.langTypeName == 'English' ? 'Office User List' : 'ऑफिस यूजर यादी',
-          'excel_name': this.langTypeName == 'English' ? 'Office User List' : 'ऑफिस यूजर यादी',  
+          'excel_name': this.langTypeName == 'English' ? 'Office User List' : 'ऑफिस यूजर यादी',
           'languageFlag': this.langTypeName,
         }];
         this.downloadFileService.generateExcel(keyHeader, apiKeys, data, nameArr, headerKeySize);
-      } 
+      }
     }
   }
   //#endregion ------------------------------------------------ Download excel pdf end here-----------------------------------------------
@@ -244,9 +243,9 @@ export class OfficeUserRegistrationComponent {
         this.pageNumber = obj.pageNumber;
         this.getTableData();
         break;
-      case 'Edit':
-        this.AddUser(obj);
-        break;
+      // case 'Edit':
+      //   this.AddUser(obj);
+      //   break;
       // case 'Delete':
       //   this.globalDialogOpen(obj);
       //   break;
@@ -256,17 +255,6 @@ export class OfficeUserRegistrationComponent {
     }
   }
 
-  AddUser(data?: any) {
-    const dialogRef = this.dialog.open(AddUserComponent, {
-      width: '800px',
-      data: data,
-      disableClose: true
-        });
-
-    dialogRef.afterClosed().subscribe(() => {
-      dialogRef.close();
-    })
-}
   color: ThemePalette = 'accent';
   checked = false;
   disabled = false;
