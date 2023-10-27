@@ -155,7 +155,23 @@
         "ConactPersonName" : "संपर्क व्यक्तीचे नाव",
         "ContactNo" : "संपर्क क्र.",
         "Address" : "पत्ता",
-        "viewSchool": "शाळेचे तपशील पहा"
+        "viewSchool": "शाळेचे तपशील पहा",
+        "StudentReport" : "विद्यार्थी अहवाल",
+        "Report" : "अहवाल",
+        "SelectSubject" : "विषय निवडा",
+        "ExamType" : "परीक्षेचा प्रकार",
+        "AcadYear" : "शैक्षणिक वर्ष",
+        "FromTo" : "पासून",
+        "Startdate" : "प्रारंभ तारीख",
+        "Enddate" : "शेवटची तारीख",
+        "AssessmentDate" : "मूल्यांकन तारीख",
+        "ManagementDesc" : "व्यवस्थापन वर्णन",
+        "StudentGender" : "विद्यार्थी लिंग",
+        "FullName" : "पूर्ण नाव",
+        "SchoolCode" : "शाळेचा कोड",
+        "Center" : "केंद्र",
+        "OfficerReport" : "अधिकारी अहवाल",
+        "SchoolReport" : "शाळेचा अहवाल"
 
 
 

@@ -155,7 +155,25 @@
         "ConactPersonName" : "Conact Person Name",
         "ContactNo" : "Contact No.",
         "Address" : "Address",
-        "viewSchool": "View School Details"
+        "viewSchool" : "View School Details",
+        "StudentReport" : "Student Report",
+        "Report" : "Report",
+        "SelectSubject" : "Select Subject",
+        "ExamType" : "Exam Type",
+        "FromTo" : "From - To",
+        "Startdate" : "Start date",
+        "Enddate" : "End date",
+        "AssessmentDate" : "Assessment Date",
+        "ManagementDesc" : "Management Desc",
+        "StudentGender" : "Student Gender",
+        "FullName" : "Full Name",
+        "SchoolCode" : "School Code",
+        "Center" : "Center",
+        "OfficerReport" : "Officer Report",
+        "SchoolReport" : "School Report"
+
+
+
 
 
 
