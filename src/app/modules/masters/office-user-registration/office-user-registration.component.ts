@@ -3,6 +3,8 @@ import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from './add-user/add-user.component';
 import { MasterService } from 'src/app/core/services/master.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { WebStorageService } from 'src/app/core/services/web-storage.service';
 export interface PeriodicElement {
   srno: any;
   Name: any;
@@ -25,20 +27,119 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./office-user-registration.component.scss']
 })
 export class OfficeUserRegistrationComponent {
-  constructor(public dialog: MatDialog,
-              private masterService: MasterService){
-
-  }
-  
   displayedColumns: string[] = ['srno', 'Name', 'User', 'Level', 'Designation', 'Contact', 'Block','Action'];
   dataSource = ELEMENT_DATA;
+  filterForm!: FormGroup;
   userTypeArray= new Array();
-
-
-  ngOninit(){
+  districtArray = new Array();
+  talukaArray = new Array();
+  centerArray = new Array();
+  villageArray = new Array(); 
+  langTypeName!: string
+ 
+  constructor(public dialog: MatDialog,
+              private masterService: MasterService,
+              public fb: FormBuilder,
+              public webStorage: WebStorageService){ }
+  
+ 
+  ngOnInit(){
+    this.webStorage.langNameOnChange.subscribe(lang => {
+      this.langTypeName = lang;
+      this.languageChange();
+    });
+    this.defaultFilterForm();
+    this.getTabledata();
     this.getuserTypeDropDwn();
-    this
+    this.getDistrictDrop();
   }
+
+  defaultFilterForm(){
+    this.filterForm = this.fb.group({
+      userTypeId: [''],
+      districtId: [0],
+      talukaId: [''],
+      centerId: [''],
+      textSearch: ['']
+    })
+  }
+
+  get f(){ return this.filterForm.controls }
+  
+  getuserTypeDropDwn(){
+    this.userTypeArray = [];
+    this.masterService.getUserType().subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? (this.userTypeArray = res.responseData) : this.userTypeArray = [];
+      },
+    });
+  }
+
+  getDistrictDrop(){
+    this.districtArray = [];
+    this.masterService.getAllDistrict('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.districtArray.push({ "id": 0, "district": "All District", "m_District": "सर्व जिल्हा" }, ...res.responseData) : this.districtArray = [];
+        this.f['districtId'].setValue(0);
+      }
+    });
+  }
+
+  getTaluka(){
+    this.talukaArray = [];
+    let districtId = this.filterForm.value.districtId;
+    if (districtId > 0) {
+      this.masterService.getAllTaluka('', districtId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.talukaArray.push({ "id": 0, "taluka": "All Taluka", "m_Taluka": "सर्व तालुका" }, ...res.responseData) : this.talukaArray = [];
+          this.f['talukaId'].setValue(0);
+        }
+      });
+    }
+  }
+
+  getCenter() {
+    this.centerArray = [];
+    let talukaId = this.filterForm.value.talukaId;
+    if (talukaId > 0) {
+      this.masterService.getAllCenter('', talukaId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.centerArray.push({ "id": 0, "center": "All Center", "m_Center": "सर्व केंद्र" }, ...res.responseData) : this.centerArray = [];
+          this.f['centerId'].setValue(0);
+        }
+      });
+    }
+  }
+
+  // getVillage() {
+  //   this.villageArray = [];
+  //   let centerId = this.filterForm.value.centerId;
+  //   if (centerId) {
+  //     this.masterService.getAllVillage('', centerId).subscribe({
+  //       next: (res: any) => {
+  //         res.statusCode == "200" ? this.villageArray.push({ "id": 0, "village": "All Village", "m_Village": "सर्व गाव" }, ...res.responseData) : this.villageArray = [];
+  //         this.f['villageId'].setValue(0);
+  //       }
+  //     });
+  //   }
+  // }
+
+  getTabledata(flag?: string){
+
+  }
+
+  languageChange(){
+
+  }
+
+  clearDropdown(flag?: string){
+
+  }
+
+
+
+
+
   AddUser(data?: any) {
     const dialogRef = this.dialog.open(AddUserComponent, {
       width: '600px',
@@ -55,14 +156,6 @@ export class OfficeUserRegistrationComponent {
   disabled = false;
 
 
-  getuserTypeDropDwn(){
-    this.userTypeArray = [];
-    this.masterService.getUserType().subscribe({
-      next: (res: any) => {
-        res.statusCode == "200" ? (this.userTypeArray = res.responseData) : this.userTypeArray = [];
-      },
-    })
-  }
 
 
 }

@@ -39,68 +39,64 @@
         </div>
     </mat-card-header>
     <mat-card-header class="card-header-control pt-0 form-container">
-        <div class="row w-100 g-2 align-items-end">
-            <div class="col-sm-1">
-                <label class="form-label">User Type</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>NGO</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-2">
-                <label class="form-label">District</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Pune</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-2">
-                <label class="form-label">Taluka</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Chimur</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-2">
-                <label class="form-label">Kendra</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Gadbori</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-2">
-                <label class="form-label">School</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select>
-                        <mat-option>Z.P. Pry. School</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm">
-                <label class="form-label">Search by Name/Contact No.</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput placeholder="Search by Name/Contact No.">
-                </mat-form-field>
-            </div>
-            <div class="col-sm-auto">
-                <div class="d-flex gap-2">
-                    <button mat-flat-button class="btn-main btn-icon">
-                        <mat-icon class="material-symbols-rounded">
-                            search
-                        </mat-icon>
-                    </button>
-                    <button mat-flat-button class="btn-main-light btn-icon">
-                        <mat-icon class="material-symbols-rounded">
-                            close
-                        </mat-icon>
-                    </button>
+        <form *ngIf="filterForm" [formGroup]="filterForm" (ngSubmit)="getTabledata('filter')">
+           <div class="row w-100 g-2 align-items-end">
+                <!-- <div class="col-sm-1">
+                    <label class="form-label">User Type</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select formControlName="userTypeId">
+                            <mat-option *ngFor=" let user of userTypeArray" [value]="user.id">{{langTypeName =='English' ? user.designationLevel: user.m_DesignationLevel}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> -->
+                <div class="col-sm-2">
+                    <label class="form-label">District</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select formControlName="districtId" (selectionChange)="clearDropdown('district'); getTaluka();">
+                            <mat-option *ngFor="let district of districtArray" [value]="district.id">{{langTypeName =='English' ? district.district: district.m_District}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-2">
+                    <label class="form-label">Taluka</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select formControlName="talukaId" (selectionChange)="clearDropdown('taluka'); getCenter()">
+                            <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{langTypeName =='English' ? taluka.taluka: taluka.m_Taluka}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-2">
+                    <label class="form-label">Kendra</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select formControlName="centerId" (selectionChange)="clearDropdown('center');">
+                            <mat-option *ngFor="let center of centerArray" [value]="center.id">{{langTypeName =='English' ? center.center: center.m_Center}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-sm">
+                    <label class="form-label">Search by Name/Contact No.</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput placeholder="Search by Name/Contact No." formControlName="textSearch">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-auto">
+                    <div class="d-flex gap-2">
+                        <button mat-flat-button type="submit" class="btn-main btn-icon">
+                            <mat-icon class="material-symbols-rounded">
+                                search
+                            </mat-icon>
+                        </button>
+                        <button mat-flat-button type="button" class="btn-main-light btn-icon">
+                            <mat-icon class="material-symbols-rounded">
+                                close
+                            </mat-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
+        
 
     </mat-card-header>
     <mat-card-content class="card-body">
