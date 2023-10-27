@@ -18,7 +18,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AddUserComponent } from './add-user/add-user.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { TranslateModule } from '@ngx-translate/core';
 import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.component';
@@ -27,7 +26,7 @@ import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.c
 @NgModule({
   declarations: [
     OfficeUserRegistrationComponent,
-    AddUserComponent
+
   ],
   imports: [
     CommonModule,

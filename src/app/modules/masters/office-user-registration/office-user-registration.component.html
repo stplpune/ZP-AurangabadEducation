@@ -29,7 +29,7 @@
                         <span class="text-danger">Excel</span>
                     </button>
                 </mat-menu>
-                <button mat-flat-button class="btn-main" (click)="AddUser()">
+                <button mat-flat-button class="btn-main" [routerLink]="['../add-user']">
                     <mat-icon class="material-symbols-rounded">add</mat-icon>
                     <span>
                       {{'Lables.AddUser' | translate}}
