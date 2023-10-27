@@ -21,6 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddUserComponent } from './add-user/add-user.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { TranslateModule } from '@ngx-translate/core';
+import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSlideToggleModule,
     MatRadioModule,
     TranslateModule,
+    GlobalTableComponent
   ]
 })
 export class OfficeUserRegistrationModule { }
