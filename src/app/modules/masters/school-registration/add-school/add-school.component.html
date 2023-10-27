@@ -1,82 +1,87 @@
-<form  *ngIf="data?.id && !editFlag">
-  <div mat-dialog-title class="modal-header">
-      <div class="d-flex justify-content-between align-items-center w-100">
-          <h6 class="text-main mb-0 fw-bold">{{'Lables.viewSchool' | translate}}
-          </h6>
-          <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
-              <mat-icon class="material-symbols-rounded">close</mat-icon>
-          </button>
-      </div>
-  </div>
-  <mat-dialog-content class="modal-body scrollbar card-body form-container">
-    <div class="row">
-    <div class="col-sm-6">
-    <span class="form-label">District</span>
-    <span class="form-data"> : {{editObj?.district}}</span>
+<form *ngIf="data?.id && !editFlag">
+    <div mat-dialog-title class="modal-header">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <h6 class="text-main mb-0 fw-bold">{{'Lables.viewSchool' | translate}}
+            </h6>
+            <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
+                <mat-icon class="material-symbols-rounded">close</mat-icon>
+            </button>
+        </div>
     </div>
-    <div class="col-sm-6">
-    <span class="form-label">Taluka</span>
-    <span class="form-data"> : {{editObj?.taluka}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">Kendra</span>
-    <span class="form-data"> : {{editObj?.center}}</span>
-    </div>
-    <div class="col-sm-6">
-    <!-- <div *ngIf="editObj.isKendraSchool">Bit: {{editObj?.bit}}</div> -->
-    <span class="form-label">Village</span>
-    <span class="form-data"> : {{editObj?.village}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">School Type</span>
-    <span class="form-data"> : {{editObj?.schoolType}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">School Management</span>
-    <span class="form-data"> : {{'-'}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">Lowest Class</span>
-    <span class="form-data"> : {{editObj?.lowestClass}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">Highest Class</span>
-    <span class="form-data"> : {{editObj?.highestClass}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">School Category</span>
-    <span class="form-data"> : {{'-'}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">UDISE Code</span>
-    <span class="form-data"> : {{editObj?.schoolCode}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label" class="form-label"v>Type of Area</span>
-    <span class="form-data"> : {{editObj?.schoolArea}}</span>
-    </div>
-    <div class="col-sm-6">
-    <span class="form-label">School Medium</span>
-    <span class="form-data"> : {{editObj?.schoolMedium}}</span>
-    </div>
-
-    <div class="col-sm-12">
-      <span class="form-label">School Name</span>
-      <span class="form-data"> : {{editObj?.schoolName}}</span>
-      </div>
-      <div class="col-sm-12">
-      <span class="form-label">School Name (Marathi)</span>
-      <span class="form-data"> : {{editObj?.m_SchoolName}}</span>
-      </div>
-    </div>
+    <mat-dialog-content class="modal-body scrollbar card-body form-container">
+        <div class="row">
+            <div class="col-sm-6 border-end">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-start px-0 py-1 flex-column">
+                        <span class="form-label mb-0">School Name</span>
+                        <span class="form-data">{{editObj?.schoolName}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">District</span>
+                        <span class="form-data">{{editObj?.district}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Kendra</span>
+                        <span class="form-data">{{editObj?.center}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Type</span>
+                        <span class="form-data">{{editObj?.schoolType}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Lowest Class</span>
+                        <span class="form-data">{{editObj?.lowestClass}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Category</span>
+                        <span class="form-data">{{'-'}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label" class="form-label" v>Type of Area</span>
+                        <span class="form-data">{{editObj?.schoolArea}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-start px-0 py-1 flex-column">
+                        <span class="form-label mb-0">School Name (Marathi)</span>
+                        <span class="form-data">{{editObj?.m_SchoolName}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Taluka</span>
+                        <span class="form-data">{{editObj?.taluka}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Village</span>
+                        <span class="form-data">{{editObj?.village}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Management</span>
+                        <span class="form-data">{{'-'}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Highest Class</span>
+                        <span class="form-data">{{editObj?.highestClass}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">UDISE Code</span>
+                        <span class="form-data">{{editObj?.schoolCode}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Medium</span>
+                        <span class="form-data">{{editObj?.schoolMedium}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
-      <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-        <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">Cancel</button>
-        <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">Edit</button>
-      </div>
-  </mat-dialog-actions>
-
-</mat-dialog-content>
+        <div class="d-flex align-items-center justify-content-end w-100 gap-2">
+            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">Cancel</button>
+            <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">Edit</button>
+        </div>
+    </mat-dialog-actions>
 </form>
 
 
@@ -125,7 +130,7 @@
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select formControlName="bitId">
                         <mat-option *ngFor="let bit of bitArray" [value]="bit.id">{{webStorage.languageFlag
-                            =='mr-IN' ? bit.m_BitName : bit.bitName}}</mat-option>
+                            =='mr-IN' ? bit.m_BitName :bit.bitName}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -162,7 +167,8 @@
                 <label class="form-label">{{'Lables.SchoolName' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <textarea matInput rows="2" formControlName="schoolName"
-                        (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpaces($event)" maxlength="100"></textarea>
+                        (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpaces($event)"
+                        maxlength="100"></textarea>
                     <mat-error *ngIf="f['schoolName'].hasError('pattern')">
                         {{'Lables.enterValidSchoolName' | translate}}
                     </mat-error>
@@ -225,8 +231,7 @@
                 <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="schoolCode"
-                        (keypress)="validation.noSpacesAtStart($event); validation.onlyDigits($event);"
-                        maxlength="20">
+                        (keypress)="validation.noSpacesAtStart($event); validation.onlyDigits($event);" maxlength="20">
                 </mat-form-field>
             </div>
             <div class="col-sm-6">
@@ -255,8 +260,8 @@
                         data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
                         {{'Lables.UploadProfilePhoto' | translate}}
                     </button>
-                    <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png" id="real-file" hidden="hidden" #uploadImage
-                        (change)="imgUpload($event)" />
+                    <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png" id="real-file"
+                        hidden="hidden" #uploadImage (change)="imgUpload($event)" />
 
                     <div class="d-flex gap-2">
                         <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
@@ -313,7 +318,7 @@
             <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel' |
                 translate}}</button>
             <button mat-flat-button class="btn-main" type="submit">{{data ? ('Lables.update' | translate)
-                : ('Lables.submit' | translate)}}</button>
+                :('Lables.submit' | translate)}}</button>
         </div>
     </mat-dialog-actions>
 </form>
