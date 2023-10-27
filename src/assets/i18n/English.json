@@ -145,7 +145,18 @@
         "UserRegistration" : "User Registration",
         "AddUser" : "Add User",
         "OfficeUserRegistration" : "Office User Registration",
-        "SearchbyName/ContactNo" : "Search by Name/Contact No."
+        "SearchbyName/ContactNo" : "Search by Name/Contact No.",
+        "OtherRegistrationList" : "Other Registration List",
+        "OtherRegistration" : "Other Registration",
+        "AddOtherRegistration" : "Add Other Registration",
+        "Name/MobileNo": "Name/Mobile No.",
+        "OtherRegistrationDetails" : "Other Registration Details",
+        "ContactPersonDetails" : "Contact Person Details",
+        "ConactPersonName" : "Conact Person Name",
+        "ContactNo" : "Contact No.",
+        "Address" : "Address"
+
+
 
 
 

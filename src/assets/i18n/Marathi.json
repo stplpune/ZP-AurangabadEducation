@@ -145,7 +145,17 @@
         "NameofBit" : "बिटचे नाव",
         "UserRegistration" : "वापरकर्ता नोंदणी",
         "AddUser" : "वापरकर्ता जोडा",
-        "OfficeUserRegistration" : "कार्यालय वापरकर्ता नोंदणी"
+        "OfficeUserRegistration" : "कार्यालय वापरकर्ता नोंदणी",
+        "OtherRegistrationList" : "इतर नोंदणी यादी",
+        "OtherRegistration" : "इतर नोंदणी",
+        "AddOtherRegistration" : "इतर नोंदणी जोडा",
+        "Name/MobileNo": "नाव/मोबाईल क्र.",
+        "OtherRegistrationDetails" : "इतर नोंदणी तपशील",
+        "ContactPersonDetails" : "संपर्क व्यक्ती तपशील",
+        "ConactPersonName" : "संपर्क व्यक्तीचे नाव",
+        "ContactNo" : "संपर्क क्र.",
+        "Address" : "पत्ता"
+
 
 
 
