@@ -51,12 +51,12 @@
                             edit_square
                         </mat-icon>
                     </button>
-                    <!-- <button mat-icon-button *ngIf="tableInfo?.view" matTooltip="View"
+                    <button mat-icon-button *ngIf="tableInfo?.view" matTooltip="View"
                         (click)="action(element, 'View', i)">
                         <mat-icon class="material-symbols-rounded text-dark">
                             visibility
                         </mat-icon>
-                    </button> -->
+                    </button>
                     <button mat-icon-button *ngIf="tableInfo?.delete" matTooltip="{{'Lables.DeleteTooltip' | translate}}"
                         (click)="action(element, 'Delete')" [ngClass]="{'disabled': element?.isDeleteButtonFlag== 1}">
                         <mat-icon class="material-symbols-rounded text-danger">
