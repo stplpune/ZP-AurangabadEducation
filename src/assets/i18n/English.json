@@ -137,7 +137,18 @@
         "NGOName" : "NGO Name",
         "Male" : "Male",
         "Female" : "Female",
-        "Search by Name / Contact No" : "Search by Name/Contact No."
+        "Search by Name / Contact No" : "Search by Name/Contact No.",
+        "OfficeUserName" : "Office User Name",
+        "Unblock/Block" : "Unblock/Block",
+        "Designation(Officer)" : "Designation (Officer)",
+        "NameofBit" : "Name of Bit",
+        "UserRegistration" : "User Registration",
+        "AddUser" : "Add User",
+        "OfficeUserRegistration" : "Office User Registration",
+        "SearchbyName/ContactNo" : "Search by Name/Contact No."
+
+
+
 
 
 
