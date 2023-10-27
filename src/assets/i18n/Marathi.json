@@ -138,7 +138,14 @@
         "NGOName" : "NGO नाव",
         "Male" : "पुरुष",
         "Female" : "स्त्री",
-        "SearchbyName/ContactNo" : "नाव/संपर्क क्रमांकाने शोधा"
+        "SearchbyName/ContactNo" : "नाव/संपर्क क्रमांकाने शोधा",
+        "OfficeUserName" : "कार्यालय वापरकर्ता नाव",
+        "Unblock/Block" : "अनब्लॉक/ब्लॉक करा",
+        "Designation(Officer)" : "पद (अधिकारी)",
+        "NameofBit" : "बिटचे नाव",
+        "UserRegistration" : "वापरकर्ता नोंदणी",
+        "AddUser" : "वापरकर्ता जोडा",
+        "OfficeUserRegistration" : "कार्यालय वापरकर्ता नोंदणी"
 
 
 
