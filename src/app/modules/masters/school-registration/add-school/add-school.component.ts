@@ -349,7 +349,7 @@ export class AddSchoolComponent {
     this.apiService.setHttp('get', 'ZP-Education/School/GetById?Id=' + id + '&lan=' + this.webStorage.languageFlag, false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
-        console.log("onEdit by id: ", res.responseData);
+        if(res.statusCode == "200"){
         this.editObj = res.responseData;
 
         if (flag == 'Edit') {
@@ -369,6 +369,7 @@ export class AddSchoolComponent {
         }
         else {
           this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : '';
+        }
         }
       }
     })
