@@ -236,7 +236,7 @@ export class DesignationMasterComponent {
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
       tableHeaders: this.langTypeName == 'English' ? this.displayedheadersEnglish : this.displayedheadersMarathi,
-      edit: true, delete: true
+      edit: false, delete: true, view: true
     };
     this.highLightFlag ? this.tableData.highlightedrow = true : this.tableData.highlightedrow = false,
       this.apiService.tableData.next(this.tableData);
@@ -248,7 +248,7 @@ export class DesignationMasterComponent {
         this.pageNumber = obj.pageNumber;
         this.getTableData();
         break;
-      case 'Edit':
+      case 'View':
         this.onEdit(obj.id, 'View');
         break;
       case 'Delete':
