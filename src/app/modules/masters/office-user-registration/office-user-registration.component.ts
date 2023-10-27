@@ -10,21 +10,22 @@ import { CommonMethodService } from 'src/app/core/services/common-method.service
 import { ErrorService } from 'src/app/core/services/error.service';
 import { DatePipe } from '@angular/common';
 import { DownloadPdfExcelService } from 'src/app/core/services/download-pdf-excel.service';
+import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
 export interface PeriodicElement {
   srno: any;
   Name: any;
   Level: any;
   Designation: any;
   Contact: any;
-  Email:any;
+  Email: any;
   Block: any;
   Action: any;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {srno: 1, Name: 'Ngo Demo', Designation:'Kendra Pramukh', Level: 'Kendra', Contact:'9878788778',Email:'test.gmail.com', Block:'', Action: ''},
-  {srno: 2, Name: 'Ramajogayya Shastry', Designation:'Block Resource Person',  Level: 'School',Contact:'9878788778', Email:'test.gmail.com', Block:'',  Action: ''},
-  {srno: 3, Name: 'Prajapati Naidu', Designation:'CEO',  Level: 'District',Contact:'9878788778',Email:'test.gmail.com',   Block:'',  Action: ''},
+  { srno: 1, Name: 'Ngo Demo', Designation: 'Kendra Pramukh', Level: 'Kendra', Contact: '9878788778', Email: 'test.gmail.com', Block: '', Action: '' },
+  { srno: 2, Name: 'Ramajogayya Shastry', Designation: 'Block Resource Person', Level: 'School', Contact: '9878788778', Email: 'test.gmail.com', Block: '', Action: '' },
+  { srno: 3, Name: 'Prajapati Naidu', Designation: 'CEO', Level: 'District', Contact: '9878788778', Email: 'test.gmail.com', Block: '', Action: '' },
 ];
 @Component({
   selector: 'app-office-user-registration',
@@ -32,10 +33,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./office-user-registration.component.scss']
 })
 export class OfficeUserRegistrationComponent {
-  displayedColumns: string[] = ['srno', 'Name', 'Designation',  'Level','Contact', 'Email', 'Block','Action'];
+  displayedColumns: string[] = ['srno', 'Name', 'Designation', 'Level', 'Contact', 'Email', 'Block', 'Action'];
   dataSource = ELEMENT_DATA;
   filterForm!: FormGroup;
-  userTypeArray= new Array();
+  userTypeArray = new Array();
   districtArray = new Array();
   talukaArray = new Array();
   centerArray = new Array();
@@ -51,17 +52,17 @@ export class OfficeUserRegistrationComponent {
   displayedheadersMarathi = ['अनुक्रमांक', 'ऑफिस वापरकर्ता नाव', 'पदनाम', 'तालुका', 'मोबाईल क्र.', 'ई-मेल आयडी', 'अनब्लॉक/ब्लॉक', 'कृती'];
 
   constructor(public dialog: MatDialog,
-              private masterService: MasterService,
-              public fb: FormBuilder,
-              public webStorage: WebStorageService,
-              private ngxSpinner: NgxSpinnerService,
-              private apiService: ApiService,
-              private commonMethod: CommonMethodService,
-              private errorsService: ErrorService,
-              private datepipe: DatePipe,
-              private downloadFileService: DownloadPdfExcelService){ }
+    private masterService: MasterService,
+    public fb: FormBuilder,
+    public webStorage: WebStorageService,
+    private ngxSpinner: NgxSpinnerService,
+    private apiService: ApiService,
+    private commonMethod: CommonMethodService,
+    private errorsService: ErrorService,
+    private datepipe: DatePipe,
+    private downloadFileService: DownloadPdfExcelService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.webStorage.langNameOnChange.subscribe(lang => {
       this.langTypeName = lang;
       this.languageChange();
@@ -72,7 +73,7 @@ export class OfficeUserRegistrationComponent {
     this.getDistrictDrop();
   }
 
-  defaultFilterForm(){
+  defaultFilterForm() {
     this.filterForm = this.fb.group({
       userTypeId: [''],
       districtId: [0],
@@ -82,10 +83,10 @@ export class OfficeUserRegistrationComponent {
     })
   }
 
-  get f(){ return this.filterForm.controls }
+  get f() { return this.filterForm.controls }
 
   //#region ----------------------------------------------- Dropdown with dependencies start from here -------------------------------------
-  getuserTypeDropDwn(){
+  getuserTypeDropDwn() {
     this.userTypeArray = [];
     this.masterService.getUserType().subscribe({
       next: (res: any) => {
@@ -94,7 +95,7 @@ export class OfficeUserRegistrationComponent {
     });
   }
 
-  getDistrictDrop(){
+  getDistrictDrop() {
     this.districtArray = [];
     this.masterService.getAllDistrict('').subscribe({
       next: (res: any) => {
@@ -104,7 +105,7 @@ export class OfficeUserRegistrationComponent {
     });
   }
 
-  getTaluka(){
+  getTaluka() {
     this.talukaArray = [];
     let districtId = this.filterForm.value.districtId;
     if (districtId > 0) {
@@ -144,13 +145,13 @@ export class OfficeUserRegistrationComponent {
   // }
   //#endregion----------------------------------------------- Dropdown with dependencies start end here -------------------------------------
 
-  getTableData(flag?: string){
+  getTableData(flag?: string) {
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     let formValue = this.filterForm.value;
     // ZP-Education/Officer/GetAll?DistrictId=0&TalukaId=0&CenterId=0&TextSearch=a&PageNo=1&PageSize=10&lan=EN
     let str = `DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim()}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
-    let reportStr = `DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim()}&PageNo=1&PageSize=`+ (this.totalCount * 10) + `&lan=${this.webStorage.languageFlag}`;
+    let reportStr = `DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim()}&PageNo=1&PageSize=` + (this.totalCount * 10) + `&lan=${this.webStorage.languageFlag}`;
 
     this.apiService.setHttp('get', 'ZP-Education/Officer/GetAll?' + ((flag == 'pdfFlag' || flag == 'excelFlag') ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
@@ -175,7 +176,7 @@ export class OfficeUserRegistrationComponent {
     });
   }
 
-  languageChange(){
+  languageChange() {
     this.highLightFlag = true;
     this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'name' : 'm_Name', this.langTypeName == 'English' ? 'designation' : 'm_Designation', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', 'mobileNo', 'emailId', 'isBlock', 'action'];
     this.tableData = {
@@ -198,7 +199,7 @@ export class OfficeUserRegistrationComponent {
     let headerKeySize = [10, 20, 50, 30, 20, 20, 20, 20, 20];
     let keyPDFHeader = ['Sr. No.', 'Office User Name', 'Designation', 'Taluka', 'Mobile No.', 'Email ID'];
 
-    if(flag == 'pdfFlag'){
+    if (flag == 'pdfFlag') {
       let objData: any = {
         'topHedingName': 'Office User Registration',
         'createdDate': 'Created on:' + this.datepipe.transform(new Date(), 'yyyy-MM-dd, h:mm a')
@@ -207,12 +208,12 @@ export class OfficeUserRegistrationComponent {
     }
 
     else if (flag == 'excelFlag') {
-    let apiKeys = ['srNo', this.langTypeName == 'English' ? 'name' : 'm_Name', this.langTypeName == 'English' ? 'designation' : 'm_Designation', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', 'mobileNo', 'emailId'];
+      let apiKeys = ['srNo', this.langTypeName == 'English' ? 'name' : 'm_Name', this.langTypeName == 'English' ? 'designation' : 'm_Designation', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', 'mobileNo', 'emailId'];
 
       let nameArr: any;
-      data.map((x:any,i: any)=>{
-        x.srNo = i+1
-    });
+      data.map((x: any, i: any) => {
+        x.srNo = i + 1
+      });
 
       if (data.length > 0) {
         nameArr = [{
@@ -228,9 +229,9 @@ export class OfficeUserRegistrationComponent {
   //#endregion ------------------------------------------------ Download excel pdf end here-----------------------------------------------
 
 
-  clearDropdown(flag?: string){}
+  clearDropdown(flag?: string) { }
 
-  onClear(){
+  onClear() {
     this.defaultFilterForm();
     this.getTableData();
     this.centerArray = [];
@@ -243,17 +244,92 @@ export class OfficeUserRegistrationComponent {
         this.pageNumber = obj.pageNumber;
         this.getTableData();
         break;
+      case 'Block':
+        this.openBlockDialog(obj);
+        break;
       // case 'Edit':
       //   this.AddUser(obj);
       //   break;
-      // case 'Delete':
-      //   this.globalDialogOpen(obj);
-      //   break;
+      case 'Delete':
+        this.globalDialogOpen(obj);
+        break;
       //   case 'View':
-      //     this.AddSchool(obj, 'View');
+      //     this.AddUser(obj, 'View');
       //     break;
     }
   }
+
+  openBlockDialog(obj: any) {
+    let userEng = obj.isBlock == false ? 'Block' : 'Unblock';
+    let userMara = obj.isBlock == false ? 'ब्लॉक' : 'अनब्लॉक';
+    let dialoObj = {
+      title: this.langTypeName == 'English' ? 'Do You Want To ' + userEng + ' The Officer?' : 'आपण ऑफिसर ' + userMara + ' करू इच्छिता?',
+      header: 'Block',
+      cancelButton: this.langTypeName == 'English' ? 'Cancel' : 'रद्द करा',
+      okButton: this.langTypeName == 'English' ? 'Ok' : 'ओके'
+    }
+    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
+      width: '320px',
+      data: dialoObj,
+      disableClose: true,
+      autoFocus: false
+    })
+    deleteDialogRef.afterClosed().subscribe((result: any) => {
+      result == 'yes' ? this.blockOfficer(obj) : this.getTableData();
+      this.highLightFlag = false;
+      this.languageChange();
+    })
+  }
+
+  //#region ------------------------------------------ Open dialog and delete method start here-----------------------------------------------
+  globalDialogOpen(obj?: any) {
+    let dialoObj = {
+      title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete Officer Record?' : 'तुम्हाला ऑफिसरचा रेकॉर्ड हटवायचा आहे का?',
+      header: 'Delete',
+      cancelButton: this.webStorage.languageFlag == 'EN' ? 'Cancel' : 'रद्द करा',
+      okButton: this.webStorage.languageFlag == 'EN' ? 'Ok' : 'ओके'
+    }
+    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
+      width: '320px',
+      data: dialoObj,
+      disableClose: true,
+      autoFocus: false
+    })
+    deleteDialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 'yes') {
+        this.onClickDelete(obj);
+      }
+      this.highLightFlag = false;
+      this.languageChange();
+    })
+  }
+
+  onClickDelete(obj?: any) {
+    let deleteObj = {
+      "id": obj?.id,
+      "designationLevelId": obj?.designationLevelId,
+      "designationId": obj?.designationId,
+      "deletedBy": this.webStorage.getUserId(),
+      "lan": this.webStorage.languageFlag
+    }
+
+    this.apiService.setHttp('delete', 'ZP-Education/Officer/DeleteOfficer', false, deleteObj, false, 'zp-Education');
+    this.apiService.getHttp().subscribe({
+      next: (res: any) => {
+        if (res.statusCode == "200") {
+          this.commonMethod.matSnackBar(res.statusMessage, 0);
+          this.getTableData();
+        }
+      },
+      error: (error: any) => {
+        this.commonMethod.checkDataType(error.statusText) == false ? this.errorsService.handelError(error.statusCode) : this.commonMethod.matSnackBar(error.statusText, 1);
+      }
+    });
+  }
+  //#endregion ------------------------------------------ Open dialog and delete method end here-----------------------------------------------
+
+
+  blockOfficer(obj: any) { }
 
   color: ThemePalette = 'accent';
   checked = false;
