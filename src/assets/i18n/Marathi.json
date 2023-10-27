@@ -132,7 +132,13 @@
         "IsHead" : "प्रमुख आहे",
         "Action" : "कृती",
         "SrNo" : "अनु क्र.",
-        "StudentList" : "विद्यार्थी यादी"
+        "StudentList" : "विद्यार्थी यादी",
+        "UserType" : "वापरकर्ता प्रकार",
+        "Level" : "स्तर",
+        "NGOName" : "NGO नाव",
+        "Male" : "पुरुष",
+        "Female" : "स्त्री",
+        "SearchbyName/ContactNo" : "नाव/संपर्क क्रमांकाने शोधा"
 
 
 

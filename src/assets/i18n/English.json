@@ -131,7 +131,13 @@
         "IsHead" : "Is Head",
         "Action" : "Action",
         "SrNo" : "Sr. No.",
-        "StudentList" : "Student List"
+        "StudentList" : "Student List",
+        "UserType" : "User Type",
+        "Level" : "Level",
+        "NGOName" : "NGO Name",
+        "Male" : "Male",
+        "Female" : "Female",
+        "Search by Name / Contact No" : "Search by Name/Contact No."
 
 
 
