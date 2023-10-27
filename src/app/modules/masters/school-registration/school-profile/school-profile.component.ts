@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AttendanceAnalysisDetailsComponent } from './attendance-analysis-details/attendance-analysis-details.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { AddDocumentComponent } from './add-document/add-document.component';
 
 export interface PeriodicElement {
   saralid: string;
@@ -35,6 +36,12 @@ export class SchoolProfileComponent {
 
   openAnalysisDialog() {
     this.dialog.open(AttendanceAnalysisDetailsComponent, {
+      width: '450px',
+    });
+  }
+
+  openAddDocumentDialog() {
+    this.dialog.open(AddDocumentComponent, {
       width: '450px',
     });
   }

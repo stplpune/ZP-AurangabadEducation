@@ -1,24 +1,45 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page">Master</li>
-        <li class="breadcrumb-item" aria-current="page">Vishwa Seva Public School</li>
-        <li class="breadcrumb-item active" aria-current="page">Profile</li>
-    </ol>
-</nav>
+<div class="d-flex justify-content-between w-100 align-items-center mb-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item" aria-current="page">Master</li>
+            <li class="breadcrumb-item" aria-current="page">Vishwa Seva Public School</li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+    </nav>
+    <div class="no-subscript-wrapper d-flex justify-content-between gap-2">
+        <mat-form-field appearance="outline" class="w-100 bg-white">
+            <mat-select>
+                <mat-option>
+                    Select Cluster
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 bg-white">
+            <mat-select>
+                <mat-option>
+                    Select School
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
 
 <div class="row g-2">
     <div class="col-sm-3">
         <mat-card class="plain-card">
+            <div class="position-relative">
+                <img mat-card-image src="https://www.somervillenoida.in/slider-new/IMG_7831.JPG" alt="School Photo"
+                    class="school-photo">
+                <button mat-flat-button class="btn-add btn-icon">
+                    <mat-icon class="material-symbols-rounded">add</mat-icon>
+                </button>
+            </div>
+
             <mat-card-content class="card-body form-container" id="basic-info">
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                        <img src="assets/images/user.png" class="img-logo">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                        <h6 class="mb-2">Vishwa Seva Public School</h6>
-                        <h6>विश्व सेवा पब्लिक स्कूल</h6>
-                        <span class="badge rounded-pill bg-primary-subtle text-primary">Central School</span>
-                    </div>
+                <div class="text-center">
+                    <h6 class="mb-2">Vishwa Seva Public School</h6>
+                    <h6>विश्व सेवा पब्लिक स्कूल</h6>
+                    <span class="badge rounded-pill bg-primary-subtle text-primary">Central School</span>
                 </div>
                 <ul class="list-group list-group-flush fs-main mb-0">
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -206,6 +227,13 @@
                             </div>
                         </div>
                         <img src="assets/images/chart.PNG" class="img-fluid mb-3">
+
+                        <div class="section-head">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Prequently Absent Student List</span>
+                                <span class="badge fw-bold text-dark bg-warning-subtle fs-main">44 Students</span>
+                            </div>
+                        </div>
                         <table mat-table [dataSource]="dataSource" class="dashboard-table">
                             <ng-container matColumnDef="saralid">
                                 <th mat-header-cell *matHeaderCellDef> Saral ID </th>
@@ -513,6 +541,50 @@
                                 </div>
                             </div>
                         </div>
+                    </mat-tab>
+
+                    <!-- Documents -->
+                    <mat-tab label="Documents">
+                        <div class="d-flex justify-content-end mb-2">
+                            <button mat-flat-button class="btn-main" (click)="openAddDocumentDialog()">
+                                <mat-icon class="material-symbols-rounded">
+                                    add
+                                </mat-icon>
+                                Add New Document
+                            </button>
+                        </div>
+                        <table class="table dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Description</th>
+                                    <th>Document</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>GR for holiday on friday</td>
+                                    <td>
+                                        <button mat-icon-button>
+                                            <mat-icon class="material-symbols-rounded text-main">
+                                                file_save
+                                            </mat-icon>
+                                        </button>
+                                        <button mat-icon-button>
+                                            <mat-icon class="material-symbols-rounded text-dark">
+                                                visibility
+                                            </mat-icon>
+                                        </button>
+                                        <button mat-icon-button>
+                                            <mat-icon class="material-symbols-rounded text-danger">
+                                                delete
+                                            </mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </mat-tab>
                 </mat-tab-group>
             </mat-card-content>

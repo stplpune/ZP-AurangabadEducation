@@ -191,9 +191,9 @@
                         </button>
                     </div>
                 </div>
-
+                <p style="font-size: 11px;" class="mb-0 pt-1">{{'Lables.NoteImgFormat' | translate}}</p>
             </div>
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-6">
                 <div class="file-upload border rounded-2 p-1">
                     <div formArrayName="schoolDocument" *ngFor="let img of multipleImg.controls; let i = index;">
                         <div [formGroupName]="i">
@@ -206,7 +206,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Display Image -->
+                <p style="font-size: 11px;" class="mb-3 pt-1">{{'Lables.NoteDocumentsFormat' | translate}}</p>
+                
                 <div class="d-flex flex-wrap gap-4 mt-4">
                     <ng-container *ngFor="let item of docArray; let i = index">
                         <div class="gallery">
@@ -221,8 +222,8 @@
                         </div>
                     </ng-container>
                 </div>
-                <!-- Display Image -->
-            </div>
+                
+            </div> -->
         </div>
     </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
