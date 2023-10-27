@@ -35,7 +35,8 @@ export class AddSchoolComponent {
   uploadImg: any;
   uploadMultipleImg: any;
   uploadImageFlag: boolean = false;
-
+  editFlag: boolean = false;
+  editId: any;
   get f() { return this.schoolRegForm?.controls }
 
   constructor(private fb: FormBuilder,
@@ -48,33 +49,26 @@ export class AddSchoolComponent {
     private errorService: ErrorService,
     private fileUpload: FileUploadService,
     private dialogRef: MatDialogRef<AddSchoolComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
 
   ngOnInit() {
-    this.data ? this.onEdit() : '';
-    this.formField();
-    this.getDistrict();
-    this.getLowestGroupClass();
-    this.getSchoolType();
-    this.getSchoolManagement();
-    this.getCategory();
-    this.getMedium();
-    this.getAreaArray();
+    this.data ? this.onEdit(this.data.id, this.data.flag) : '';
+    this.initialDropdown();
   }
 
   formField() {
     this.schoolRegForm = this.fb.group({
-      id: [this.data ? this.data.id : 0],
-      schoolCode: [this.data ? this.data.schoolCode : '', [Validators.required]],
-      schoolName: [this.data ? this.data.schoolName : '', [Validators.required, Validators.pattern('^[a-zA-Z0-9 .,\/()_-]+$')]],
-      m_SchoolName: [this.data ? this.data.m_SchoolName : '', [Validators.required, Validators.pattern(this.validation.marathiAlphanumeric)]],
+      id: [this.editObj ? this.editObj.id : 0],
+      schoolCode: [this.editObj ? this.editObj.schoolCode : '', [Validators.required]],
+      schoolName: [this.editObj ? this.editObj.schoolName : '', [Validators.required, Validators.pattern('^[a-zA-Z0-9 .,\/()_-]+$')]],
+      m_SchoolName: [this.editObj ? this.editObj.m_SchoolName : '', [Validators.required, Validators.pattern(this.validation.marathiAlphanumeric)]],
       stateId: 0,
       districtId: ['', Validators.required],
       talukaId: ['', Validators.required],
       villageId: ['', Validators.required],
       centerId: ['', Validators.required],
-      isKendraSchool: [this.data ? this.data.isKendraSchool : false],
+      isKendraSchool: [this.editObj ? this.editObj.isKendraSchool : false],
       bitId: [''],
       s_CategoryId: ['', Validators.required],
       s_ManagementId: ['', Validators.required],
@@ -105,13 +99,24 @@ export class AddSchoolComponent {
     return this.schoolRegForm.get('schoolDocument') as FormArray;
   }
 
+  initialDropdown() {
+    this.formField();
+    this.getDistrict();
+    this.getLowestGroupClass();
+    this.getSchoolType();
+    this.getSchoolManagement();
+    this.getCategory();
+    this.getMedium();
+    this.getAreaArray();
+  }
+
   //#region -------------------------------------------- Dropdown with dependencies start here-------------------------------------------------
   getDistrict() {
     this.districtArray = [];
     this.masterService.getAllDistrict('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.districtArray = res.responseData : this.districtArray = [];
-        this.data ? (this.f['districtId'].setValue(this.data.districtId), this.getTaluka()) : '';
+        this.editObj ? (this.f['districtId'].setValue(this.editObj.districtId), this.getTaluka()) : '';
       }
     });
   }
@@ -122,7 +127,7 @@ export class AddSchoolComponent {
     this.masterService.getAllTaluka('', districtId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.talukaArray = res.responseData : this.talukaArray = [];
-        this.data ? (this.f['talukaId'].setValue(this.data.talukaId), this.getCenter(), this.getBit()) : '';
+        this.editObj ? (this.f['talukaId'].setValue(this.editObj.talukaId), this.getCenter(), this.getBit()) : '';
       }
     });
   }
@@ -133,7 +138,7 @@ export class AddSchoolComponent {
     this.masterService.getAllBit('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.bitArray = res.responseData : this.bitArray = [];
-        this.data ? (this.f['bitId'].setValue(this.data.bitId)) : '';
+        this.editObj ? (this.f['bitId'].setValue(this.editObj.bitId)) : '';
       }
     });
   }
@@ -144,7 +149,7 @@ export class AddSchoolComponent {
     this.masterService.getAllCenter('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
-        this.data ? (this.f['centerId'].setValue(this.data.centerId), this.getVillage()) : '';
+        this.editObj ? (this.f['centerId'].setValue(this.editObj.centerId), this.getVillage()) : '';
       }
     });
   }
@@ -156,7 +161,7 @@ export class AddSchoolComponent {
       this.masterService.getAllVillage('', centerId).subscribe({
         next: (res: any) => {
           res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
-          this.data ? (this.f['villageId'].setValue(this.data.villageId)) : '';
+          this.editObj ? (this.f['villageId'].setValue(this.editObj.villageId)) : '';
         }
       });
     }
@@ -167,7 +172,7 @@ export class AddSchoolComponent {
     this.masterService.getAllSchoolType('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolTypeArray = res.responseData : this.schoolTypeArray = [];
-        this.data ? this.f['s_TypeId'].setValue(this.data.s_TypeId) : '';
+        this.editObj ? this.f['s_TypeId'].setValue(this.editObj.s_TypeId) : '';
       }
     });
   }
@@ -177,7 +182,7 @@ export class AddSchoolComponent {
     this.masterService.getAllSchoolManagement('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolManagementArray = res.responseData : this.schoolManagementArray = [];
-        this.data ? this.f['s_ManagementId'].setValue(this.data.s_ManagementId) : '';
+        this.editObj ? this.f['s_ManagementId'].setValue(this.editObj.s_ManagementId) : '';
       }
     });
   }
@@ -187,7 +192,7 @@ export class AddSchoolComponent {
     this.masterService.getAllCategory('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.categoryArray = res.responseData : this.categoryArray = [];
-        this.data ? this.f['s_CategoryId'].setValue(this.data.s_CategoryId) : '';
+        this.editObj ? this.f['s_CategoryId'].setValue(this.editObj.s_CategoryId) : '';
       }
     });
   }
@@ -197,7 +202,7 @@ export class AddSchoolComponent {
     this.masterService.getAllSchoolMedium('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.mediumArray = res.responseData : this.mediumArray = [];
-        this.data ? this.f['s_MediumId'].setValue(this.data.s_MediumId) : '';
+        this.editObj ? this.f['s_MediumId'].setValue(this.editObj.s_MediumId) : '';
       }
     });
   }
@@ -213,7 +218,7 @@ export class AddSchoolComponent {
       { lowestClass: 7, value: 7 },
       { lowestClass: 8, value: 8 },
     ];
-    this.data ? (this.f['lowestClass'].setValue(this.data.lowestClass), this.getHighestGroupClass()) : '';
+    this.editObj ? (this.f['lowestClass'].setValue(this.editObj.lowestClass), this.getHighestGroupClass()) : '';
   }
 
   getAreaArray() {
@@ -221,7 +226,7 @@ export class AddSchoolComponent {
       { id: 1, area: 'Urban', m_area: 'शहरी' },
       { id: 2, area: 'Rural', m_area: 'ग्रामीण' }
     ];
-    this.data ? this.f['S_AreaId'].setValue(this.data.s_AreaId) : '';
+    this.editObj ? this.f['S_AreaId'].setValue(this.editObj.s_AreaId) : '';
   }
 
   getHighestGroupClass() {
@@ -232,7 +237,7 @@ export class AddSchoolComponent {
       return res.lowestClass >= lowestClass
     })
     this.highestGroupclassArray = findObj;
-    this.data ? this.f['highestClass'].setValue(this.data.highestClass) : '';
+    this.editObj ? this.f['highestClass'].setValue(this.editObj.highestClass) : '';
   }
   //#endregion------------------------------------------ Dropdown with dependencies end here------------------------------------------------
 
@@ -258,8 +263,8 @@ export class AddSchoolComponent {
   }
 
   viewImg() {
-    if (this.data) {
-      let viewImg = this.data.uploadImage;
+    if (this.editObj) {
+      let viewImg = this.editObj.uploadImage;
       this.uploadImg ? window.open(this.uploadImg, 'blank') : window.open(viewImg, 'blank')
     }
     else {
@@ -318,14 +323,14 @@ export class AddSchoolComponent {
     formValue.schoolDocument = this.docArray;
     formValue.isKendraSchool == false ? formValue.bitId = 0 : '';
 
-    let url = this.data ? 'UpdateSchool' : 'AddSchool';
+    let url = this.editObj ? 'UpdateSchool' : 'AddSchool';
     if (!this.schoolRegForm.valid) {
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
       return
     }
     else {
       this.ngxSpinner.show();
-      this.apiService.setHttp(this.data ? 'put' : 'post', 'ZP-Education/School/' + url, false, formValue, false, 'zp-Education');
+      this.apiService.setHttp(this.editObj ? 'put' : 'post', 'ZP-Education/School/' + url, false, formValue, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: (res: any) => {
           this.ngxSpinner.hide();
@@ -339,21 +344,33 @@ export class AddSchoolComponent {
     }
   }
 
-  onEdit() {
-    this.formField();
-    this.f['uploadImage'].setValue(this.data?.uploadImage);
-    this.uploadImg = this.data.uploadImage;
-    this.uploadImg ? this.uploadImageFlag = true : this.uploadImageFlag = false;
+  onEdit(id: number, flag: any) {
+    flag == 'View' ? this.editFlag = false : this.editFlag = true;
+    this.apiService.setHttp('get', 'ZP-Education/School/GetById?Id=' + id + '&lan=' + this.webStorage.languageFlag, false, false, false, 'zp-Education');
+    this.apiService.getHttp().subscribe({
+      next: (res: any) => {
+        console.log("onEdit by id: ", res.responseData);
+        this.editObj = res.responseData;
 
-    this.data.schoolDocument.filter((res: any) => {
-      let schoolDocumentObj = {
-        id: res.id,
-        schoolId: res.schoolId,
-        documentId: res.documentId,
-        docPath: res.docPath,
-        ...this.webStorage.createdByProps()
+        if (flag == 'Edit') {
+          this.initialDropdown();
+          this.uploadImg = this.editObj?.uploadImage;
+          this.uploadImg ? this.uploadImageFlag = true : this.uploadImageFlag = false;
+          this.editObj?.schoolDocument.filter((res: any) => {
+            let schoolDocumentObj = {
+              id: res.id,
+              schoolId: res.schoolId,
+              documentId: res.documentId,
+              docPath: res.docPath,
+              ...this.webStorage.createdByProps()
+            }
+            this.docArray.push(schoolDocumentObj);
+          })
+        }
+        else {
+          this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : '';
+        }
       }
-      this.docArray.push(schoolDocumentObj);
     })
   }
   //#endregion-------------------------------------------- Submit and Edit end here-----------------------------------------------------
@@ -389,7 +406,7 @@ export class AddSchoolComponent {
     if (this.f['isKendraSchool'].value == true) {
       this.f['bitId'].setValidators(Validators.required);
       this.f['bitId'].setValue('');
-      this.data.bitId = '';
+      this.editObj.bitId = '';
     }
     else {
       this.f['bitId'].clearValidators();
