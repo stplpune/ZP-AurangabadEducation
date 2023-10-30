@@ -367,6 +367,14 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div class="col-sm-4">
+                  <label class="form-label">{{'Lables.DateOfJoining' | translate}}</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                      <input matInput [matDatepicker]="topicker">
+                      <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
+                      <mat-datepicker #topicker></mat-datepicker>
+                  </mat-form-field>
+              </div>
                 <div class="col-sm-4 marginbtm file-upload border rounded-2 p-1 margin-control">
                     <div class="d-flex align-items-center gap-2">
                         <mat-checkbox class="example-margin" formControlName="isKendraHead">{{'Lables.IsClusterHead' |

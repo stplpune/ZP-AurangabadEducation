@@ -32,7 +32,7 @@
 <mat-card-header class="card-header-control form-container pt-0">
   <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}District</label>
+        <label class="form-label">{{'Lables.district' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>Amravati</mat-option>
@@ -40,7 +40,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}Taluka</label>
+        <label class="form-label">{{'Lables.taluka' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>Amravati</mat-option>
@@ -48,7 +48,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}Kendra</label>
+        <label class="form-label">{{'Lables.kendra' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>Amravati</mat-option>
@@ -56,7 +56,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}Village</label>
+        <label class="form-label">{{'Lables.village' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>Anjangaon</mat-option>
@@ -64,7 +64,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-4">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}School</label>
+        <label class="form-label">{{'Lables.School' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>ZP Anjangaon</mat-option>
@@ -72,7 +72,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}Standard</label>
+        <label class="form-label">{{'Lables.Standard' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>5th</mat-option>
@@ -80,7 +80,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}Assessed By</label>
+        <label class="form-label">{{'Lables.AssessedBy' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>Officer</mat-option>
@@ -89,7 +89,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}Exam Type</label>
+        <label class="form-label">{{'Lables.ExamType' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>All</mat-option>
@@ -101,7 +101,7 @@
         </mat-form-field>
       </div>
       <div class="col-sm-2">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}Academic Year</label>
+        <label class="form-label">{{'Lables.AcadYear' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-select>
             <mat-option>All Year</mat-option>
@@ -111,11 +111,11 @@
         </mat-form-field>
       </div>
       <div class="col-sm">
-        <label class="form-label">{{'Lables.SchoolReport' | translate}}From - To</label>
+        <label class="form-label">{{'Lables.FromTo' | translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
           <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-            <input matStartDate formControlName="start" placeholder="Start date">
-            <input matEndDate formControlName="end" placeholder="End date">
+            <input matStartDate formControlName="start" placeholder="{{'Lables.StartDate' | translate}}">
+            <input matEndDate formControlName="end" placeholder="{{'Lables.EndDate' | translate}}">
           </mat-date-range-input>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-date-range-picker #picker></mat-date-range-picker>
@@ -144,43 +144,43 @@
   <mat-card-content class="card-body pt-0">
     <table mat-table [dataSource]="dataSource" class="dashboard-table">
       <ng-container matColumnDef="srno">
-        <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolReport' | translate}} Sr. No. </th>
+        <th mat-header-cell *matHeaderCellDef>{{'Lables.SrNo' | translate}}</th>
         <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Taluka">
-        <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolReport' | translate}} Taluka </th>
+        <th mat-header-cell *matHeaderCellDef>{{'Lables.taluka' | translate}}</th>
         <td mat-cell *matCellDef="let element"> {{element.Taluka}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Center">
-        <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolReport' | translate}} Center </th>
+        <th mat-header-cell *matHeaderCellDef>{{'Lables.Center' | translate}}</th>
         <td mat-cell *matCellDef="let element"> {{element.Center}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="SchoolName">
-        <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolReport' | translate}} School Name </th>
+        <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolName' | translate}}</th>
         <td mat-cell *matCellDef="let element"> {{element.SchoolName}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Standard">
-        <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolReport' | translate}} Standard </th>
+        <th mat-header-cell *matHeaderCellDef>{{'Lables.Standard' | translate}}</th>
         <td mat-cell *matCellDef="let element"> {{element.Standard}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="AssessedStudentCount">
-        <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolReport' | translate}} AssessedStudentCount </th>
+        <th mat-header-cell *matHeaderCellDef>{{'Lables.AssessedStudentCount' | translate}}</th>
         <td mat-cell *matCellDef="let element"> {{element.AssessedStudentCount}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="TotalStudentCount">
-        <th mat-header-cell *matHeaderCellDef>{{'Lables.Total StudentCount' | translate}}</th>
+        <th mat-header-cell *matHeaderCellDef>{{'Lables.TotalStudentCount' | translate}}</th>
         <td mat-cell *matCellDef="let element"> {{element.TotalStudentCount}} </td>
       </ng-container>
 

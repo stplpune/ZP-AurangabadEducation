@@ -83,7 +83,7 @@
         "Stream" : "Stream",
         "DegreeSpecilization" : "Degree Specilization",
         "Board" : "Board",
-        "DegreeUniversity" : "Degree Universityn",
+        "DegreeUniversity" : "Degree University ",
         "Marks/Percentage" : "Marks/Percentage",
         "PassingYear" : "Passing Year",
         "ProfessionalDetails" : "Professional Details",
@@ -174,7 +174,41 @@
         "NGO" : "NGO",
         "contactNo(kendra)" : "Contact No. (Kendra)",
         "EmailId(kendra)" : "Email ID (Kendra)",
-        "AddOfficeUser" : "Add Office User"
+        "AddOfficeUser" : "Add Office User",
+        "AssessedBy" : "Assessed By",
+        "AssessedStudentCount" : "Assessed Student Count",
+        "TotalStudentCount" : "Total Student Count",
+        "StartDate" : "Start Date",
+        "EndDate" : "End Date",
+        "DateOfJoining" : "Date Of Joining",
+        "CategoryList" : "Category List",
+        "AddCategory" : "Add Category",
+        "Category(Marathi)" : "Category (Marathi)",
+        "AssetManagement" : "Asset Management",
+        "SubCategoryList" : "Sub Category List",
+        "Category/Sub Category" : "Category/Sub Category",
+        "SubCategory" : "Sub Category",
+        "AddSubCategory" :"Add Sub Category",
+        "subCategory(Marathi)" : "Sub Category(Marathi)",
+        "Item" : "Item",
+        "Description" : "Description",
+        "SearchItem" : "Search Item",
+        "AddItem" : "AddItem",
+        "Item(Marathi)":"Item (Marathi)",
+        "ItemInwardList" : "Item Inward List",
+        "AddInwardList" : "Add Inward List",
+        "OpeningStock" : "Opening Stock",
+        "PurchasePrice" : "Purchase Price",
+        "Purchase Date" : "Purchase Date",
+        "Units" : "Units",
+        "Remark" :"Remark",
+        "UploadPhotoDocuments": "Upload Photo/Documents"
+
+
+
+
+
+
 
 
 
