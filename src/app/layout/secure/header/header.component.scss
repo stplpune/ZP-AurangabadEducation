@@ -21,9 +21,9 @@
     color: var(--main-color);
 }
 
-.profile img {
+.profile .avatar-photo {
     border-radius: 50%;
-    width: 40px;
+    width: 40px !important;
 }
 
 .profile p {
@@ -42,8 +42,8 @@
     width: 20px;
 }
 
-.dropdown-menu .dropdown-item img {
-    height: 14px;
+.dropdown-menu .dropdown-item .material-symbols-rounded {
+    height: 16px;
     margin-right: 10px;
 }
 
@@ -56,6 +56,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .dropdown-menu .dropdown-item .material-symbols-rounded {
