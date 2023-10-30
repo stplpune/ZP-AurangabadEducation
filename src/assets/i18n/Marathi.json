@@ -181,8 +181,33 @@
         "TotalStudentCount" : "एकूण विद्यार्थी संख्या",
         "StartDate" : "प्रारंभ तारीख",
         "EndDate" : "शेवटची तारीख",
-        "CategoryList" : "CategoryList",
-        "DateOfJoining" : "सामील होण्याची तारीख"
+        "DateOfJoining" : "सामील होण्याची तारीख",
+        "Category(Marathi)" : "श्रेणी (मराठी)",
+        "AddCategory" : "श्रेणी जोडा",
+        "CategoryList" : "श्रेणी सूची",
+        "AssetManagement" : "मालमत्ता व्यवस्थापन",
+        "SubCategoryList" : "उपवर्ग यादी",
+        "Category/Sub Category" : "श्रेणी/उप श्रेणी",
+        "SubCategory" : "उपवर्ग",
+        "AddSubCategory" :"उप श्रेणी जोडा",
+        "subCategory(Marathi)" : "उपवर्ग(मराठी)",
+        "Item" : "आयटम",
+        "Description" : "वर्णन",
+        "SearchItem" : "आयटम शोधा",
+        "AddItem" : "सामान जोडा",
+        "Item(Marathi)":"आयटम (मराठी)",
+        "ItemInwardList" : "आयटम आवक यादी",
+        "AddInwardList" : "आतील बाजूची यादी जोडा",
+        "OpeningStock" : "उघडणे स्टॉक",
+        "PurchasePrice" : "खरेदी किंमत",
+        "Purchase Date" : "खरेदी दिनांक",
+        "Units" : "युनिट्स",
+        "Remark" :"टिप्पणी",
+        "UploadPhotoDocuments": "फोटो/कागदपत्रे अपलोड करा"
+
+
+
+
 
 
 
