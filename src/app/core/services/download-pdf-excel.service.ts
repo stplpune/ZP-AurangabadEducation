@@ -63,10 +63,10 @@ export class DownloadPdfExcelService {
         }
 
         doc.setFontSize(8);
-        doc.text(objData.createdDate, 200, 14, "right");
+        doc.text(objData.createdDate, 200, 10, "right");
 
         doc.setLineWidth(0.2);
-        doc.line(12, 15, 200, 15);
+        doc.line(12, 13, 200, 13);
 
         doc.setLineWidth(0.2);
         doc.line(12, 286, 200, 286);
