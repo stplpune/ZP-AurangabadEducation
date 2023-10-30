@@ -174,7 +174,13 @@
         "NGO" : "NGO",
         "contactNo(kendra)" : "Contact No. (Kendra)",
         "EmailId(kendra)" : "Email ID (Kendra)",
-        "AddOfficeUser" : "Add Office User"
+        "AddOfficeUser" : "Add Office User",
+        "AssessedBy" : "Assessed By",
+        "AssessedStudentCount" : "Assessed Student Count",
+        "TotalStudentCount" : "Total Student Count",
+        "StartDate" : "",
+        "EndDate" : ""
+
 
 
 
