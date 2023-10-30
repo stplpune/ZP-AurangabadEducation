@@ -48,6 +48,7 @@ export class OfficeUserRegistrationComponent {
   tableDataArray = new Array();
   highLightFlag!: boolean;
   tableData: any;
+  get f() { return this.filterForm.controls }
   displayedheadersEnglish = ['Sr. No.', 'Office User Name', 'Designation', 'Taluka', 'Mobile No.', 'Email ID', 'Unblock/Block', 'Action'];
   displayedheadersMarathi = ['अनुक्रमांक', 'ऑफिस वापरकर्ता नाव', 'पदनाम', 'तालुका', 'मोबाईल क्र.', 'ई-मेल आयडी', 'अनब्लॉक/ब्लॉक', 'कृती'];
 
@@ -82,8 +83,6 @@ export class OfficeUserRegistrationComponent {
       textSearch: ['']
     })
   }
-
-  get f() { return this.filterForm.controls }
 
   //#region ----------------------------------------------- Dropdown with dependencies start from here -------------------------------------
   getuserTypeDropDwn() {
@@ -149,7 +148,6 @@ export class OfficeUserRegistrationComponent {
     this.ngxSpinner.show();
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     let formValue = this.filterForm.value;
-    // ZP-Education/Officer/GetAll?DistrictId=0&TalukaId=0&CenterId=0&TextSearch=a&PageNo=1&PageSize=10&lan=EN
     let str = `DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim()}&PageNo=${this.pageNumber}&PageSize=10&lan=${this.webStorage.languageFlag}`;
     let reportStr = `DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim()}&PageNo=1&PageSize=` + (this.totalCount * 10) + `&lan=${this.webStorage.languageFlag}`;
 
@@ -259,28 +257,6 @@ export class OfficeUserRegistrationComponent {
     }
   }
 
-  openBlockDialog(obj: any) {
-    let userEng = obj.isBlock == false ? 'Block' : 'Unblock';
-    let userMara = obj.isBlock == false ? 'ब्लॉक' : 'अनब्लॉक';
-    let dialoObj = {
-      title: this.langTypeName == 'English' ? 'Do You Want To ' + userEng + ' The Officer?' : 'आपण ऑफिसर ' + userMara + ' करू इच्छिता?',
-      header: 'Block',
-      cancelButton: this.langTypeName == 'English' ? 'Cancel' : 'रद्द करा',
-      okButton: this.langTypeName == 'English' ? 'Ok' : 'ओके'
-    }
-    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
-      width: '320px',
-      data: dialoObj,
-      disableClose: true,
-      autoFocus: false
-    })
-    deleteDialogRef.afterClosed().subscribe((result: any) => {
-      result == 'yes' ? this.blockOfficer(obj) : this.getTableData();
-      this.highLightFlag = false;
-      this.languageChange();
-    })
-  }
-
   //#region ------------------------------------------ Open dialog and delete method start here-----------------------------------------------
   globalDialogOpen(obj?: any) {
     let dialoObj = {
@@ -328,8 +304,49 @@ export class OfficeUserRegistrationComponent {
   }
   //#endregion ------------------------------------------ Open dialog and delete method end here-----------------------------------------------
 
+  //#region ----------------------------------------- Open dialog and block/unblock method start here-------------------------------------------
+  openBlockDialog(obj: any) {
+    let userEng = obj.isBlock == false ? 'Block' : 'Unblock';
+    let userMara = obj.isBlock == false ? 'ब्लॉक' : 'अनब्लॉक';
+    let dialoObj = {
+      title: this.langTypeName == 'English' ? 'Do You Want To ' + userEng + ' The Officer?' : 'आपण ऑफिसर ' + userMara + ' करू इच्छिता?',
+      header: 'Block',
+      cancelButton: this.langTypeName == 'English' ? 'Cancel' : 'रद्द करा',
+      okButton: this.langTypeName == 'English' ? 'Ok' : 'ओके'
+    }
+    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
+      width: '320px',
+      data: dialoObj,
+      disableClose: true,
+      autoFocus: false
+    })
+    deleteDialogRef.afterClosed().subscribe((result: any) => {
+      result == 'yes' ? this.blockOfficer(obj) : this.getTableData();
+      this.highLightFlag = false;
+      this.languageChange();
+    })
+  }
 
-  blockOfficer(obj: any) { }
+  blockOfficer(obj: any) { 
+    let blockObj = {
+      "userId": obj?.userId,
+      "blockBy": this.webStorage.getUserId(),
+      "isBlock": !obj.isBlock,
+      "lan": this.webStorage.languageFlag
+    }
+
+    this.apiService.setHttp('put', 'ZP-Education/User-Registration/BlockUnblockUser', false, blockObj, false, 'zp-Education');
+    this.apiService.getHttp().subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0), this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorsService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+      },
+      error: (error: any) => {
+        this.errorsService.handelError(error.status);
+        this.commonMethod.checkDataType(error.status) == false ? this.errorsService.handelError(error.status) : this.commonMethod.matSnackBar(error.status, 1);
+      }
+    })
+  }
+  //#endregion----------------------------------------- Open dialog and block/unblock method end here-------------------------------------------
 
   color: ThemePalette = 'accent';
   checked = false;
