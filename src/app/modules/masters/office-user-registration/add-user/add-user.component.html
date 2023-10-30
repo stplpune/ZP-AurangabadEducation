@@ -1,188 +1,506 @@
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-      <li class="breadcrumb-item" aria-current="page">{{'Lables.master' | translate}}</li>
-      <li class="breadcrumb-item active" aria-current="page">{{'Lables.AddOfficeUser' | translate}}</li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">{{'Lables.master' | translate}}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{'Lables.AddOfficeUser' | translate}}</li>
+    </ol>
 </nav>
 <mat-card class="plain-card">
-  <mat-card-header class="card-header">
-      <div class="d-flex justify-content-between align-items-center w-100">
-          <h6 class="text-main mb-0 fw-bold">{{'Lables.AddOfficeUser' | translate}}</h6>
-          <button class="btn btn-back" type="button">
-              <mat-icon class="material-symbols-rounded">
-                  keyboard_double_arrow_left
-              </mat-icon>
-              {{'Lables.Back' | translate}}
-          </button>
-      </div>
-  </mat-card-header>
-<div mat-dialog-title class="modal-header">
-  <div class="d-flex justify-content-between align-items-center w-100">
-      <h6 class="text-main mb-0 fw-bold">{{'Lables.UserRegistration' |translate}}</h6>
-      <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
-          <mat-icon class="material-symbols-rounded">close</mat-icon>
-      </button>
-  </div>
-</div>
-<mat-dialog-content class="modal-body scrollbar">
-  <div class="row form-container gx-2">
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.Level' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-select>
-                <mat-option>
-                    Staff
-                </mat-option>
-                <mat-option>
-                    NGO
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.NGO' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-select>
-                <mat-option>
-                    Staff
-                </mat-option>
-                <mat-option>
-                    NGO
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.district' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-              <mat-select>
-                  <mat-option>
-                      Staff
-                  </mat-option>
-                  <mat-option>
-                      NGO
-                  </mat-option>
-              </mat-select>
-          </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.taluka' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-              <mat-select>
-                  <mat-option>
-                      Block Education Officer
-                  </mat-option>
-                  <mat-option>
-                      Extension Officer
-                  </mat-option>
-              </mat-select>
-          </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.Designation(Officer)' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-              <mat-select>
-                  <mat-option>
-                      District
-                  </mat-option>
-                  <mat-option>
-                      Taluka
-                  </mat-option>
-                  <mat-option>
-                      Kendra
-                  </mat-option>
-              </mat-select>
-          </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.kendra' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-              <mat-select>
-                  <mat-option>
-                      District
-                  </mat-option>
-                  <mat-option>
-                      Taluka
-                  </mat-option>
-                  <mat-option>
-                      Kendra
-                  </mat-option>
-              </mat-select>
-          </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-        <label class="form-label">{{'Lables.contactNo(kendra)' |translate}}</label>
-        <mat-form-field appearance="outline" class="w-100">
-          <input matInput>
-      </mat-form-field>
-    </div>
-      <div class="col-sm-6">
-        <label class="form-label">{{'Lables.EmailId(kendra)' |translate}}</label>
-        <mat-form-field appearance="outline" class="w-100">
-          <input matInput>
-      </mat-form-field>
-    </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.NameofBit' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-              <mat-select>
-                  <mat-option>
-                      Kendra Pramukh
-                  </mat-option>
-                  <mat-option>
-                      Block Resource Person
-                  </mat-option>
-                  <mat-option>
-                      Cluster Resource Person
-                  </mat-option>
-                  <mat-option>
-                      IED Teacher
-                  </mat-option>
-              </mat-select>
-          </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.Name' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-            <input matInput>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.Name(Marathi)' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-            <input matInput>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.MobileNo' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-            <input matInput>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6">
-          <label class="form-label">{{'Lables.EmailID' |translate}}</label>
-          <mat-form-field appearance="outline" class="w-100">
-              <input matInput>
-          </mat-form-field>
-      </div>
-  <div class="col-sm-12">
-    <label class="form-label">{{'Lables.Address' |translate}}</label>
-    <mat-form-field appearance="outline" class="w-100">
-      <textarea matInput rows="2"></textarea>
-    </mat-form-field>
-  </div>
-      <div class="col-sm-6 mt-4 file-upload border rounded-2 p-1 margin-control">
-        <div class="d-flex align-items-center gap-2">
-            <mat-checkbox class="example-margin">Is HeadMaster</mat-checkbox>
+    <mat-card-header class="card-header">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <h6 class="text-main mb-0 fw-bold">{{'Lables.AddOfficeUser' | translate}}</h6>
+            <button class="btn btn-back" type="button">
+                <mat-icon class="material-symbols-rounded">
+                    keyboard_double_arrow_left
+                </mat-icon>
+                {{'Lables.Back' | translate}}
+            </button>
         </div>
-    </div>
+    </mat-card-header>
+    <mat-card-content class="card-body pb-0 form-container">
+        <h6 class="section-head">{{'Lables.UserRegistration' | translate}}</h6>
+        <div class="row form-container gx-2">
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.Level' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>
+                            Staff
+                        </mat-option>
+                        <mat-option>
+                            NGO
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.NGO' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>
+                            Staff
+                        </mat-option>
+                        <mat-option>
+                            NGO
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.district' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>
+                            Staff
+                        </mat-option>
+                        <mat-option>
+                            NGO
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.taluka' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>
+                            Block Education Officer
+                        </mat-option>
+                        <mat-option>
+                            Extension Officer
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.Designation(Officer)' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>
+                            District
+                        </mat-option>
+                        <mat-option>
+                            Taluka
+                        </mat-option>
+                        <mat-option>
+                            Kendra
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.kendra' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>
+                            District
+                        </mat-option>
+                        <mat-option>
+                            Taluka
+                        </mat-option>
+                        <mat-option>
+                            Kendra
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.contactNo(kendra)' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.EmailId(kendra)' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.NameofBit' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>
+                            Kendra Pramukh
+                        </mat-option>
+                        <mat-option>
+                            Block Resource Person
+                        </mat-option>
+                        <mat-option>
+                            Cluster Resource Person
+                        </mat-option>
+                        <mat-option>
+                            IED Teacher
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.Name' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.Name(Marathi)' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.MobileNo' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.EmailID' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.BirthDate' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput [matDatepicker]="topicker" (click)="topicker.open()">
+                    <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
+                    <mat-datepicker #topicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">{{'Lables.Gender' | translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-select>
+                        <mat-option>Male</mat-option>
+                        <mat-option>Female</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <div class="file-upload border rounded-2 p-1 margin-control mt-4">
+                    <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
+                        data-placement="right">
+                        {{'Lables.UploadPhoto' | translate}}
+                    </button>
+                    <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
 
-  </div>
-</mat-dialog-content>
-<mat-dialog-actions class="modal-footer pt-0">
-  <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-      <button mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel' |translate}}</button>
-      <button mat-flat-button class="btn-main" type="submit">{{'Lables.Submit'|translate}}</button>
-  </div>
-</mat-dialog-actions>
+                    <div class="d-flex gap-2">
+                        <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
+                            matTooltip="view">
+                            <mat-icon class="material-symbols-rounded">
+                                preview
+                            </mat-icon>
+                        </button>
+                        <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
+                            matTooltip="delete">
+                            <mat-icon class="material-symbols-rounded">
+                                delete
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <label class="form-label">{{'Lables.Address' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <textarea matInput rows="2"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3 mt-4 file-upload border rounded-2 p-1 margin-control">
+                <div class="d-flex align-items-center gap-2">
+                    <mat-checkbox class="example-margin">{{'Lables.Headmaster' |translate}}</mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-2 align-items-end">
+            <div class="col-sm-12">
+                <h6 class="section-head">{{'Lables.AddressDetails' | translate}}</h6>
+            </div>
+
+            <mat-checkbox class="example-margin text-end">{{'Lables.SameAsCurrentAdd' |
+                translate}}</mat-checkbox>
+                <!-- <div class="col-sm-4">
+                    <label class="form-label">{{'Lables.district' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>one</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <label class="form-label">{{'Lables.taluka' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>one</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <label class="form-label">{{'Lables.village' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>one</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> -->
+                    <div class="col-sm-6">
+                        <label class="form-label">{{'Lables.CurrentAddress' | translate}}</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <textarea matInput rows="2" maxlength="100"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">{{'Lables.PermanentAddress' | translate}}</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <textarea matInput rows="2" maxlength="100"></textarea>
+                        </mat-form-field>
+                    </div>
+                <!-- <div class="col-sm-6">
+                    <div class="col-sm-12">
+                        <label class="form-label w-100">
+                            <div class="d-flex justify-content-between w-100 align-items-center">
+                                <span>{{'Lables.PermanentAddress' | translate}}</span>
+                                <mat-checkbox class="example-margin">{{'Lables.SameAsCurrentAdd' | translate}}</mat-checkbox>
+                            </div>
+                        </label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <textarea matInput rows="3"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 w-100">
+                        <label class="form-label">{{'Lables.district' | translate}}</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select>
+                                <mat-option>one</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 w-100">
+                        <label class="form-label">{{'Lables.taluka' | translate}}</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select>
+                                <mat-option>one</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 w-100">
+                        <label class="form-label">{{'Lables.village' | translate}}</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select>
+                                <mat-option>one</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div> -->
+</div>
+            <div class="row gx-2 align-items-end">
+                <div class="col-sm-12">
+                    <h6 class="section-head">{{'Lables.HighestEducation' | translate}}</h6>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.EducationalQualification' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>S. S. C.</mat-option>
+                            <mat-option>H. S. C.</mat-option>
+                            <mat-option>Diploma</mat-option>
+                            <mat-option>Graduate</mat-option>
+                            <mat-option>Post-Graduate</mat-option>
+                            <mat-option>Doctorate
+                            </mat-option>
+                            <mat-option>
+                                Post-Doctorate
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.Stream' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>
+                                Arts
+                            </mat-option>
+                            <mat-option>
+                                Commerce
+                            </mat-option>
+                            <mat-option>
+                                Science
+                            </mat-option>
+                            <mat-option>
+                                Other
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.DegreeSpecilization' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>
+                                Arts
+                            </mat-option>
+                            <mat-option>
+                                Commerce
+                            </mat-option>
+                            <mat-option>
+                                Science
+                            </mat-option>
+                            <mat-option>
+                                Other
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.Board' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>
+                                Pune University
+                            </mat-option>
+                            <mat-option>
+                                Solapur University
+                            </mat-option>
+                            <mat-option>
+                                Kolhapur University
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.DegreeUniversity' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>
+                                Pune University
+                            </mat-option>
+                            <mat-option>
+                                Solapur University
+                            </mat-option>
+                            <mat-option>
+                                Kolhapur University
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.Marks/Percentage' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput >
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.PassingYear' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput maxlength="4">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row gx-2 form-container align-items-end">
+                <div class="col-sm-12">
+                    <h6 class="section-head">{{'Lables.ProfessionalDetails' | translate}}</h6>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.district' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>District</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.taluka' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>Taluka</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.kendra' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>Kendra</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.village' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>One</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.WorkingSchoolName' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>
+                                Anjangaon
+                            </mat-option>
+                            <mat-option>
+                                Loni
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.SelectRole' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option>
+                                Headmaster
+                            </mat-option>
+                            <mat-option>
+                                Teacher
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3 marginbtm file-upload border rounded-2 p-1 margin-control">
+                    <mat-checkbox class="example-margin">{{'Lables.IsClassTeacher' |
+                        translate}}</mat-checkbox>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.Class' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option> 1st</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.division' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option> 1st</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select>
+                            <mat-option> <mat-checkbox class="example-margin">1st</mat-checkbox></mat-option>
+                            <mat-option> <mat-checkbox class="example-margin">2nd</mat-checkbox></mat-option>
+                            <mat-option> <mat-checkbox class="example-margin">3rd</mat-checkbox></mat-option>
+                            <mat-option> <mat-checkbox class="example-margin">4th</mat-checkbox></mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+    </mat-card-content>
+    <mat-dialog-actions class="modal-footer pt-0">
+        <div class="d-flex align-items-center justify-content-end w-100 gap-2">
+            <button mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel' |translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit">{{'Lables.Submit'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
 </mat-card>
