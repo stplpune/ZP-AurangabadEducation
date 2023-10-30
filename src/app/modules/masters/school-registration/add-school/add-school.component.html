@@ -282,25 +282,33 @@
             </div>
         </div>
         <div class="row g-2 align-items-end">
-            <div class="col-sm">
-                <label class="form-label">Standard</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select multiple>
-                        <mat-option>Select Standard</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm">
-                <label class="form-label">Division</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-select multiple>
-                        <mat-option>Select Division</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
+            <!-- <div formArrayName="schoolStandardDivisions" *ngFor="let division of multipleDivision.controls; let i = index;"> -->
+                <!-- <div [formGroupName]="i"> -->
+                    <div class="col-sm">
+                        <label class="form-label">Standard</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select formControlName="standardId">
+                                <mat-option *ngFor="let lowestGroup of lowestGroupclassArray" [value]="lowestGroup.lowestClass">
+                                    {{lowestGroup.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm">
+                        <label class="form-label">Division</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select multiple formControlName="divisionId">
+                                <mat-option *ngFor="let division of divisionArray" [value]="division.id">{{webStorage.languageFlag
+                                    =='mr-IN' ? division.m_Division:
+                                    division.division}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
             <div class="col-sm-auto">
                 <div class="margin-control">
-                    <button mat-flat-button class="btn-main btn-icon">
+                    <button mat-flat-button class="btn-main btn-icon" type="button" (click)="onAddDisionStd()">
                         <mat-icon class="material-symbols-rounded">
                             add
                         </mat-icon>
@@ -308,37 +316,39 @@
                 </div>
             </div>
         </div>
-        <!-- <table mat-table [dataSource]="dataSource" class="dashboard-table">
-            <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-            </ng-container>
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Standard</th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-            <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Division </th>
-                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-            </ng-container>
-            <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button matTooltip="Edit">
-                        <mat-icon class="material-symbols-rounded text-warning">
-                            edit_square
-                        </mat-icon>
-                    </button>
-                    <button mat-icon-button matTooltip="Delete">
-                        <mat-icon class="material-symbols-rounded text-danger">
-                            delete
-                        </mat-icon>
-                    </button>
-                </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table> -->
+        <ng-container *ngIf="tableDataArray?.length">
+            <table mat-table [dataSource]="tableDataArray" class="dashboard-table">
+                <ng-container matColumnDef="srNo">
+                    <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                    <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+                </ng-container>
+                <ng-container matColumnDef="standard">
+                    <th mat-header-cell *matHeaderCellDef> Standard</th>
+                    <td mat-cell *matCellDef="let element"> {{element.standardId}} </td>
+                </ng-container>
+                <ng-container matColumnDef="division">
+                    <th mat-header-cell *matHeaderCellDef> Division </th>
+                    <td mat-cell *matCellDef="let element"> {{(element.divisionId).toString()}} </td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        <!-- <button mat-icon-button matTooltip="Edit">
+                            <mat-icon class="material-symbols-rounded text-warning">
+                                edit_square
+                            </mat-icon>
+                        </button> -->
+                        <button mat-icon-button matTooltip="Delete" type="button" (click)="globalDialogOpen(i)">
+                            <mat-icon class="material-symbols-rounded text-danger">
+                                delete
+                            </mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </ng-container>
     </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
         <div class="d-flex align-items-center justify-content-end w-100 gap-2">
