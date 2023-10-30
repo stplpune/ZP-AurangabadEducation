@@ -178,7 +178,12 @@
         "AddOfficeUser" : "ऑफिस वापरकर्ता जोडा",
         "AssessedBy" : "द्वारे मूल्यांकन",
         "AssessedStudentCount" : "मुल्यांकित विद्यार्थी संख्या",
-        "TotalStudentCount" : "एकूण विद्यार्थी संख्या"
+        "TotalStudentCount" : "एकूण विद्यार्थी संख्या",
+        "StartDate" : "प्रारंभ तारीख",
+        "EndDate" : "शेवटची तारीख",
+        "CategoryList" : "CategoryList",
+        "DateOfJoining" : "सामील होण्याची तारीख"
+
 
 
 

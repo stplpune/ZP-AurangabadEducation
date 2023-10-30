@@ -83,7 +83,7 @@
         "Stream" : "Stream",
         "DegreeSpecilization" : "Degree Specilization",
         "Board" : "Board",
-        "DegreeUniversity" : "Degree Universityn",
+        "DegreeUniversity" : "Degree University ",
         "Marks/Percentage" : "Marks/Percentage",
         "PassingYear" : "Passing Year",
         "ProfessionalDetails" : "Professional Details",
@@ -178,8 +178,9 @@
         "AssessedBy" : "Assessed By",
         "AssessedStudentCount" : "Assessed Student Count",
         "TotalStudentCount" : "Total Student Count",
-        "StartDate" : "",
-        "EndDate" : ""
+        "StartDate" : "Start Date",
+        "EndDate" : "End Date",
+        "DateOfJoining" : "Date Of Joining"
 
 
 
