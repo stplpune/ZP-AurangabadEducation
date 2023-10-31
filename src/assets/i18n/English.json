@@ -235,8 +235,11 @@
        "HolidayDate" : "Holiday Date",
        "HolidayName" : "Holiday Name",
        "Year" : "Year" ,
-       "AddHoliday" : "Add Holiday"
-       
+       "AddHoliday" : "Add Holiday",
+       "HolidayList" : "Holiday List",
+       "HolidayName(Marathi)" : "Holiday Name (Marathi)"
+      
+
 
 
 
