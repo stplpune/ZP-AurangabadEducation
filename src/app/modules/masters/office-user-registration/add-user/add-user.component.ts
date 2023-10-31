@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ApiService } from 'src/app/core/services/api.service';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { ErrorService } from 'src/app/core/services/error.service';
 import { FileUploadService } from 'src/app/core/services/file-upload.service';
@@ -27,6 +30,7 @@ export class AddUserComponent {
   uploadImageFlag: boolean = false;
   checked: boolean = false;
   age!: number;
+  editObj: any;
   get f() { return this.userRegForm.controls }
 
   constructor(private fb: FormBuilder,
@@ -35,7 +39,10 @@ export class AddUserComponent {
     private fileUpload: FileUploadService,
     private errorService: ErrorService,
     private commonMethod: CommonMethodService,
-    public validation: ValidationService) { }
+    public validation: ValidationService,
+    private ngxSpinner: NgxSpinnerService,
+    private apiService: ApiService,
+    private router: Router) { }
 
   ngOnInit() {
     this.formField();
@@ -219,7 +226,30 @@ export class AddUserComponent {
       var timeDiff = Math.abs(Date.now() - birthDate);
       this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
     }
+  }
 
+  onSubmit(){
+    let formValue = this.userRegForm.value;
+    let url = this.editObj ? 'UpdateOfficer' : 'AddOfficer';
+
+    if(!this.userRegForm.valid){
+      this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
+      return 
+    }
+    else{
+      this.ngxSpinner.show();
+      this.apiService.setHttp(this.editObj ? 'put' : 'post', 'ZP-Education/Officer/' + url, false, formValue, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => {
+          this.ngxSpinner.hide();
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0), this.router.navigate(['/office-user-registration'])) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+        },
+        error: ((err: any) => {
+          this.ngxSpinner.hide();
+          this.commonMethod.checkDataType(err.statusMessage) == false ? this.errorService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusMessage, 1);
+        })
+      })
+    }
   }
 
 }
