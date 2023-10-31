@@ -1,14 +1,14 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-      <li class="breadcrumb-item" aria-current="page">Asset Management
+      <li class="breadcrumb-item" aria-current="page">{{'Lables.AssetManagement' |translate}}
       </li>
-      <li class="breadcrumb-item active" aria-current="page">Store Stock Report</li>
+      <li class="breadcrumb-item active" aria-current="page">{{'Lables.StoreStockReport' |translate}}</li>
   </ol>
 </nav>
 <mat-card class="plain-card">
   <mat-card-header class="card-header pb-0">
     <div class="d-flex align-items-center justify-content-between w-100">
-        <h6 class="text-main mb-2 mb-lg-0 fw-bold">Store Stock Report</h6>
+        <h6 class="text-main mb-2 mb-lg-0 fw-bold">{{'Lables.StoreStockReport' |translate}}</h6>
         <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
             <mat-icon class="material-symbols-rounded">
                 download
@@ -33,7 +33,7 @@
 <mat-card-header class="card-header-control form-container pt-0">
   <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
       <div class="col-sm-2">
-        <label class="form-label">District</label>
+        <label class="form-label">{{'Lables.district' |translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
             <mat-select>
                 <mat-option>Amravati</mat-option>
@@ -41,7 +41,7 @@
         </mat-form-field>
     </div>
       <div class="col-sm-2">
-        <label class="form-label">Taluka</label>
+        <label class="form-label">{{'Lables.taluka' |translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
             <mat-select>
                 <mat-option>Amravati</mat-option>
@@ -49,7 +49,7 @@
         </mat-form-field>
     </div>
     <div class="col-sm-2">
-      <label class="form-label">Kendra</label>
+      <label class="form-label">{{'Lables.kendra' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
           <mat-select>
               <mat-option>Amravati</mat-option>
@@ -57,7 +57,7 @@
       </mat-form-field>
   </div>
     <div class="col-sm-2">
-      <label class="form-label">Village</label>
+      <label class="form-label">{{'Lables.village' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select>
             <mat-option>Amravati</mat-option>
@@ -65,7 +65,7 @@
     </mat-form-field>
   </div>
     <div class="col-sm-4">
-      <label class="form-label">School</label>
+      <label class="form-label">{{'Lables.School' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select>
             <mat-option>Amravati</mat-option>
@@ -73,7 +73,7 @@
     </mat-form-field>
   </div>
     <div class="col-sm-2">
-      <label class="form-label">Category</label>
+      <label class="form-label">{{'Lables.Category' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select>
             <mat-option>Amravati</mat-option>
@@ -81,7 +81,7 @@
     </mat-form-field>
   </div>
     <div class="col-sm-2">
-      <label class="form-label">Sub Category</label>
+      <label class="form-label">{{'Lables.SubCategory' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select>
             <mat-option>Amravati</mat-option>
@@ -89,7 +89,7 @@
     </mat-form-field>
   </div>
     <div class="col-sm-2">
-      <label class="form-label">Item</label>
+      <label class="form-label">{{'Lables.Item' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select>
             <mat-option>Amravati</mat-option>
@@ -117,38 +117,38 @@
 <mat-card-content class="card-body pt-0">
   <table mat-table [dataSource]="dataSource" class="dashboard-table" [routerLink]="['../view-stock-report']">
       <ng-container matColumnDef="srno">
-          <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.SrNo' |translate}}</th>
           <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Category">
-          <th mat-header-cell *matHeaderCellDef> Category </th>
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.Category' |translate}} </th>
           <td mat-cell *matCellDef="let element"> {{element.Category}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="SubCategory">
-          <th mat-header-cell *matHeaderCellDef> Sub Category </th>
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.SubCategory' |translate}} </th>
           <td mat-cell *matCellDef="let element"> {{element.SubCategory}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Item">
-          <th mat-header-cell *matHeaderCellDef> Item Name </th>
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.ItemName' |translate}} </th>
           <td mat-cell *matCellDef="let element"> {{element.Item}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="TotalInward">
-          <th mat-header-cell *matHeaderCellDef> Total Inward
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.TotalInward' |translate}}
           </th>
           <td mat-cell *matCellDef="let element"> {{element.TotalInward}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="TotalOutward">
-          <th mat-header-cell *matHeaderCellDef> Total Outward
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.TotalOutward' |translate}}
 
           </th>
           <td mat-cell *matCellDef="let element"> {{element.TotalOutward}} </td>
@@ -156,7 +156,7 @@
 
 
       <ng-container matColumnDef="AvailableStock">
-          <th mat-header-cell *matHeaderCellDef> Available Stock
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.AvailableStock' |translate}}
 
 
           </th>
