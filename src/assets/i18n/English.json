@@ -225,7 +225,19 @@
        "CheckOutTime" : "Check-Out Time",
        "Attendance" : "Attendance",
        "Task" : "Task",
-       "ApprovalRemark" : "Approval Remark"
+       "ApprovalRemark" : "Approval Remark",
+       "TaskSheetList" : "TaskSheet List",
+       "AttendanceDetails" : "Attendance Details",
+       "Apply" : "Apply",
+       "TaskSheet" : "TaskSheet",
+       "SelectDate" : "Select Date",
+       "HolidayMaster" : "Holiday Master",
+       "HolidayDate" : "Holiday Date",
+       "HolidayName" : "Holiday Name",
+       "Year" : "Year" ,
+       "AddHoliday" : "Add Holiday"
+       
+
 
 
 

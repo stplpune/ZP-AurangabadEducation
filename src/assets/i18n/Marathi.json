@@ -226,7 +226,17 @@
         "CheckOutTime" : "चेक-आउट वेळ",
         "Attendance" : "उपस्थिती",
         "Task" : "कार्य",
-        "ApprovalRemark" : "मंजूरी टिप्पणी"
+        "ApprovalRemark" : "मंजूरी टिप्पणी",
+        "TaskSheetList" : "टास्कशीट सूची",
+        "AttendanceDetails" : "उपस्थिती तपशील",
+        "Apply" : "अर्ज करा",
+        "TaskSheet" : "टास्कशीट",
+        "SelectDate" : "तारीख निवडा",
+        "HolidayMaster" : "सुट्टी मास्टर",
+        "HolidayDate" : "सुट्टीची तारीख",
+        "HolidayName" : "सुट्टीचे नाव ",
+        "Year" : "वर्ष" ,
+        "AddHoliday" : "सुट्टी जोडा"
 
 
 
