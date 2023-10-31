@@ -215,7 +215,12 @@
         "AddOutwardItem" : "बाह्य वस्तू जोडा",
         "ItemOutwardList" : "आयटम बाह्य सूची",
         "emailId(BEOOffice)" : "ईमेल आयडी (बीईओ ऑफिस)",
-        "contactNo(BEOOffice)" : "संपर्क क्रमांक (बीईओ कार्यालय)"
+        "contactNo(BEOOffice)" : "संपर्क क्रमांक (बीईओ कार्यालय)",
+        "StoreStockReport" : "स्टोअर स्टॉक अहवाल",
+        "ItemName" : "आयटमचे नाव",
+        "TotalInward" : "एकूण आवक",
+        "TotalOutward" : "एकूण जावक",
+        "AvailableStock" : "उपलब्ध स्टॉक"
 
 
 

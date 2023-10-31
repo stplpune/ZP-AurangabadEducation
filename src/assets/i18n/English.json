@@ -214,7 +214,13 @@
        "AddOutwardItem" : "Add Outward Item",
        "ItemOutwardList" : "Item Outward List",
        "emailId(BEOOffice)" : "Email ID(BEO Office)",
-       "contactNo(BEOOffice)" : "Contact No.(BEO Office)"
+       "contactNo(BEOOffice)" : "Contact No.(BEO Office)",
+       "StoreStockReport" : "Store Stock Report",
+       "ItemName" : "Item Name",
+       "TotalInward" : "Total Inward",
+       "TotalOutward" : "Total Outward",
+       "AvailableStock" : "Available Stock"
+
 
 
 
