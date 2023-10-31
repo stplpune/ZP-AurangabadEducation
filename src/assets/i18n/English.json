@@ -219,7 +219,13 @@
        "ItemName" : "Item Name",
        "TotalInward" : "Total Inward",
        "TotalOutward" : "Total Outward",
-       "AvailableStock" : "Available Stock"
+       "AvailableStock" : "Available Stock",
+       "Day" : "Day",
+       "CheckInTime" : "Check-In Time",
+       "CheckOutTime" : "Check-Out Time",
+       "Attendance" : "Attendance",
+       "Task" : "Task",
+       "ApprovalRemark" : "Approval Remark"
 
 
 

@@ -220,7 +220,13 @@
         "ItemName" : "आयटमचे नाव",
         "TotalInward" : "एकूण आवक",
         "TotalOutward" : "एकूण जावक",
-        "AvailableStock" : "उपलब्ध स्टॉक"
+        "AvailableStock" : "उपलब्ध स्टॉक",
+        "Day" : "दिवस",
+        "CheckInTime" : "चेक-इन वेळ",
+        "CheckOutTime" : "चेक-आउट वेळ",
+        "Attendance" : "उपस्थिती",
+        "Task" : "कार्य",
+        "ApprovalRemark" : "मंजूरी टिप्पणी"
 
 
 
