@@ -4,6 +4,7 @@ import { CommonMethodService } from 'src/app/core/services/common-method.service
 import { ErrorService } from 'src/app/core/services/error.service';
 import { FileUploadService } from 'src/app/core/services/file-upload.service';
 import { MasterService } from 'src/app/core/services/master.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { WebStorageService } from 'src/app/core/services/web-storage.service';
 
 @Component({
@@ -19,9 +20,13 @@ export class AddUserComponent {
   desigLevelArray = new Array();
   centerArray = new Array();
   bitArray = new Array();
+  talukaArraySecond = new Array();
+  centerArraySecond = new Array();
+  villageArray = new Array();
   uploadImg: any;
   uploadImageFlag: boolean = false;
   checked: boolean = false;
+  age!: number;
   get f() { return this.userRegForm.controls }
 
   constructor(private fb: FormBuilder,
@@ -29,7 +34,8 @@ export class AddUserComponent {
     public webStorage: WebStorageService,
     private fileUpload: FileUploadService,
     private errorService: ErrorService,
-    private commonMethod: CommonMethodService) { }
+    private commonMethod: CommonMethodService,
+    public validation: ValidationService) { }
 
   ngOnInit() {
     this.formField();
@@ -67,6 +73,10 @@ export class AddUserComponent {
       currentAddress: [''], //extra
       permentAddress: [''], //extra
       isClassTeacher: false,//extra
+      districtIdSecond: false,//extra
+      talukaIdSecond: false,//extra
+      centerIdSecond: false,//extra
+      villageIdSecond: false,//extra
       officerCenterSchoolModel: [
         {
           id: 0,
@@ -101,12 +111,13 @@ export class AddUserComponent {
     });
   }
 
-  getTaluka() {
+  getTaluka(label?: string) {
     this.talukaArray = [];
-    let districtId = this.userRegForm.value.districtId;
+    let districtId = label == 'Taluka' ? this.userRegForm.value.districtIdSecond : this.userRegForm.value.districtId;
     this.masterService.getAllTaluka('', districtId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.talukaArray = res.responseData : this.talukaArray = [];
+        (res.statusCode == "200" && label == 'Taluka') ? this.talukaArraySecond = res.responseData : this.talukaArraySecond = [];
       }
     });
   }
@@ -121,12 +132,13 @@ export class AddUserComponent {
     });
   }
 
-  getCenter() {
+  getCenter(label?: string) {
     this.centerArray = [];
-    let talukaId = this.userRegForm.value.talukaId;
+    let talukaId = label == 'Center' ? this.userRegForm.value.talukaIdSecond : this.userRegForm.value.talukaId;
     this.masterService.getAllCenter('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
+        (res.statusCode == "200" && label == 'Center') ? this.centerArraySecond = res.responseData : this.centerArraySecond = [];
       }
     });
   }
@@ -139,6 +151,16 @@ export class AddUserComponent {
         res.statusCode == "200" ? this.bitArray = res.responseData : this.bitArray = [];
       }
     });
+  }
+
+  getVillage() {
+    this.villageArray = [];
+    let centerId = this.userRegForm.value.centerIdSecond;
+      this.masterService.getAllVillage('', centerId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
+        }
+      });
   }
   //#endregion ------------------------------------------ Dropdown with dependencies end from here ----------------------------------------
 
@@ -189,6 +211,15 @@ export class AddUserComponent {
     } else {
       this.f['permentAddress'].setValue('');
     }
+  }
+
+  CalculateAge() {
+    let birthDate = this.userRegForm.value.dob;   
+    if (birthDate) {
+      var timeDiff = Math.abs(Date.now() - birthDate);
+      this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+    }
+
   }
 
 }
