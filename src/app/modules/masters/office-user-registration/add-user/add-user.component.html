@@ -127,11 +127,19 @@
                 </div>
                 <div class="col-sm-3">
                     <label class="form-label">{{'Lables.BirthDate' | translate}}</label>
+                  <div class="col-sm-12">
+                    <div class="d-flex gap-1">
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput [matDatepicker]="topicker" (click)="topicker.open()">
                         <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
                         <mat-datepicker #topicker></mat-datepicker>
                     </mat-form-field>
+                      <!-- <label class="form-label">{{'Lables.EmailID' |translate}}</label> -->
+                      <mat-form-field appearance="outline" class="w-100">
+                          <input matInput>
+                      </mat-form-field>
+                    </div>
+                </div>
                 </div>
                 <div class="col-sm-3">
                     <label class="form-label">{{'Lables.Gender' | translate}}</label>
