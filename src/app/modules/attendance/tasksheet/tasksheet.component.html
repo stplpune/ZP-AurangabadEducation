@@ -1,15 +1,15 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page">Attendance Details
+        <li class="breadcrumb-item" aria-current="page">{{'Lables.AttendanceDetails' |translate}}
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Tasksheet</li>
+        <li class="breadcrumb-item active" aria-current="page">{{'Lables.TaskSheet' |translate}}</li>
     </ol>
 </nav>
 <mat-card class="plain-card">
     <mat-card-header class="card-header">
         <div class="d-lg-flex d-block justify-content-between align-items-center w-100">
             <h6 class="text-main mb-2 mb-lg-0 fw-bold">
-                Tasksheet List</h6>
+                {{'Lables.TaskSheetList' |translate}}</h6>
             <div class="d-flex align-items-center gap-2">
                 <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
                     <mat-icon class="material-symbols-rounded">
@@ -37,7 +37,7 @@
         <mat-card-header class="card-header-control form-container pt-0">
             <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
                 <div class="col-sm-3">
-                    <label class="form-label">Select Date</label>
+                    <label class="form-label">{{'Lables.SelectDate' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput [matDatepicker]="picker">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -65,47 +65,47 @@
         <mat-card-content class="card-body pt-0">
             <table mat-table [dataSource]="dataSource" class="dashboard-table">
                 <ng-container matColumnDef="srno">
-                    <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.SrNo' |translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Day">
-                    <th mat-header-cell *matHeaderCellDef> Day </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Day' |translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.Day}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="CheckIn">
-                    <th mat-header-cell *matHeaderCellDef> Check-In Time
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.CheckInTime' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.CheckIn}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="CheckOut">
-                    <th mat-header-cell *matHeaderCellDef> Check-Out Time
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.CheckOutTime' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.CheckOut}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Attendance">
-                    <th mat-header-cell *matHeaderCellDef> Attendance
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Attendance' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.Attendance}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Task">
-                    <th mat-header-cell *matHeaderCellDef>Task
+                    <th mat-header-cell *matHeaderCellDef>{{'Lables.Task' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.Task}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="ApprovalRemark">
-                    <th mat-header-cell *matHeaderCellDef> Approval Remark
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.ApprovalRemark' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.ApprovalRemark}} </td>
                 </ng-container>
@@ -113,12 +113,12 @@
 
 
                 <ng-container matColumnDef="Action">
-                    <th mat-header-cell *matHeaderCellDef> Action
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Action' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element let i=index">
                         <div class="d-flex gap-2">
                             <ng-container>
-                                <button mat-flat-button class="btn-main me-2">Apply</button>
+                                <button mat-flat-button class="btn-main me-2">{{'Lables.Apply' |translate}}</button>
                             </ng-container>
                         </div>
                     </td>
