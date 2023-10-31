@@ -72,6 +72,18 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-3">
+                  <label class="form-label">{{'Lables.contactNo(BEOOffice)' |translate}}</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                      <input matInput>
+                  </mat-form-field>
+              </div>
+              <div class="col-sm-3">
+                <label class="form-label">{{'Lables.emailId(BEOOffice)' |translate}}</label>
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput>
+                </mat-form-field>
+            </div>
+                <div class="col-sm-3">
                     <label class="form-label">{{'Lables.kendra' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="centerId">
@@ -194,7 +206,7 @@
                     <div class="col-sm-12">
                         <h6 class="section-head">{{'Lables.AddressDetails' | translate}}</h6>
                     </div>
-    
+
                     <!-- <div class="col-sm-4">
                         <label class="form-label">{{'Lables.district' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
@@ -394,7 +406,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.taluka' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="talukaIdSecond" (selectionChange)="getCenter('Center');"> 
+                            <mat-select formControlName="talukaIdSecond" (selectionChange)="getCenter('Center');">
                                 <mat-option *ngFor="let taluka of talukaArraySecond" [value]="taluka.id">{{webStorage.languageFlag
                                     =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
                             </mat-select>
