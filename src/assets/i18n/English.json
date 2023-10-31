@@ -74,8 +74,8 @@
         "BirthDate" : "Birth Date",
         "UploadPhoto" : "Upload Photo",
         "AddressDetails" : "Address Details",
-        "CurrentAddress" : "Current Details",
-        "PermanentAddress" : "Permanent Details",
+        "CurrentAddress" : "Current Address",
+        "PermanentAddress" : "Permanent Address",
         "SameAsCurrentAdd" : "Same as Current Address",
         "NoteImgFormat" : "Note: Upload only jpg,jpeg,png format",
         "HighestEducation" : "Highest Educational Qualification",
@@ -199,11 +199,28 @@
         "AddInwardList" : "Add Inward List",
         "OpeningStock" : "Opening Stock",
         "PurchasePrice" : "Purchase Price",
-        "Purchase Date" : "Purchase Date",
+        "PurchaseDate" : "Purchase Date",
         "Units" : "Units",
         "Remark" :"Remark",
         "UploadPhotoDocuments": "Upload Photo/Documents",
-        "ItemList" : "ItemList"
+        "ItemList" : "ItemList",
+        "AddInwardItem" : "Add Inward Item",
+        "Price" : "price",
+        "InwardItem" : "Inward Item",
+        "SellDate" : "Sell Date",
+       "SellPrice" : "Sell Price",
+       "AssignTo" : "Assign To",
+       "OutwardItem" :"Outward Item",
+       "AddOutwardItem" : "Add Outward Item",
+       "ItemOutwardList" : "Item Outward List",
+       "emailId(BEOOffice)" : "Email ID(BEO Office)",
+       "contactNo(BEOOffice)" : "Contact No.(BEO Office)"
+
+
+
+
+
+
 
 
 

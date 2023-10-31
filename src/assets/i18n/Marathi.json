@@ -200,11 +200,22 @@
         "AddInwardList" : "आतील बाजूची यादी जोडा",
         "OpeningStock" : "उघडणे स्टॉक",
         "PurchasePrice" : "खरेदी किंमत",
-        "Purchase Date" : "खरेदी दिनांक",
+        "PurchaseDate" : "खरेदी दिनांक",
         "Units" : "युनिट्स",
         "Remark" :"टिप्पणी",
         "UploadPhotoDocuments": "फोटो/कागदपत्रे अपलोड करा",
-        "ItemList" : "सामान की सूची"
+        "ItemList" : "सामान की सूची",
+        "AddInwardItem" : "आवक आइटम जोड़ें",
+        "Price" : "कीमत",
+        "InwardItem" : "आवक वस्तू",
+        "SellDate" : "विक्रीची तारीख",
+        "SellPrice" : "विक्री किंमत",
+        "AssignTo" : "यांना नियुक्त करा",
+        "OutwardItem" :"बाह्य वस्तू",
+        "AddOutwardItem" : "बाह्य वस्तू जोडा",
+        "ItemOutwardList" : "आयटम बाह्य सूची",
+        "emailId(BEOOffice)" : "ईमेल आयडी (बीईओ ऑफिस)",
+        "contactNo(BEOOffice)" : "संपर्क क्रमांक (बीईओ कार्यालय)"
 
 
 
