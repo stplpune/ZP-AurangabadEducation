@@ -6,6 +6,7 @@ import { StudentProfileComponent } from './student-profile.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     StudentProfileRoutingModule,
     MatCardModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule
   ]
 })
 export class StudentProfileModule { }
