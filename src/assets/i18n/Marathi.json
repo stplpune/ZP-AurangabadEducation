@@ -205,8 +205,8 @@
         "Remark" :"टिप्पणी",
         "UploadPhotoDocuments": "फोटो/कागदपत्रे अपलोड करा",
         "ItemList" : "सामान की सूची",
-        "AddInwardItem" : "आवक आइटम जोड़ें",
-        "Price" : "कीमत",
+        "AddInwardItem" : "आवक वस्तू जोडा",
+        "Price" : "किंमत",
         "InwardItem" : "आवक वस्तू",
         "SellDate" : "विक्रीची तारीख",
         "SellPrice" : "विक्री किंमत",
@@ -215,7 +215,31 @@
         "AddOutwardItem" : "बाह्य वस्तू जोडा",
         "ItemOutwardList" : "आयटम बाह्य सूची",
         "emailId(BEOOffice)" : "ईमेल आयडी (बीईओ ऑफिस)",
-        "contactNo(BEOOffice)" : "संपर्क क्रमांक (बीईओ कार्यालय)"
+        "contactNo(BEOOffice)" : "संपर्क क्रमांक (बीईओ कार्यालय)",
+        "StoreStockReport" : "स्टोअर स्टॉक अहवाल",
+        "ItemName" : "आयटमचे नाव",
+        "TotalInward" : "एकूण आवक",
+        "TotalOutward" : "एकूण जावक",
+        "AvailableStock" : "उपलब्ध स्टॉक",
+        "Day" : "दिवस",
+        "CheckInTime" : "चेक-इन वेळ",
+        "CheckOutTime" : "चेक-आउट वेळ",
+        "Attendance" : "उपस्थिती",
+        "Task" : "कार्य",
+        "ApprovalRemark" : "मंजूरी टिप्पणी",
+        "TaskSheetList" : "टास्कशीट सूची",
+        "AttendanceDetails" : "उपस्थिती तपशील",
+        "Apply" : "अर्ज करा",
+        "TaskSheet" : "टास्कशीट",
+        "SelectDate" : "तारीख निवडा",
+        "HolidayMaster" : "सुट्टी मास्टर",
+        "HolidayDate" : "सुट्टीची तारीख",
+        "HolidayName" : "सुट्टीचे नाव ",
+        "Year" : "वर्ष" ,
+        "AddHoliday" : "सुट्टी जोडा",
+        "HolidayList" : "सुट्टीची यादी",
+        "HolidayName(Marathi)" : "सुट्टीचे नाव (मराठी)"
+
 
 
 

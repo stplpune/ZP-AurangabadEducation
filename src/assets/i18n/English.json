@@ -214,7 +214,34 @@
        "AddOutwardItem" : "Add Outward Item",
        "ItemOutwardList" : "Item Outward List",
        "emailId(BEOOffice)" : "Email ID(BEO Office)",
-       "contactNo(BEOOffice)" : "Contact No.(BEO Office)"
+       "contactNo(BEOOffice)" : "Contact No.(BEO Office)",
+       "StoreStockReport" : "Store Stock Report",
+       "ItemName" : "Item Name",
+       "TotalInward" : "Total Inward",
+       "TotalOutward" : "Total Outward",
+       "AvailableStock" : "Available Stock",
+       "Day" : "Day",
+       "CheckInTime" : "Check-In Time",
+       "CheckOutTime" : "Check-Out Time",
+       "Attendance" : "Attendance",
+       "Task" : "Task",
+       "ApprovalRemark" : "Approval Remark",
+       "TaskSheetList" : "TaskSheet List",
+       "AttendanceDetails" : "Attendance Details",
+       "Apply" : "Apply",
+       "TaskSheet" : "TaskSheet",
+       "SelectDate" : "Select Date",
+       "HolidayMaster" : "Holiday Master",
+       "HolidayDate" : "Holiday Date",
+       "HolidayName" : "Holiday Name",
+       "Year" : "Year" ,
+       "AddHoliday" : "Add Holiday",
+       "HolidayList" : "Holiday List",
+       "HolidayName(Marathi)" : "Holiday Name (Marathi)"
+      
+
+
+
 
 
 

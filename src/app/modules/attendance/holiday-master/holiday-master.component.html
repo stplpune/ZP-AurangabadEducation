@@ -1,15 +1,15 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page">Attendance Details
+        <li class="breadcrumb-item" aria-current="page">{{'Lables.AttendanceDetails' |translate}}
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Holiday Master</li>
+        <li class="breadcrumb-item active" aria-current="page">{{'Lables.HolidayMaster' |translate}}</li>
     </ol>
 </nav>
 <mat-card class="plain-card">
     <mat-card-header class="card-header">
         <div class="d-lg-flex d-block justify-content-between align-items-center w-100">
             <h6 class="text-main mb-2 mb-lg-0 fw-bold">
-                Holiday List</h6>
+                {{'Lables.HolidayList' |translate}}</h6>
                 <div class="d-flex align-items-center gap-2">
                   <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
                       <mat-icon class="material-symbols-rounded">
@@ -33,7 +33,7 @@
                 <button mat-flat-button class="btn-main" (click)="AddHoliday()">
                     <mat-icon class="material-symbols-rounded">add</mat-icon>
                     <span>
-                        Add Holiday
+                        {{'Lables.AddHoliday' |translate}}
                     </span>
                 </button>
             </div>
@@ -43,7 +43,7 @@
       <mat-card-header class="card-header-control form-container pt-0">
         <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
                 <div class="col-sm-3">
-                  <label class="form-label">Year</label>
+                  <label class="form-label">{{'Lables.Year' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select>
                             <mat-option>2023</mat-option>
@@ -54,7 +54,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-3">
-                  <label class="form-label">Holiday Name</label>
+                  <label class="form-label">{{'Lables.HolidayName' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput>
                     </mat-form-field>
@@ -80,26 +80,26 @@
         <mat-card-content class="card-body pt-0">
             <table mat-table [dataSource]="dataSource" class="dashboard-table">
                 <ng-container matColumnDef="srno">
-                    <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.SrNo' |translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Holiday">
-                    <th mat-header-cell *matHeaderCellDef> Holiday Date </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.HolidayDate' |translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.Holiday}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="HolidayName">
-                    <th mat-header-cell *matHeaderCellDef> Holiday Name
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.HolidayName' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.HolidayName}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Action">
-                    <th mat-header-cell *matHeaderCellDef> Action
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Action' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element let i=index">
                         <div class="d-flex gap-2">
