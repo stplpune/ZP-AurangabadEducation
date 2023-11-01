@@ -5,6 +5,7 @@ import { StudentProfileRoutingModule } from './student-profile-routing.module';
 import { StudentProfileComponent } from './student-profile.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     StudentProfileRoutingModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ]
 })
 export class StudentProfileModule { }
