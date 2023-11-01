@@ -207,7 +207,7 @@ export class DesignationMasterComponent {
       next: (res: any) => {
         this.ngxSpinner.hide();
         if (res.statusCode == "200") {
-          flag != 'pdfFlag' ? this.tableDataArray = res.responseData?.responseData1 : this.tableDataArray = this.tableDataArray;
+          (flag == 'filter' || flag == undefined) ? this.tableDataArray = res.responseData?.responseData1 : this.tableDataArray = this.tableDataArray;
           this.totalCount = res.responseData.responseData2.pageCount;
           this.tableDatasize = res.responseData.responseData2.pageCount;
           let data: [] = (flag == 'pdfFlag' || flag == 'excel') ? res.responseData.responseData1 : [];
