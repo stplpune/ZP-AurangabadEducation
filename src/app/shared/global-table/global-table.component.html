@@ -6,8 +6,7 @@
                 {{ tableHeaders[j] }}
             </th>
 
-            <td mat-cell *matCellDef="let element let i=index"
-            (click)="action(element, 'View', i)">
+            <td mat-cell *matCellDef="let element let i=index">
                 <ng-container *ngIf="'srNo' ==columns">{{ ((pageNumber + 1) * 10 + i + 1)-20 }}</ng-container>
                 <ng-container
                     *ngIf="'srNo' !=columns && 'accountNo' !=columns && tableInfo?.img != columns && tableInfo?.blink != columns && tableInfo?.badge !=  columns && tableInfo?.checkBox != columns && tableInfo?.status != columns && tableInfo?.date != columns && tableInfo?.trueFalseStatus != columns">
@@ -34,7 +33,7 @@
                     {{ (tableInfo?.time ? (element[columns] | date:'dd-MM-yyyy hh:mm a'):(element[columns] |
                     date:'dd-MM-yyyy')) | dash }}</ng-container>
                 <ng-container *ngIf="tableInfo?.isBlock == columns">
-                    <mat-slide-toggle (change)="action(element, 'Block')">
+                    <mat-slide-toggle [checked]="tableInfo.tableData[i]?.isBlock" (change)="action(element, 'Block')">
                     </mat-slide-toggle>
                 </ng-container>
             </td>

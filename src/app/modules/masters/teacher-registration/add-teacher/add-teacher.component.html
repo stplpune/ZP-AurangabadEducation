@@ -16,19 +16,19 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.Teacher' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="teacherName">
+                    <input matInput formControlName="name">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.Teacher(Marathi)' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="m_TeacherName">
+                    <input matInput formControlName="m_Name">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.TeacherID' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="teacherId">
+                    <input matInput formControlName="teacherCode">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
@@ -59,13 +59,13 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.BirthDate' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input formControlName="birthDate" matInput [matDatepicker]="topicker" (click)="topicker.open()"
-                        readonly (dateChange)="CalculateAge()">
-                    <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
-                    <mat-datepicker #topicker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker" (click)="picker.open()"
+                        readonly (dateChange)="CalculateAge()" formControlName="dob">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4" *ngIf="teacherRegForm.value.birthDate && age > 0">
+            <div class="col-sm-4" *ngIf="teacherRegForm.value.dob && age > 0">
                 <div class="col-sm-6">
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput value="{{age}} Years">
@@ -105,7 +105,6 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-6 ">
-                        <div class="col-sm-12">
                             <label class="form-label">{{'Lables.CurrentAddress' | translate}}</label>
                             <mat-form-field appearance="outline" class="w-100">
                                 <textarea matInput rows="3" maxlength="100" formControlName="currentAddress"
@@ -113,7 +112,7 @@
                                     (input)="clearAddressCheckBox($event)"></textarea>
                             </mat-form-field>
                         </div>
-
+<!--
                         <div class="col-sm-4 w-100">
                             <label class="form-label">{{'Lables.district' | translate}}</label>
                             <mat-form-field appearance="outline" class="w-100">
@@ -143,10 +142,8 @@
                                         =='mr-IN' ? village.m_Village: village.village}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                        </div>
-                    </div>
+                        </div> -->
                     <div class="col-sm-6">
-                        <div class="col-sm-12">
                             <label class="form-label w-100">
                                 <div class="d-flex justify-content-between w-100 align-items-center">
                                     <span>{{'Lables.PermanentAddress' | translate}}</span>
@@ -156,10 +153,10 @@
                                 </div>
                             </label>
                             <mat-form-field appearance="outline" class="w-100">
-                                <textarea matInput rows="3" formControlName="permentAddress"></textarea>
+                                <textarea matInput rows="3" formControlName="permanentAddress"></textarea>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-4 w-100">
+                        <!-- <div class="col-sm-4 w-100">
                             <label class="form-label">{{'Lables.district' | translate}}</label>
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-select formControlName="districtId" (selectionChange)="getVillageByTalukaId();">
@@ -188,8 +185,7 @@
                                         =='mr-IN' ? village.m_Village: village.village}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                        </div>
-                    </div>
+                        </div> -->
                 </div>
             </div>
             <div class="row gx-2 align-items-end">
@@ -286,19 +282,19 @@
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.Marks/Percentage' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <input matInput placeholder="Marks/Percentage" formControlName="marks">
+                        <input matInput formControlName="marks">
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.PassingYear' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <input matInput placeholder="Passing Year" formControlName="passingYear" maxlength="4">
+                        <input matInput formControlName="passingYear" maxlength="4">
                     </mat-form-field>
                 </div>
             </div>
             <div class="row gx-2 form-container align-items-end">
                 <div class="col-sm-12">
-                    <h6 class="section-head">{{'Lables.ProfessionalQualification' | translate}}</h6>
+                    <h6 class="section-head">{{'Lables.ProfessionalDetails' | translate}}</h6>
                 </div>
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.district' | translate}}</label>
@@ -371,6 +367,14 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div class="col-sm-4">
+                  <label class="form-label">{{'Lables.DateOfJoining' | translate}}</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                      <input matInput [matDatepicker]="topicker">
+                      <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
+                      <mat-datepicker #topicker></mat-datepicker>
+                  </mat-form-field>
+              </div>
                 <div class="col-sm-4 marginbtm file-upload border rounded-2 p-1 margin-control">
                     <div class="d-flex align-items-center gap-2">
                         <mat-checkbox class="example-margin" formControlName="isKendraHead">{{'Lables.IsClusterHead' |

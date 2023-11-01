@@ -12,7 +12,8 @@
                     <h6 class="text-main mb-2 mb-lg-0 fw-bold">
                         {{'Lables.designationMaster' | translate}}</h6>
                     <div class="d-flex align-items-center gap-2">
-                        <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
+                        <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark"
+                            matTooltip="{{'Lables.DownloadTooltip' | translate}}">
                             <mat-icon class="material-symbols-rounded">
                                 download
                             </mat-icon>
@@ -49,7 +50,8 @@
                     <div class="col-sm-4">
                         <label class="form-label">{{'Lables.SearchDesignation' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <input matInput placeholder=" {{'Lables.SearchDesignation' | translate}}" [formControl]="textSearch">
+                            <input matInput placeholder=" {{'Lables.SearchDesignation' | translate}}"
+                                [formControl]="textSearch">
                         </mat-form-field>
                     </div>
                     <div class="col-sm-auto">
@@ -74,13 +76,56 @@
         </mat-card>
     </div>
     <div class="col-sm-4 form-container">
-        <form action="" [formGroup]="desigNationForm" (ngSubmit)="submit()" #formDirective="ngForm">
+        <mat-card class="plain-card" *ngIf="editObj?.id && !editFlag">
+            <mat-card-header class="card-header">
+                <div class="text-main">
+                    View Designation
+                </div>
+            </mat-card-header>
+            <mat-card-content class="card-body pt-0">
+                <ul class="list-group list-group-flush mb-0">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span class="form-label">Dependant Designation Level :</span>
+                        <span class="form-data">{{editObj?.designationLevel}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0"
+                        *ngFor="let item of editObj.linkedDesignationResponseModel">
+                        <span class="form-label">Dependant Designation :</span>
+                        <span class="form-data">{{item?.linkedDesignationName}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span class="form-label">Desire Designation Level :</span>
+                        <span class="form-data">{{editObj?.designationLevel}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span class="form-label">Designation :</span>
+                        <span class="form-data">{{editObj?.designation}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span class="form-label">Designation (Marathi) :</span>
+                        <span class="form-data">{{editObj?.m_Designation}}</span>
+                    </li>
+                </ul>
+            </mat-card-content>
+            <mat-card-actions class="card-footer">
+                <div class="d-flex justify-content-end align-items-center w-100 gap-2">
+                    <button mat-flat-button class="btn-main-light" type="button"
+                        (click)="editFlag = true">Cancel</button>
+                    <button mat-flat-button class="btn-main" type="submit"
+                        (click)="onEdit(editObj?.id, 'Edit')">Edit</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+
+
+        <form action="" [formGroup]="desigNationForm" (ngSubmit)="submit()" #formDirective="ngForm"
+            *ngIf="!editObj?.id || editFlag">
             <mat-card class="plain-card">
                 <mat-card-header class="card-header">
                     <div class="text-main">{{editObj ?('Lables.updateDesignation' | translate)
                         :('Lables.DesignationRegistration' | translate)}}</div>
                 </mat-card-header>
-                <mat-card-content class="card-body">
+                <mat-card-content class="card-body py-0">
                     <label class="form-label">{{'Lables.DependDesigLevel' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="dependantDesigLevelId"

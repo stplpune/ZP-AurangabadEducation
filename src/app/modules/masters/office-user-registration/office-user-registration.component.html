@@ -1,14 +1,14 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page">Master</li>
-        <li class="breadcrumb-item active" aria-current="page">Office User Registration</li>
+        <li class="breadcrumb-item" aria-current="page">{{'Lables.master' | translate}}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{'Lables.OfficeUserRegistration' | translate}}</li>
     </ol>
 </nav>
 <mat-card class="plain-card">
     <mat-card-header class="card-header">
         <div class="d-flex justify-content-between align-items-center w-100">
             <h6 class="text-main mb-2 mb-lg-0 fw-bold">
-                Office User Registration</h6>
+              {{'Lables.OfficeUserRegistration' | translate}}</h6>
             <div class="d-flex align-items-center gap-2">
                 <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
                     <mat-icon class="material-symbols-rounded">
@@ -16,30 +16,30 @@
                     </mat-icon>
                 </button>
                 <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu">
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="getTableData('pdfFlag')">
                         <mat-icon class="material-symbols-rounded text-success">
                             description
                         </mat-icon>
                         <span class="text-success">PDF</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="getTableData('excelFlag')">
                         <mat-icon class="material-symbols-rounded text-danger">
                             table
                         </mat-icon>
                         <span class="text-danger">Excel</span>
                     </button>
                 </mat-menu>
-                <button mat-flat-button class="btn-main" (click)="AddUser()">
+                <button mat-flat-button class="btn-main" [routerLink]="['../add-office-user']">
                     <mat-icon class="material-symbols-rounded">add</mat-icon>
                     <span>
-                        Add User
+                      {{'Lables.AddUser' | translate}}
                     </span>
                 </button>
             </div>
         </div>
     </mat-card-header>
     <mat-card-header class="card-header-control pt-0 form-container">
-        <form *ngIf="filterForm" [formGroup]="filterForm" (ngSubmit)="getTabledata('filter')">
+        <form *ngIf="filterForm" [formGroup]="filterForm" (ngSubmit)="getTableData('filter')">
            <div class="row w-100 g-2 align-items-end">
                 <!-- <div class="col-sm-1">
                     <label class="form-label">User Type</label>
@@ -50,7 +50,7 @@
                     </mat-form-field>
                 </div> -->
                 <div class="col-sm-2">
-                    <label class="form-label">District</label>
+                    <label class="form-label">{{'Lables.district' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="districtId" (selectionChange)="clearDropdown('district'); getTaluka();">
                             <mat-option *ngFor="let district of districtArray" [value]="district.id">{{langTypeName =='English' ? district.district: district.m_District}}</mat-option>
@@ -58,7 +58,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-2">
-                    <label class="form-label">Taluka</label>
+                    <label class="form-label">{{'Lables.taluka' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="talukaId" (selectionChange)="clearDropdown('taluka'); getCenter()">
                             <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{langTypeName =='English' ? taluka.taluka: taluka.m_Taluka}}</mat-option>
@@ -66,7 +66,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm-2">
-                    <label class="form-label">Kendra</label>
+                    <label class="form-label">{{'Lables.kendra' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="centerId" (selectionChange)="clearDropdown('center');">
                             <mat-option *ngFor="let center of centerArray" [value]="center.id">{{langTypeName =='English' ? center.center: center.m_Center}}</mat-option>
@@ -74,20 +74,20 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-sm">
-                    <label class="form-label">Search by Name/Contact No.</label>
+                <div class="col-sm-3">
+                    <label class="form-label">{{'Lables.SearchbyName/ContactNo' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <input matInput placeholder="Search by Name/Contact No." formControlName="textSearch">
+                        <input matInput placeholder="{{'Lables.SearchbyName/ContactNo' | translate}}" formControlName="textSearch">
                     </mat-form-field>
                 </div>
                 <div class="col-sm-auto">
                     <div class="d-flex gap-2">
-                        <button mat-flat-button type="submit" class="btn-main btn-icon">
+                        <button mat-flat-button type="submit" class="btn-main btn-icon" (click)="getTableData('filter')">
                             <mat-icon class="material-symbols-rounded">
                                 search
                             </mat-icon>
                         </button>
-                        <button mat-flat-button type="button" class="btn-main-light btn-icon">
+                        <button mat-flat-button type="button" class="btn-main-light btn-icon" (click)="onClear()">
                             <mat-icon class="material-symbols-rounded">
                                 close
                             </mat-icon>
@@ -96,47 +96,48 @@
                 </div>
             </div>
         </form>
-        
+
 
     </mat-card-header>
     <mat-card-content class="card-body">
-        <table mat-table [dataSource]="dataSource" class="dashboard-table">
+        <app-global-table (recObjToChild)="childCompInfo($event)"></app-global-table>
+        <!-- <table mat-table [dataSource]="dataSource" class="dashboard-table">
             <ng-container matColumnDef="srno">
-                <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                <th mat-header-cell *matHeaderCellDef>{{'Lables.SrNo' |translate}}</th>
                 <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
             </ng-container>
             <ng-container matColumnDef="Name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <th mat-header-cell *matHeaderCellDef>{{'Lables.OfficeUserName' |translate}}</th>
                 <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
             </ng-container>
-            <ng-container matColumnDef="User">
-                <th mat-header-cell *matHeaderCellDef> User Type </th>
-                <td mat-cell *matCellDef="let element"> {{element.User}} </td>
+            <ng-container matColumnDef="Designation">
+                <th mat-header-cell *matHeaderCellDef>{{'Lables.Designation' |translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.Designation}} </td>
             </ng-container>
             <ng-container matColumnDef="Level">
-                <th mat-header-cell *matHeaderCellDef> Level</th>
+                <th mat-header-cell *matHeaderCellDef>{{'Lables.taluka' |translate}}</th>
                 <td mat-cell *matCellDef="let element"> {{element.Level
                     }} </td>
             </ng-container>
-            <ng-container matColumnDef="Designation">
-                <th mat-header-cell *matHeaderCellDef> Designation</th>
-                <td mat-cell *matCellDef="let element"> {{element.Designation
-                    }} </td>
-            </ng-container>
             <ng-container matColumnDef="Contact">
-                <th mat-header-cell *matHeaderCellDef> Contact No.</th>
+                <th mat-header-cell *matHeaderCellDef>{{'Lables.MobileNo' |translate}}</th>
                 <td mat-cell *matCellDef="let element"> {{element.Contact
                     }} </td>
             </ng-container>
+            <ng-container matColumnDef="Email">
+                <th mat-header-cell *matHeaderCellDef>{{'Lables.EmailID' |translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.Email
+                    }} </td>
+            </ng-container>
             <ng-container matColumnDef="Block">
-                <th mat-header-cell *matHeaderCellDef> Block</th>
+                <th mat-header-cell *matHeaderCellDef>{{'Lables.Unblock/Block' |translate}}</th>
                 <td mat-cell *matCellDef="let element">
                     <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled">
                     </mat-slide-toggle>
             </ng-container>
 
             <ng-container matColumnDef="Action">
-                <th mat-header-cell *matHeaderCellDef> Action
+                <th mat-header-cell *matHeaderCellDef> {{'Lables.Action' |translate}}
                 </th>
                 <td mat-cell *matCellDef="let element let i=index">
                     <div class="d-flex gap-2">
@@ -165,7 +166,7 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        </table> -->
     </mat-card-content>
 
 </mat-card>

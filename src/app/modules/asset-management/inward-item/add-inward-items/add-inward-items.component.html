@@ -1,7 +1,7 @@
 <mat-card class="modal-card">
     <mat-card-header class="modal-header">
         <div class="d-flex justify-content-between align-items-center w-100">
-            <h6 class="text-main mb-0 fw-bold">Add Inward Items</h6>
+            <h6 class="text-main mb-0 fw-bold">{{'Lables.AddInwardItem' |translate}}</h6>
             <button mat-icon-button class="btn-modal-close material-symbols-rounded" [mat-dialog-close]="true">
                 <mat-icon>close</mat-icon>
             </button>
@@ -10,7 +10,7 @@
     <mat-card-content class="modal-body form-container">
         <div class="row">
             <div class="col-sm-6">
-                <label class="form-label">Category</label>
+                <label class="form-label">{{'Lables.Category' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>
@@ -20,7 +20,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-6">
-                <label class="form-label">Sub Category</label>
+                <label class="form-label">{{'Lables.SubCategory' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>
@@ -30,7 +30,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-6">
-                <label class="form-label">Item</label>
+                <label class="form-label">{{'Lables.Item' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select>
                         <mat-option>
@@ -41,26 +41,26 @@
             </div>
             <div class="col-sm-6">
                 <div class="d-flex">
-                    <div class="form-label me-2">Opening Stock:</div>
+                    <div class="form-label me-2">{{'Lables.OpeningStock' |translate}}:</div>
                     <div class="form-label">0</div>
                 </div>
             </div>
             <div class="col-sm-6">
-                <label class="form-label">Units</label>
+                <label class="form-label">{{'Lables.Units' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
 
             <div class="col-sm-6">
-                <label class="form-label">Purchase Price</label>
+                <label class="form-label">{{'Lables.PurchasePrice' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
 
             <div class="col-sm-6">
-                <label class="form-label">Purchase Date</label>
+                <label class="form-label">{{'Lables.PurchaseDate' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput [matDatepicker]="picker">
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -72,19 +72,19 @@
                 <div class="file-upload border rounded-2 p-1 margin-control mt-4">
                     <button type="button" mat-flat-button class="btn" id="fileupload-button" data-toggle="tooltip"
                         data-placement="right">
-                        Upload Photo/Documents
+                        {{'Lables.UploadPhotoDocuments' |translate }}
                     </button>
                     <input type="file" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden" />
 
                     <div class="d-flex gap-2">
                         <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
-                            matTooltip="view">
+                            matTooltip="{{'Lables.view' |translate}}">
                             <mat-icon class="material-symbols-rounded">
                                 preview
                             </mat-icon>
                         </button>
                         <button type="button" mat-flat-button class="bg-danger-subtle text-danger btn-icon btn-action"
-                            matTooltip="delete">
+                            matTooltip="{{'Lables.delete' |translate}}">
                             <mat-icon class="material-symbols-rounded">
                                 delete
                             </mat-icon>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="col-sm-12">
-                <label class="form-label">Remark</label>
+                <label class="form-label">{{'Lables.Remark' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <textarea matInput rows="2"></textarea>
                 </mat-form-field>
@@ -105,8 +105,8 @@
     <mat-card-footer class="card-footer mb-3 me-2">
         <div class="d-flex align-items-center justify-content-end w-100">
             <button mat-flat-button class="btn-main-light me-2" type="button">
-                Cancel</button>
-            <button mat-flat-button class="btn-main" type="submit">Submit</button>
+                {{'Lables.cancel' |translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit">{{'Lables.Submit' |translate}}</button>
         </div>
     </mat-card-footer>
 </mat-card>

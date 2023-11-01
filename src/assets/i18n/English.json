@@ -74,8 +74,8 @@
         "BirthDate" : "Birth Date",
         "UploadPhoto" : "Upload Photo",
         "AddressDetails" : "Address Details",
-        "CurrentAddress" : "Current Details",
-        "PermanentAddress" : "Permanent Details",
+        "CurrentAddress" : "Current Address",
+        "PermanentAddress" : "Permanent Address",
         "SameAsCurrentAdd" : "Same as Current Address",
         "NoteImgFormat" : "Note: Upload only jpg,jpeg,png format",
         "HighestEducation" : "Highest Educational Qualification",
@@ -83,10 +83,10 @@
         "Stream" : "Stream",
         "DegreeSpecilization" : "Degree Specilization",
         "Board" : "Board",
-        "DegreeUniversity" : "Degree Universityn",
+        "DegreeUniversity" : "Degree University ",
         "Marks/Percentage" : "Marks/Percentage",
         "PassingYear" : "Passing Year",
-        "ProfessionalQualification" : "Professional Qualification",
+        "ProfessionalDetails" : "Professional Details",
         "WorkingSchoolName" : "Working School Name",
         "SelectRole" : "Select Role",
         "IsClusterHead" : "Is Cluster Head?",
@@ -137,7 +137,132 @@
         "NGOName" : "NGO Name",
         "Male" : "Male",
         "Female" : "Female",
-        "Search by Name / Contact No" : "Search by Name/Contact No."
+        "Search by Name / Contact No" : "Search by Name/Contact No.",
+        "OfficeUserName" : "Office User Name",
+        "Unblock/Block" : "Unblock/Block",
+        "Designation(Officer)" : "Designation (Officer)",
+        "NameofBit" : "Name of Bit",
+        "UserRegistration" : "User Registration",
+        "AddUser" : "Add User",
+        "OfficeUserRegistration" : "Office User Registration",
+        "SearchbyName/ContactNo" : "Search by Name/Contact No.",
+        "OtherRegistrationList" : "Other Registration List",
+        "OtherRegistration" : "Other Registration",
+        "AddOtherRegistration" : "Add Other Registration",
+        "Name/MobileNo": "Name/Mobile No.",
+        "OtherRegistrationDetails" : "Other Registration Details",
+        "ContactPersonDetails" : "Contact Person Details",
+        "ConactPersonName" : "Conact Person Name",
+        "ContactNo" : "Contact No.",
+        "Address" : "Address",
+        "viewSchool" : "View School Details",
+        "StudentReport" : "Student Report",
+        "Report" : "Report",
+        "SelectSubject" : "Select Subject",
+        "ExamType" : "Exam Type",
+        "FromTo" : "From - To",
+        "Startdate" : "Start date",
+        "Enddate" : "End date",
+        "AssessmentDate" : "Assessment Date",
+        "ManagementDesc" : "Management Desc",
+        "StudentGender" : "Student Gender",
+        "FullName" : "Full Name",
+        "SchoolCode" : "School Code",
+        "Center" : "Center",
+        "OfficerReport" : "Officer Report",
+        "SchoolReport" : "School Report",
+        "NGO" : "NGO",
+        "contactNo(kendra)" : "Contact No. (Kendra)",
+        "EmailId(kendra)" : "Email ID (Kendra)",
+        "AddOfficeUser" : "Add Office User",
+        "AssessedBy" : "Assessed By",
+        "AssessedStudentCount" : "Assessed Student Count",
+        "TotalStudentCount" : "Total Student Count",
+        "StartDate" : "Start Date",
+        "EndDate" : "End Date",
+        "DateOfJoining" : "Date Of Joining",
+        "CategoryList" : "Category List",
+        "AddCategory" : "Add Category",
+        "Category(Marathi)" : "Category (Marathi)",
+        "AssetManagement" : "Asset Management",
+        "SubCategoryList" : "Sub Category List",
+        "Category/Sub Category" : "Category/Sub Category",
+        "SubCategory" : "Sub Category",
+        "AddSubCategory" :"Add Sub Category",
+        "subCategory(Marathi)" : "Sub Category(Marathi)",
+        "Item" : "Item",
+        "Description" : "Description",
+        "SearchItem" : "Search Item",
+        "AddItem" : "AddItem",
+        "Item(Marathi)":"Item (Marathi)",
+        "ItemInwardList" : "Item Inward List",
+        "AddInwardList" : "Add Inward List",
+        "OpeningStock" : "Opening Stock",
+        "PurchasePrice" : "Purchase Price",
+        "PurchaseDate" : "Purchase Date",
+        "Units" : "Units",
+        "Remark" :"Remark",
+        "UploadPhotoDocuments": "Upload Photo/Documents",
+        "ItemList" : "ItemList",
+        "AddInwardItem" : "Add Inward Item",
+        "Price" : "price",
+        "InwardItem" : "Inward Item",
+        "SellDate" : "Sell Date",
+       "SellPrice" : "Sell Price",
+       "AssignTo" : "Assign To",
+       "OutwardItem" :"Outward Item",
+       "AddOutwardItem" : "Add Outward Item",
+       "ItemOutwardList" : "Item Outward List",
+       "emailId(BEOOffice)" : "Email ID(BEO Office)",
+       "contactNo(BEOOffice)" : "Contact No.(BEO Office)",
+       "StoreStockReport" : "Store Stock Report",
+       "ItemName" : "Item Name",
+       "TotalInward" : "Total Inward",
+       "TotalOutward" : "Total Outward",
+       "AvailableStock" : "Available Stock",
+       "Day" : "Day",
+       "CheckInTime" : "Check-In Time",
+       "CheckOutTime" : "Check-Out Time",
+       "Attendance" : "Attendance",
+       "Task" : "Task",
+       "ApprovalRemark" : "Approval Remark",
+       "TaskSheetList" : "TaskSheet List",
+       "AttendanceDetails" : "Attendance Details",
+       "Apply" : "Apply",
+       "TaskSheet" : "TaskSheet",
+       "SelectDate" : "Select Date",
+       "HolidayMaster" : "Holiday Master",
+       "HolidayDate" : "Holiday Date",
+       "HolidayName" : "Holiday Name",
+       "Year" : "Year" ,
+       "AddHoliday" : "Add Holiday",
+       "HolidayList" : "Holiday List",
+       "HolidayName(Marathi)" : "Holiday Name (Marathi)"
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

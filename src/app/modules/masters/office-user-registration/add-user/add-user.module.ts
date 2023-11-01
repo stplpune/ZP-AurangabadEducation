@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OfficeUserRegistrationRoutingModule } from './office-user-registration-routing.module';
-import { OfficeUserRegistrationComponent } from './office-user-registration.component';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddUserRoutingModule } from './add-user-routing.module';
+import { AddUserComponent } from './add-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -14,23 +14,21 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatRadioModule} from '@angular/material/radio';
 import { TranslateModule } from '@ngx-translate/core';
-import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.component';
 
 
 @NgModule({
   declarations: [
-    OfficeUserRegistrationComponent,
-
+    AddUserComponent
   ],
   imports: [
     CommonModule,
-    OfficeUserRegistrationRoutingModule,
+    AddUserRoutingModule,
     MatCardModule,
     MatSelectModule,
     MatIconModule,
@@ -49,7 +47,6 @@ import { GlobalTableComponent } from 'src/app/shared/global-table/global-table.c
     MatSlideToggleModule,
     MatRadioModule,
     TranslateModule,
-    GlobalTableComponent
   ]
 })
-export class OfficeUserRegistrationModule { }
+export class AddUserModule { }

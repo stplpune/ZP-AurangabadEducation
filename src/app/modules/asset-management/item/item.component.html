@@ -1,15 +1,15 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page">Asset Management
+        <li class="breadcrumb-item" aria-current="page">{{'Lables.AssetManagement' |translate}}
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Item</li>
+        <li class="breadcrumb-item active" aria-current="page">{{'Lables.Item' |translate}}</li>
     </ol>
 </nav>
 <mat-card class="plain-card">
     <mat-card-header class="card-header">
         <div class="d-lg-flex d-block justify-content-between align-items-center w-100">
             <h6 class="text-main mb-2 mb-lg-0 fw-bold">
-                Item List</h6>
+              {{'Lables.ItemList' |translate}}</h6>
                 <div class="d-flex align-items-center gap-2">
                   <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
                       <mat-icon class="material-symbols-rounded">
@@ -33,7 +33,7 @@
                 <button mat-flat-button class="btn-main" (click)="AddItem()">
                     <mat-icon class="material-symbols-rounded">add</mat-icon>
                     <span>
-                        Add Item
+                      {{'Lables.AddItem' |translate}}
                     </span>
                 </button>
 </div>
@@ -43,7 +43,7 @@
       <mat-card-header class="card-header-control form-container pt-0">
         <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
                 <div class="col-sm">
-                  <label class="form-label">Category</label>
+                  <label class="form-label"> {{'Lables.Category' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select>
                             <mat-option>Amravati</mat-option>
@@ -51,7 +51,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm">
-                  <label class="form-label">Sub Category</label>
+                  <label class="form-label">{{'Lables.SubCategory' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select>
                             <mat-option>Amravati</mat-option>
@@ -59,7 +59,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm">
-                  <label class="form-label">Search Item
+                  <label class="form-label">{{'Lables.SearchItem' |translate}}
                   </label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input minlength="2" maxlength="50" matInput>
@@ -86,49 +86,49 @@
         <mat-card-content class="card-body pt-0">
             <table mat-table [dataSource]="dataSource" class="dashboard-table">
                 <ng-container matColumnDef="srno">
-                    <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.SrNo'|translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Category">
-                    <th mat-header-cell *matHeaderCellDef> Category </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Category'|translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.Category}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="SubCategory">
-                    <th mat-header-cell *matHeaderCellDef> Sub Category </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.SubCategory'|translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.SubCategory}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Item">
-                    <th mat-header-cell *matHeaderCellDef> Item </th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Item' |translate}} </th>
                     <td mat-cell *matCellDef="let element"> {{element.Item}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Description">
-                    <th mat-header-cell *matHeaderCellDef> Description</th>
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Description' |translate}}</th>
                     <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="Action">
-                    <th mat-header-cell *matHeaderCellDef> Action
+                    <th mat-header-cell *matHeaderCellDef> {{'Lables.Action' |translate}}
                     </th>
                     <td mat-cell *matCellDef="let element let i=index">
                         <div class="d-flex gap-2">
                             <ng-container>
-                                <button mat-icon-button>
+                                <button mat-icon-button matTooltip="{{'Lables.EditTooltip' |translate}}">
                                     <mat-icon class="text-warning material-symbols-rounded">
                                         edit_square
                                     </mat-icon>
                                 </button>
                             </ng-container>
                             <ng-container>
-                                <button mat-icon-button>
+                                <button mat-icon-button matTooltip="{{'Lables.DeleteTooltip' |translate}}">
                                     <mat-icon class="text-danger material-symbols-rounded">
                                         delete
                                     </mat-icon>

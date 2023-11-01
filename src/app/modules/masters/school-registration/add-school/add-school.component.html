@@ -1,4 +1,91 @@
-<form [formGroup]="schoolRegForm" (ngSubmit)="onSubmit()">
+<form *ngIf="data?.id && !editFlag">
+    <div mat-dialog-title class="modal-header">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <h6 class="text-main mb-0 fw-bold">{{'Lables.viewSchool' | translate}}
+            </h6>
+            <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
+                <mat-icon class="material-symbols-rounded">close</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-dialog-content class="modal-body scrollbar card-body form-container">
+        <div class="row">
+            <div class="col-sm-6 border-end">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-start px-0 py-1">
+                        <span class="col-sm-6 form-label mb-0">School Name</span>
+                        <span class="col-sm-6 form-data">{{editObj?.schoolName}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">District</span>
+                        <span class="form-data">{{editObj?.district}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Kendra</span>
+                        <span class="form-data">{{editObj?.center}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Type</span>
+                        <span class="form-data">{{editObj?.schoolType}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Lowest Class</span>
+                        <span class="form-data">{{editObj?.lowestClass}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Category</span>
+                        <span class="form-data">{{'-'}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label" class="form-label" v>Type of Area</span>
+                        <span class="form-data">{{editObj?.schoolArea}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-start px-0 py-1">
+                        <span class="form-label mb-0">School Name (Marathi)</span>
+                        <span class="form-data">{{editObj?.m_SchoolName}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Taluka</span>
+                        <span class="form-data">{{editObj?.taluka}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Village</span>
+                        <span class="form-data">{{editObj?.village}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Management</span>
+                        <span class="form-data">{{'-'}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">Highest Class</span>
+                        <span class="form-data">{{editObj?.highestClass}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">UDISE Code</span>
+                        <span class="form-data">{{editObj?.schoolCode}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                        <span class="form-label">School Medium</span>
+                        <span class="form-data">{{editObj?.schoolMedium}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="modal-footer">
+        <div class="d-flex align-items-center justify-content-end w-100 gap-2">
+            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">Cancel</button>
+            <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">Edit</button>
+        </div>
+    </mat-dialog-actions>
+</form>
+
+
+<form [formGroup]="schoolRegForm" (ngSubmit)="onSubmit()" *ngIf="!data?.id || editFlag">
     <div mat-dialog-title class="modal-header">
         <div class="d-flex justify-content-between align-items-center w-100">
             <h6 class="text-main mb-0 fw-bold">{{data ?('Lables.updateSchool' | translate)
@@ -43,7 +130,7 @@
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-select formControlName="bitId">
                         <mat-option *ngFor="let bit of bitArray" [value]="bit.id">{{webStorage.languageFlag
-                            =='mr-IN' ? bit.m_BitName : bit.bitName}}</mat-option>
+                            =='mr-IN' ? bit.m_BitName :bit.bitName}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -80,7 +167,8 @@
                 <label class="form-label">{{'Lables.SchoolName' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <textarea matInput rows="2" formControlName="schoolName"
-                        (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpaces($event)" maxlength="100"></textarea>
+                        (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpaces($event)"
+                        maxlength="100"></textarea>
                     <mat-error *ngIf="f['schoolName'].hasError('pattern')">
                         {{'Lables.enterValidSchoolName' | translate}}
                     </mat-error>
@@ -143,8 +231,7 @@
                 <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput formControlName="schoolCode"
-                        (keypress)="validation.noSpacesAtStart($event); validation.onlyDigits($event);"
-                        maxlength="20">
+                        (keypress)="validation.noSpacesAtStart($event); validation.onlyDigits($event);" maxlength="20">
                 </mat-form-field>
             </div>
             <div class="col-sm-6">
@@ -173,8 +260,8 @@
                         data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
                         {{'Lables.UploadProfilePhoto' | translate}}
                     </button>
-                    <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png" id="real-file" hidden="hidden" #uploadImage
-                        (change)="imgUpload($event)" />
+                    <input formControlName="uploadImage" type="file" accept=".jpg,.jpeg,.jfif,.png" id="real-file"
+                        hidden="hidden" #uploadImage (change)="imgUpload($event)" />
 
                     <div class="d-flex gap-2">
                         <button type="button" mat-flat-button class="bg-primary-subtle text-primary btn-icon btn-action"
@@ -193,45 +280,82 @@
                 </div>
                 <p style="font-size: 11px;" class="mb-0 pt-1">{{'Lables.NoteImgFormat' | translate}}</p>
             </div>
-            <!-- <div class="col-sm-6">
-                <div class="file-upload border rounded-2 p-1">
-                    <div formArrayName="schoolDocument" *ngFor="let img of multipleImg.controls; let i = index;">
-                        <div [formGroupName]="i">
-                            <button type="button" mat-flat-button class="btn" id="fileupload-button"
-                                data-toggle="tooltip" data-placement="right" (click)="uploadGallImage.click()">
-                                {{'Lables.UploadSchoolDocuments' | translate}}
-                            </button>
-                            <input type="file" accept=".xlsx, .pdf, .doc, .txt" id="real-file" hidden="hidden"
-                                #uploadGallImage (change)="multipleImgUpload($event)" multiple />
-                        </div>
-                    </div>
-                </div>
-                <p style="font-size: 11px;" class="mb-3 pt-1">{{'Lables.NoteDocumentsFormat' | translate}}</p>
-                
-                <div class="d-flex flex-wrap gap-4 mt-4">
-                    <ng-container *ngFor="let item of docArray; let i = index">
-                        <div class="gallery">
-                            <img [src]="item.docPath" class="border" (click)="onViewDoc(i)">
-                            <div class="gallery-buttons">
-                                <button type="button" mat-icon-button class="bg-danger-subtle"
-                                    (click)="clearMultipleDoc(i)" matTooltip="{{'Lables.delete' | translate}}"
-                                    matTooltipPosition="right" matTooltipClass="tooltip">
-                                    <mat-icon class="material-symbols-rounded text-danger">delete</mat-icon>
-                                </button>
-                            </div>
-                        </div>
-                    </ng-container>
-                </div>
-                
-            </div> -->
         </div>
+        <div class="row g-2 align-items-end">
+            <!-- <div formArrayName="schoolStandardDivisions" *ngFor="let division of multipleDivision.controls; let i = index;"> -->
+                <!-- <div [formGroupName]="i"> -->
+                    <div class="col-sm">
+                        <label class="form-label">Standard</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select formControlName="standardId">
+                                <mat-option *ngFor="let lowestGroup of lowestGroupclassArray" [value]="lowestGroup.lowestClass">
+                                    {{lowestGroup.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm">
+                        <label class="form-label">Division</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select multiple formControlName="divisionId">
+                                <mat-option *ngFor="let division of divisionArray" [value]="division.id">{{webStorage.languageFlag
+                                    =='mr-IN' ? division.m_Division:
+                                    division.division}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
+            <div class="col-sm-auto">
+                <div class="margin-control">
+                    <button mat-flat-button class="btn-main btn-icon" type="button" (click)="onAddDisionStd()">
+                        <mat-icon class="material-symbols-rounded">
+                            add
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="tableDataArray?.length">
+            <table mat-table [dataSource]="tableDataArray" class="dashboard-table">
+                <ng-container matColumnDef="srNo">
+                    <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                    <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+                </ng-container>
+                <ng-container matColumnDef="standard">
+                    <th mat-header-cell *matHeaderCellDef> Standard</th>
+                    <td mat-cell *matCellDef="let element"> {{element.standardId}} </td>
+                </ng-container>
+                <ng-container matColumnDef="division">
+                    <th mat-header-cell *matHeaderCellDef> Division </th>
+                    <td mat-cell *matCellDef="let element"> {{(element.divisionId).toString()}} </td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        <!-- <button mat-icon-button matTooltip="Edit">
+                            <mat-icon class="material-symbols-rounded text-warning">
+                                edit_square
+                            </mat-icon>
+                        </button> -->
+                        <button mat-icon-button matTooltip="Delete" type="button" (click)="globalDialogOpen(i)">
+                            <mat-icon class="material-symbols-rounded text-danger">
+                                delete
+                            </mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </ng-container>
     </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
         <div class="d-flex align-items-center justify-content-end w-100 gap-2">
             <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel' |
                 translate}}</button>
             <button mat-flat-button class="btn-main" type="submit">{{data ? ('Lables.update' | translate)
-                : ('Lables.submit' | translate)}}</button>
+                :('Lables.submit' | translate)}}</button>
         </div>
     </mat-dialog-actions>
 </form>
