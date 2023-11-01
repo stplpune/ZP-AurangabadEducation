@@ -41,8 +41,9 @@ export class AddSchoolComponent {
   uploadImageFlag: boolean = false;
   editFlag: boolean = false;
   editId: any;
-  // dataSource: any;
-  tableDataArray = new Array();
+  updateLocal: boolean = false;
+  tableDataArray: any;
+  tableData = new Array();
   get f() { return this.schoolRegForm?.controls }
   displayedColumns: string[] = ['srNo', 'standard', 'division', 'action'];
 
@@ -102,17 +103,18 @@ export class AddSchoolComponent {
           ...this.webStorage.createdByProps()
         })
       ]),
-      schoolStandardDivisions: this.fb.array([
-        this.fb.group({
-          id: 0,
-          schoolId: 0,
-          standardId: 0,
-          divisionId: 0,
-          createdBy: this.webStorage.createdByProps().createdBy,
-          modifiedBy: this.webStorage.createdByProps().modifiedBy,
-          isDeleted: this.webStorage.createdByProps().isDeleted
-        })
-      ]),
+      schoolStandardDivisions: [],
+      // this.fb.array([
+      //   this.fb.group({
+      //     id: 0,
+      //     schoolId: 0,
+      //     standardId: 0,
+      //     divisionId: 0,
+      //     createdBy: this.webStorage.createdByProps().createdBy,
+      //     modifiedBy: this.webStorage.createdByProps().modifiedBy,
+      //     isDeleted: this.webStorage.createdByProps().isDeleted
+      //   })
+      // ]),
       ...this.webStorage.createdByProps()
     });
   }
@@ -121,9 +123,9 @@ export class AddSchoolComponent {
     return this.schoolRegForm.get('schoolDocument') as FormArray;
   }
 
-  get multipleDivision(): FormArray {
-    return this.schoolRegForm.get('schoolStandardDivisions') as FormArray;
-  }
+  // get multipleDivision(): FormArray {
+  //   return this.schoolRegForm.get('schoolStandardDivisions') as FormArray;
+  // }
 
   initialDropdown() {
     this.formField();
@@ -256,11 +258,14 @@ export class AddSchoolComponent {
     this.editObj ? this.f['S_AreaId'].setValue(this.editObj.s_AreaId) : '';
   }
 
-  getDivisionArray() {
+  getDivisionArray(obj?:any) {
     this.divisionArray = [];
     this.masterService.getAllStandardDivision('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.divisionArray = res.responseData : this.divisionArray = [];
+        if(this.updateLocal && obj){
+          this.f['divisionId'].setValue(obj);
+        }
       }
     });
   }
@@ -355,6 +360,8 @@ export class AddSchoolComponent {
   onAddDisionStd(){
     // this.updateValidation('true');
 
+    console.log("stdDivisionArray......: ", this.stdDivisionArray);
+
     let divisionArr = this.schoolRegForm.value.divisionId;
     this.schoolRegForm.value.divisionId = [];
 
@@ -366,10 +373,33 @@ export class AddSchoolComponent {
           this.schoolRegForm.value.divisionId.push(divisionValue);
         }
       }
+      
+      let index;
+      index = this.stdDivisionArray.filter((x) => this.editObj?.standardDivisions.filter((y: any)=> x.standardId == y.standardId));
+      console.log("index: ", index);
 
-      this.stdDivisionArray = this.stdDivisionArray.filter((x) => x.id != this.schoolRegForm.value.id);
-      let obj = {
-        id: 0,
+      // index = this.stdDivisionArray.findIndex()
+
+      
+      if(this.updateLocal == true){
+        console.log("if........");
+        
+        let obj = {
+          id: this.editObj?.standardDivisions[0].id,     //change index
+          schoolId: this.editObj?.standardDivisions[0].schoolId,
+          standardId: this.schoolRegForm.value.standardId,
+          divisionId: divisionArr[i],
+          createdBy: webStorageMethod.createdBy,
+          modifiedBy: webStorageMethod.modifiedBy,
+          isDeleted: webStorageMethod.isDeleted
+      }
+      this.stdDivisionArray.unshift(obj);
+      this.stdDivisionArray = [...this.stdDivisionArray];
+      }
+      else{
+        console.log("else........");
+        let obj = {
+          id: 0,
           schoolId: 0,
           standardId: this.schoolRegForm.value.standardId,
           divisionId: divisionArr[i],
@@ -379,50 +409,27 @@ export class AddSchoolComponent {
       }
       this.stdDivisionArray.push(obj);
       this.stdDivisionArray = [...this.stdDivisionArray];
+      }
+
     }
-    // console.log("stdDivisionArray: ", this.stdDivisionArray);
+
+    console.log("stdDivisionArray: ", this.stdDivisionArray);
 
     let formObj = {
       standardId: this.schoolRegForm.value.standardId,
-      divisionId: this.schoolRegForm.value.divisionId
+      divisionId: divisionArr,
+      divisionValue: this.schoolRegForm.value.divisionId,
     }
-
-    this.tableDataArray.push(formObj);
-    // console.log("tableDataArray: ", this.tableDataArray);
     
-    // let formArray = [];
-    // formArray.push(this.schoolRegForm.value);
-    // this.dataSource = new MatTableDataSource(formArray);
+    this.tableData.push(formObj);
+    this.tableData = [...this.tableData];
+    
+    this.tableDataArray = new MatTableDataSource(this.tableData);
     
     this.f['standardId'].setValue('');
     this.f['divisionId'].setValue('');
+    this.updateLocal = false;
   }
-
-  //#region ------------------------------------------ Open dialog and delete method start here-----------------------------------------------
-  globalDialogOpen(index: number) {
-    let dialoObj = {
-      title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete Record?' : 'तुम्हाला रेकॉर्ड हटवायचा आहे का?',
-      header: 'Delete',
-      cancelButton: this.webStorage.languageFlag == 'EN' ? 'Cancel' : 'रद्द करा',
-      okButton: this.webStorage.languageFlag == 'EN' ? 'Ok' : 'ओके'
-    }
-    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
-      width: '320px',
-      data: dialoObj,
-      disableClose: true,
-      autoFocus: false
-    })
-    deleteDialogRef.afterClosed().subscribe((result: any) => {
-      if (result == 'yes') {
-        this.onDelete(index);
-      }
-    })
-  }
-
-  onDelete(index: number){
-    this.tableDataArray.splice(index, 1);
-  }
-  //#endregion ------------------------------------------ Open dialog and delete method end here-----------------------------------------------
 
   //#region -------------------------------------------- Submit and Edit start here-----------------------------------------------------
   onSubmit() {
@@ -463,7 +470,8 @@ export class AddSchoolComponent {
       next: (res: any) => {
         if (res.statusCode == "200") {
           this.editObj = res.responseData;
-
+          console.log("editObj: ", this.editObj);
+          
           if (flag == 'Edit') {
             this.initialDropdown();
             this.uploadImg = this.editObj?.uploadImage;
@@ -477,7 +485,23 @@ export class AddSchoolComponent {
                 ...this.webStorage.createdByProps()
               }
               this.docArray.push(schoolDocumentObj);
+            });
+
+            this.stdDivisionArray = [];
+            this.stdDivisionArray = this.editObj?.standardDivisions;
+            const uniqueStd = [...new Set(this.stdDivisionArray.map((sub: any) => sub.standardId))]; 
+            
+            uniqueStd.map((x: any) => {
+              const obj = {
+                standardId: x,
+                divisionId: (this.stdDivisionArray.filter((sub: any) => sub.standardId == x )).map((res: any) => res.divisionId),
+                divisionValue:  (this.stdDivisionArray.filter((sub: any) => sub.standardId == x )).map((res: any) => res.division),
+              }
+              this.tableData.push(obj);
             })
+            this.tableDataArray = new MatTableDataSource(this.tableData);
+            console.log("this.tableData: ", this.tableData);
+            
           }
           else {
             this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : '';
@@ -487,6 +511,40 @@ export class AddSchoolComponent {
     })
   }
   //#endregion-------------------------------------------- Submit and Edit end here-----------------------------------------------------
+
+  //#region ------------------------------------------ Open dialog and delete method start here-----------------------------------------------
+  globalDialogOpen(index: number) {
+    let dialoObj = {
+      title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete Record?' : 'तुम्हाला रेकॉर्ड हटवायचा आहे का?',
+      header: 'Delete',
+      cancelButton: this.webStorage.languageFlag == 'EN' ? 'Cancel' : 'रद्द करा',
+      okButton: this.webStorage.languageFlag == 'EN' ? 'Ok' : 'ओके'
+    }
+    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
+      width: '320px',
+      data: dialoObj,
+      disableClose: true,
+      autoFocus: false
+    })
+    deleteDialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 'yes') {
+        this.onDelete(index);
+      }
+    })
+  }
+
+  onDelete(index: number){
+    this.tableData?.splice(index, 1);
+    this.tableDataArray = new MatTableDataSource(this.tableData);
+  }
+
+  onEditStandardDiv(obj: any, i: number){
+    console.log("obj: ", obj, i);
+    this.updateLocal = true;
+    this.f['standardId'].setValue(obj?.standardId);
+    this.getDivisionArray(obj?.divisionId);
+  }
+  //#endregion ------------------------------------------ Open dialog and delete method end here-----------------------------------------------
 
   //#region ----------------------------------------- Clear dropdown on change start here--------------------------------------------------
   clearDropdown(dropdown: string) {
