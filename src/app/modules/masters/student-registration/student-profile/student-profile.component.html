@@ -156,7 +156,62 @@
                     <mat-tab label="Attendance">
 
                     </mat-tab>
-                    <mat-tab label="Transfer">Content 3</mat-tab>
+                    <mat-tab label="Transfer">
+                        <div class="card">
+                            <div class="card-header bg-transparent fs-main fw-bold text-main">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Transfer History</span>
+                                    <button class="btn bg-danger-subtle text-danger btn-sm fs-main fw-bold"
+                                        (click)="openTransferDialog()">Transfer</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table dashboard-table mb-0 table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2">Sr. No.</th>
+                                            <th colspan="2" class="text-center">Location</th>
+                                            <th colspan="2" class="text-center">Duration</th>
+                                            <th rowspan="2">Status</th>
+                                            <th rowspan="2">Reason</th>
+                                        </tr>
+                                        <tr>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <div class="fw-bold">Shri. Shailesh Primary School</div>
+                                                <small class="text-secondary">Village, Taluka, District</small>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold">Shri. Rajesh Primary School</div>
+                                                <small class="text-secondary">Village, Taluka, District</small>
+                                            </td>
+                                            <td>01-05-2012</td>
+                                            <td>04-04-2015</td>
+                                            <td>
+                                                <span
+                                                    class="badge bg-success-subtle text-success fw-bold fs-main">Active</span>
+                                                <span
+                                                    class="badge bg-primary-subtle text-primary fw-bold fs-main">Retired</span>
+                                                <span
+                                                    class="badge bg-danger-subtle text-danger fw-bold fs-main">Suspended</span>
+                                            </td>
+                                            <td>
+                                                Due to Health issue
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </mat-tab>
                 </mat-tab-group>
             </div>
         </div>
