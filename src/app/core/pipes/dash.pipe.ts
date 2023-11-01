@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true
 })
 export class DashPipe implements PipeTransform {
-
   // transform(value: unknown, ...args: unknown[]): unknown {
   //   return null;
   // }

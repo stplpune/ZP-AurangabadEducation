@@ -316,7 +316,7 @@
                 </div>
             </div>
         </div>
-        <ng-container *ngIf="tableDataArray?.length">
+        <ng-container *ngIf="stdDivisionArray?.length">
             <table mat-table [dataSource]="tableDataArray" class="dashboard-table">
                 <ng-container matColumnDef="srNo">
                     <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
@@ -328,16 +328,16 @@
                 </ng-container>
                 <ng-container matColumnDef="division">
                     <th mat-header-cell *matHeaderCellDef> Division </th>
-                    <td mat-cell *matCellDef="let element"> {{(element.divisionId).toString()}} </td>
+                    <td mat-cell *matCellDef="let element"> {{(element.divisionValue).toString()}} </td>
                 </ng-container>
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
                     <td mat-cell *matCellDef="let element; let i = index">
-                        <!-- <button mat-icon-button matTooltip="Edit">
+                        <button mat-icon-button matTooltip="Edit" type="button" (click)="onEditStandardDiv(element, i)">
                             <mat-icon class="material-symbols-rounded text-warning">
                                 edit_square
                             </mat-icon>
-                        </button> -->
+                        </button>
                         <button mat-icon-button matTooltip="Delete" type="button" (click)="globalDialogOpen(i)">
                             <mat-icon class="material-symbols-rounded text-danger">
                                 delete
