@@ -281,41 +281,41 @@
                 <p style="font-size: 11px;" class="mb-0 pt-1">{{'Lables.NoteImgFormat' | translate}}</p>
             </div>
         </div>
-        <div class="row g-2 align-items-end">
-            <!-- <div formArrayName="schoolStandardDivisions" *ngFor="let division of multipleDivision.controls; let i = index;"> -->
-                <!-- <div [formGroupName]="i"> -->
-                    <div class="col-sm">
-                        <label class="form-label">Standard</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="standardId">
-                                <mat-option *ngFor="let lowestGroup of lowestGroupclassArray" [value]="lowestGroup.lowestClass">
-                                    {{lowestGroup.value}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
+        <form [formGroup]="stdDivisionForm" #formDirective="ngForm">
+            <div class="row g-2 align-items-end">
+                <div class="col-sm">
+                    <label class="form-label">Standard</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select formControlName="standardId">
+                            <mat-option *ngFor="let lowestGroup of lowestGroupclassArray"
+                                [value]="lowestGroup.lowestClass">
+                                {{lowestGroup.value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm">
+                    <label class="form-label">Division</label>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-select multiple formControlName="divisionId">
+                            <mat-option *ngFor="let division of divisionArray"
+                                [value]="division.id">{{webStorage.languageFlag
+                                =='mr-IN' ? division.m_Division:
+                                division.division}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-auto">
+                    <div class="margin-control">
+                        <button mat-flat-button class="btn-main btn-icon" type="submit" (click)="onAddDisionStd()">
+                            <mat-icon class="material-symbols-rounded">
+                                add
+                            </mat-icon>
+                        </button>
                     </div>
-                    <div class="col-sm">
-                        <label class="form-label">Division</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select multiple formControlName="divisionId">
-                                <mat-option *ngFor="let division of divisionArray" [value]="division.id">{{webStorage.languageFlag
-                                    =='mr-IN' ? division.m_Division:
-                                    division.division}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                <!-- </div> -->
-            <!-- </div> -->
-            <div class="col-sm-auto">
-                <div class="margin-control">
-                    <button mat-flat-button class="btn-main btn-icon" type="button" (click)="onAddDisionStd()">
-                        <mat-icon class="material-symbols-rounded">
-                            add
-                        </mat-icon>
-                    </button>
                 </div>
             </div>
-        </div>
+        </form>
         <ng-container *ngIf="stdDivisionArray?.length">
             <table mat-table [dataSource]="tableDataArray" class="dashboard-table">
                 <ng-container matColumnDef="srNo">
@@ -328,7 +328,7 @@
                 </ng-container>
                 <ng-container matColumnDef="division">
                     <th mat-header-cell *matHeaderCellDef> Division </th>
-                    <td mat-cell *matCellDef="let element"> {{(element.divisionValue).toString()}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.divisionValue}} </td>
                 </ng-container>
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
