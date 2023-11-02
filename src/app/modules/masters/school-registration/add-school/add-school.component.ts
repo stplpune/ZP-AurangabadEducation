@@ -18,7 +18,6 @@ import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialo
   styleUrls: ['./add-school.component.scss']
 })
 export class AddSchoolComponent {
-
   schoolRegForm!: FormGroup;
   districtArray = new Array();
   talukaArray = new Array();
@@ -31,6 +30,7 @@ export class AddSchoolComponent {
   schoolManagementArray = new Array();
   lowestGroupclassArray = new Array();
   highestGroupclassArray = new Array();
+  standardArray = new Array();
   areaArray = new Array();
   divisionArray = new Array();
   docArray = new Array();
@@ -108,17 +108,6 @@ export class AddSchoolComponent {
         })
       ]),
       schoolStandardDivisions: [],
-      // this.fb.array([
-      //   this.fb.group({
-      //     id: 0,
-      //     schoolId: 0,
-      //     standardId: 0,
-      //     divisionId: 0,
-      //     createdBy: this.webStorage.createdByProps().createdBy,
-      //     modifiedBy: this.webStorage.createdByProps().modifiedBy,
-      //     isDeleted: this.webStorage.createdByProps().isDeleted
-      //   })
-      // ]),
       ...this.webStorage.createdByProps()
     });
   }
@@ -130,12 +119,8 @@ export class AddSchoolComponent {
     })
   }
 
-  get multipleImg(): FormArray {
-    return this.schoolRegForm.get('schoolDocument') as FormArray;
-  }
-
-  // get multipleDivision(): FormArray {
-  //   return this.schoolRegForm.get('schoolStandardDivisions') as FormArray;
+  // get multipleImg(): FormArray {
+  //   return this.schoolRegForm.get('schoolDocument') as FormArray;
   // }
 
   initialDropdown() {
@@ -284,6 +269,7 @@ export class AddSchoolComponent {
 
   getHighestGroupClass() {
     this.f['highestClass'].setValue('');
+    this.sf['standardId'].setValue('');
     let lowestClass = this.schoolRegForm.value.lowestClass;
 
     let findObj = this.lowestGroupclassArray.filter((res: any) => {
@@ -292,6 +278,17 @@ export class AddSchoolComponent {
     this.highestGroupclassArray = findObj;
     this.editObj ? this.f['highestClass'].setValue(this.editObj.highestClass) : '';
   }
+
+  getStandardArray(){
+    let highClass = this.schoolRegForm.value.highestClass;
+
+    let findObj = this.highestGroupclassArray.filter((res: any) => {
+      return res.lowestClass <= highClass
+    })
+    this.standardArray = findObj;
+  }
+
+
   //#endregion------------------------------------------ Dropdown with dependencies end here------------------------------------------------
 
   //#region --------------------------------- Upload, view, delete img and multiple document start here-------------------------------------
