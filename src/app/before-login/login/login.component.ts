@@ -93,7 +93,7 @@ export class LoginComponent {
             this.loginFlag = true;
             sessionStorage.setItem('loggedIn', 'true');
             let loginData = this.AESEncryptDecryptService.encrypt(JSON.stringify(res?.responseData?.responseData1[0]));
-            localStorage.setItem('loggedInData', loginData);
+            localStorage.setItem('loggedInZPEductationData', loginData); 
             this.router.navigate(['/dashboard']);
             this.formDirective.resetForm();  
           }

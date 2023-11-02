@@ -26,6 +26,11 @@ export class AddUserComponent {
   talukaArraySecond = new Array();
   centerArraySecond = new Array();
   villageArray = new Array();
+  educationQualArr = new Array();
+  streamArr = new Array();
+  degreeArr = new Array();
+  schoolArr = new Array();
+  roleArr = new Array();
   uploadImg: any;
   uploadImageFlag: boolean = false;
   checked: boolean = false;
@@ -52,38 +57,38 @@ export class AddUserComponent {
 
   formField() {
     this.userRegForm = this.fb.group({
-      id: 0,
+      id: [0],
       name: [''],
       m_Name: [''],
       mobileNo: [''],
       emailId: [''],
-      genderId: 0,
+      genderId: [0],
       dob: [''],
       address: [''],
-      schoolId: 0,
-      designationLevelId: 0,
-      designationId: 0,
-      stateId: 0,
+      schoolId: [0],
+      designationLevelId: [0],
+      designationId: [0],
+      stateId: [0],
       districtId: 0,
       talukaId: 0,
       kendraMobileNo: [''],
       kendraEmailId: [''],
       beoEmailId: [''],
       beoMobileNo: [''],
-      bitId: 0,
-      centerId: 0,
-      agencyId: 0,
-      userId: 0,
+      bitId: [0],
+      centerId: [0],
+      agencyId: [0],
+      userId: [0],
       uploadImage: [''],
-      isHeadMaster: false,
-      teacherId: 0,
+      isHeadMaster: [false],
+      teacherId: [0],
       currentAddress: [''], //extra
       permentAddress: [''], //extra
-      isClassTeacher: false,//extra
-      districtIdSecond: false,//extra
-      talukaIdSecond: false,//extra
-      centerIdSecond: false,//extra
-      villageIdSecond: false,//extra
+      isClassTeacher: [false],//extra
+      // districtIdSecond: [false],//extra remove
+      // talukaIdSecond: [false],//extra removed
+      // centerIdSecond: [false],//extra removed
+      villageIdSecond: [false],//extra removed 
       officerCenterSchoolModel: [
         {
           id: 0,
@@ -93,6 +98,45 @@ export class AddUserComponent {
           addUpdateBy: 0
         }
       ],
+      teacherCode: [""],
+      current_DistrictId: [0],
+      current_TalukaId: [0],
+      current_VillageId: [0],
+      permanentAddress: [""],
+      permanent_DistrictId: [0],
+      permanent_TalukaId: [0],
+      permanent_VillageId: [0],
+      t_DistrictId: [0],
+      t_TalukaId: [0],
+      t_CenterId: [0],
+      t_VillageId: [0],
+      t_SchoolId: [0],
+      t_DesignationLevelId: [0],
+      t_DesignationId: [0],
+      t_RoleId: [0],
+      joiningDate: [""],
+      isClusterHead: [true],
+      officerId: [0],
+      t_UserId: [0],
+      teacherClassesModel: [
+        {
+          "id": [0],
+          "teacherId": [0],
+          "standardId": [0],
+          "divisionId": [0],
+          // "isClassTeacher": [true],
+          "createdBy": [0],
+          "isDeleted": [true]
+        }
+      ],
+      educationQualificationId: [0],
+      "streamId": [0],
+      "degreeSpecializationId": [0],
+      "boardId": [0],
+      "universityId": [0],
+      "percentage": [""],
+      "passingYear": [""],
+      "localId": [0],
       lan: this.webStorage.languageFlag,
       ...this.webStorage.createdByProps()
     })
@@ -120,7 +164,7 @@ export class AddUserComponent {
 
   getTaluka(label?: string) {
     this.talukaArray = [];
-    let districtId = label == 'Taluka' ? this.userRegForm.value.districtIdSecond : this.userRegForm.value.districtId;
+    let districtId = label == 'Taluka' ? this.userRegForm.value.t_DistrictId : this.userRegForm.value.districtId;
     this.masterService.getAllTaluka('', districtId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.talukaArray = res.responseData : this.talukaArray = [];
@@ -141,7 +185,7 @@ export class AddUserComponent {
 
   getCenter(label?: string) {
     this.centerArray = [];
-    let talukaId = label == 'Center' ? this.userRegForm.value.talukaIdSecond : this.userRegForm.value.talukaId;
+    let talukaId = label == 'Center' ? this.userRegForm.value.t_TalukaId : this.userRegForm.value.talukaId;
     this.masterService.getAllCenter('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
@@ -162,13 +206,72 @@ export class AddUserComponent {
 
   getVillage() {
     this.villageArray = [];
-    let centerId = this.userRegForm.value.centerIdSecond;
+    let centerId = this.userRegForm.value.t_CenterId;
       this.masterService.getAllVillage('', centerId).subscribe({
         next: (res: any) => {
           res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
         }
       });
   }
+
+  getAllSchool(){
+    let formValue = this.userRegForm.value
+    this.schoolArr = [];
+      this.masterService.getAllSchool('', formValue.t_DistrictId, formValue.t_TalukaId, formValue.t_CenterId, formValue.t_VillageId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.schoolArr = res.responseData : this.schoolArr = [];
+        }
+      });
+  }
+
+  
+  getEducationQualDrop(){
+    this.educationQualArr = [];
+    // let centerId = this.userRegForm.value.t_CenterId;
+    //   this.masterService.getEducationalQualifications('').subscribe({
+    //     next: (res: any) => {
+    //       res.statusCode == "200" ? this.educationQualArr = res.responseData : this.educationQualArr = [];
+    //     }
+    //   });
+    
+    this.educationQualArr = [{id: 1, value: "S. S. C"},{id: 2, value: "H. S. C."},{id: 3, value: "Graduate"}]
+  }
+
+  getStream(){
+    this.streamArr = [];
+    //   this.masterService.getStreams('').subscribe({
+    //     next: (res: any) => {
+    //       res.statusCode == "200" ? this.streamArr = res.responseData : this.streamArr = [];
+    //     }
+    //   });
+    
+    this.streamArr = [{id: 1, value: "Arts"},{id: 2, value: "Commerce"},{id: 3, value: "Science"}]
+
+  }
+
+  getDegreeSpecilization(){
+    this.degreeArr = [];
+    //   this.masterService.getStreams('').subscribe({
+    //     next: (res: any) => {
+    //       res.statusCode == "200" ? this.degreeArr = res.responseData : this.degreeArr = [];
+    //     }
+    //   });
+    
+    this.degreeArr = [{id: 1, value: "Economy"},{id: 2, value: "history"},{id: 3, value: "Science"}]
+  }
+
+  getRole(){
+    this.roleArr = [];
+    //   this.masterService.getStreams('').subscribe({
+    //     next: (res: any) => {
+    //       res.statusCode == "200" ? this.roleArr = res.responseData : this.roleArr = [];
+    //     }
+    //   });
+    
+    this.roleArr = [{id: 1, value: "Headmaster"},{id: 2, value: "Teacher"}]
+  }
+
+
   //#endregion ------------------------------------------ Dropdown with dependencies end from here ----------------------------------------
 
   //#region ------------------------------------------- Image upload, view and delete start here ------------------------------------------
@@ -228,13 +331,16 @@ export class AddUserComponent {
     }
   }
 
+  onchangeCheckBox(event: any){
+    (event.checked == true) ? (this.getEducationQualDrop(), this.getStream(), this.getDegreeSpecilization(), this.getRole()) : ''
+  }
+
   onSubmit(){
     let formValue = this.userRegForm.value;
     let url = this.editObj ? 'UpdateOfficer' : 'AddOfficer';
-
     if(!this.userRegForm.valid){
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
-      return 
+      return
     }
     else{
       this.ngxSpinner.show();

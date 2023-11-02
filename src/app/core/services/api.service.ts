@@ -38,7 +38,7 @@ export class ApiService {
   }
 
   setHttp(type: string, url: string, isHeader: Boolean, obj: any, params: any, baseUrl: any) {
-    let checkLOginData: any = localStorage.getItem('loggedInData');
+    let checkLOginData: any = localStorage.getItem('loggedInZPEductationData');
     if (checkLOginData && this.tokanExpiredFlag == false && isHeader) {
       let tokenExp = JSON.parse(checkLOginData);
       let expireAccessToken: any = (Math.round(new Date(tokenExp.responseData1.expireAccessToken).getTime() / 1000));
@@ -86,10 +86,10 @@ export class ApiService {
     let callRefreshTokenAPI = this.http.post('', obj);
     callRefreshTokenAPI.subscribe((res: any) => {
       if (res.statusCode === "200") {
-        let loginObj: any = localStorage.getItem('loggedInData');
+        let loginObj: any = localStorage.getItem('loggedInZPEductationData');
         loginObj = JSON.parse(loginObj);
         loginObj.responseData3 = res.responseData;
-        localStorage.setItem('loggedInData', JSON.stringify(loginObj));
+        localStorage.setItem('loggedInZPEductationData', JSON.stringify(loginObj));
         this.tokanExpiredFlag = false;
       }
       else if (res.statusCode === "409") {

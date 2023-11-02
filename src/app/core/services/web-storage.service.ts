@@ -24,14 +24,14 @@ export class WebStorageService {
   }
 
   checkUserIsLoggedIn() { // check user isLoggedIn or not
-    if (localStorage.getItem('loggedInData'))
+    if (localStorage.getItem('loggedInZPEductationData'))
       return true;
     else return false;
   }
 
   getLoggedInLocalstorageData() { //get all logged in data
     if (this.checkUserIsLoggedIn() == true) {
-      var decryptData = JSON.parse(this.AESEncryptDecryptService.decrypt(localStorage['loggedInData']));
+      var decryptData = JSON.parse(this.AESEncryptDecryptService.decrypt(localStorage['loggedInZPEductationData']));
       let data = decryptData;
       return data;
     }
