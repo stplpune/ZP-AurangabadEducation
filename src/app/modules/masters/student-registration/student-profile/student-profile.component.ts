@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { UserTransferComponent } from 'src/app/modules/user-transfer/user-transfer.component';
 
 @Component({
   selector: 'app-student-profile',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./student-profile.component.scss']
 })
 export class StudentProfileComponent {
-
+  constructor(public dialog: MatDialog) { }
+  openTransferDialog() {
+    this.dialog.open(UserTransferComponent, {
+      width: '650px'
+    });
+  }
 }

@@ -36,16 +36,17 @@ export class DownloadPdfExcelService {
       if (rows.length === 1) {
       } else if (data.row.index === rows.length - 1) {
         doc.setFontSize("10");
-        doc.setFillColor(255, 255, 255);
-      }
+        doc.setFillColor(255, 255, 255);     
+       }
+      
     };
     var outputArr = result.map((r: any) => Object.keys(r).map(e => r[e]));
     doc.autoTable(keyData, outputArr, {
       startY: (25),
-      rowPageBreak: 'avoid',
+      rowPageBreak: 'always',
       theme: 'grid',
       headStyles: { fillColor: "#1e94a4" },
-      margin: { left: 5, right: 5 },
+      margin: { top: 25 },
       columnStyles: columnWidthObj,
       willDrawCell: drawCell,
 
@@ -57,10 +58,10 @@ export class DownloadPdfExcelService {
         doc.setFontSize(13);
         doc.text(objData.topHedingName, 100, 8, "center");
 
-        if (objData?.timePeriod != null) {
-          doc.setFontSize(8);
-          doc.text(objData.timePeriod, 11, 14, "left");
-        }
+        // if (objData?.timePeriod != null) {
+        //   doc.setFontSize(8);
+        //   doc.text(objData.timePeriod, 11, 14, "left");
+        // }
 
         doc.setFontSize(8);
         doc.text(objData.createdDate, 200, 10, "right");
@@ -68,8 +69,8 @@ export class DownloadPdfExcelService {
         doc.setLineWidth(0.2);
         doc.line(12, 13, 200, 13);
 
-        doc.setLineWidth(0.2);
-        doc.line(12, 286, 200, 286);
+        // doc.setLineWidth(0.2);
+        // doc.line(12, 286, 200, 286);
 
         doc.setFontSize(8);
         doc.text('Note:This is a system generated File.', 200, 290, "right");

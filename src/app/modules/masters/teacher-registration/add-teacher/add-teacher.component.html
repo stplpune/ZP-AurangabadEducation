@@ -16,19 +16,19 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.Teacher' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="teacherName">
+                    <input matInput formControlName="name">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.Teacher(Marathi)' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="m_TeacherName">
+                    <input matInput formControlName="m_Name">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.TeacherID' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="teacherId">
+                    <input matInput formControlName="teacherCode">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
@@ -59,13 +59,13 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.BirthDate' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input formControlName="birthDate" matInput [matDatepicker]="topicker" (click)="topicker.open()"
-                        readonly (dateChange)="CalculateAge()">
-                    <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
-                    <mat-datepicker #topicker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker" (click)="picker.open()"
+                        readonly (dateChange)="CalculateAge()" formControlName="dob">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4" *ngIf="teacherRegForm.value.birthDate && age > 0">
+            <div class="col-sm-4" *ngIf="teacherRegForm.value.dob && age > 0">
                 <div class="col-sm-6">
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput value="{{age}} Years">
@@ -153,7 +153,7 @@
                                 </div>
                             </label>
                             <mat-form-field appearance="outline" class="w-100">
-                                <textarea matInput rows="3" formControlName="permentAddress"></textarea>
+                                <textarea matInput rows="3" formControlName="permanentAddress"></textarea>
                             </mat-form-field>
                         </div>
                         <!-- <div class="col-sm-4 w-100">
