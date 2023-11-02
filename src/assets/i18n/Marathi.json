@@ -238,7 +238,9 @@
         "Year" : "वर्ष" ,
         "AddHoliday" : "सुट्टी जोडा",
         "HolidayList" : "सुट्टीची यादी",
-        "HolidayName(Marathi)" : "सुट्टीचे नाव (मराठी)"
+        "HolidayName(Marathi)" : "सुट्टीचे नाव (मराठी)",
+        "HolidayRegistration" : "सुट्टी नोंदणी"
+        
 
 
 
