@@ -1,15 +1,15 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-      <li class="breadcrumb-item" aria-current="page">Attendance Details
+      <li class="breadcrumb-item" aria-current="page">{{'Lables.AttendanceDetails' |translate}}
       </li>
-      <li class="breadcrumb-item active" aria-current="page">Attendance Report</li>
+      <li class="breadcrumb-item active" aria-current="page">{{'Lables.AttendanceReport' |translate}}</li>
   </ol>
 </nav>
 <mat-card class="plain-card">
   <mat-card-header class="card-header">
       <div class="d-lg-flex d-block justify-content-between align-items-center w-100">
           <h6 class="text-main mb-2 mb-lg-0 fw-bold">
-Attendance Report List</h6>
+            {{'Lables.AttendanceReportList' |translate}}</h6>
 <div class="d-flex align-items-center gap-2">
   <button mat-button [matMenuTriggerFor]="beforeMenu" class="btn-icon bg-dark-subtle text-dark" matTooltip="{{'Lables.DownloadTooltip' | translate}}">
       <mat-icon class="material-symbols-rounded">
@@ -37,7 +37,7 @@ Attendance Report List</h6>
   <mat-card-header class="card-header-control form-container pt-0">
     <div class="row align-items-end w-100 justify-content-start g-2 mb-3">
       <div class="col-sm-2">
-        <label class="form-label">District</label>
+        <label class="form-label">{{'Lables.district' |translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
             <mat-select>
                 <mat-option>Amravati</mat-option>
@@ -45,7 +45,7 @@ Attendance Report List</h6>
         </mat-form-field>
     </div>
       <div class="col-sm-2">
-        <label class="form-label">Taluka</label>
+        <label class="form-label">{{'Lables.taluka' |translate}}</label>
         <mat-form-field appearance="outline" class="w-100">
             <mat-select>
                 <mat-option>Amravati</mat-option>
@@ -53,7 +53,7 @@ Attendance Report List</h6>
         </mat-form-field>
     </div>
     <div class="col-sm-2">
-      <label class="form-label">Kendra</label>
+      <label class="form-label">{{'Lables.kendra' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
           <mat-select>
               <mat-option>Amravati</mat-option>
@@ -61,7 +61,7 @@ Attendance Report List</h6>
       </mat-form-field>
   </div>
     <div class="col-sm-2">
-      <label class="form-label">Village</label>
+      <label class="form-label">{{'Lables.village' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select>
             <mat-option>Amravati</mat-option>
@@ -69,7 +69,7 @@ Attendance Report List</h6>
     </mat-form-field>
   </div>
     <div class="col-sm-4">
-      <label class="form-label">School</label>
+      <label class="form-label">{{'Lables.School' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select>
             <mat-option>Amravati</mat-option>
@@ -77,7 +77,7 @@ Attendance Report List</h6>
     </mat-form-field>
   </div>
     <div class="col-sm-2">
-      <label class="form-label">Select Date</label>
+      <label class="form-label">{{'Lables.SelectDate' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
   <input matInput [matDatepicker]="picker">
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -85,7 +85,7 @@ Attendance Report List</h6>
     </mat-form-field>
   </div>
     <div class="col-sm-4">
-      <label class="form-label">Teacher Name</label>
+      <label class="form-label">{{'Lables.TeacherName' |translate}}</label>
       <mat-form-field appearance="outline" class="w-100">
         <input matInput>
     </mat-form-field>
@@ -110,46 +110,46 @@ Attendance Report List</h6>
 <mat-card-content class="card-body pt-0">
   <table mat-table [dataSource]="dataSource" class="dashboard-table">
       <ng-container matColumnDef="srno">
-          <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.SrNo' |translate}} </th>
           <td mat-cell *matCellDef="let element"> {{element.srno}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Teacher ">
           <th mat-header-cell *matHeaderCellDef>
-            Teacher ID </th>
+            {{'Lables.TeacherID' |translate}} </th>
           <td mat-cell *matCellDef="let element"> {{element.Teacher}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="TeacherName">
-          <th mat-header-cell *matHeaderCellDef> Teacher Name </th>
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.TeacherName' |translate}} </th>
           <td mat-cell *matCellDef="let element"> {{element.TeacherName}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="MobileNo">
-          <th mat-header-cell *matHeaderCellDef> Mobile No </th>
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.MobileNo' |translate}} </th>
           <td mat-cell *matCellDef="let element"> {{element.MobileNo}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="PresentDays">
-          <th mat-header-cell *matHeaderCellDef> Present Days
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.PresentDays' |translate}}
           </th>
           <td mat-cell *matCellDef="let element"> {{element.PresentDays}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="AbsentDays">
-          <th mat-header-cell *matHeaderCellDef> Absent Days
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.AbsentDays' |translate}}
           </th>
           <td mat-cell *matCellDef="let element"> {{element.AbsentDays}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="TotalHoliday">
-          <th mat-header-cell *matHeaderCellDef> Total Holiday
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.TotalHoliday' |translate}}
 
           </th>
           <td mat-cell *matCellDef="let element"> {{element.TotalHoliday}} </td>
@@ -157,26 +157,26 @@ Attendance Report List</h6>
 
 
       <ng-container matColumnDef="TotalWeek">
-          <th mat-header-cell *matHeaderCellDef> Total Week Offs
+          <th mat-header-cell *matHeaderCellDef> {{'Lables.TotalWeekOffs' |translate}}
           </th>
           <td mat-cell *matCellDef="let element"> {{element.TotalWeek}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Manual">
-          <th mat-header-cell *matHeaderCellDef>Manual Att.
+          <th mat-header-cell *matHeaderCellDef>{{'Lables.ManualAtt' |translate}}
           </th>
           <td mat-cell *matCellDef="let element"> {{element.Manual}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Submitted">
-          <th mat-header-cell *matHeaderCellDef>Submitted Att
+          <th mat-header-cell *matHeaderCellDef>{{'Lables.SubmittedAtt' |translate}}
           </th>
           <td mat-cell *matCellDef="let element"> {{element.Submitted}} </td>
       </ng-container>
 
       <ng-container matColumnDef="ManualApproved">
-          <th mat-header-cell *matHeaderCellDef>Manual Att. Approved
+          <th mat-header-cell *matHeaderCellDef>{{'Lables.ManualAttApproved' |translate}}
           </th>
           <td mat-cell *matCellDef="let element"> {{element.ManualApproved}} </td>
       </ng-container>

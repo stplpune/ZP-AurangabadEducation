@@ -42,6 +42,7 @@ export class AddSchoolComponent {
   editFlag: boolean = false;
   editId: any;
   updateLocal: boolean = false;
+  index!:number;
   tableDataArray: any;
   tableData = new Array();
   get f() { return this.schoolRegForm?.controls }
@@ -373,27 +374,20 @@ export class AddSchoolComponent {
           this.schoolRegForm.value.divisionId.push(divisionValue);
         }
       }
-      
-      let index;
-      index = this.stdDivisionArray.filter((x) => this.editObj?.standardDivisions.filter((y: any)=> x.standardId == y.standardId));
-      console.log("index: ", index);
-
-      // index = this.stdDivisionArray.findIndex()
-
-      
-      if(this.updateLocal == true){
+    
+      if(this.updateLocal == true){        
         console.log("if........");
         
         let obj = {
-          id: this.editObj?.standardDivisions[0].id,     //change index
-          schoolId: this.editObj?.standardDivisions[0].schoolId,
+          id: this.editObj?.standardDivisions[this.index].id,     //change index
+          schoolId: this.editObj?.standardDivisions[this.index].schoolId,
           standardId: this.schoolRegForm.value.standardId,
           divisionId: divisionArr[i],
           createdBy: webStorageMethod.createdBy,
           modifiedBy: webStorageMethod.modifiedBy,
           isDeleted: webStorageMethod.isDeleted
       }
-      this.stdDivisionArray.unshift(obj);
+      this.stdDivisionArray.push(obj);
       this.stdDivisionArray = [...this.stdDivisionArray];
       }
       else{
@@ -421,14 +415,18 @@ export class AddSchoolComponent {
       divisionValue: this.schoolRegForm.value.divisionId,
     }
     
-    this.tableData.push(formObj);
+    
+    this.updateLocal == true ? (console.log("hiii"), this.tableData[this.index] = formObj) : this.tableData.push(formObj);
     this.tableData = [...this.tableData];
     
     this.tableDataArray = new MatTableDataSource(this.tableData);
+    console.log("this.tableData ", this.tableData );
+    
     
     this.f['standardId'].setValue('');
     this.f['divisionId'].setValue('');
     this.updateLocal = false;
+    console.log("stdDivisionArray: ", this.stdDivisionArray);
   }
 
   //#region -------------------------------------------- Submit and Edit start here-----------------------------------------------------
@@ -535,12 +533,19 @@ export class AddSchoolComponent {
 
   onDelete(index: number){
     this.tableData?.splice(index, 1);
+    let standardId = this.stdDivisionArray[index].standardId;
+    console.log("i", index);
+    let i = this.stdDivisionArray.filter((x: any) => x.standardId == standardId);
+    console.log("standardId", i);
+    
+    // this.stdDivisionArray.splice()
     this.tableDataArray = new MatTableDataSource(this.tableData);
   }
 
   onEditStandardDiv(obj: any, i: number){
     console.log("obj: ", obj, i);
     this.updateLocal = true;
+    this.index = i;
     this.f['standardId'].setValue(obj?.standardId);
     this.getDivisionArray(obj?.divisionId);
   }
