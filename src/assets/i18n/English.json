@@ -238,7 +238,46 @@
        "AddHoliday" : "Add Holiday",
        "HolidayList" : "Holiday List",
        "HolidayName(Marathi)" : "Holiday Name (Marathi)",
-       "HolidayRegistration" : "Holiday Registration"
+       "HolidayRegistration" : "Holiday Registration",
+       "AttendanceReport" : "Attendance Report",
+       "PresentDays" : "Present Days",
+       "AbsentDays" : "Absent Days",
+       "TotalHoliday" : "Total Holiday",
+       "TotalWeekOffs" : "Total Week Offs",
+       "ManualAtt" : "Manual Att",
+      "SubmittedAtt" : "Submitted Att",
+      "ManualAttApproved" : "Manual Att Approved",
+      "AttendanceReportList" : "Attendance Report List",
+      "TeacherName": "Teacher Name",
+      "AttendanceApprovalList" : "Attendance Approval List",
+      "ApprovalStatus" : "Approval Status",
+      "TeacherCode" : "Teacher Code",
+      "Date" : "Date",
+      "Search" : "Search",
+      "AddStandardSubject" : "Add Standard Subject",
+      "StandardSubject" : "Standard Subject",
+      "EnterSubject" : "Enter Subject",
+      "Subject" : "Subject",
+      "Setting" : "Setting",
+      "AddStandard/Subject" : "AddStandard/Subject",
+      "SelectStandard" : "Select Standard",
+      "QuestionType" : "Question Type",
+      "SelectMultipleOption" : "Select Multiple Option",
+      "AddQuestion" : "Add Question",
+      "AssessmentConfiguration" : "Assessment Configuration",
+      "EnterQuestion" : "Enter Question",
+      "SelectClass" : "Select Class",
+      "EducationalYear" : "Educational Year",
+      "Parameter" : "Parameter"
+
+
+
+
+
+
+
+
+
 
 
 

@@ -239,8 +239,48 @@
         "AddHoliday" : "सुट्टी जोडा",
         "HolidayList" : "सुट्टीची यादी",
         "HolidayName(Marathi)" : "सुट्टीचे नाव (मराठी)",
-        "HolidayRegistration" : "सुट्टी नोंदणी"
-        
+        "HolidayRegistration" : "सुट्टी नोंदणी",
+        "AttendanceReport" : "उपस्थिती अहवाल",
+        "PresentDays" : "सध्याचे दिवस",
+        "AbsentDays" : "अनुपस्थित दिवस",
+        "TotalHoliday" : "एकूण सुट्टी",
+        "TotalWeekOffs" : "एकूण आठवड्याची सुट्टी",
+        "ManualAtt" : "मॅन्युअल उपस्थिती",
+       "SubmittedAtt" : "सादर केलेली उपस्थिती",
+       "ManualAttApproved" : "मॅन्युअल उपस्थिती मंजूर",
+       "AttendanceReportList" : "उपस्थिती अहवाल यादी",
+       "TeacherName": "शिक्षकाचे नाव",
+       "AttendanceApprovalList" : "उपस्थिती मान्यता यादी",
+       "ApprovalStatus" : "मंजुरीची स्थिती",
+       "TeacherCode" : "शिक्षक कोड",
+       "Date" : "तारीख",
+       "Search" : "शोध",
+       "AddStandardSubject" : "मानक विषय जोडा",
+       "SelectStandard" : "मानक निवडा",
+       "EnterSubject" : "विषय प्रविष्ट करा",
+       "Subject" : "विषय",
+       "Setting" : "सेटिंग",
+       "AddStandard/Subject" : "मानक/विषय जोडा",
+       "StandardSubject" : "मानक विषय",
+       "QuestionType" : "प्रश्न प्रकार",
+       "SelectMultipleOption" : "एकाधिक पर्याय निवडा",
+       "AddQuestion" : "प्रश्न जोडा",
+       "AssessmentConfiguration" : "मूल्यांकन कॉन्फिगरेशन",
+       "EnterQuestion" : "प्रश्न प्रविष्ट करा",
+       "SelectClass" : "वर्ग निवडा",
+       "EducationalYear" : "शैक्षणिक वर्ष",
+       "Parameter" : "पॅरामीटर"
+
+
+
+
+
+
+
+
+
+
+
 
 
 
