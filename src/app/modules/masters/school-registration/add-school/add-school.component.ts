@@ -276,7 +276,7 @@ export class AddSchoolComponent {
       return res.lowestClass >= lowestClass
     })
     this.highestGroupclassArray = findObj;
-    this.editObj ? this.f['highestClass'].setValue(this.editObj.highestClass) : '';
+    this.editObj ? (this.f['highestClass'].setValue(this.editObj.highestClass), this.getStandardArray())  : '';
   }
 
   getStandardArray(){
@@ -287,8 +287,6 @@ export class AddSchoolComponent {
     })
     this.standardArray = findObj;
   }
-
-
   //#endregion------------------------------------------ Dropdown with dependencies end here------------------------------------------------
 
   //#region --------------------------------- Upload, view, delete img and multiple document start here-------------------------------------
@@ -371,13 +369,10 @@ export class AddSchoolComponent {
     if (!this.stdDivisionForm.valid && this.stdDivisionForm.value.standardId == '') {
       return
     }
-    // else if (this.stdDivisionForm.value.standardId) {
-    //   // for(let i = 0; i < this.stdDivisionArray.length; i++){
-    //   if (this.stdDivisionArray.filter((sub: any) => sub.standardId == this.stdDivisionForm.value.standardId)) {
-    //     this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Selected Standard is already exist' : 'निवडलेले स्टँडर्ड आधीपासून अस्तित्वात आहे', 1);
-    //     return
-    //   }
-    // }
+    else if(this.stdDivisionArray.find((x: any) => x.standardId == this.stdDivisionForm.value.standardId)){
+      this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Selected Standard is already exist' : 'निवडलेले स्टँडर्ड आधीपासून अस्तित्वात आहे', 1);
+        return
+    }
     else {
       let divisionArr = this.stdDivisionForm.value.divisionId;
       this.stdDivisionForm.value.divisionId = [];
