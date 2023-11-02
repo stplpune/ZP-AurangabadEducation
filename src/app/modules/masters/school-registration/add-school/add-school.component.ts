@@ -119,8 +119,8 @@ export class AddSchoolComponent {
     })
   }
 
-  // get multipleImg(): FormArray {
-  //   return this.schoolRegForm.get('schoolDocument') as FormArray;
+  // get multipleImg(): FormArray {  // Do not Remove
+  //   return this.schoolRegForm.get('schoolDocument') as FormArray; 
   // }
 
   initialDropdown() {
@@ -327,7 +327,7 @@ export class AddSchoolComponent {
     this.uploadImageFlag = false;
   }
 
-  multipleImgUpload(event: any) {
+  multipleImgUpload(event: any) {                               // Do not Remove
     this.fileUpload.uploadMultipleDocument(event, 'Upload', 'jpg, jpeg, png').subscribe({
       next: (res: any) => {
         if (res.statusCode == "200") {
@@ -355,11 +355,11 @@ export class AddSchoolComponent {
     });
   }
 
-  clearMultipleDoc(index: any) {
+  clearMultipleDoc(index: any) {                          // Do not Remove
     this.docArray.splice(index, 1);
   }
 
-  onViewDoc(index: any) {
+  onViewDoc(index: any) {                                // Do not Remove
     window.open(this.docArray[index].docPath, 'blank');
   }
   //#endregion--------------------------------- Upload, view, delete img and multiple document end here-------------------------------------
@@ -369,34 +369,36 @@ export class AddSchoolComponent {
     if (!this.stdDivisionForm.valid && this.stdDivisionForm.value.standardId == '') {
       return
     }
-    else if(this.stdDivisionArray.find((x: any) => x.standardId == this.stdDivisionForm.value.standardId)){
+    else if(!this.updateLocal && this.stdDivisionArray.find((x: any) => x.standardId == this.stdDivisionForm.value.standardId)){
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Selected Standard is already exist' : 'निवडलेले स्टँडर्ड आधीपासून अस्तित्वात आहे', 1);
         return
     }
     else {
-      let divisionArr = this.stdDivisionForm.value.divisionId;
+      let divisionArr = this.stdDivisionForm.value?.divisionId ? this.stdDivisionForm.value?.divisionId : '';
       this.stdDivisionForm.value.divisionId = [];
-
+      let i = 0;
       let webStorageMethod = this.webStorage.createdByProps();
-      for (let i = 0; i < divisionArr.length; i++) {
+      for (i; i < divisionArr.length; i++) {
         for (let j = 0; j < this.divisionArray.length; j++) {
           if (divisionArr[i] == this.divisionArray[j].id) {
             let divisionValue = (this.webStorage.languageFlag == 'mr-IN' ? this.divisionArray[j].m_Division : this.divisionArray[j].division);
             this.stdDivisionForm.value.divisionId.push(divisionValue);
           }
         }
-        let obj = {
-          id: 0,
-          schoolId: this.editObj ? this.editObj.id : 0,
-          standardId: this.stdDivisionForm.value.standardId,
-          divisionId: divisionArr[i],
-          createdBy: webStorageMethod.createdBy,
-          modifiedBy: webStorageMethod.modifiedBy,
-          isDeleted: webStorageMethod.isDeleted
-        }
-        this.stdDivisionArray.push(obj);
-        this.stdDivisionArray = [...this.stdDivisionArray];
       }
+
+      let obj = {
+        id: 0,
+        schoolId: this.editObj ? this.editObj.id : 0,
+        standardId: this.stdDivisionForm.value.standardId,
+        divisionId: divisionArr[i],
+        createdBy: webStorageMethod.createdBy,
+        modifiedBy: webStorageMethod.modifiedBy,
+        isDeleted: webStorageMethod.isDeleted
+      }
+      this.stdDivisionArray.push(obj);
+      this.stdDivisionArray = [...this.stdDivisionArray];
+
       // Create obj for display standard and division in table
       let formObj = {
         standardId: this.stdDivisionForm.value.standardId,
@@ -408,14 +410,16 @@ export class AddSchoolComponent {
       this.tableData = [...this.tableData];
       this.tableDataArray = new MatTableDataSource(this.tableData);
 
-      this.sf['standardId'].setValue('');
-      this.sf['divisionId'].setValue('');
+      this.onClear();
       this.formDirective.resetForm();
 
       this.sf['standardId'].clearValidators();
       this.sf['standardId'].setValue('');
-
       this.updateLocal = false;
+
+      console.log("tableData: ", this.tableData);
+      console.log("stdDivisionArray: ", this.stdDivisionArray);
+
     }
   }
 
@@ -470,7 +474,7 @@ export class AddSchoolComponent {
 
           if (flag == 'Edit') {
             this.initialDropdown();
-            this.uploadImg = this.editObj?.uploadImage;
+            this.uploadImg = this.editObj?.uploadImage;                    // Do not Remove
             this.uploadImg ? this.uploadImageFlag = true : this.uploadImageFlag = false;
             this.editObj?.schoolDocument.filter((res: any) => {
               let schoolDocumentObj = {
