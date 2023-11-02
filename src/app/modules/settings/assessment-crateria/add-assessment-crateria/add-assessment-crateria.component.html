@@ -1,6 +1,6 @@
 <div mat-dialog-title class="modal-header">
     <div class="d-flex justify-content-between align-items-center w-100">
-        <h6 class="text-main mb-0 fw-bold">Add Question</h6>
+        <h6 class="text-main mb-0 fw-bold">{{'Lables.AddQuestion' |translate}}</h6>
         <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
             <mat-icon class="material-symbols-rounded">close</mat-icon>
         </button>
@@ -9,7 +9,7 @@
 <mat-dialog-content class="modal-body scrollbar form-container">
     <div class="row gx-2">
         <div class="col-sm-6">
-            <label class="form-label">District</label>
+            <label class="form-label">{{'Lables.district' |translate}}</label>
             <mat-form-field appearance="outline" class="w-100">
                 <mat-select>
                     <mat-option value="0">
@@ -22,7 +22,7 @@
             </mat-form-field>
         </div>
         <div class="col-sm-6">
-            <label class="form-label">Educational Year</label>
+            <label class="form-label">{{'Lables.EducationalYear' |translate}}</label>
             <mat-form-field appearance="outline" class="w-100">
                 <mat-select>
                     <mat-option value="0">
@@ -38,7 +38,7 @@
             </mat-form-field>
         </div>
         <div class="col-sm-6">
-            <label class="form-label">Select Class</label>
+            <label class="form-label">{{'Lables.SelectClass' |translate}}</label>
             <mat-form-field appearance="outline" class="w-100">
                 <mat-select>
                     <mat-option value="0">
@@ -54,7 +54,7 @@
             </mat-form-field>
         </div>
         <div class="col-sm-6">
-            <label class="form-label">Question Type</label>
+            <label class="form-label">{{'Lables.QuestionType' |translate}}</label>
             <mat-form-field appearance="outline" class="w-100">
                 <mat-select>
                     <mat-option value="0">
@@ -73,16 +73,16 @@
             </mat-form-field>
         </div>
         <div class="col-sm-12">
-            <label class="form-label">Question Type</label>
+            <label class="form-label">{{'Lables.EnterQuestion' |translate}}</label>
             <mat-form-field appearance="outline" class="w-100">
-                <textarea matInput rows="3" placeholder="Enter Question"></textarea>
+                <textarea matInput rows="3"></textarea>
             </mat-form-field>
         </div>
         <div class="col-sm-12">
-            <label class="form-label">Parameter</label>
+            <label class="form-label">{{'Lables.Parameter' |translate}}</label>
             <div class="d-flex gap-2">
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput placeholder="Parameter">
+                    <input matInput>
                 </mat-form-field>
                 <button mat-flat-button class="btn-icon btn-main">
                     <mat-icon class="material-symbols-rounded">
