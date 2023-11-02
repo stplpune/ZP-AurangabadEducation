@@ -411,6 +411,10 @@ export class AddSchoolComponent {
       this.sf['standardId'].setValue('');
       this.sf['divisionId'].setValue('');
       this.formDirective.resetForm();
+
+      this.sf['standardId'].clearValidators();
+      this.sf['standardId'].setValue('');
+
       this.updateLocal = false;
     }
   }
@@ -575,4 +579,9 @@ export class AddSchoolComponent {
     this.f['bitId'].updateValueAndValidity();
   }
   //#endregion------------------------------------- Update validation on isKendra School end here-------------------------------------------
+
+  onClear(){
+    this.sf['standardId'].setValue('');
+    this.sf['divisionId'].setValue('');
+  }
 }

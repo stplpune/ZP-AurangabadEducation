@@ -281,17 +281,16 @@
                 <p style="font-size: 11px;" class="mb-0 pt-1">{{'Lables.NoteImgFormat' | translate}}</p>
             </div>
         </div>
-        <form [formGroup]="stdDivisionForm" #formDirective = "ngForm">
+        <form [formGroup]="stdDivisionForm" #formDirective="ngForm">
             <div class="row g-2 align-items-end">
                 <div class="col-sm">
                     <label class="form-label">Standard</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="standardId">
+                        <mat-select formControlName="standardId" [disabled]="updateLocal">
                             <mat-option *ngFor="let standard of standardArray"
                             [value]="standard.lowestClass">
                             {{standard.value}}
                         </mat-option>
-
                         </mat-select>
                     </mat-form-field>
                 </div>
