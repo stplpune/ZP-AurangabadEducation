@@ -111,7 +111,7 @@ export class MasterService {
 
   getAllSchool(langFlag? :string, distId?: number, talukaId?: number,centerId?: number, villageId?: number){
     return new Observable((obj) => {
-      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllSchool?flag_lang='+ langFlag+'?DistrictId='+distId+'&TalukaId='+talukaId+'&CenterId='+centerId+'&VillageId='+villageId, false, false, false, 'zp-Education');
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllSchool?flag_lang='+ langFlag+'&DistrictId='+distId+'&TalukaId='+talukaId+'&CenterId='+centerId+'&VillageId='+villageId, false, false, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
         error: (e: any) => { obj.error(e) }
@@ -223,6 +223,16 @@ export class MasterService {
   getAllUniversity(langFlag?: string){
     return new Observable((obj) => {
       this.apiService.setHttp('GET', 'ZP-education/Master/GetAllUniversity?flag_lang='+langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+  getAllBoard(langFlag?: string){
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllEducationalBoard?flag_lang='+langFlag, false, false, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
         error: (e: any) => { obj.error(e) }

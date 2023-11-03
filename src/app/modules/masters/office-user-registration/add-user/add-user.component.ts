@@ -33,12 +33,16 @@ export class AddUserComponent {
   roleArr = new Array();
   genderArr = new Array();
   universityArr = new Array();
-
+  boardArr = new Array();
+  schoolClasArr = new Array();
   uploadImg: any;
   uploadImageFlag: boolean = false;
   checked: boolean = false;
   age!: number;
   editObj: any;
+  TeacherClassId!: number
+  assignClassId!: number
+
   get f() { return this.userRegForm.controls }
 
   constructor(private fb: FormBuilder,
@@ -82,8 +86,8 @@ export class AddUserComponent {
       bitId: [0],
       centerId: [0],
       agencyId: [0],
-      userId: [0],
-      uploadImage: [''],
+      o_UserId: [0],
+      profilePhoto: [''],
       isHeadMaster: [false],
       teacherId: [0],
       currentAddress: [''], //extra
@@ -111,19 +115,19 @@ export class AddUserComponent {
       t_DesignationId: [0],
       t_RoleId: [0],
       joiningDate: [],
-      isClusterHead: [true],
+      isClusterHead: [true], // for is headmaster if true then show this true
       officerId: [0],
       t_UserId: [0],
-      teacherClassesModel: [
-        {
-          "id": [0],
-          "teacherId": [0],
-          "standardId": [0],
-          "divisionId": [0],
-          "isClassTeacher": [true],
-          "createdBy": [0],
-          "isDeleted": [true]
-        }
+      teacherClassesModel: [ 
+        // {
+        //   "id": [0],
+        //   "teacherId": [0],
+        //   "standardId": [0],
+        //   "divisionId": [0],
+        //   "isClassTeacher": [true],
+        //   "createdBy": [0],
+        //   "isDeleted": [true]
+        // }
       ],
       educationQualificationId: [0],
       streamId: [0],
@@ -269,19 +273,28 @@ export class AddUserComponent {
 
   getAllSchoolClasses(){
     let schoolId = this.userRegForm.value.t_SchoolId
-    this.universityArr = [];
+    this.schoolClasArr = [];
       this.masterService.getAllSchoolClasses(schoolId, '').subscribe({
         next: (res: any) => {
-          res.statusCode == "200" ? this.universityArr = res.responseData : this.universityArr = [];
+          res.statusCode == "200" ? this.schoolClasArr = res.responseData : this.schoolClasArr = [];
         }
       });
   }
 
-  getRole(){
-    this.roleArr = [];
-      this.masterService.getAllTeacherRole('').subscribe({
+  // getRole(){
+  //   this.roleArr = [];
+  //     this.masterService.getAllTeacherRole('').subscribe({
+  //       next: (res: any) => {
+  //         res.statusCode == "200" ? this.roleArr = res.responseData : this.roleArr = [];
+  //       }
+  //     });
+  //   }
+
+    getAllEducationalBoard(){
+      this.boardArr = [];
+      this.masterService.getAllBoard('').subscribe({
         next: (res: any) => {
-          res.statusCode == "200" ? this.roleArr = res.responseData : this.roleArr = [];
+          res.statusCode == "200" ? this.boardArr = res.responseData : this.boardArr = [];
         }
       });
     }
@@ -299,7 +312,7 @@ export class AddUserComponent {
           this.uploadImg = res.responseData;
           this.uploadImageFlag = true;
 
-          this.userRegForm.value.uploadImage = this.uploadImg;
+          this.userRegForm.value.profilePhoto = this.uploadImg;
           this.commonMethod.matSnackBar(res.statusMessage, 0);
         }
         else {
@@ -322,11 +335,11 @@ export class AddUserComponent {
 
   clearImg() {
     this.uploadImg = '';
-    this.userRegForm.value.uploadImage = '';
-    this.f['uploadImage'].setValue('');
+    this.userRegForm.value.profilePhoto = '';
+    this.f['profilePhoto'].setValue('');
     this.uploadImageFlag = false;
   }
-  //#endregion ---------------------------------------- Image upload, view and delete end here --------------------------------------------
+  //#end region ---------------------------------------- Image upload, view and delete end here --------------------------------------------
 
   addSameAddress(event: any) {
     this.checked = event.checked;
@@ -349,11 +362,14 @@ export class AddUserComponent {
   }
 
   onchangeCheckBox(event: any){
-    (event.checked == true) ? (this.getEducationQualDrop(), this.getStream(), this.getDegreeSpecilization(), this.getAllUniversity(), this.getRole()) : ''
+    (event.checked == true) ? (this.getEducationQualDrop(), this.getStream(), this.getDegreeSpecilization(), this.getAllUniversity(), this.getAllEducationalBoard()) : ''
   }
 
   onSubmit(){
     let formValue = this.userRegForm.value;
+    formValue.officerCenterSchoolModel = []
+    formValue.teacherClassesModel = []
+    formValue.classTeacherModel = []
     let url = this.editObj ? 'UpdateOfficer' : 'AddOfficer';
     if(!this.userRegForm.valid){
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);

@@ -168,7 +168,7 @@
                             data-placement="right" (click)="uploadImage.click()" [disabled]="uploadImageFlag">
                             {{'Lables.UploadPhoto' | translate}}
                         </button>
-                        <input type="file" formControlName="uploadImage" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden"
+                        <input type="file" formControlName="profilePhoto" accept=".jpg,.jpeg,.jfif,.png,.hvec" id="real-file" hidden="hidden"
                             #uploadImage (change)="imgUpload($event)" />
 
                         <div class="d-flex gap-2">
@@ -197,7 +197,7 @@
                 </div>
                 <div class="col-sm-3 mt-4 file-upload border rounded-2 p-1 margin-control">
                     <div class="d-flex align-items-center gap-2">
-                        <mat-checkbox class="example-margin" formControlName="isHeadMaster" (change)="onchangeCheckBox($event)">{{'Lables.Headmaster' |translate}}</mat-checkbox>
+                        <mat-checkbox class="example-margin" formControlName="isHeadMaster" (change)="onchangeCheckBox($event)">{{'Lables.DesignationName' |translate}}</mat-checkbox>
                     </div>
                 </div>
             </div>
@@ -206,31 +206,6 @@
                     <div class="col-sm-12">
                         <h6 class="section-head">{{'Lables.AddressDetails' | translate}}</h6>
                     </div>
-
-                    <!-- <div class="col-sm-4">
-                        <label class="form-label">{{'Lables.district' | translate}}</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option>one</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <label class="form-label">{{'Lables.taluka' | translate}}</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option>one</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <label class="form-label">{{'Lables.village' | translate}}</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option>one</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div> -->
                     <div class="col-sm-6 mt-1">
                         <label class="form-label">{{'Lables.CurrentAddress' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
@@ -243,43 +218,6 @@
                             <textarea matInput rows="2" formControlName="permentAddress" (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpacesWithSomeSpecChar($event);" maxlength="100"></textarea>
                         </mat-form-field>
                     </div>
-                    <!-- <div class="col-sm-6">
-                        <div class="col-sm-12">
-                            <label class="form-label w-100">
-                                <div class="d-flex justify-content-between w-100 align-items-center">
-                                    <span>{{'Lables.PermanentAddress' | translate}}</span>
-                                    <mat-checkbox class="example-margin">{{'Lables.SameAsCurrentAdd' | translate}}</mat-checkbox>
-                                </div>
-                            </label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <textarea matInput rows="3"></textarea>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4 w-100">
-                            <label class="form-label">{{'Lables.district' | translate}}</label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-select>
-                                    <mat-option>one</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4 w-100">
-                            <label class="form-label">{{'Lables.taluka' | translate}}</label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-select>
-                                    <mat-option>one</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4 w-100">
-                            <label class="form-label">{{'Lables.village' | translate}}</label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-select>
-                                    <mat-option>one</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="col-sm-3 marginbtm file-upload border rounded-2 p-1 margin-control">
                     <mat-checkbox class="example-margin text-end" [checked]="checked" [disabled]="!f['currentAddress'].value" (change)="addSameAddress($event)">
@@ -293,8 +231,8 @@
                         <label class="form-label">{{'Lables.EducationalQualification' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="educationQualificationId">
-                                <mat-option *ngFor="let educ of educationQualArr" [value]="educ.id">{{webStorage.languageFlag =='mr-IN' ? educ.value:
-                                    educ.value}}</mat-option>
+                                <mat-option *ngFor="let educ of educationQualArr" [value]="educ.id">{{webStorage.languageFlag =='mr-IN' ? educ.m_EducationalQualification:
+                                    educ.educationalQualification}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -302,8 +240,8 @@
                         <label class="form-label">{{'Lables.Stream' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="streamId">
-                                <mat-option *ngFor="let stream of streamArr" [value]="stream.id">{{webStorage.languageFlag =='mr-IN' ? stream.value:
-                                    stream.value}}</mat-option>
+                                <mat-option *ngFor="let stream of streamArr" [value]="stream.id">{{webStorage.languageFlag =='mr-IN' ? stream.m_Stream:
+                                    stream.stream}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -311,8 +249,8 @@
                         <label class="form-label">{{'Lables.DegreeSpecilization' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="degreeSpecializationId">
-                                <mat-option *ngFor="let degree of degreeArr" [value]="degree.id">{{webStorage.languageFlag =='mr-IN' ? degree.value:
-                                    degree.value}}</mat-option>
+                                <mat-option *ngFor="let degree of degreeArr" [value]="degree.id">{{webStorage.languageFlag =='mr-IN' ? degree.m_SubjectName:
+                                    degree.subjectName}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -320,8 +258,8 @@
                         <label class="form-label">{{'Lables.Board' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="boardId">
-                                <mat-option *ngFor="let board of ">
-                                    Pune University
+                                <mat-option *ngFor="let board of boardArr" [value]="board.id">{{webStorage.languageFlag =='mr-IN' ? board.m_Board:
+                                    board.board}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -331,7 +269,8 @@
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="universityId">
                                 <mat-option *ngFor ="let uni of universityArr" [value]="uni.id">
-                                    Pune University
+                                    {{webStorage.languageFlag =='mr-IN' ? uni.m_UniversityName:
+                                    uni.univesityName}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -399,14 +338,14 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.WorkingSchoolName' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="t_SchoolId">
+                            <mat-select formControlName="t_SchoolId" (selectionChange)="getAllSchoolClasses()">
                                 <mat-option *ngFor="let school of schoolArr" [value]="school.id">{{webStorage.languageFlag
                                     =='mr-IN' ? school.m_SchoolName: school.schoolName}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-3">
+                    <!-- <div class="col-sm-3">
                         <label class="form-label">{{'Lables.SelectRole' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="t_RoleId">
@@ -415,7 +354,7 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                    </div>
+                    </div> -->
                     <div class="col-sm-3">
                       <label class="form-label">{{'Lables.DateOfJoining' | translate}}</label>
                       <mat-form-field appearance="outline" class="w-100">
@@ -428,11 +367,12 @@
                         <mat-checkbox class="example-margin" formControlName="isClassTeacher">{{'Lables.IsClassTeacher' |
                             translate}}</mat-checkbox>
                     </div>
-                    <div class="col-sm-3" *ngIf="f['isClassTeacher'].value == true">
+                    <!-- <div class="col-sm-3" *ngIf="f['isClassTeacher'].value == true">
                         <label class="form-label">{{'Lables.Class' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option> 1st</mat-option>
+                            <mat-select [ngModel]="TeacherClassId">
+                                <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
+                                    =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -443,15 +383,22 @@
                                 <mat-option> 1st</mat-option>
                             </mat-select>
                         </mat-form-field>
+                    </div> -->
+                    <div class="col-sm-3" *ngIf="f['isClassTeacher'].value == true">
+                        <label class="form-label">{{'Lables.Class' | translate}}</label>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-select [ngModel]="TeacherClassId" [ngModelOptions]="{standalone: true}">
+                                <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
+                                    =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </div>
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option> <mat-checkbox class="example-margin">1st</mat-checkbox></mat-option>
-                                <mat-option> <mat-checkbox class="example-margin">2nd</mat-checkbox></mat-option>
-                                <mat-option> <mat-checkbox class="example-margin">3rd</mat-checkbox></mat-option>
-                                <mat-option> <mat-checkbox class="example-margin">4th</mat-checkbox></mat-option>
+                            <mat-select [ngModel]="assignClassId" [ngModelOptions]="{standalone: true}">
+                                <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
+                                    =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>                            
                             </mat-select>
                         </mat-form-field>
                     </div>
