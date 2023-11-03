@@ -190,6 +190,64 @@ export class MasterService {
     });
   }
 
+  getAllEducationalQualification(langFlag?: string){
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllEducationalQualification?flag_lang='+langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+  getAllEducationalStream(langFlag?: string){
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllEducationalStream?flag_lang='+langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+  getAllDegreeSpecialization(langFlag?: string){
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllDegreeSpecialization?flag_lang='+langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+  getAllUniversity(langFlag?: string){
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllUniversity?flag_lang='+langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+  getAllSchoolClasses(id: number, langFlag?: string){
+    return new Observable((obj) => {
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllSchoolClasses?Id='+id+'&flag_lang='+langFlag, false, false, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
+        error: (e: any) => { obj.error(e) }
+      });
+    });
+  }
+
+
+
+
+
+
+
+
+
 
 
 

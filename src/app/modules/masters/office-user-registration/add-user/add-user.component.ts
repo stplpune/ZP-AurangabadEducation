@@ -32,6 +32,7 @@ export class AddUserComponent {
   schoolArr = new Array();
   roleArr = new Array();
   genderArr = new Array();
+  universityArr = new Array();
 
   uploadImg: any;
   uploadImageFlag: boolean = false;
@@ -231,49 +232,59 @@ export class AddUserComponent {
   
   getEducationQualDrop(){
     this.educationQualArr = [];
-    // let centerId = this.userRegForm.value.t_CenterId;
-    //   this.masterService.getEducationalQualifications('').subscribe({
-    //     next: (res: any) => {
-    //       res.statusCode == "200" ? this.educationQualArr = res.responseData : this.educationQualArr = [];
-    //     }
-    //   });
-    
-    this.educationQualArr = [{id: 1, value: "S. S. C"},{id: 2, value: "H. S. C."},{id: 3, value: "Graduate"}]
-  }
+    let centerId = this.userRegForm.value.t_CenterId;
+      this.masterService.getAllEducationalQualification('').subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.educationQualArr = res.responseData : this.educationQualArr = [];
+        }
+      });
+    }
 
   getStream(){
     this.streamArr = [];
-    //   this.masterService.getStreams('').subscribe({
-    //     next: (res: any) => {
-    //       res.statusCode == "200" ? this.streamArr = res.responseData : this.streamArr = [];
-    //     }
-    //   });
-    
-    this.streamArr = [{id: 1, value: "Arts"},{id: 2, value: "Commerce"},{id: 3, value: "Science"}]
-
+      this.masterService.getAllEducationalStream('').subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.streamArr = res.responseData : this.streamArr = [];
+        }
+      });
   }
 
   getDegreeSpecilization(){
     this.degreeArr = [];
-    //   this.masterService.getStreams('').subscribe({
-    //     next: (res: any) => {
-    //       res.statusCode == "200" ? this.degreeArr = res.responseData : this.degreeArr = [];
-    //     }
-    //   });
-    
-    this.degreeArr = [{id: 1, value: "Economy"},{id: 2, value: "history"},{id: 3, value: "Science"}]
+      this.masterService.getAllDegreeSpecialization('').subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.degreeArr = res.responseData : this.degreeArr = [];
+        }
+      });
+  }
+
+  getAllUniversity(){
+    this.universityArr = [];
+      this.masterService.getAllUniversity('').subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.universityArr = res.responseData : this.universityArr = [];
+        }
+      });
+  }
+
+  getAllSchoolClasses(){
+    let schoolId = this.userRegForm.value.t_SchoolId
+    this.universityArr = [];
+      this.masterService.getAllSchoolClasses(schoolId, '').subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.universityArr = res.responseData : this.universityArr = [];
+        }
+      });
   }
 
   getRole(){
     this.roleArr = [];
-    //   this.masterService.getStreams('').subscribe({
-    //     next: (res: any) => {
-    //       res.statusCode == "200" ? this.roleArr = res.responseData : this.roleArr = [];
-    //     }
-    //   });
-    
-    this.roleArr = [{id: 1, value: "Headmaster"},{id: 2, value: "Teacher"}]
-  }
+      this.masterService.getAllTeacherRole('').subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.roleArr = res.responseData : this.roleArr = [];
+        }
+      });
+    }
 
 
   //#endregion ------------------------------------------ Dropdown with dependencies end from here ----------------------------------------
@@ -338,7 +349,7 @@ export class AddUserComponent {
   }
 
   onchangeCheckBox(event: any){
-    (event.checked == true) ? (this.getEducationQualDrop(), this.getStream(), this.getDegreeSpecilization(), this.getRole()) : ''
+    (event.checked == true) ? (this.getEducationQualDrop(), this.getStream(), this.getDegreeSpecilization(), this.getAllUniversity(), this.getRole()) : ''
   }
 
   onSubmit(){

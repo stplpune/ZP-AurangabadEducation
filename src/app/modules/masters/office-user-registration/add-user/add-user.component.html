@@ -295,16 +295,6 @@
                             <mat-select formControlName="educationQualificationId">
                                 <mat-option *ngFor="let educ of educationQualArr" [value]="educ.id">{{webStorage.languageFlag =='mr-IN' ? educ.value:
                                     educ.value}}</mat-option>
-                                <!-- <mat-option>S. S. C.</mat-option>
-                                <mat-option>H. S. C.</mat-option>
-                                <mat-option>Diploma</mat-option>
-                                <mat-option>Graduate</mat-option>
-                                <mat-option>Post-Graduate</mat-option>
-                                <mat-option>Doctorate
-                                </mat-option>
-                                <mat-option>
-                                    Post-Doctorate
-                                </mat-option> -->
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -330,14 +320,8 @@
                         <label class="form-label">{{'Lables.Board' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="boardId">
-                                <mat-option>
+                                <mat-option *ngFor="let board of ">
                                     Pune University
-                                </mat-option>
-                                <mat-option>
-                                    Solapur University
-                                </mat-option>
-                                <mat-option>
-                                    Kolhapur University
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -346,14 +330,8 @@
                         <label class="form-label">{{'Lables.DegreeUniversity' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="universityId">
-                                <mat-option>
+                                <mat-option *ngFor ="let uni of universityArr" [value]="uni.id">
                                     Pune University
-                                </mat-option>
-                                <mat-option>
-                                    Solapur University
-                                </mat-option>
-                                <mat-option>
-                                    Kolhapur University
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
