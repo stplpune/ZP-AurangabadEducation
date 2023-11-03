@@ -293,7 +293,9 @@
       "Master" : "Master",
       "OfficerVisitReport" : "Officer Visit Report",
       "AttendanceApproval" : "Attendance Approval",
-      "Help" : "Help"
+      "Help" : "Help",
+      "clusterMobileNo" : "Cluster Mobile No",
+      "clusterEmailId" : "Cluster Email Id"
 
 
 
