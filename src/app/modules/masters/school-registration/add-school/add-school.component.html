@@ -284,7 +284,7 @@
         <form [formGroup]="stdDivisionForm" #formDirective="ngForm">
             <div class="row g-2 align-items-end">
                 <div class="col-sm">
-                    <label class="form-label">Standard</label>
+                    <label class="form-label">{{'Lables.Standard' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="standardId" [disabled]="updateLocal">
                             <mat-option *ngFor="let standard of standardArray"
@@ -295,7 +295,7 @@
                     </mat-form-field>
                 </div>
                 <div class="col-sm">
-                    <label class="form-label">Division</label>
+                    <label class="form-label">{{'Lables.division' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select multiple formControlName="divisionId">
                             <mat-option *ngFor="let division of divisionArray"
