@@ -387,7 +387,7 @@
                     <div class="col-sm-3" *ngIf="f['isClassTeacher'].value == true">
                         <label class="form-label">{{'Lables.Class' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select [ngModel]="TeacherClassId" [ngModelOptions]="{standalone: true}">
+                            <mat-select multiple [ngModel]="TeacherClassId" [ngModelOptions]="{standalone: true}">
                                 <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                             </mat-select>
@@ -396,7 +396,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select [ngModel]="assignClassId" [ngModelOptions]="{standalone: true}">
+                            <mat-select multiple [ngModel]="assignClassId" [ngModelOptions]="{standalone: true}">
                                 <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>                            
                             </mat-select>
