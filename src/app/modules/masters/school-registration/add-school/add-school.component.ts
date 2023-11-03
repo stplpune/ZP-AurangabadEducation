@@ -366,12 +366,14 @@ export class AddSchoolComponent {
 
   //#region -------------------------------- Add and patch Standard and Multiple Division start here -----------------------------------------
   onAddDisionStd() {
+    this.updateValidation('true');
     if (!this.stdDivisionForm.valid && this.stdDivisionForm.value.standardId == '') {
       return
     }
     else if(!this.updateLocal && this.stdDivisionArray.find((x: any) => x.standardId == this.stdDivisionForm.value.standardId)){
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Selected Standard is already exist' : 'निवडलेले स्टँडर्ड आधीपासून अस्तित्वात आहे', 1);
-        return
+      this.onClear();
+      return
     }
     else {
       let divisionArr = this.stdDivisionForm.value?.divisionId ? this.stdDivisionForm.value?.divisionId : 0;
@@ -429,10 +431,7 @@ export class AddSchoolComponent {
       this.tableDataArray = new MatTableDataSource(this.tableData);
 
       this.onClear();
-      this.formDirective.resetForm();
-
-      // this.sf['standardId'].clearValidators();
-      // this.sf['standardId'].setValue('');
+      this.updateValidation('false');
       this.updateLocal = false;
     }
   }
@@ -590,9 +589,12 @@ export class AddSchoolComponent {
   //#region ------------------------------------- Update validation on isKendra School start here-------------------------------------------
   updateValidation(flag?: string) {
     if(flag == 'true'){
-      
-
-    }else{
+      this.sf['standardId'].setValidators(Validators.required);
+    }
+    else if(flag == 'false'){
+      this.sf['standardId'].clearValidators();
+    }
+    else{
     if (this.f['isKendraSchool'].value == true) {
       this.f['bitId'].setValidators(Validators.required);
       this.f['bitId'].setValue('');
@@ -603,6 +605,7 @@ export class AddSchoolComponent {
     }
     this.f['bitId'].updateValueAndValidity();
     }
+    this.sf['standardId'].updateValueAndValidity();
   }
   //#endregion------------------------------------- Update validation on isKendra School end here-------------------------------------------
 
