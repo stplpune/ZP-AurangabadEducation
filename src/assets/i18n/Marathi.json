@@ -246,12 +246,13 @@
         "TotalHoliday" : "एकूण सुट्टी",
         "TotalWeekOffs" : "एकूण आठवड्याची सुट्टी",
         "ManualAtt" : "मॅन्युअल उपस्थिती",
-       "SubmittedAtt" : "सादर केलेली उपस्थिती",
-       "ManualAttApproved" : "मॅन्युअल उपस्थिती मंजूर",
-       "AttendanceReportList" : "उपस्थिती अहवाल यादी",
-       "TeacherName": "शिक्षकाचे नाव",
-       "AttendanceApprovalList" : "उपस्थिती मान्यता यादी",
-       "ApprovalStatus" : "मंजुरीची स्थिती",
+        "SubmittedAtt" : "सादर केलेली उपस्थिती",
+        "ManualAttApproved" : "मॅन्युअल उपस्थिती मंजूर",
+        "AttendanceReportList" : "उपस्थिती अहवाल यादी",
+        "TeacherName": "शिक्षकाचे नाव",
+        "AttendanceApprovalList" : "उपस्थिती मान्यता यादी",
+        "AttendanceApproval" : "उपस्थिती अनुमोदन",
+       " ApprovalStatus" : "मंजुरीची स्थिती",
        "TeacherCode" : "शिक्षक कोड",
        "Date" : "तारीख",
        "Search" : "शोध",
@@ -289,7 +290,12 @@
        "PageName/PageURL" : "पृष्ठाचे नाव/पृष्ठ URL",
        "PageName" : "पृष्ठाचे नाव",
        "PageURL" : "पृष्ठ यू आर एल",
-       "Select" : "निवडा"
+       "Select" : "निवडा",
+       "Dashboard" : "डॅशबोर्ड",
+       "Master" : "मास्टर",
+       "OfficerVisitReport" : "अधिकारी भेट अहवाल",
+       "Help" : "मदत करा"
+
 
 
 

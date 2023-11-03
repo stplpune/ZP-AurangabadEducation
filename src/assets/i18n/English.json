@@ -288,7 +288,14 @@
       "PageName/PageURL" : "Page Name/Page URL",
       "PageName" : "Page Name",
       "PageURL" : "Page URL",
-      "Select" : "Select"
+      "Select" : "Select",
+      "Dashboard" : "Dashboard",
+      "Master" : "Master",
+      "OfficerVisitReport" : "Officer Visit Report",
+      "AttendanceApproval" : "Attendance Approval",
+      "Help" : "Help"
+
+
 
 
 
