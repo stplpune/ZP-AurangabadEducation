@@ -242,7 +242,7 @@ export class MasterService {
 
   getAllSchoolClasses(id: number, langFlag?: string){
     return new Observable((obj) => {
-      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllSchoolClasses?Id='+id+'&flag_lang='+langFlag, false, false, false, 'zp-Education');
+      this.apiService.setHttp('GET', 'ZP-education/Master/GetAllSchoolClasses?SchoolId='+id+'&flag_lang='+langFlag, false, false, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
         next: (res: any) => { if (res.statusCode == "200") { obj.next(res) } else { obj.error(res); } },
         error: (e: any) => { obj.error(e) }
