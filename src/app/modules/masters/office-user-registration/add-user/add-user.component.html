@@ -197,7 +197,7 @@
                 </div>
                 <div class="col-sm-3 mt-4 file-upload border rounded-2 p-1 margin-control">
                     <div class="d-flex align-items-center gap-2">
-                        <mat-checkbox class="example-margin" formControlName="isHeadMaster" (change)="onchangeCheckBox($event)">{{'Lables.Headmaster' |translate}}</mat-checkbox>
+                        <mat-checkbox class="example-margin" formControlName="isHeadMaster" (change)="onchangeCheckBox($event)">{{'Lables.DesignationName' |translate}}</mat-checkbox>
                     </div>
                 </div>
             </div>
@@ -206,31 +206,6 @@
                     <div class="col-sm-12">
                         <h6 class="section-head">{{'Lables.AddressDetails' | translate}}</h6>
                     </div>
-
-                    <!-- <div class="col-sm-4">
-                        <label class="form-label">{{'Lables.district' | translate}}</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option>one</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <label class="form-label">{{'Lables.taluka' | translate}}</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option>one</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <label class="form-label">{{'Lables.village' | translate}}</label>
-                        <mat-form-field appearance="outline" class="w-100">
-                            <mat-select>
-                                <mat-option>one</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div> -->
                     <div class="col-sm-6 mt-1">
                         <label class="form-label">{{'Lables.CurrentAddress' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
@@ -243,43 +218,6 @@
                             <textarea matInput rows="2" formControlName="permentAddress" (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpacesWithSomeSpecChar($event);" maxlength="100"></textarea>
                         </mat-form-field>
                     </div>
-                    <!-- <div class="col-sm-6">
-                        <div class="col-sm-12">
-                            <label class="form-label w-100">
-                                <div class="d-flex justify-content-between w-100 align-items-center">
-                                    <span>{{'Lables.PermanentAddress' | translate}}</span>
-                                    <mat-checkbox class="example-margin">{{'Lables.SameAsCurrentAdd' | translate}}</mat-checkbox>
-                                </div>
-                            </label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <textarea matInput rows="3"></textarea>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4 w-100">
-                            <label class="form-label">{{'Lables.district' | translate}}</label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-select>
-                                    <mat-option>one</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4 w-100">
-                            <label class="form-label">{{'Lables.taluka' | translate}}</label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-select>
-                                    <mat-option>one</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4 w-100">
-                            <label class="form-label">{{'Lables.village' | translate}}</label>
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-select>
-                                    <mat-option>one</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="col-sm-3 marginbtm file-upload border rounded-2 p-1 margin-control">
                     <mat-checkbox class="example-margin text-end" [checked]="checked" [disabled]="!f['currentAddress'].value" (change)="addSameAddress($event)">
@@ -449,7 +387,7 @@
                     <div class="col-sm-3" *ngIf="f['isClassTeacher'].value == true">
                         <label class="form-label">{{'Lables.Class' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select [ngModel]="TeacherClassId">
+                            <mat-select [ngModel]="TeacherClassId" [ngModelOptions]="{standalone: true}">
                                 <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                             </mat-select>
@@ -458,9 +396,10 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select [ngModel]="assignClassId">
+                            <mat-select [ngModel]="assignClassId" [ngModelOptions]="{standalone: true}">
                                 <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
-                                    =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>                            </mat-select>
+                                    =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>                            
+                            </mat-select>
                         </mat-form-field>
                     </div>
                 </div>
