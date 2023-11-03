@@ -20,6 +20,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSlideToggleModule,
     MatRadioModule,
     TranslateModule,
+    MatFormFieldModule
   ]
 })
 export class AddUserModule { }

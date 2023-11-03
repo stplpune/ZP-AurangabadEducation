@@ -1,4 +1,4 @@
-<form [formGroup]="userRegForm">
+<form [formGroup]="userRegForm" (ngSubmit)="onSubmit()">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item" aria-current="page">{{'Lables.master' | translate}}</li>
@@ -147,9 +147,9 @@
                         <mat-datepicker #topicker></mat-datepicker>
                     </mat-form-field>
                       <!-- <label class="form-label">{{'Lables.EmailID' |translate}}</label> -->
-                      <mat-form-field appearance="outline" class="w-100" *ngIf="age > 0">
+                      <div *ngIf="age > 0">
                         <span class="me-1">{{age}}</span><span>Years</span>
-                      </mat-form-field>
+                      </div>
                     </div>
                 </div>
                 </div>
@@ -157,8 +157,8 @@
                     <label class="form-label">{{'Lables.Gender' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="genderId">
-                            <mat-option>Male</mat-option>
-                            <mat-option>Female</mat-option>
+                            <mat-option *ngFor="let gender of genderArr" [value]="gender.id">{{webStorage.languageFlag
+                                =='mr-IN' ? gender.m_Gender: gender.gender}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

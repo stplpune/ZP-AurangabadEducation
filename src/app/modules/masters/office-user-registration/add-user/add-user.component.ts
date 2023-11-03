@@ -31,6 +31,8 @@ export class AddUserComponent {
   degreeArr = new Array();
   schoolArr = new Array();
   roleArr = new Array();
+  genderArr = new Array();
+
   uploadImg: any;
   uploadImageFlag: boolean = false;
   checked: boolean = false;
@@ -53,6 +55,7 @@ export class AddUserComponent {
     this.formField();
     this.getDesignationLevel();
     this.getDistrict();
+    this.getGender();
   }
 
   formField() {
@@ -89,15 +92,7 @@ export class AddUserComponent {
       // talukaIdSecond: [false],//extra removed
       // centerIdSecond: [false],//extra removed
       villageIdSecond: [false],//extra removed 
-      officerCenterSchoolModel: [
-        {
-          id: 0,
-          userId: 0,
-          centerId: 0,
-          centerSchoolId: 0,
-          addUpdateBy: 0
-        }
-      ],
+      officerCenterSchoolModel: [],
       teacherCode: [""],
       current_DistrictId: [0],
       current_TalukaId: [0],
@@ -114,7 +109,7 @@ export class AddUserComponent {
       t_DesignationLevelId: [0],
       t_DesignationId: [0],
       t_RoleId: [0],
-      joiningDate: [""],
+      joiningDate: [],
       isClusterHead: [true],
       officerId: [0],
       t_UserId: [0],
@@ -124,19 +119,19 @@ export class AddUserComponent {
           "teacherId": [0],
           "standardId": [0],
           "divisionId": [0],
-          // "isClassTeacher": [true],
+          "isClassTeacher": [true],
           "createdBy": [0],
           "isDeleted": [true]
         }
       ],
       educationQualificationId: [0],
-      "streamId": [0],
-      "degreeSpecializationId": [0],
-      "boardId": [0],
-      "universityId": [0],
-      "percentage": [""],
-      "passingYear": [""],
-      "localId": [0],
+      streamId: [0],
+      degreeSpecializationId: [0],
+      boardId: [0],
+      universityId: [0],
+      percentage: [""],
+      passingYear: [""],
+      localId: [0],
       lan: this.webStorage.languageFlag,
       ...this.webStorage.createdByProps()
     })
@@ -149,6 +144,15 @@ export class AddUserComponent {
     this.masterService.getAllDesignationLevel('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.levelArray = res.responseData) : this.levelArray = [];
+      },
+    });
+  }
+
+  getGender(){
+    this.genderArr = [];
+    this.masterService.getAllGender('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? (this.genderArr = res.responseData) : this.genderArr = [];
       },
     });
   }
@@ -324,6 +328,8 @@ export class AddUserComponent {
   }
 
   CalculateAge() {
+    console.log("hgd");
+    
     let birthDate = this.userRegForm.value.dob;   
     if (birthDate) {
       var timeDiff = Math.abs(Date.now() - birthDate);
@@ -343,6 +349,8 @@ export class AddUserComponent {
       return
     }
     else{
+      console.log("hds",formValue);
+      
       this.ngxSpinner.show();
       this.apiService.setHttp(this.editObj ? 'put' : 'post', 'ZP-Education/Officer/' + url, false, formValue, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
