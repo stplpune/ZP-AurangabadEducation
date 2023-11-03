@@ -102,8 +102,8 @@
         "ChangePassword" : "Change Password",
         "Logout" : "Logout",
         "Belwadi" : "Belwadi",
-        "Headmaster" : "Headmaster",
-        "RameshKambale" : "Ramesh Kambale",
+        "DesignationName" : "Headmaster",
+        "Username" : "Ramesh Kambale",
         "StudentName" : "Student Name",
         "StudentRegistration" : "Student Registration",
         "StudentName/ParentMobileNo" : "Student Name/Parent Mobile No.",
@@ -268,7 +268,22 @@
       "EnterQuestion" : "Enter Question",
       "SelectClass" : "Select Class",
       "EducationalYear" : "Educational Year",
-      "Parameter" : "Parameter"
+      "Parameter" : "Parameter",
+      "RegistrationApproval" : "registration approval",
+      "NewRequest" : "New Request",
+      "Approved" : "Approved",
+      "Rejected" : "Rejected",
+      "ApprovedList" : "Approved List",
+      "RejectedList" : "Rejected List",
+      "CenterHead" : "Center Head",
+      "Contact" : "Contact",
+      "CityName" : "City Name",
+      "EventRegistration" : "Event Registration",
+      "SearchEventName" : "Search Event Name",
+      "AddEvent" : "Add Event",
+      "EventName" : "Event Name",
+      "EventName(Marathi)" : "Event Name(Marathi)",
+      "EventDate" : "Event Date"
 
 
 

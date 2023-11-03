@@ -54,7 +54,7 @@
         "updateDesignation": "पदनाम नोंद अपडेट करा",
         "DependDesigLevel":" अवलंबित पदनाम स्तर",
         "DependantDesignation": "अवलंबित पद",
-        "DesireDesignationLevel": "इच्छा पदनाम स्तर",
+        "DesireDesignationLevel": "पदनाम स्तर",
         "Designation": "पदनाम",
         "Designation-marathi":"पदनाम (मराठी)",
         "TeacherRegistration": "शिक्षक नोंदणी",
@@ -103,8 +103,8 @@
         "ChangePassword" : "पासवर्ड बदला",
         "Logout" : "बाहेर पडणे",
         "Belwadi" : "बेलवाडी",
-        "Headmaster" : "मुख्याध्यापक",
-        "RameshKambale" : "रमेश कांबळे",
+        "DesignationName" : "मुख्याध्यापक",
+        "Username" : "रमेश कांबळे",
         "StudentName" : "विद्यार्थ्याचे नाव",
         "StudentRegistration" : "विद्यार्थी नोंदणी",
         "StudentName/ParentMobileNo" : "विद्यार्थ्याचे नाव/पालक मोबाईल क्र.",
@@ -269,7 +269,24 @@
        "EnterQuestion" : "प्रश्न प्रविष्ट करा",
        "SelectClass" : "वर्ग निवडा",
        "EducationalYear" : "शैक्षणिक वर्ष",
-       "Parameter" : "पॅरामीटर"
+       "Parameter" : "पॅरामीटर",
+       "RegistrationApproval" : "नोंदणी मंजूरी",
+       "NewRequest" : "नवीन विनंती",
+       "Approved" : "मंजूर",
+       "Rejected" : "नाकारले",
+       "ApprovedList" : "मंजूर यादी",
+       "RejectedList" : "नाकारलेली यादी",
+       "CenterHead" : "केंद्र प्रमुख",
+       "Contact" : "संपर्क करा",
+       "CityName" : "शहराचे नाव",
+       "EventRegistration" : "कार्यक्रम नोंदणी",
+       "SearchEventName" : "इव्हेंटचे नाव शोधा",
+       "AddEvent" : "कार्यक्रम जोडा",
+       "EventName" : "इव्हेंटचे नाव",
+       "EventName(Marathi)" : "कार्यक्रमाचे नाव (मराठी)",
+       "EventDate" : "कार्यक्रमाची तारीख"
+
+
 
 
 
