@@ -40,8 +40,8 @@ export class AddUserComponent {
   checked: boolean = false;
   age!: number;
   editObj: any;
-  TeacherClassId!: number
-  assignClassId!: number
+  // teacherClassId!: number
+  // assignClassId!: number
 
   get f() { return this.userRegForm.controls }
 
@@ -138,7 +138,9 @@ export class AddUserComponent {
       passingYear: [""],
       localId: [0],
       lan: this.webStorage.languageFlag,
-      ...this.webStorage.createdByProps()
+      ...this.webStorage.createdByProps(),
+      teacherClassId: [],
+      assignClassId: []
     })
   }
 
@@ -367,9 +369,13 @@ export class AddUserComponent {
 
   onSubmit(){
     let formValue = this.userRegForm.value;
-    formValue.officerCenterSchoolModel = []
-    formValue.teacherClassesModel = []
-    formValue.classTeacherModel = []
+    // formValue.officerCenterSchoolModel = []
+    // formValue.teacherClassesModel = []
+    // formValue.classTeacherModel = []
+     
+    let assignClassData = this.userRegForm.value.assignClassId
+    console.log("assignClassData", assignClassData);
+    
     let url = this.editObj ? 'UpdateOfficer' : 'AddOfficer';
     if(!this.userRegForm.valid){
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);

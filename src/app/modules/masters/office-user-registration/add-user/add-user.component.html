@@ -71,19 +71,19 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 11">
+                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 11"> <!---BEO officer--->
                   <label class="form-label">{{'Lables.contactNo(BEOOffice)' |translate}}</label>
                   <mat-form-field appearance="outline" class="w-100">
                       <input matInput>
                   </mat-form-field>
               </div>
-              <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 11">
+              <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 11"> <!---BEO officer--->
                 <label class="form-label">{{'Lables.emailId(BEOOffice)' |translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput>
                 </mat-form-field>
             </div>
-                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 18">
+                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 17"><!---kendra--->
                     <label class="form-label">{{'Lables.kendra' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="centerId">
@@ -92,19 +92,19 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 18">
+                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 17"><!---kendra--->
                     <label class="form-label">{{'Lables.contactNo(kendra)' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput formControlName="kendraMobileNo" (keypress)="validation.noFirstSpaceAllow($event); validation.onlyDigits($event);" maxlength="10">
                     </mat-form-field>
                 </div>
-                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 18">
+                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 17"> <!---kendra--->
                     <label class="form-label">{{'Lables.EmailId(kendra)' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input matInput formControlName="kendraEmailId" (keypress)="validation.noFirstSpaceAllow($event); validation.emailRegex($event);" maxlength="20">
                     </mat-form-field>
                 </div>
-                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 13">
+                <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 10"> <!---extension officer--->
                     <label class="form-label">{{'Lables.NameofBit' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="bitId">
@@ -387,8 +387,8 @@
                     <div class="col-sm-3" *ngIf="f['isClassTeacher'].value == true">
                         <label class="form-label">{{'Lables.Class' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select multiple [ngModel]="TeacherClassId" [ngModelOptions]="{standalone: true}">
-                                <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
+                            <mat-select multiple formControlName="teacherClassId">
+                                <mat-option *ngFor="let class of schoolClasArr" [value]="class"> {{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -396,8 +396,8 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select multiple [ngModel]="assignClassId" [ngModelOptions]="{standalone: true}">
-                                <mat-option *ngFor="let class of schoolClasArr"> {{webStorage.languageFlag
+                            <mat-select multiple formControlName="assignClassId">
+                                <mat-option *ngFor="let class of schoolClasArr" [value]="class"> {{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>                            
                             </mat-select>
                         </mat-form-field>
