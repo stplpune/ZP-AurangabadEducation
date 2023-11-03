@@ -294,7 +294,10 @@
        "Dashboard" : "डॅशबोर्ड",
        "Master" : "मास्टर",
        "OfficerVisitReport" : "अधिकारी भेट अहवाल",
-       "Help" : "मदत करा"
+       "Help" : "मदत करा",
+       "clusterEmailId" : "क्लस्टर ईमेल आयडी",
+       "clusterMobileNo" : "क्लस्टर मोबाईल क्र."
+
 
 
 
