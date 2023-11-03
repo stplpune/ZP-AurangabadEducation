@@ -284,7 +284,12 @@
        "AddEvent" : "कार्यक्रम जोडा",
        "EventName" : "इव्हेंटचे नाव",
        "EventName(Marathi)" : "कार्यक्रमाचे नाव (मराठी)",
-       "EventDate" : "कार्यक्रमाची तारीख"
+       "EventDate" : "कार्यक्रमाची तारीख",
+       "PageRightAccess" : "पृष्ठ उजवीकडे प्रवेश",
+       "PageName/PageURL" : "पृष्ठाचे नाव/पृष्ठ URL",
+       "PageName" : "पृष्ठाचे नाव",
+       "PageURL" : "पृष्ठ यू आर एल",
+       "Select" : "निवडा"
 
 
 

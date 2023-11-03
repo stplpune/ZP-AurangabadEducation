@@ -283,7 +283,12 @@
       "AddEvent" : "Add Event",
       "EventName" : "Event Name",
       "EventName(Marathi)" : "Event Name(Marathi)",
-      "EventDate" : "Event Date"
+      "EventDate" : "Event Date",
+      "pagerightaccess" : "page right access",
+      "PageName/PageURL" : "Page Name/Page URL",
+      "PageName" : "Page Name",
+      "PageURL" : "Page URL",
+      "Select" : "Select"
 
 
 
