@@ -21,13 +21,22 @@ export class AddTeacherComponent {
   uploadImageFlag: boolean = false;
   districtArray = new Array();
   talukaArray = new Array();
-  talukaArrayPQ = new Array();
   villageArray = new Array();
   centerArray = new Array();
+  roleArray = new Array();
+  qualificationArray = new Array();
+  streamArray = new Array();
+  degreeSpeArray = new Array();
+  universityArray = new Array();
+  schoolArray = new Array();
+  classArray = new Array();
+  genderArray = new Array();
   checked: boolean = false;
   age: number = 0;
   editObj: any;
   get f() { return this.teacherRegForm.controls }
+  get tEdu() { return ((this.teacherRegForm.get('education') as FormGroup).controls) }
+  get tExp() { return ((this.teacherRegForm.get('experience') as FormGroup).controls) }
 
   constructor(private fb: FormBuilder,
     private errorService: ErrorService,
@@ -43,187 +52,123 @@ export class AddTeacherComponent {
 
   ngOnInit() {
     this.formField();
+    this.getGender();
     this.getDistrict();
+    this.getTeacherRole();
+    this.getEducationalQualification();
+    this.getEducationalStream();
+    this.getDegreeSpecialization();
+    this.getUniversity();
   }
 
-  formField(){
+  formField() {
     this.teacherRegForm = this.fb.group({
+      id: 0,
+      teacherCode: [''],
       name: [''],
       m_Name: [''],
-      teacherCode: [''],
-      genderId: [''],
+      genderId: 0,
+      dob: [''],
       mobileNo: [''],
       emailId: [''],
-      dob: [''],
-      uploadImage: [''],
-
-      // Address Details
-      districtId: [''],
-      talukaId: [''],
-      villageId: [''],
+      stateId: 0,
+      current_DistrictId: 0,
+      current_TalukaId: 0,
+      current_VillageId: 0,
       currentAddress: [''],
+      permanent_DistrictId: 0,
+      permanent_TalukaId: 0,
+      permanent_VillageId: 0,
       permanentAddress: [''],
-
-      // Highest Educational Qualification
-      educationalQualificationId: [''],
-      streamId: [''],
-      degreeId: [''],
-      boardId: [''],
-      degreeUniversityId: [''],
-      marks: [''],
-      passingYear: [''],
-
-      // Professional Qualification
-      udiseCode: [''],
-      districtIdPQ: [''],
-      talukaIdPQ: [''],
-      kendraId: [''],
-      villageIdPQ: [''],
-      schoolId: [''],
-      roleId: [''],
-      isKendraHead: [''],
-      clusterId: [''],
-      isClassTeacher: [''],
-      classId: [''],
-      divisionId: [''],
-      assignedClass: ['']
-
-    });
+      districtId: 0,
+      talukaId: 0,
+      centerId: 0,
+      villageId: 0,
+      schoolId: 0,
+      designationId: 0,
+      roleId: 0,
+      joiningDate: [''],
+      isClusterHead: false,
+      officerId: 0,  //remain
+      isClassTeacher: false,
+      profilePhoto: [''],
+      localId: 0,
+      lan: [''],
+      userId: 0,
+      designationLevelId: 0,
+      bitId: 0,
+      kendraMobileNo: [''],
+      kendraEmailId: [''],
+      // beoMobileNo: [''],
+      // beoEmailId: [''],
+      isHeadMaster: false,
+      teacherId: 0,
+      // refId: 0,
+      // password: [''],
+      // userName: [''],
+      ...this.webStorage.createdByProps(),
+      education: this.fb.group({
+        id: 0,
+        teacherId: 0,
+        educationQualificationId: 0,
+        streamId: 0,
+        degreeSpecializationId: 0,
+        boardId: 0,
+        universityId: 0,
+        percentage: 0,
+        passingYear: [''],
+        ...this.webStorage.createdByProps(),
+      }),
+      experience: this.fb.group({
+        id: 0,
+        teacherId: 0,
+        districtId: 0,
+        talukaId: 0,
+        centerId: 0,
+        villageId: 0,
+        schoolId: 0,
+        designitionId: 0,
+        joiningDate: new Date(),
+        resignDate: new Date(),
+      ...this.webStorage.createdByProps(),
+      }) ,
+      teacherStandardModel: [
+        // {
+        //   id: 0,
+        //   teacherId: 0,
+        //   standardId: 0,
+        //   divisionId: 0,
+        //   isClassTeacher: true,
+        //   createdBy: this.webStorage.createdByProps().createdBy,
+        //   modifiedBy: this.webStorage.createdByProps().modifiedBy,
+        //   isDeleted: this.webStorage.createdByProps().modifiedBy
+        // }
+      ],
+      standardTeacherModel: [
+        // {
+        //   id: 0,
+        //   teacherId: 0,
+        //   standardId: 0,
+        //   divisionId: 0,
+        //   isClassTeacher: true,
+        //   createdBy: this.webStorage.createdByProps().createdBy,
+        //   modifiedBy: this.webStorage.createdByProps().modifiedBy,
+        //   isDeleted: this.webStorage.createdByProps().modifiedBy
+        // }
+      ],
+      officerCenterSchoolModel: [
+        // {
+        //   id: 0,
+        //   userId: 0,
+        //   centerId: 0,
+        //   centerSchoolId: 0,
+        //   addUpdateBy: 0
+        // }
+      ]
+    })
   }
 
-  // formField() {
-  //   this.teacherRegForm = this.fb.group({
-  //     id: 0,
-  //     userId: 0,
-  //     userType: 0,
-  //     name: [''],
-  //     m_Name: [''],
-  //     teacherCode: [''],
-  //     genderId: 0,
-  //     mobileNo: [''],
-  //     emailId: [''],
-  //     dob: new Date(),
-  //     uploadImage: [''],
-  //     stateId: 0,
-  //     current_DistrictId: 0,
-  //     current_TalukaId: 0,
-  //     current_VillageId: 0,
-  //     currentAddress: [''],
-  //     permanent_DistrictId: 0,
-  //     permanent_TalukaId: 0,
-  //     permanent_VillageId: 0,
-  //     permanentAddress: [''],
-  //     isClusterHead: true,
-  //     officerId: 0,
-  //     isClassTeacher: true,
-  //     isHeadMaster: true,
-  //     designationId: 0,
-  //     centerId: 0,
-  //     lan: [''],
-  //     localID: 0,
-  //     createdBy: 0,
-  //     createdDate: new Date(),
-  //     modifiedBy: 0,
-  //     modifiedDate: new Date(),
-  //     isDeleted: true,
-  //     timestamp: new Date(),
-  //     education: {
-  //       id: 0,
-  //       teacherId: 0,
-  //       educationQualificationId: 0,
-  //       streamId: 0,
-  //       degreeSpecializationId: 0,
-  //       boardId: 0,
-  //       universityId: 0,
-  //       percentage: 0,
-  //       passingYear: [''],
-  //       createdBy: 0,
-  //       createdDate: new Date(),
-  //       modifiedBy: 0,
-  //       modifiedDate: new Date(),
-  //       isDeleted: true,
-  //       timeStamp: new Date()
-  //     },
-  //     experience: {
-  //       id: 0,
-  //       teacherId: 0,
-  //       districtId: 0,
-  //       talukaId: 0,
-  //       centerId: 0,
-  //       villageId: 0,
-  //       schoolId: 0,
-  //       designitionId: 0,
-  //       joiningDate: new Date(),
-  //       resignDate: new Date(),
-  //       createdBy: 0,
-  //       createdDate: new Date(),
-  //       modifiedBy: 0,
-  //       modifiedDate: new Date(),
-  //       isDeleted: true,
-  //       timeStamp: new Date()
-  //     },
-  //     teacherDetails: {
-  //       id: 0,
-  //       teacherId: 0,
-  //       schoolId: 0,
-  //       clusterId: 0,
-  //       designationId: 0,
-  //       designationLevelId: 0,
-  //       roleId: 0,
-  //       isClusterHead: true,
-  //       isHeadMaster: true,
-  //       officerId: 0,
-  //       graduate_SubjectId: 0,
-  //       isGraduate_PayScale: true,
-  //       castId: 0,
-  //       castCategoryId: 0,
-  //       castCertificateNo: [''],
-  //       castCertificateOffice: [''],
-  //       isCastVarificationDone: true,
-  //       castValidityNoDate: 0,
-  //       castverificationCommitteeName: [''],
-  //       dateOfFirstAppoinmentService: new Date(),
-  //       currentSchoolJoiningDate: new Date(),
-  //       currentTalukaPresentDate: new Date(),
-  //       retirementDate: new Date(),
-  //       educationalQualificationId: 0,
-  //       branchId12th: 0,
-  //       degreeOptionalSubjectsId: 0,
-  //       degreeUniversityId: 0,
-  //       professionalQualificationId: 0,
-  //       bEdPercentages: 0,
-  //       bEdUniversityId: 0,
-  //       husbandWife_Both_Service: true,
-  //       husbandWife_OfficeName: [''],
-  //       isDisabled: true,
-  //       interDistrictTransferred: true,
-  //       dateOFPresenceInterDistrictTransfer: new Date(),
-  //       interDistrictTransferType: [''],
-  //       theOriginalDistrictInterDistrictTransfer: [''],
-  //       dateOfSeniority: new Date(),
-  //       haveYouPassedComputerExam: true,
-  //       namesAndTalukasAllSchoolsWorkedEarlier: [''],
-  //       createdBy: 0,
-  //       createdDate: new Date(),
-  //       modifiedBy: 0,
-  //       modifiedDate: new Date(),
-  //       isDeleted: true,
-  //       timestamp: new Date()
-  //     },
-  //     teacherStandards: [
-  //       {
-  //         id: 0,
-  //         teacherId: 0,
-  //         standardId: 0,
-  //         createdBy: 0,
-  //         modifiedBy: 0
-  //       }
-  //     ]
-  //   })
-  // }
-
   //#region ---------------------------------------------------- Dropdown Start here ---------------------------------------------------
-
   getDistrict() {
     this.districtArray = [];
     this.masterService.getAllDistrict('').subscribe({
@@ -235,11 +180,10 @@ export class AddTeacherComponent {
 
   getTaluka() {
     this.talukaArray = [];
-    let districtId = this.teacherRegForm.value.districtId || this.teacherRegForm.value.districtIdPQ;
+    let districtId = this.teacherRegForm.value.districtId;
     this.masterService.getAllTaluka('', districtId).subscribe({
       next: (res: any) => {
         (res.statusCode == "200" && this.teacherRegForm.value.districtId > 0) ? this.talukaArray = res.responseData : this.talukaArray = [];
-        (res.statusCode == "200" && this.teacherRegForm.value.districtIdPQ > 0) ? this.talukaArrayPQ = res.responseData : this.talukaArrayPQ = [];
       }
     });
   }
@@ -258,7 +202,7 @@ export class AddTeacherComponent {
 
   getCenter() {
     this.centerArray = [];
-    let talukaId = this.teacherRegForm.value.talukaIdPQ;
+    let talukaId = this.teacherRegForm.value.talukaId;
     this.masterService.getAllCenter('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
@@ -268,9 +212,9 @@ export class AddTeacherComponent {
 
   getVillage() {
     this.villageArray = [];
-    let kendraId = this.teacherRegForm.value.kendraId;
-    if (kendraId > 0) {
-      this.masterService.getAllVillage('', kendraId).subscribe({
+    let centerId = this.teacherRegForm.value.centerId;
+    if (centerId > 0) {
+      this.masterService.getAllVillage('', centerId).subscribe({
         next: (res: any) => {
           res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
         }
@@ -278,6 +222,82 @@ export class AddTeacherComponent {
     }
   }
 
+  getTeacherRole() {
+    this.roleArray = [];
+    this.masterService.getAllDepenDesignationByLevelId('', '5').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.roleArray = res.responseData : this.roleArray = [];
+      }
+    });
+  }
+
+  getEducationalQualification() {
+    this.qualificationArray = [];
+    this.masterService.getAllEducationalQualification('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.qualificationArray = res.responseData : this.qualificationArray = [];
+      }
+    });
+  }
+
+  getEducationalStream() {
+    this.streamArray = [];
+    this.masterService.getAllEducationalStream('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.streamArray = res.responseData : this.streamArray = [];
+      }
+    });
+  }
+
+  getDegreeSpecialization() {
+    this.degreeSpeArray = [];
+    this.masterService.getAllDegreeSpecialization('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.degreeSpeArray = res.responseData : this.degreeSpeArray = [];
+      }
+    });
+  }
+
+  getUniversity() {
+    this.universityArray = [];
+    this.masterService.getAllUniversity('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.universityArray = res.responseData : this.universityArray = [];
+      }
+    });
+  }
+
+  getSchoolList() {
+    this.schoolArray = [];
+    let distId = this.teacherRegForm.value.districtId;
+    let talukaId = this.teacherRegForm.value.talukaId;
+    let centerId = this.teacherRegForm.value.centerId;
+    let villageId = this.teacherRegForm.value.villageId;
+      this.masterService.getAllSchool('', distId, talukaId, centerId, villageId).subscribe({
+        next: (res: any) => {
+          res.statusCode == "200" ? this.schoolArray = res.responseData : this.schoolArray = [];
+        }
+      });
+  }
+
+  getSchoolClasses() {
+    this.classArray = [];
+    let schoolId = this.teacherRegForm.value.schoolId;
+    this.masterService.getAllSchoolClasses(schoolId, '').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.classArray = res.responseData : this.classArray = [];
+      }
+    });
+  }
+
+  getGender() {
+    this.genderArray = [];
+    this.masterService.getAllGender('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.genderArray = res.responseData : this.genderArray = [];
+      }
+    });
+  }
   //#endregion--------------------------------------------------- Dropdown end here ----------------------------------------------------
 
   //#region ------------------------------------------------ Upload, view and delete Image start here ----------------------------------
@@ -290,7 +310,7 @@ export class AddTeacherComponent {
           this.uploadImg = res.responseData;
           this.uploadImageFlag = true;
 
-          this.teacherRegForm.value.uploadImage = this.uploadImg;
+          this.teacherRegForm.value.profilePhoto = this.uploadImg;
           this.commonMethod.matSnackBar(res.statusMessage, 0);
         }
         else {
@@ -303,7 +323,7 @@ export class AddTeacherComponent {
 
   viewImg() {
     if (this.editObj) {
-      let viewImg = this.editObj.uploadImage;
+      let viewImg = this.editObj.profilePhoto;
       this.uploadImg ? window.open(this.uploadImg, 'blank') : window.open(viewImg, 'blank')
     }
     else {
@@ -313,14 +333,13 @@ export class AddTeacherComponent {
 
   clearImg() {
     this.uploadImg = '';
-    this.teacherRegForm.value.uploadImage = '';
-    this.f['uploadImage'].setValue('');
+    this.teacherRegForm.value.profilePhoto = '';
+    this.f['profilePhoto'].setValue('');
     this.uploadImageFlag = false;
   }
-
   //#endregion ------------------------------------------------ Upload, view and delete Image end here ----------------------------------------
 
-
+  //#region ------------------------------------------------ Address, age calculation methods start here --------------------------------------
   clearAddressCheckBox(event: any) {
     if (event.data == null) {
       this.checked = false;
@@ -329,8 +348,6 @@ export class AddTeacherComponent {
   }
 
   setSameAddress(event: any) {
-    console.log("onClick: ", event);
-
     this.checked = event.checked;
     if (this.checked == true) {
       let sameAddress = this.teacherRegForm.value.currentAddress
@@ -347,12 +364,41 @@ export class AddTeacherComponent {
       this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
     }
   }
+  //#endregion ---------------------------------------------- Address, age calculation methods end here --------------------------------------
+
+  //#region ----------------------------------------- Clear dropdown on change start here--------------------------------------------------
+  clearDropdown(dropdown: string) {
+    if (dropdown == 'district') {
+      this.f['talukaId'].setValue('');
+      this.f['centerId'].setValue('');
+      this.f['villageId'].setValue('');
+      this.f['schoolId'].setValue('');
+      this.centerArray = [];
+      this.villageArray = [];
+      this.schoolArray = [];
+    }
+    else if (dropdown == 'taluka') {
+      this.f['centerId'].setValue('');
+      this.f['villageId'].setValue('');
+      this.f['schoolId'].setValue('');
+      this.villageArray = [];
+      this.schoolArray = [];
+    }
+    else if (dropdown == 'center') {
+      this.f['villageId'].setValue('');
+      this.f['schoolId'].setValue('');
+      this.schoolArray = [];
+    }
+    else {
+      this.f['schoolId'].setValue('');
+    }
+  }
+  //#endregion----------------------------------------- Clear dropdown on change end here--------------------------------------------------
 
 
 
 
 
 
-  toppings = new FormControl('');
-  toppingList: string[] = ['Pune', 'Satara', 'Kolhapur', 'Sangli', 'Nagar'];
+  
 }
