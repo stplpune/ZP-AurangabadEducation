@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -18,7 +18,6 @@ import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialo
   styleUrls: ['./add-school.component.scss']
 })
 export class AddSchoolComponent {
-
   schoolRegForm!: FormGroup;
   districtArray = new Array();
   talukaArray = new Array();
@@ -31,6 +30,7 @@ export class AddSchoolComponent {
   schoolManagementArray = new Array();
   lowestGroupclassArray = new Array();
   highestGroupclassArray = new Array();
+  standardArray = new Array();
   areaArray = new Array();
   divisionArray = new Array();
   docArray = new Array();
@@ -42,11 +42,14 @@ export class AddSchoolComponent {
   editFlag: boolean = false;
   editId: any;
   updateLocal: boolean = false;
-  index!:number;
+  index!: number;
   tableDataArray: any;
   tableData = new Array();
+  stdDivisionForm!: FormGroup;
   get f() { return this.schoolRegForm?.controls }
+  get sf() { return this.stdDivisionForm?.controls }
   displayedColumns: string[] = ['srNo', 'standard', 'division', 'action'];
+  @ViewChild('formDirective') private formDirective!: NgForm;
 
   constructor(private fb: FormBuilder,
     private masterService: MasterService,
@@ -105,31 +108,24 @@ export class AddSchoolComponent {
         })
       ]),
       schoolStandardDivisions: [],
-      // this.fb.array([
-      //   this.fb.group({
-      //     id: 0,
-      //     schoolId: 0,
-      //     standardId: 0,
-      //     divisionId: 0,
-      //     createdBy: this.webStorage.createdByProps().createdBy,
-      //     modifiedBy: this.webStorage.createdByProps().modifiedBy,
-      //     isDeleted: this.webStorage.createdByProps().isDeleted
-      //   })
-      // ]),
       ...this.webStorage.createdByProps()
     });
   }
 
-  get multipleImg(): FormArray {
-    return this.schoolRegForm.get('schoolDocument') as FormArray;
+  stdDivFormField() {
+    this.stdDivisionForm = this.fb.group({
+      standardId: ['', Validators.required],
+      divisionId: ['']
+    })
   }
 
-  // get multipleDivision(): FormArray {
-  //   return this.schoolRegForm.get('schoolStandardDivisions') as FormArray;
+  // get multipleImg(): FormArray {  // Do not Remove
+  //   return this.schoolRegForm.get('schoolDocument') as FormArray; 
   // }
 
   initialDropdown() {
     this.formField();
+    this.stdDivFormField();
     this.getDistrict();
     this.getLowestGroupClass();
     this.getSchoolType();
@@ -259,13 +255,13 @@ export class AddSchoolComponent {
     this.editObj ? this.f['S_AreaId'].setValue(this.editObj.s_AreaId) : '';
   }
 
-  getDivisionArray(obj?:any) {
+  getDivisionArray(obj?: any) {
     this.divisionArray = [];
     this.masterService.getAllStandardDivision('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.divisionArray = res.responseData : this.divisionArray = [];
-        if(this.updateLocal && obj){
-          this.f['divisionId'].setValue(obj);
+        if (this.updateLocal && obj) {
+          this.sf['divisionId'].setValue(obj);
         }
       }
     });
@@ -273,13 +269,23 @@ export class AddSchoolComponent {
 
   getHighestGroupClass() {
     this.f['highestClass'].setValue('');
+    this.sf['standardId'].setValue('');
     let lowestClass = this.schoolRegForm.value.lowestClass;
 
     let findObj = this.lowestGroupclassArray.filter((res: any) => {
       return res.lowestClass >= lowestClass
     })
     this.highestGroupclassArray = findObj;
-    this.editObj ? this.f['highestClass'].setValue(this.editObj.highestClass) : '';
+    this.editObj ? (this.f['highestClass'].setValue(this.editObj.highestClass), this.getStandardArray())  : '';
+  }
+
+  getStandardArray(){
+    let highClass = this.schoolRegForm.value.highestClass;
+
+    let findObj = this.highestGroupclassArray.filter((res: any) => {
+      return res.lowestClass <= highClass
+    })
+    this.standardArray = findObj;
   }
   //#endregion------------------------------------------ Dropdown with dependencies end here------------------------------------------------
 
@@ -321,7 +327,7 @@ export class AddSchoolComponent {
     this.uploadImageFlag = false;
   }
 
-  multipleImgUpload(event: any) {
+  multipleImgUpload(event: any) {                               // Do not Remove
     this.fileUpload.uploadMultipleDocument(event, 'Upload', 'jpg, jpeg, png').subscribe({
       next: (res: any) => {
         if (res.statusCode == "200") {
@@ -349,87 +355,96 @@ export class AddSchoolComponent {
     });
   }
 
-  clearMultipleDoc(index: any) {
+  clearMultipleDoc(index: any) {                          // Do not Remove
     this.docArray.splice(index, 1);
   }
 
-  onViewDoc(index: any) {
+  onViewDoc(index: any) {                                // Do not Remove
     window.open(this.docArray[index].docPath, 'blank');
   }
   //#endregion--------------------------------- Upload, view, delete img and multiple document end here-------------------------------------
 
-  onAddDisionStd(){
-    // this.updateValidation('true');
+  //#region -------------------------------- Add and patch Standard and Multiple Division start here -----------------------------------------
+  onAddDisionStd() {
+    this.updateValidation('true');
+    if (!this.stdDivisionForm.valid && this.stdDivisionForm.value.standardId == '') {
+      return
+    }
+    else if(!this.updateLocal && this.stdDivisionArray.find((x: any) => x.standardId == this.stdDivisionForm.value.standardId)){
+      this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Selected Standard is already exist' : 'निवडलेले स्टँडर्ड आधीपासून अस्तित्वात आहे', 1);
+      this.onClear();
+      return
+    }
+    else {
+      let divisionArr = this.stdDivisionForm.value?.divisionId ? this.stdDivisionForm.value?.divisionId : 0;
+      let webStorageMethod = this.webStorage.createdByProps();
+      let m_DivisionName: any = [];
+      
+      if(this.stdDivisionForm.value.divisionId != 0){
+        this.stdDivisionForm.value.divisionId = [];
+      for (let i = 0; i < divisionArr.length; i++) {
+        for (let j = 0; j < this.divisionArray.length; j++) {
+          if (divisionArr[i] == this.divisionArray[j].id) {
+            let divisionValue = this.divisionArray[j].division;
+            this.stdDivisionForm.value.divisionId.push(divisionValue);
+            m_DivisionName.push(this.divisionArray[j].m_Division);
 
-    console.log("stdDivisionArray......: ", this.stdDivisionArray);
-
-    let divisionArr = this.schoolRegForm.value.divisionId;
-    this.schoolRegForm.value.divisionId = [];
-
-    let webStorageMethod = this.webStorage.createdByProps();
-    for (let i = 0; i < divisionArr.length; i++) {
-      for(let j = 0; j < this.divisionArray.length; j++){
-        if(divisionArr[i] == this.divisionArray[j].id){
-          let divisionValue = (this.webStorage.languageFlag == 'mr-IN' ? this.divisionArray[j].m_Division : this.divisionArray[j].division);
-          this.schoolRegForm.value.divisionId.push(divisionValue);
+            let obj = {
+              id: 0,
+              schoolId: this.editObj ? this.editObj.id : 0,
+              standardId: this.stdDivisionForm.value.standardId,
+              divisionId: divisionArr[i],
+              createdBy: webStorageMethod.createdBy,
+              modifiedBy: webStorageMethod.modifiedBy,
+              isDeleted: webStorageMethod.isDeleted
+            } 
+            this.stdDivisionArray.push(obj);
+            this.stdDivisionArray = [...this.stdDivisionArray]; 
+          }
         }
       }
-    
-      if(this.updateLocal == true){        
-        console.log("if........");
-        
-        let obj = {
-          id: this.editObj?.standardDivisions[this.index].id,     //change index
-          schoolId: this.editObj?.standardDivisions[this.index].schoolId,
-          standardId: this.schoolRegForm.value.standardId,
-          divisionId: divisionArr[i],
-          createdBy: webStorageMethod.createdBy,
-          modifiedBy: webStorageMethod.modifiedBy,
-          isDeleted: webStorageMethod.isDeleted
-      }
-      this.stdDivisionArray.push(obj);
-      this.stdDivisionArray = [...this.stdDivisionArray];
       }
       else{
-        console.log("else........");
         let obj = {
           id: 0,
-          schoolId: 0,
-          standardId: this.schoolRegForm.value.standardId,
-          divisionId: divisionArr[i],
+          schoolId: this.editObj ? this.editObj.id : 0,
+          standardId: this.stdDivisionForm.value.standardId,
+          divisionId: 0,
           createdBy: webStorageMethod.createdBy,
           modifiedBy: webStorageMethod.modifiedBy,
           isDeleted: webStorageMethod.isDeleted
+        } 
+          this.stdDivisionArray.push(obj);
+          this.stdDivisionArray = [...this.stdDivisionArray]; 
       }
-      this.stdDivisionArray.push(obj);
-      this.stdDivisionArray = [...this.stdDivisionArray];
+
+      // Create obj for display standard and division in table
+      let formObj = {
+        standardId: this.stdDivisionForm.value.standardId,
+        divisionId: divisionArr,
+        divisionValue: this.stdDivisionForm.value.divisionId,
+        divisionMarathi: m_DivisionName
       }
 
-    }
+      this.updateLocal == true ? (this.tableData[this.index] = formObj) : this.tableData.push(formObj);
+      this.tableData = [...this.tableData];
+      this.tableDataArray = new MatTableDataSource(this.tableData);
 
-    console.log("stdDivisionArray: ", this.stdDivisionArray);
-
-    let formObj = {
-      standardId: this.schoolRegForm.value.standardId,
-      divisionId: divisionArr,
-      divisionValue: this.schoolRegForm.value.divisionId,
+      this.onClear();
+      this.updateValidation('false');
+      this.updateLocal = false;
     }
-    
-    
-    this.updateLocal == true ? (console.log("hiii"), this.tableData[this.index] = formObj) : this.tableData.push(formObj);
-    this.tableData = [...this.tableData];
-    
-    this.tableDataArray = new MatTableDataSource(this.tableData);
-    console.log("this.tableData ", this.tableData );
-    
-    
-    this.f['standardId'].setValue('');
-    this.f['divisionId'].setValue('');
-    this.updateLocal = false;
-    console.log("stdDivisionArray: ", this.stdDivisionArray);
   }
 
-  //#region -------------------------------------------- Submit and Edit start here-----------------------------------------------------
+  onEditStandardDiv(obj: any, i: number) {
+    this.updateLocal = true;
+    this.index = i;
+    this.sf['standardId'].setValue(obj?.standardId);
+    this.getDivisionArray(obj?.divisionId);
+  }
+  //#endregion -------------------------------- Add and patch Standard and Multiple Division end here ---------------------------------------
+
+  //#region ---------------------------------------- Submit and Edit start here----------------------------------------------------------
   onSubmit() {
     let formValue = this.schoolRegForm.value;
     formValue.uploadImage = this.uploadImg;
@@ -437,12 +452,13 @@ export class AddSchoolComponent {
     formValue.schoolStandardDivisions = this.stdDivisionArray;
     formValue.isKendraSchool == false ? formValue.bitId = 0 : '';
 
-    console.log("formValue: ", formValue);
-    // return
-
     let url = this.editObj ? 'UpdateSchool' : 'AddSchool';
     if (!this.schoolRegForm.valid) {
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
+      return
+    }
+    else if (!this.stdDivisionArray.length) {
+      this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Add at least One Standard' : 'कृपया किमान एक स्टँडर्ड प्रविष्ट करा', 1);
       return
     }
     else {
@@ -468,11 +484,10 @@ export class AddSchoolComponent {
       next: (res: any) => {
         if (res.statusCode == "200") {
           this.editObj = res.responseData;
-          console.log("editObj: ", this.editObj);
-          
+
           if (flag == 'Edit') {
             this.initialDropdown();
-            this.uploadImg = this.editObj?.uploadImage;
+            this.uploadImg = this.editObj?.uploadImage;                    // Do not Remove
             this.uploadImg ? this.uploadImageFlag = true : this.uploadImageFlag = false;
             this.editObj?.schoolDocument.filter((res: any) => {
               let schoolDocumentObj = {
@@ -485,20 +500,22 @@ export class AddSchoolComponent {
               this.docArray.push(schoolDocumentObj);
             });
 
+            // Standard and Division patch and show in table start here
             this.stdDivisionArray = [];
             this.stdDivisionArray = this.editObj?.standardDivisions;
-            const uniqueStd = [...new Set(this.stdDivisionArray.map((sub: any) => sub.standardId))]; 
-            
+            const uniqueStd = [...new Set(this.stdDivisionArray.map((sub: any) => sub.standardId))];
+
             uniqueStd.map((x: any) => {
               const obj = {
                 standardId: x,
-                divisionId: (this.stdDivisionArray.filter((sub: any) => sub.standardId == x )).map((res: any) => res.divisionId),
-                divisionValue:  (this.stdDivisionArray.filter((sub: any) => sub.standardId == x )).map((res: any) => res.division),
+                divisionId: (this.stdDivisionArray.filter((sub: any) => sub.standardId == x)).map((res: any) => res.divisionId),
+                divisionValue: (this.stdDivisionArray.filter((sub: any) => sub.standardId == x)).map((res: any) => res.division),
+                divisionMarathi: (this.stdDivisionArray.filter((sub: any) => sub.standardId == x)).map((res: any) => res.m_Division)
               }
               this.tableData.push(obj);
             })
             this.tableDataArray = new MatTableDataSource(this.tableData);
-            console.log("this.tableData: ", this.tableData);
+            console.log("table data: ", this.tableData);
             
           }
           else {
@@ -531,23 +548,15 @@ export class AddSchoolComponent {
     })
   }
 
-  onDelete(index: number){
+  onDelete(index: number) {
+    let standardId = this.tableData[index].standardId;
+    for (let i = 0; i < this.stdDivisionArray.length; i++) {
+      if (this.stdDivisionArray[i].standardId == standardId) {
+        this.stdDivisionArray.splice(i);   // delete from main array 
+      }
+    }
     this.tableData?.splice(index, 1);
-    let standardId = this.stdDivisionArray[index].standardId;
-    console.log("i", index);
-    let i = this.stdDivisionArray.filter((x: any) => x.standardId == standardId);
-    console.log("standardId", i);
-    
-    // this.stdDivisionArray.splice()
     this.tableDataArray = new MatTableDataSource(this.tableData);
-  }
-
-  onEditStandardDiv(obj: any, i: number){
-    console.log("obj: ", obj, i);
-    this.updateLocal = true;
-    this.index = i;
-    this.f['standardId'].setValue(obj?.standardId);
-    this.getDivisionArray(obj?.divisionId);
   }
   //#endregion ------------------------------------------ Open dialog and delete method end here-----------------------------------------------
 
@@ -580,25 +589,28 @@ export class AddSchoolComponent {
   //#region ------------------------------------- Update validation on isKendra School start here-------------------------------------------
   updateValidation(flag?: string) {
     if(flag == 'true'){
-      console.log("flag validation: ", flag);
-      
-      this.f['standardId'].setValidators(Validators.required);
-      this.f['standardId'].updateValueAndValidity;
-      this.f['divisionId'].setValidators(Validators.required);
-      this.f['divisionId'].updateValueAndValidity;
+      this.sf['standardId'].setValidators(Validators.required);
+    }
+    else if(flag == 'false'){
+      this.sf['standardId'].clearValidators();
     }
     else{
-      if (this.f['isKendraSchool'].value == true) {
-        this.f['bitId'].setValidators(Validators.required);
-        this.f['bitId'].setValue('');
-        this.editObj.bitId = '';
-      }
-      else {
-        this.f['bitId'].clearValidators();
-      }
-      this.f['bitId'].updateValueAndValidity();
+    if (this.f['isKendraSchool'].value == true) {
+      this.f['bitId'].setValidators(Validators.required);
+      this.f['bitId'].setValue('');
+      this.editObj.bitId = '';
     }
+    else {
+      this.f['bitId'].clearValidators();
+    }
+    this.f['bitId'].updateValueAndValidity();
+    }
+    this.sf['standardId'].updateValueAndValidity();
   }
   //#endregion------------------------------------- Update validation on isKendra School end here-------------------------------------------
 
+  onClear(){
+    this.sf['standardId'].setValue('');
+    this.sf['divisionId'].setValue('');
+  }
 }
