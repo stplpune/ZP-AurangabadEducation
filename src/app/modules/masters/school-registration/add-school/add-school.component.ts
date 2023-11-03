@@ -557,6 +557,8 @@ export class AddSchoolComponent {
     }
     this.tableData?.splice(index, 1);
     this.tableDataArray = new MatTableDataSource(this.tableData);
+    this.updateLocal = false;
+    this.onClear();
   }
   //#endregion ------------------------------------------ Open dialog and delete method end here-----------------------------------------------
 
