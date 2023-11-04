@@ -1,3 +1,4 @@
+import { NgSwitch } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -73,7 +74,7 @@ export class AddUserComponent {
       genderId: [0],
       dob: [''],
       address: [''],
-      schoolId: [0],
+      schoolId: [0], //??
       designationLevelId: [0],
       designationId: [0],
       stateId: [0],
@@ -89,20 +90,15 @@ export class AddUserComponent {
       o_UserId: [0],
       profilePhoto: [''],
       isHeadMaster: [false],
-      teacherId: [0],
-      currentAddress: [''], //extra
-      permentAddress: [''], //extra
-      isClassTeacher: [false],//extra
-      // districtIdSecond: [false],//extra remove
-      // talukaIdSecond: [false],//extra removed
-      // centerIdSecond: [false],//extra removed
-      villageIdSecond: [false],//extra removed 
+      teacherId: [0], //??
+      currentAddress: [''],
+      permanentAddress: [''],
+      isClassTeacher: [false],
       officerCenterSchoolModel: [],
       teacherCode: [""],
       current_DistrictId: [0],
       current_TalukaId: [0],
       current_VillageId: [0],
-      permanentAddress: [""],
       permanent_DistrictId: [0],
       permanent_TalukaId: [0],
       permanent_VillageId: [0],
@@ -111,24 +107,14 @@ export class AddUserComponent {
       t_CenterId: [0],
       t_VillageId: [0],
       t_SchoolId: [0],
-      t_DesignationLevelId: [0],
-      t_DesignationId: [0],
-      t_RoleId: [0],
+      t_DesignationLevelId: [0], //??
+      t_DesignationId: [0], //??
+      t_RoleId: [0], //??
       joiningDate: [],
       isClusterHead: [true], // for is headmaster if true then show this true
       officerId: [0],
-      t_UserId: [0],
-      teacherClassesModel: [ 
-        // {
-        //   "id": [0],
-        //   "teacherId": [0],
-        //   "standardId": [0],
-        //   "divisionId": [0],
-        //   "isClassTeacher": [true],
-        //   "createdBy": [0],
-        //   "isDeleted": [true]
-        // }
-      ],
+      t_UserId: [0], //??
+      teacherClassesModel: [],
       educationQualificationId: [0],
       streamId: [0],
       degreeSpecializationId: [0],
@@ -155,7 +141,7 @@ export class AddUserComponent {
     });
   }
 
-  getGender(){
+  getGender() {
     this.genderArr = [];
     this.masterService.getAllGender('').subscribe({
       next: (res: any) => {
@@ -218,69 +204,69 @@ export class AddUserComponent {
   getVillage() {
     this.villageArray = [];
     let centerId = this.userRegForm.value.t_CenterId;
-      this.masterService.getAllVillage('', centerId).subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
-        }
-      });
+    this.masterService.getAllVillage('', centerId).subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
+      }
+    });
   }
 
-  getAllSchool(){
+  getAllSchool() {
     let formValue = this.userRegForm.value
     this.schoolArr = [];
-      this.masterService.getAllSchool('', formValue.t_DistrictId, formValue.t_TalukaId, formValue.t_CenterId, formValue.t_VillageId).subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.schoolArr = res.responseData : this.schoolArr = [];
-        }
-      });
+    this.masterService.getAllSchool('', formValue.t_DistrictId, formValue.t_TalukaId, formValue.t_CenterId, formValue.t_VillageId).subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.schoolArr = res.responseData : this.schoolArr = [];
+      }
+    });
   }
 
-  
-  getEducationQualDrop(){
+
+  getEducationQualDrop() {
     this.educationQualArr = [];
     let centerId = this.userRegForm.value.t_CenterId;
-      this.masterService.getAllEducationalQualification('').subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.educationQualArr = res.responseData : this.educationQualArr = [];
-        }
-      });
-    }
+    this.masterService.getAllEducationalQualification('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.educationQualArr = res.responseData : this.educationQualArr = [];
+      }
+    });
+  }
 
-  getStream(){
+  getStream() {
     this.streamArr = [];
-      this.masterService.getAllEducationalStream('').subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.streamArr = res.responseData : this.streamArr = [];
-        }
-      });
+    this.masterService.getAllEducationalStream('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.streamArr = res.responseData : this.streamArr = [];
+      }
+    });
   }
 
-  getDegreeSpecilization(){
+  getDegreeSpecilization() {
     this.degreeArr = [];
-      this.masterService.getAllDegreeSpecialization('').subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.degreeArr = res.responseData : this.degreeArr = [];
-        }
-      });
+    this.masterService.getAllDegreeSpecialization('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.degreeArr = res.responseData : this.degreeArr = [];
+      }
+    });
   }
 
-  getAllUniversity(){
+  getAllUniversity() {
     this.universityArr = [];
-      this.masterService.getAllUniversity('').subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.universityArr = res.responseData : this.universityArr = [];
-        }
-      });
+    this.masterService.getAllUniversity('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.universityArr = res.responseData : this.universityArr = [];
+      }
+    });
   }
 
-  getAllSchoolClasses(){
+  getAllSchoolClasses() {
     let schoolId = this.userRegForm.value.t_SchoolId
     this.schoolClasArr = [];
-      this.masterService.getAllSchoolClasses(schoolId, '').subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.schoolClasArr = res.responseData : this.schoolClasArr = [];
-        }
-      });
+    this.masterService.getAllSchoolClasses(schoolId, '').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.schoolClasArr = res.responseData : this.schoolClasArr = [];
+      }
+    });
   }
 
   // getRole(){
@@ -292,14 +278,14 @@ export class AddUserComponent {
   //     });
   //   }
 
-    getAllEducationalBoard(){
-      this.boardArr = [];
-      this.masterService.getAllBoard('').subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.boardArr = res.responseData : this.boardArr = [];
-        }
-      });
-    }
+  getAllEducationalBoard() {
+    this.boardArr = [];
+    this.masterService.getAllBoard('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.boardArr = res.responseData : this.boardArr = [];
+      }
+    });
+  }
 
 
   //#endregion ------------------------------------------ Dropdown with dependencies end from here ----------------------------------------
@@ -331,7 +317,7 @@ export class AddUserComponent {
     //   this.uploadImg ? window.open(this.uploadImg, 'blank') : window.open(viewImg, 'blank')
     // }
     // else {
-      window.open(this.uploadImg, 'blank');
+    window.open(this.uploadImg, 'blank');
     // }
   }
 
@@ -355,35 +341,65 @@ export class AddUserComponent {
 
   CalculateAge() {
     console.log("hgd");
-    
-    let birthDate = this.userRegForm.value.dob;   
+
+    let birthDate = this.userRegForm.value.dob;
     if (birthDate) {
       var timeDiff = Math.abs(Date.now() - birthDate);
       this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
     }
   }
 
-  onchangeCheckBox(event: any){
+  onchangeCheckBox(event: any) {
     (event.checked == true) ? (this.getEducationQualDrop(), this.getStream(), this.getDegreeSpecilization(), this.getAllUniversity(), this.getAllEducationalBoard()) : ''
   }
 
-  onSubmit(){
+  onSubmit() {
     let formValue = this.userRegForm.value;
-    // formValue.officerCenterSchoolModel = []
-    // formValue.teacherClassesModel = []
-    // formValue.classTeacherModel = []
-     
+    formValue.officerCenterSchoolModel = []
+    //  Start if AssignClasses  slected by user
     let assignClassData = this.userRegForm.value.assignClassId
-    console.log("assignClassData", assignClassData);
-    
+    let assignClassArr: any = []
+    assignClassData?.forEach((element: any) => {
+      let obj = {
+        "id": element.id,
+        "teacherId": 0,
+        "standardId": element.standardId,
+        "divisionId": element.divisionId,
+        "isClassTeacher": true,
+        "createdBy": 0,
+        "isDeleted": true
+      }
+      assignClassArr.push(obj)
+    });
+    //  End AssignClasses  slected by user
+
+    // Start teacherClass selected by user
+    let teacherClassData = this.userRegForm.value.teacherClassId
+    let classTeacherArr: any = []
+    teacherClassData?.forEach((element: any) => {
+      let obj = {
+        "id": element.id,
+        "teacherId": 0,
+        "standardId": element.standardId,
+        "divisionId": element.divisionId,
+        "isClassTeacher": true,
+        "createdBy": 0,
+        "isDeleted": true
+      }
+      classTeacherArr.push(obj)
+    });
+
+
     let url = this.editObj ? 'UpdateOfficer' : 'AddOfficer';
-    if(!this.userRegForm.valid){
+    if (!this.userRegForm.valid) {
       this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
       return
     }
-    else{
-      console.log("hds",formValue);
-      
+    else {
+      console.log("hds", formValue);
+      formValue.classTeacherModel = assignClassArr // patch selected Assignclasses to headmaster
+      formValue.teacherClassesModel = classTeacherArr
+
       this.ngxSpinner.show();
       this.apiService.setHttp(this.editObj ? 'put' : 'post', 'ZP-Education/Officer/' + url, false, formValue, false, 'zp-Education');
       this.apiService.getHttp().subscribe({
@@ -396,6 +412,31 @@ export class AddUserComponent {
           this.commonMethod.checkDataType(err.statusMessage) == false ? this.errorService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusMessage, 1);
         })
       })
+    }
+  }
+
+  clearDropdown(flag?: string) {
+    switch (flag) {
+      case 'designationLevel':
+        this.f['designationId'].setValue('')
+        break
+      case 'district':
+        this.f['talukaId'].setValue('');
+        this.f['bitId'].setValue('');
+        this.f['centerId'].setValue('')
+        this.centerArray = [];
+        this.bitArray = [];
+        break;
+      case 'taluka':
+        this.f['bitId'].setValue('');
+        this.f['centerId'].setValue('')
+        break;
+      case 'designation':
+        this.f['bitId'].setValue('');
+        this.f['centerId'].setValue('');
+        break;
+      default:
+        break;
     }
   }
 

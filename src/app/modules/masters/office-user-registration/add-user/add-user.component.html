@@ -23,7 +23,7 @@
                 <div class="col-sm-3">
                     <label class="form-label">{{'Lables.Level' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="designationLevelId" (selectionChange)="getDesignationByLevelId();">
+                        <mat-select formControlName="designationLevelId" (selectionChange)="clearDropdown('designationLevel');getDesignationByLevelId();">
                             <mat-option *ngFor="let level of levelArray" [value]="level.id">{{webStorage.languageFlag
                                 =='mr-IN' ? level.m_DesignationLevel: level.designationLevel}}</mat-option>
                         </mat-select>
@@ -45,7 +45,7 @@
                 <div class="col-sm-3">
                     <label class="form-label">{{'Lables.district' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="districtId" (selectionChange)="getTaluka();">
+                        <mat-select formControlName="districtId" (selectionChange)="clearDropdown('district');getTaluka();">
                             <mat-option *ngFor="let district of districtArray"
                                 [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District:
                                 district.district}}</mat-option>
@@ -55,7 +55,7 @@
                 <div class="col-sm-3">
                     <label class="form-label">{{'Lables.taluka' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="talukaId" (selectionChange)="getCenter(); getBit();">
+                        <mat-select formControlName="talukaId" (selectionChange)="clearDropdown('taluka');getCenter(); getBit();">
                             <mat-option *ngFor="let taluka of talukaArray" [value]="taluka.id">{{webStorage.languageFlag
                                 =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
                         </mat-select>
@@ -64,7 +64,7 @@
                 <div class="col-sm-3">
                     <label class="form-label">{{'Lables.Designation(Officer)' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="designationId">
+                        <mat-select formControlName="designationId" (selectionChange)="clearDropdown('designation')">
                             <mat-option *ngFor="let desigLevel of desigLevelArray"
                                 [value]="desigLevel.id">{{webStorage.languageFlag
                                 =='mr-IN' ? desigLevel.m_Designation: desigLevel.designation}}</mat-option>
@@ -215,7 +215,7 @@
                     <div class="col-sm-6">
                         <label class="form-label">{{'Lables.PermanentAddress' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <textarea matInput rows="2" formControlName="permentAddress" (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpacesWithSomeSpecChar($event);" maxlength="100"></textarea>
+                            <textarea matInput rows="2" formControlName="permanentAddress" (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpacesWithSomeSpecChar($event);" maxlength="100"></textarea>
                         </mat-form-field>
                     </div>
                 </div>
