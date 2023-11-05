@@ -29,6 +29,7 @@ export class AddTeacherComponent {
   qualificationArray = new Array();
   streamArray = new Array();
   degreeSpeArray = new Array();
+  boardArray = new Array();
   universityArray = new Array();
   schoolArray = new Array();
   classArray = new Array();
@@ -36,6 +37,7 @@ export class AddTeacherComponent {
   checked: boolean = false;
   age: number = 0;
   editObj: any;
+  editFlag: boolean = false;
   get f() { return this.teacherRegForm.controls }
   get tEdu() { return ((this.teacherRegForm.get('education') as FormGroup).controls) }
   get tExp() { return ((this.teacherRegForm.get('experience') as FormGroup).controls) }
@@ -56,35 +58,30 @@ export class AddTeacherComponent {
   }
 
   ngOnInit() {
-    this.formField();
-    this.getGender();
-    this.getDistrict();
-    this.getTeacherRole();
-    this.getEducationalQualification();
-    this.getEducationalStream();
-    this.getDegreeSpecialization();
-    this.getUniversity();
+    this.initialDropdown();
+    this.data ? this.onEdit(this.data.id, this.data.flag) : '';
+    console.log("onEdit : ", this.data);
   }
 
   formField() {
     this.teacherRegForm = this.fb.group({
-      id: 0,
-      teacherCode: [''],
-      name: [''],
-      m_Name: [''],
+      id: [this.editObj ? this.editObj.id : 0],
+      teacherCode: [this.editObj ? this.editObj.teacherCode : ''],
+      name: [this.editObj ? this.editObj.name : ''],
+      m_Name: [this.editObj ? this.editObj.m_Name : ''],
       genderId: 0,
-      dob: [''],
-      mobileNo: [''],
-      emailId: [''],
+      dob: [this.editObj ? this.editObj.dob : ''],
+      mobileNo: [this.editObj ? this.editObj.mobileNo : ''],
+      emailId: [this.editObj ? this.editObj.emailId : ''],
       stateId: 0,
       current_DistrictId: 0,
       current_TalukaId: 0,
       current_VillageId: 0,
-      currentAddress: [''],
+      currentAddress: [this.editObj ? this.editObj.currentAddress : ''],
       permanent_DistrictId: 0,
       permanent_TalukaId: 0,
       permanent_VillageId: 0,
-      permanentAddress: [''],
+      permanentAddress: [this.editObj ? this.editObj.permanentAddress : ''],
       districtId: 0,
       talukaId: 0,
       centerId: 0,
@@ -92,18 +89,18 @@ export class AddTeacherComponent {
       schoolId: 0,
       designationId: 0,
       roleId: 0,
-      joiningDate: [''],
-      isClusterHead: false,
+      joiningDate: [this.editObj ? this.editObj.joiningDate : ''],
+      isClusterHead: [this.editObj ? this.editObj.isClusterHead : false],
       officerId: 0,  //remain
-      isClassTeacher: false,
+      isClassTeacher: [this.editObj ? this.editObj.isClassTeacher : false],
       profilePhoto: [''],
       localId: 0,
       lan: [''],
       userId: 0,
       designationLevelId: 0,
       bitId: 0,
-      kendraMobileNo: [''],
-      kendraEmailId: [''],
+      kendraMobileNo: [this.editObj ? this.editObj.kendraMobileNo : ''],
+      kendraEmailId: [this.editObj ? this.editObj.kendraEmailId : ''],
       // beoMobileNo: [''],
       // beoEmailId: [''],
       isHeadMaster: false,
@@ -120,8 +117,8 @@ export class AddTeacherComponent {
         degreeSpecializationId: 0,
         boardId: 0,
         universityId: 0,
-        percentage: 0,
-        passingYear: [''],
+        percentage: [this.editObj ? this.editObj?.educationres?.percentage : ''],
+        passingYear: [this.editObj ? this.editObj?.educationres?.passingYear : ''],
         ...this.webStorage.createdByProps(),
       }),
       experience: this.fb.group({
@@ -173,12 +170,25 @@ export class AddTeacherComponent {
     })
   }
 
+  initialDropdown(){
+    this.formField();
+    this.getDistrict();
+    this.getGender();
+    this.getTeacherRole();
+    this.getEducationalQualification();
+    this.getEducationalStream();
+    this.getDegreeSpecialization();
+    this.getBoard();
+    this.getUniversity();
+  }
+
   //#region ---------------------------------------------------- Dropdown Start here ---------------------------------------------------
   getDistrict() {
     this.districtArray = [];
     this.masterService.getAllDistrict('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.districtArray = res.responseData : this.districtArray = [];
+        this.editObj ? (this.f['districtId'].setValue(this.editObj.districtId), this.getTaluka()) : '';
       }
     });
   }
@@ -188,21 +198,10 @@ export class AddTeacherComponent {
     let districtId = this.teacherRegForm.value.districtId;
     this.masterService.getAllTaluka('', districtId).subscribe({
       next: (res: any) => {
-        (res.statusCode == "200" && this.teacherRegForm.value.districtId > 0) ? this.talukaArray = res.responseData : this.talukaArray = [];
+        res.statusCode == "200" ? this.talukaArray = res.responseData : this.talukaArray = [];
+        this.editObj ? (this.f['talukaId'].setValue(this.editObj.talukaId), this.getCenter()) : '';
       }
     });
-  }
-
-  getVillageByTalukaId() {
-    this.villageArray = [];
-    let talukaId = this.teacherRegForm.value.talukaId;
-    if (talukaId > 0) {
-      this.masterService.getAllVillageByTalukaId('', talukaId).subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
-        }
-      });
-    }
   }
 
   getCenter() {
@@ -211,6 +210,7 @@ export class AddTeacherComponent {
     this.masterService.getAllCenter('', talukaId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
+        this.editObj ? (this.f['centerId'].setValue(this.editObj.centerId), this.getVillage()) : '';
       }
     });
   }
@@ -218,13 +218,12 @@ export class AddTeacherComponent {
   getVillage() {
     this.villageArray = [];
     let centerId = this.teacherRegForm.value.centerId;
-    if (centerId > 0) {
       this.masterService.getAllVillage('', centerId).subscribe({
         next: (res: any) => {
           res.statusCode == "200" ? this.villageArray = res.responseData : this.villageArray = [];
+          this.editObj ? (this.f['villageId'].setValue(this.editObj.villageId), this.getSchoolList()) : '';
         }
       });
-    }
   }
 
   getTeacherRole() {
@@ -232,6 +231,7 @@ export class AddTeacherComponent {
     this.masterService.getAllDepenDesignationByLevelId('', '5').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.roleArray = res.responseData : this.roleArray = [];
+        this.editObj ? (this.f['roleId'].setValue(this.editObj.roleId)) : '';
       }
     });
   }
@@ -241,6 +241,7 @@ export class AddTeacherComponent {
     this.masterService.getAllEducationalQualification('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.qualificationArray = res.responseData : this.qualificationArray = [];
+        this.editObj ? (this.tEdu['educationQualificationId'].setValue(this.editObj?.educationres?.educationQualificationId)) : '';
       }
     });
   }
@@ -250,6 +251,7 @@ export class AddTeacherComponent {
     this.masterService.getAllEducationalStream('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.streamArray = res.responseData : this.streamArray = [];
+        this.editObj ? (this.tEdu['streamId'].setValue(this.editObj?.educationres?.streamId)) : '';
       }
     });
   }
@@ -259,6 +261,17 @@ export class AddTeacherComponent {
     this.masterService.getAllDegreeSpecialization('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.degreeSpeArray = res.responseData : this.degreeSpeArray = [];
+        this.editObj ? (this.tEdu['degreeSpecializationId'].setValue(this.editObj?.educationres?.degreeSpecializationId)) : '';
+      }
+    });
+  }
+
+  getBoard() {
+    this.boardArray = [];
+    this.masterService.getAllBoard('').subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.boardArray = res.responseData : this.boardArray = [];
+        this.editObj ? (this.tEdu['boardId'].setValue(this.editObj?.educationres?.boardId)) : '';
       }
     });
   }
@@ -268,6 +281,7 @@ export class AddTeacherComponent {
     this.masterService.getAllUniversity('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.universityArray = res.responseData : this.universityArray = [];
+        // this.editObj ? (this.tEdu['DegreeUniversity'].setValue(this.editObj?.educationres?.universityId)) : '';
       }
     });
   }
@@ -281,6 +295,7 @@ export class AddTeacherComponent {
     this.masterService.getAllSchool('', distId, talukaId, centerId, villageId).subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolArray = res.responseData : this.schoolArray = [];
+        this.editObj ? (this.f['schoolId'].setValue(this.editObj.schoolId), this.getSchoolClasses()) : '';
       }
     });
   }
@@ -300,6 +315,7 @@ export class AddTeacherComponent {
     this.masterService.getAllGender('').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.genderArray = res.responseData : this.genderArray = [];
+        this.editObj ? (this.f['genderId'].setValue(this.editObj.genderId)) : '';
       }
     });
   }
@@ -400,7 +416,7 @@ export class AddTeacherComponent {
   }
   //#endregion----------------------------------------- Clear dropdown on change end here--------------------------------------------------
 
-  //#region ---------------------------------------------- Submit start here -----------------------------------------------------------
+  //#region ---------------------------------------------- Submit and Edit start here ------------------------------------------------------
   onSubmit() {
     let formValue = this.teacherRegForm.value;
     formValue.profilePhoto = this.uploadImg;
@@ -474,6 +490,29 @@ export class AddTeacherComponent {
       })
     }
   }
-  //#endregion ------------------------------------------- Submit end here -------------------------------------------------------------
+
+  onEdit(id: number, flag: any){
+    flag == 'View' ? this.editFlag = false : this.editFlag = true;
+    this.apiService.setHttp('get', 'ZP-Education/Teacher/GetTeacherById?Id=' + id, false, false, false, 'zp-Education');
+    this.apiService.getHttp().subscribe({
+      next: (res: any) => {
+        if(res.statusCode == "200"){
+          this.editObj = res.responseData;
+          console.log("editObj: ", this.editObj);
+          
+
+          if(flag == 'Edit'){
+            this.initialDropdown();
+            this.uploadImg = this.editObj?.profilePhoto;
+            this.uploadImg ? this.uploadImageFlag = true : this.uploadImageFlag = false;
+          }
+        }
+      }
+    })
+  }
+
+  //#endregion ------------------------------------------- Submit and Edit end here -------------------------------------------------------------
+
+
 
 }

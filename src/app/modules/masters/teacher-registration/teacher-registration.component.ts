@@ -26,11 +26,6 @@ export interface PeriodicElement {
   Action: any;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { srno: 1, TeacherNum: 'Teacher', Teacher: 'School', Mobile: 'Head Master', Email: 'Anjangaon Bari', District: 'Pune', Taluka: 'Jaoli', Cluster: 'AMBI', Unblock: '', Action: 'H' },
-  { srno: 2, TeacherNum: 'Head Master', Teacher: 'Kendra', Mobile: 'Cluster Resource Person', Email: 'Anjangaon Bari', District: 'Pune', Taluka: 'Jaoli', Cluster: 'AMBI', Unblock: '', Action: 'H' },
-  { srno: 3, TeacherNum: 'IED Teacher', Teacher: 'Taluka', Mobile: 'Block Resource Person', Email: 'Anjangaon Bari', District: 'Pune', Taluka: 'Jaoli', Cluster: 'AMBI', Unblock: '', Action: 'H' },
-];
 @Component({
   selector: 'app-teacher-registration',
   templateUrl: './teacher-registration.component.html',
@@ -51,6 +46,7 @@ export class TeacherRegistrationComponent {
   tableData: any;
   langTypeName: any;
   highLightFlag!: boolean;
+  displayedColumns = new Array();
 
   get f() { return this.filterForm.controls }
 
@@ -123,7 +119,6 @@ export class TeacherRegistrationComponent {
 
   languageChange() {
     this.highLightFlag = true;
-    // let displayedColumnsReadMode = ['srNo', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
     this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
@@ -132,7 +127,7 @@ export class TeacherRegistrationComponent {
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
       tableHeaders: this.langTypeName == 'English' ? this.displayedheadersEnglish : this.displayedheadersMarathi,
-      edit: true, delete: true
+      edit: false, delete: true, view: true
     };
     this.highLightFlag ? this.tableData.highlightedrow = true : this.tableData.highlightedrow = false,
       this.apiService.tableData.next(this.tableData);
@@ -234,33 +229,51 @@ export class TeacherRegistrationComponent {
         this.getTableData();
         break;
       case 'Edit':
-        this.AddTeacher(obj);
+        this.AddTeacher(obj, 'Add');
         break;
       case 'Delete':
         this.globalDialogOpen(obj);
         break;
+      case 'Block':
+          this.openBlockDialog(obj);
+          break;
+      case 'View':
+          this.AddTeacher(obj, 'View');
+          break;
     }
   }
 
-
-  displayedColumns: string[] = ['srno', 'TeacherNum', 'Teacher', 'Mobile', 'Email', 'District', 'Taluka', 'Cluster', 'Unblock', 'Action'];
-  dataSource = ELEMENT_DATA;
-
-  AddTeacher(data?: any) {
+  AddTeacher(obj?: any, flag?: any) {
+    let viewObj = {
+      id: obj?.id,
+      flag: flag
+    }
     const dialogRef = this.dialog.open(AddTeacherComponent, {
       width: '800px',
-      data: data,
+      data: flag == 'View' ? viewObj : '',
       disableClose: true
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      dialogRef.close();
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if(result == 'yes' && obj){
+        this.onClear();
+        this.tableData();
+        this.getDistrict();
+      }
+      else if(result == 'yes'){
+        this.onClear();
+        this.tableData();
+        this.getDistrict();
+      }
+      this.highLightFlag = false;
+      this.languageChange();
     })
   }
   color: ThemePalette = 'accent';
   checked = false;
   disabled = false;
 
+  //#region ----------------------------------------- Open dialog and delete method start here-------------------------------------------
   globalDialogOpen(obj?: any){
     let dialoObj = {
       title: this.webStorage.languageFlag == 'EN' ? 'Do You Want To Delete Teacher Record?' : 'तुम्हाला शिक्षकाचे रेकॉर्ड हटवायचे आहे का?',
@@ -292,7 +305,7 @@ export class TeacherRegistrationComponent {
       "lan": this.webStorage.languageFlag
     }
 
-    this.apiService.setHttp('delete', 'ZP-Education/School/DeleteSchool?lan=' + this.webStorage.languageFlag, false, deleteObj, false, 'zp-Education');
+    this.apiService.setHttp('delete', 'ZP-Education/Teacher/DeleteTeacher', false, deleteObj, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
         if(res.statusCode == "200"){
@@ -305,6 +318,50 @@ export class TeacherRegistrationComponent {
       }
     });
   }
+  //#endregion ----------------------------------------- Open dialog and delete method end here-------------------------------------------
+
+  //#region ----------------------------------------- Open dialog and block/unblock method start here-------------------------------------------
+  openBlockDialog(obj: any) {
+    let userEng = obj.isBlock == false ? 'Block' : 'Unblock';
+    let userMara = obj.isBlock == false ? 'ब्लॉक' : 'अनब्लॉक';
+    let dialoObj = {
+      title: this.langTypeName == 'English' ? 'Do You Want To ' + userEng + ' The Teacher?' : 'आपण शिक्षक ' + userMara + ' करू इच्छिता?',
+      header: 'Block',
+      cancelButton: this.langTypeName == 'English' ? 'Cancel' : 'रद्द करा',
+      okButton: this.langTypeName == 'English' ? 'Ok' : 'ओके'
+    }
+    const deleteDialogRef = this.dialog.open(GlobalDialogComponent, {
+      width: '320px',
+      data: dialoObj,
+      disableClose: true,
+      autoFocus: false
+    })
+    deleteDialogRef.afterClosed().subscribe((result: any) => {
+      result == 'yes' ? this.blockTeacher(obj) : this.getTableData();
+      this.highLightFlag = false;
+      this.languageChange();
+    })
+  }
+
+  blockTeacher(obj: any) { 
+    let blockObj = {
+      "id": obj?.id,
+      "isBlock": !obj.isBlock,
+    }
+
+    this.apiService.setHttp('put', 'ZP-Education/Teacher/BlockUnblockTeacher', false, blockObj, false, 'zp-Education');
+    this.apiService.getHttp().subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0), this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorsService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+      },
+      error: (error: any) => {
+        this.errorsService.handelError(error.status);
+        this.commonMethod.checkDataType(error.status) == false ? this.errorsService.handelError(error.status) : this.commonMethod.matSnackBar(error.status, 1);
+      }
+    })
+  }
+  //#endregion----------------------------------------- Open dialog and block/unblock method end here-------------------------------------------
+
 
   //#region ------------------------------------ onChange Dropdown method start here -----------------------------------------------------
   clearDropdown(dropdown: string) {
