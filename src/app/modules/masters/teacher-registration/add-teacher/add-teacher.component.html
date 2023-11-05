@@ -1,4 +1,4 @@
-<form [formGroup]="teacherRegForm">
+<form [formGroup]="teacherRegForm" (ngSubmit)="onSubmit()">
     <div mat-dialog-title class="modal-header">
         <div class="d-flex justify-content-between align-items-center w-100">
             <h6 class="text-main mb-0 fw-bold">{{data ?('Lables.updateSchool' | translate)
@@ -284,8 +284,8 @@
                 <div class="col-sm-4" *ngIf="f['isClusterHead'].value == true">
                     <label class="form-label">{{'Lables.SelectCluster' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="clusterId" multiple>
-                            <mat-option *ngFor="let center of centerArray" [value]="center.id">{{webStorage.languageFlag
+                        <mat-select formControlName="officerCenterSchoolModel" multiple>
+                            <mat-option *ngFor="let center of centerArray" [value]="center">{{webStorage.languageFlag
                                 =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -309,8 +309,8 @@
                 <div class="col-sm-4" *ngIf="f['isClassTeacher'].value == true">
                     <label class="form-label">{{'Lables.Class' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="" multiple>
-                            <mat-option *ngFor="let class of classArray" [value]="class.id">{{webStorage.languageFlag
+                        <mat-select formControlName="teacherStandardModel" multiple>
+                            <mat-option *ngFor="let class of classArray" [value]="class">{{webStorage.languageFlag
                                 =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -318,12 +318,10 @@
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="" multiple>
-                            <mat-select formControlName="classId">
-                                <mat-option *ngFor="let class of classArray" [value]="class.id">{{webStorage.languageFlag
+                        <mat-select formControlName="standardTeacherModel" multiple>
+                                <mat-option *ngFor="let class of classArray" [value]="class">{{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                             </mat-select>
-                        </mat-select>
                     </mat-form-field>
                 </div>
             </div>

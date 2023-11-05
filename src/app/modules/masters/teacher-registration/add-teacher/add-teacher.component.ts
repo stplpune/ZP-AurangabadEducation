@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ApiService } from 'src/app/core/services/api.service';
 import { CommonMethodService } from 'src/app/core/services/common-method.service';
 import { ErrorService } from 'src/app/core/services/error.service';
 import { FileUploadService } from 'src/app/core/services/file-upload.service';
@@ -45,6 +47,9 @@ export class AddTeacherComponent {
     private fileUpload: FileUploadService,
     public webStorage: WebStorageService,
     public validation: ValidationService,
+    private ngxSpinner: NgxSpinnerService,
+    private apiService: ApiService,
+    private dialogRef: MatDialogRef<AddTeacherComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dateAdapter: DateAdapter<Date>) {
     dateAdapter.setLocale("en-GB"); // DD/MM/YYYY
@@ -130,8 +135,8 @@ export class AddTeacherComponent {
         designitionId: 0,
         joiningDate: new Date(),
         resignDate: new Date(),
-      ...this.webStorage.createdByProps(),
-      }) ,
+        ...this.webStorage.createdByProps(),
+      }),
       teacherStandardModel: [
         // {
         //   id: 0,
@@ -273,11 +278,11 @@ export class AddTeacherComponent {
     let talukaId = this.teacherRegForm.value.talukaId;
     let centerId = this.teacherRegForm.value.centerId;
     let villageId = this.teacherRegForm.value.villageId;
-      this.masterService.getAllSchool('', distId, talukaId, centerId, villageId).subscribe({
-        next: (res: any) => {
-          res.statusCode == "200" ? this.schoolArray = res.responseData : this.schoolArray = [];
-        }
-      });
+    this.masterService.getAllSchool('', distId, talukaId, centerId, villageId).subscribe({
+      next: (res: any) => {
+        res.statusCode == "200" ? this.schoolArray = res.responseData : this.schoolArray = [];
+      }
+    });
   }
 
   getSchoolClasses() {
@@ -395,10 +400,80 @@ export class AddTeacherComponent {
   }
   //#endregion----------------------------------------- Clear dropdown on change end here--------------------------------------------------
 
+  //#region ---------------------------------------------- Submit start here -----------------------------------------------------------
+  onSubmit() {
+    let formValue = this.teacherRegForm.value;
+    formValue.profilePhoto = this.uploadImg;
 
+    let officerCenterSchoolModelArr: any = [];
+    formValue?.officerCenterSchoolModel.forEach((x: any) => {
+      let officerObj = {
+          id: 0,       // verify with backend
+          userId: 0,   // verify with backend
+          centerId: x.id,
+          centerSchoolId: 0, // verify with backend
+          addUpdateBy: 0 // verify with backend
+      }
+      officerCenterSchoolModelArr.push(officerObj);
+    })
+    formValue.officerCenterSchoolModel = officerCenterSchoolModelArr;
 
+    let teacherStandardModelArr: any = [];
+    formValue?.teacherStandardModel.forEach((x: any) => {
+      let teacherStdObj = {
+          id: x.id,
+          teacherId: 0,
+          standardId: x.standardId,
+          divisionId: x.divisionId,
+          isClassTeacher: true, 
+          createdBy: this.webStorage.createdByProps().createdBy,
+          modifiedBy: this.webStorage.createdByProps().modifiedBy,
+          isDeleted: this.webStorage.createdByProps().isDeleted
+      }
+      teacherStandardModelArr.push(teacherStdObj);
+    })
+    formValue.teacherStandardModel = teacherStandardModelArr;
 
+    let standardTeacherModelArr: any = [];
+    formValue?.standardTeacherModel.forEach((x: any) => {
+      let stdTeacherObj = {
+          id: x.id,
+          teacherId: 0,
+          standardId: x.standardId,
+          divisionId: x.divisionId,
+          isClassTeacher: true,
+          createdBy: this.webStorage.createdByProps().createdBy,
+          modifiedBy: this.webStorage.createdByProps().modifiedBy,
+          isDeleted: this.webStorage.createdByProps().isDeleted
+      }
+      standardTeacherModelArr.push(stdTeacherObj);
+    })
+    formValue.standardTeacherModel = standardTeacherModelArr;
 
+    
+    console.log("formValue", formValue);
+    // return
 
-  
+    let url = this.editObj ? 'UpdateTeacher' : 'AddTeacher';
+    if (!this.teacherRegForm.valid) {
+      this.commonMethod.matSnackBar(this.webStorage.languageFlag == 'EN' ? 'Please Enter Mandatory Fields' : 'कृपया अनिवार्य फील्ड प्रविष्ट करा', 1);
+      return
+    }
+    else {
+      this.ngxSpinner.show();
+      this.apiService.setHttp(this.editObj ? 'put' : 'post', 'ZP-Education/Teacher/' + url, false, formValue, false, 'zp-Education');
+      this.apiService.getHttp().subscribe({
+        next: (res: any) => {
+          this.ngxSpinner.hide();
+          res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0), this.dialogRef.close('yes')) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
+        },
+        error: ((err: any) => {
+          this.ngxSpinner.hide();
+          this.commonMethod.checkDataType(err.statusMessage) == false ? this.errorService.handelError(err.statusCode) : this.commonMethod.matSnackBar(err.statusMessage, 1);
+        })
+      })
+    }
+  }
+  //#endregion ------------------------------------------- Submit end here -------------------------------------------------------------
+
 }
