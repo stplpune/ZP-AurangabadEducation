@@ -72,14 +72,14 @@ export class TeacherRegistrationComponent {
     this.getDistrict();
     this.webStorage.langNameOnChange.subscribe(lang => {
       this.langTypeName = lang;
-    //   this.languageChange();
-    // this.getTableData();
+      this.languageChange();
+    this.getTableData();
     });
   }
 
   formField() {
     this.filterForm = this.fb.group({
-      districtId: [''],
+      districtId: [0],
       talukaId: [''],
       centerId: [''],
       villageId: [''],
@@ -194,9 +194,9 @@ export class TeacherRegistrationComponent {
 
   //#region ------------------------------------ Download Excel PDF start here -----------------------------------------------------
   downloadExcelPDF(data?: any, flag?: any) {
-    let apiKeys = ['schoolCode', this.langTypeName == 'English' ? 'schoolName' : 'm_SchoolName', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', this.langTypeName == 'English' ? 'village' : 'm_Village'];
+    let apiKeys = [this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
     let keyHeader = [this.langTypeName == 'English' ? "Sr.No." : "अनुक्रमांक", this.langTypeName == 'English' ? "Teacher Name" : "शिक्षकाचे नाव", this.langTypeName == 'English' ? "Teacher ID" : "शिक्षक आयडी", this.langTypeName == 'English' ? "Mobile No." : "मोबाईल क्र.", this.langTypeName == 'English' ? "Email ID" : "ई-मेल आयडी", this.langTypeName == 'English' ? "District" : "जिल्हा", this.langTypeName == 'English' ? "Taluka" : "तालुका", this.langTypeName == 'English' ? "Kendra" : "केंद्र"];
-    let headerKeySize = [10, 50, 20, 30, 30, 20, 20, 20, 20];
+    let headerKeySize = [10, 40, 20, 20, 30, 20, 20, 20, 20];
     let keyPDFHeader = ["Sr.No.", "Teacher Name", "Teacher ID", "Mobile No.", "Email ID", "District", "Taluka", "Kendra"];
 
     if(flag == 'pdfFlag'){
@@ -208,7 +208,7 @@ export class TeacherRegistrationComponent {
     }
 
     else if (flag == 'excelFlag') {
-      
+      let apiKeys = ['srNo', this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
       let nameArr: any;
       data.map((x:any,i: any)=>{        
         x.srNo = i+1
