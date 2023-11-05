@@ -72,7 +72,8 @@ export class TeacherRegistrationComponent {
     this.getDistrict();
     this.webStorage.langNameOnChange.subscribe(lang => {
       this.langTypeName = lang;
-      // this.languageChange();
+    //   this.languageChange();
+    // this.getTableData();
     });
   }
 
@@ -92,10 +93,11 @@ export class TeacherRegistrationComponent {
     this.pageNumber = flag == 'filter' ? 1 : this.pageNumber;
     let formValue = this.filterForm?.value;
 
-    let str = `pageno=${this.pageNumber}&pagesize=10&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim() || ''}&lan=${this.webStorage.languageFlag}`;
-    let reportStr = `pageno=1&pagesize=` + (this.totalCount * 10) + `&DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&VillageId=${formValue?.villageId || 0}&CenterId=${formValue?.centerId || 0}&TextSearch=${formValue?.textSearch.trim() || ''}&lan=${this.webStorage.languageFlag}`
+    // ZP-Education/Teacher/GetAllTeacher?DistrictId=0&TalukaId=0&CenterId=0&VillageId=0&textSearch=d&pageno=1&pagesize=10&lan=EN
+    let str = `DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&CenterId=${formValue?.centerId || 0}&VillageId=${formValue?.villageId || 0}&textSearch=${formValue?.textSearch.trim() || ''}&pageno=${this.pageNumber}&pagesize=10&lan=${this.webStorage.languageFlag}`;
+    let reportStr = `DistrictId=${formValue?.districtId || 0}&TalukaId=${formValue?.talukaId || 0}&CenterId=${formValue?.centerId || 0}&VillageId=${formValue?.villageId || 0}&textSearch=${formValue?.textSearch.trim() || ''}&pageno=1&pagesize=` + (this.totalCount * 10) + `&lan=${this.webStorage.languageFlag}`
 
-    this.apiService.setHttp('get', 'ZP-Education/School/GetAllSchool?' + ((flag == 'pdfFlag' || flag == 'excelFlag') ? reportStr : str), false, false, false, 'zp-Education');
+    this.apiService.setHttp('get', 'ZP-Education/Teacher/GetAllTeacher?' + ((flag == 'pdfFlag' || flag == 'excelFlag') ? reportStr : str), false, false, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
         this.ngxSpinner.hide();
@@ -122,10 +124,10 @@ export class TeacherRegistrationComponent {
   languageChange() {
     this.highLightFlag = true;
     // let displayedColumnsReadMode = ['srNo', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
-    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', 'action'];
+    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', 'action'];
     this.tableData = {
       pageNumber: this.pageNumber,
-      img: '', blink: '', badge: '', isBlock: '', pagination: this.totalCount > 10 ? true : false,
+      img: '', blink: '', badge: '', isBlock: 'isBlock', pagination: this.totalCount > 10 ? true : false,
       displayedColumns: this.displayedColumns,
       tableData: this.tableDataArray,
       tableSize: this.tableDatasize,
