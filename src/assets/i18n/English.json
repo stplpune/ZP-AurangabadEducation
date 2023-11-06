@@ -55,7 +55,7 @@
         "DependantDesignation": "Dependant Designation",
         "DesireDesignationLevel": "Desire Designation Level",
         "Designation": "Designation",
-        "Designation-marathi": "Designation (Marathi)",
+        "DesignationMarathi": "Designation (Marathi)",
         "TeacherRegistration": "Teacher Registration",
         "TeacherName/MobileNo.": "Teacher Name/Mobile No.",
         "AddTeacher": "Add Teacher",
@@ -295,7 +295,12 @@
       "AttendanceApproval" : "Attendance Approval",
       "Help" : "Help",
       "clusterMobileNo" : "Cluster Mobile No",
-      "clusterEmailId" : "Cluster Email Id"
+      "clusterEmailId" : "Cluster Email Id",
+      "ViewDesignation"  : "View Designation",
+      "DependantDesignationLevel" : "Dependant Designation Level",
+      "Edit"  : "Edit"
+
+
 
 
 

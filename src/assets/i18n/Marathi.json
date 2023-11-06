@@ -56,7 +56,7 @@
         "DependantDesignation": "अवलंबित पद",
         "DesireDesignationLevel": "पदनाम स्तर",
         "Designation": "पदनाम",
-        "Designation-marathi":"पदनाम (मराठी)",
+        "DesignationMarathi":"पदनाम (मराठी)",
         "TeacherRegistration": "शिक्षक नोंदणी",
         "TeacherName/MobileNo.": "शिक्षकाचे नाव/मोबाईल क्र.",
         "AddTeacher": "शिक्षक नोंदणी",
@@ -296,7 +296,10 @@
        "OfficerVisitReport" : "अधिकारी भेट अहवाल",
        "Help" : "मदत करा",
        "clusterEmailId" : "क्लस्टर ईमेल आयडी",
-       "clusterMobileNo" : "क्लस्टर मोबाईल क्र."
+       "clusterMobileNo" : "क्लस्टर मोबाईल क्र.",
+       "ViewDesignation"  : "पदनाम पहा",
+       "DependantDesignationLevel" : "अवलंबित पदनाम स्तर",
+       "Edit"  : "सुधारणे"
 
 
 
