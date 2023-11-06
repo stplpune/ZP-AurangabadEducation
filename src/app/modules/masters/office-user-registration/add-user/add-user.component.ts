@@ -423,17 +423,61 @@ export class AddUserComponent {
       case 'district':
         this.f['talukaId'].setValue('');
         this.f['bitId'].setValue('');
-        this.f['centerId'].setValue('')
+        this.f['centerId'].setValue(0)
         this.centerArray = [];
         this.bitArray = [];
         break;
       case 'taluka':
         this.f['bitId'].setValue('');
-        this.f['centerId'].setValue('')
+        this.f['centerId'].setValue(0)
         break;
       case 'designation':
         this.f['bitId'].setValue('');
-        this.f['centerId'].setValue('');
+        this.f['centerId'].setValue(0);
+        break;
+      case 't_DistrictId':
+        this.f['t_TalukaId'].setValue('');
+        this.f['t_CenterId'].setValue('');
+        this.f['t_VillageId'].setValue('');
+        this.f['t_SchoolId'].setValue('');
+        this.f['assignClassId'].setValue('');
+        this.f['teacherClassId'].setValue('');
+
+        this.centerArray = [];
+        this.villageArray = [];
+        this.schoolArr = [];
+        this.schoolClasArr = [];
+        break;
+      case 't_TalukaId':
+        this.f['t_CenterId'].setValue('');
+        this.f['t_VillageId'].setValue('');
+        this.f['t_SchoolId'].setValue('');
+        this.f['assignClassId'].setValue('');
+        this.f['teacherClassId'].setValue('');
+        this.villageArray = [];
+        this.schoolArr = [];
+        this.schoolClasArr = [];
+        break;
+      case 't_CenterId':
+        this.f['t_VillageId'].setValue('')
+        this.f['t_SchoolId'].setValue('')
+        this.f['assignClassId'].setValue('');
+        this.f['teacherClassId'].setValue('');
+        this.villageArray = [];
+        this.schoolArr = [];
+        this.schoolClasArr = [];
+        break;
+      case 't_VillageId':
+        this.f['t_SchoolId'].setValue('')
+        this.f['assignClassId'].setValue('');
+        this.f['teacherClassId'].setValue('');
+        this.schoolArr = [];
+        this.schoolClasArr = [];
+        break;
+      case 't_SchoolId':
+        this.f['assignClassId'].setValue('');
+        this.f['teacherClassId'].setValue('');
+        this.schoolClasArr = [];
         break;
       default:
         break;
