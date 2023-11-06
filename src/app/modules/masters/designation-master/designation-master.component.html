@@ -79,32 +79,32 @@
         <mat-card class="plain-card" *ngIf="editObj?.id && !editFlag">
             <mat-card-header class="card-header">
                 <div class="text-main">
-                    View Designation
+                    {{'Lables.ViewDesignation' |translate}}
                 </div>
             </mat-card-header>
             <mat-card-content class="card-body pt-0">
                 <ul class="list-group list-group-flush mb-0">
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                        <span class="form-label">Dependant Designation Level :</span>
-                        <span class="form-data">{{editObj?.designationLevel}}</span>
+                        <span class="form-label">{{'Lables.DependantDesignationLevel' |translate}}:</span>
+                        <span class="form-data">{{editObj?.designationLeve |translate}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0"
                        >
-                        <span class="form-label">Dependant Designation :</span>
+                        <span class="form-label">{{'Lables.DependantDesignation' |translate}} :</span>
                         <div *ngFor="let item of editObj.linkedDesignationResponseModel">
                             <span class="form-data">{{item?.linkedDesignationName}}</span>
                         </div>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                        <span class="form-label">Desire Designation Level :</span>
+                        <span class="form-label">{{'Lables.DesireDesignationLevel' |translate}} :</span>
                         <span class="form-data">{{editObj?.designationLevel}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                        <span class="form-label">Designation :</span>
+                        <span class="form-label">{{'Lables.Designation' |translate}} :</span>
                         <span class="form-data">{{editObj?.designation}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                        <span class="form-label">Designation (Marathi) :</span>
+                        <span class="form-label">{{'Lables.DesignationMarathi' |translate}} :</span>
                         <span class="form-data">{{editObj?.m_Designation}}</span>
                     </li>
                 </ul>
@@ -112,9 +112,9 @@
             <mat-card-actions class="card-footer">
                 <div class="d-flex justify-content-end align-items-center w-100 gap-2">
                     <button mat-flat-button class="btn-main-light" type="button"
-                        (click)="editFlag = true">Cancel</button>
+                        (click)="editFlag = true">{{'Lables.cancel' |translate}}</button>
                     <button mat-flat-button class="btn-main" type="submit"
-                        (click)="onEdit(editObj?.id, 'Edit')">Edit</button>
+                        (click)="onEdit(editObj?.id, 'Edit')">{{'Lables.Edit' |translate}}</button>
                 </div>
             </mat-card-actions>
         </mat-card>
@@ -165,7 +165,7 @@
                         </mat-error>
                     </mat-form-field>
 
-                    <label class="form-label">{{'Lables.Designation-marathi' | translate}}</label>
+                    <label class="form-label">{{'Lables.DesignationMarathi' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <input minlength="2" maxlength="50" matInput formControlName="m_Designation"
                             (keypress)="validation.noFirstSpaceAllow($event); validation.unicodeMarathiValidation($event);">
