@@ -78,8 +78,10 @@
     </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
         <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel' |translate}}</button>
-            <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">{{'Lables.Edit' |translate}}</button>
+            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel'
+                |translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">{{'Lables.Edit'
+                |translate}}</button>
         </div>
     </mat-dialog-actions>
 </form>
@@ -183,7 +185,6 @@
                         {{'Lables.validschoolNameMarathi' | translate}}
                     </mat-error>
                 </mat-form-field>
-
             </div>
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolManagement' | translate}}</label>
@@ -287,10 +288,9 @@
                     <label class="form-label">{{'Lables.Standard' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="standardId" [disabled]="updateLocal">
-                            <mat-option *ngFor="let standard of standardArray"
-                            [value]="standard.lowestClass">
-                            {{standard.value}}
-                        </mat-option>
+                            <mat-option *ngFor="let standard of standardArray" [value]="standard.lowestClass">
+                                {{standard.value}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -330,13 +330,13 @@
                 </ng-container>
                 <ng-container matColumnDef="division">
                     <th mat-header-cell *matHeaderCellDef>{{webStorage.languageFlag
-                        =='mr-IN' ? 'तुकडी' : 'Division'}}  </th>
+                        =='mr-IN' ? 'तुकडी' : 'Division'}} </th>
                     <td mat-cell *matCellDef="let element">{{webStorage.languageFlag
                         =='mr-IN' ? element.divisionMarathi : element.divisionValue}}</td>
                 </ng-container>
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef>{{webStorage.languageFlag
-                        =='mr-IN' ? 'कृती' : 'Action'}}  </th>
+                        =='mr-IN' ? 'कृती' : 'Action'}} </th>
                     <td mat-cell *matCellDef="let element; let i = index">
                         <button mat-icon-button matTooltip="Edit" type="button" (click)="onEditStandardDiv(element, i)">
                             <mat-icon class="material-symbols-rounded text-warning">
