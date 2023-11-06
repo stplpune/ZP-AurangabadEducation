@@ -295,7 +295,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.district' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="t_DistrictId" (selectionChange)="getTaluka('Taluka');">
+                            <mat-select formControlName="t_DistrictId" (selectionChange)=" clearDropdown('t_DistrictId');getTaluka('Taluka');">
                                 <mat-option *ngFor="let district of districtArray"
                                 [value]="district.id">{{webStorage.languageFlag =='mr-IN' ? district.m_District:
                                 district.district}}</mat-option>
@@ -305,7 +305,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.taluka' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="t_TalukaId" (selectionChange)="getCenter('Center');">
+                            <mat-select formControlName="t_TalukaId" (selectionChange)="clearDropdown('t_TalukaId');getCenter('Center');">
                                 <mat-option *ngFor="let taluka of talukaArraySecond" [value]="taluka.id">{{webStorage.languageFlag
                                     =='mr-IN' ? taluka.m_Taluka: taluka.taluka}}</mat-option>
                             </mat-select>
@@ -314,7 +314,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.kendra' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="t_CenterId" (selectionChange)="getVillage();">
+                            <mat-select formControlName="t_CenterId" (selectionChange)="clearDropdown('t_CenterId');getVillage();">
                                 <mat-option *ngFor="let center of centerArraySecond" [value]="center.id">{{webStorage.languageFlag
                                     =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                             </mat-select>
@@ -323,7 +323,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.village' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="t_VillageId" (selectionChange)="getAllSchool();">
+                            <mat-select formControlName="t_VillageId" (selectionChange)="clearDropdown('t_VillageId');getAllSchool();">
                                 <mat-option *ngFor="let village of villageArray" [value]="village.id">{{webStorage.languageFlag
                                     =='mr-IN' ? village.m_Village: village.village}}</mat-option>
                             </mat-select>
@@ -338,7 +338,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.WorkingSchoolName' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select formControlName="t_SchoolId" (selectionChange)="getAllSchoolClasses()">
+                            <mat-select formControlName="t_SchoolId" (selectionChange)="clearDropdown('t_SchoolId');getAllSchoolClasses()">
                                 <mat-option *ngFor="let school of schoolArr" [value]="school.id">{{webStorage.languageFlag
                                     =='mr-IN' ? school.m_SchoolName: school.schoolName}}
                                 </mat-option>
