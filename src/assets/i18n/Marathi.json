@@ -37,8 +37,8 @@
         "SchoolName": "शाळेचे नाव",
         "SchoolName(Marathi)": "शाळेचे नाव (मराठी)",
         "SchoolManagement": "शाळा व्यवस्थापन",
-        "LowestClass": "सुरुवातीचा वर्ग",
-        "HighestClass": "शेवटचा वर्ग",
+        "LowestClass": "सर्वात खालचा वर्ग",
+        "HighestClass": "सर्वोच्च वर्ग",
         "SchoolCategory": "शाळा श्रेणी",
         "UDISECode": "यूडीआयएसई कोड",
         "TypeOfArea": "क्षेत्र प्रकार",
@@ -56,7 +56,7 @@
         "DependantDesignation": "अवलंबित पद",
         "DesireDesignationLevel": "पदनाम स्तर",
         "Designation": "पदनाम",
-        "Designation-marathi":"पदनाम (मराठी)",
+        "DesignationMarathi":"पदनाम (मराठी)",
         "TeacherRegistration": "शिक्षक नोंदणी",
         "TeacherName/MobileNo.": "शिक्षकाचे नाव/मोबाईल क्र.",
         "AddTeacher": "शिक्षक नोंदणी",
@@ -155,7 +155,7 @@
         "ConactPersonName" : "संपर्क व्यक्तीचे नाव",
         "ContactNo" : "संपर्क क्र.",
         "Address" : "पत्ता",
-        "viewSchool": "शाळेचे तपशील पहा",
+        "ViewSchoolDetails": "शाळेचे तपशील पहा",
         "StudentReport" : "विद्यार्थी अहवाल",
         "Report" : "अहवाल",
         "SelectSubject" : "विषय निवडा",
@@ -296,7 +296,11 @@
        "OfficerVisitReport" : "अधिकारी भेट अहवाल",
        "Help" : "मदत करा",
        "clusterEmailId" : "क्लस्टर ईमेल आयडी",
-       "clusterMobileNo" : "क्लस्टर मोबाईल क्र."
+       "clusterMobileNo" : "क्लस्टर मोबाईल क्र.",
+       "ViewDesignation"  : "पदनाम पहा",
+       "DependantDesignationLevel" : "अवलंबित पदनाम स्तर",
+       "Edit"  : "सुधारणे",
+       "TypeofArea" : "क्षेत्रफळाचा प्रकार"
 
 
 
