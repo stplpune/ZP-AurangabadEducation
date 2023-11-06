@@ -74,20 +74,20 @@
                 <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 11"> <!---BEO officer--->
                   <label class="form-label">{{'Lables.contactNo(BEOOffice)' |translate}}</label>
                   <mat-form-field appearance="outline" class="w-100">
-                      <input matInput>
+                      <input matInput formControlName="beoMobileNo">
                   </mat-form-field>
               </div>
               <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 11"> <!---BEO officer--->
                 <label class="form-label">{{'Lables.emailId(BEOOffice)' |translate}}</label>
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput>
+                <mat-form-field appearance="outline" class="w-100" formControlName="beoEmailId">
+                    <input matInput >
                 </mat-form-field>
             </div>
                 <div class="col-sm-3" *ngIf="userRegForm.value.designationId == 17"><!---kendra--->
                     <label class="form-label">{{'Lables.kendra' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="centerId">
-                            <mat-option *ngFor="let center of centerArray" [value]="center.id">{{webStorage.languageFlag
+                        <mat-select multiple formControlName="centerId" [compareWith]="compareCenterFn" >
+                            <mat-option *ngFor="let center of centerArray" [value]="center">{{webStorage.languageFlag
                                 =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -355,10 +355,11 @@
                             </mat-select>
                         </mat-form-field>
                     </div> -->
+                   
                     <div class="col-sm-3">
                       <label class="form-label">{{'Lables.DateOfJoining' | translate}}</label>
                       <mat-form-field appearance="outline" class="w-100">
-                          <input matInput [matDatepicker]="topicker" formControlName="joiningDate">
+                          <input matInput [matDatepicker]="topicker" formControlName="joiningDate" (click)="topicker.open()">
                           <mat-datepicker-toggle matIconSuffix [for]="topicker"></mat-datepicker-toggle>
                           <mat-datepicker #topicker></mat-datepicker>
                       </mat-form-field>
@@ -387,7 +388,7 @@
                     <div class="col-sm-3" *ngIf="f['isClassTeacher'].value == true">
                         <label class="form-label">{{'Lables.Class' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select multiple formControlName="teacherClassId">
+                            <mat-select multiple formControlName="ClassTeacherId">
                                 <mat-option *ngFor="let class of schoolClasArr" [value]="class"> {{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                             </mat-select>
@@ -396,7 +397,7 @@
                     <div class="col-sm-3">
                         <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-select multiple formControlName="assignClassId">
+                            <mat-select multiple formControlName="assignClassId"  [compareWith]="compareAssignClassFn">
                                 <mat-option *ngFor="let class of schoolClasArr" [value]="class"> {{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>                            
                             </mat-select>
