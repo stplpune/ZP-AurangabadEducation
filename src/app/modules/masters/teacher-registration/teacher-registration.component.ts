@@ -119,7 +119,7 @@ export class TeacherRegistrationComponent {
 
   languageChange() {
     this.highLightFlag = true;
-    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', 'action'];
+    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', 'isBlock','action'];
     this.tableData = {
       pageNumber: this.pageNumber,
       img: '', blink: '', badge: '', isBlock: 'isBlock', pagination: this.totalCount > 10 ? true : false,
