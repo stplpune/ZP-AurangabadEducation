@@ -1,7 +1,7 @@
 <form *ngIf="data?.id && !editFlag">
     <div mat-dialog-title class="modal-header">
         <div class="d-flex justify-content-between align-items-center w-100">
-            <h6 class="text-main mb-0 fw-bold">{{'Lables.viewSchool' | translate}}
+            <h6 class="text-main mb-0 fw-bold">{{'Lables.ViewSchoolDetails' | translate}}
             </h6>
             <button mat-icon-button class="btn-modal-close" [mat-dialog-close]="true">
                 <mat-icon class="material-symbols-rounded">close</mat-icon>
@@ -13,31 +13,31 @@
             <div class="col-sm-6 border-end">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex justify-content-between align-items-start px-0 py-1">
-                        <span class="col-sm-6 form-label mb-0">School Name</span>
+                        <span class="col-sm-6 form-label mb-0">{{'Lables.SchoolName' |translate}}</span>
                         <span class="col-sm-6 form-data">{{editObj?.schoolName}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">District</span>
+                        <span class="form-label">{{'Lables.district' |translate}}</span>
                         <span class="form-data">{{editObj?.district}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">Kendra</span>
+                        <span class="form-label">{{'Lables.kendra' |translate}}</span>
                         <span class="form-data">{{editObj?.center}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">School Type</span>
+                        <span class="form-label">{{'Lables.SchoolType' |translate}}</span>
                         <span class="form-data">{{editObj?.schoolType}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">Lowest Class</span>
+                        <span class="form-label">{{'Lables.LowestClass' |translate}}</span>
                         <span class="form-data">{{editObj?.lowestClass}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">School Category</span>
+                        <span class="form-label">{{'Lables.SchoolCategory' |translate}}</span>
                         <span class="form-data">{{'-'}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label" class="form-label" v>Type of Area</span>
+                        <span class="form-label" class="form-label">{{'Lables.TypeofArea' |translate}}</span>
                         <span class="form-data">{{editObj?.schoolArea}}</span>
                     </li>
                 </ul>
@@ -45,31 +45,31 @@
             <div class="col-sm-6">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex justify-content-between align-items-start px-0 py-1">
-                        <span class="form-label mb-0">School Name (Marathi)</span>
+                        <span class="form-label mb-0">{{'Lables.SchoolName(Marathi)' |translate}}</span>
                         <span class="form-data">{{editObj?.m_SchoolName}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">Taluka</span>
+                        <span class="form-label">{{'Lables.taluka' |translate}}</span>
                         <span class="form-data">{{editObj?.taluka}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">Village</span>
+                        <span class="form-label">{{'Lables.village' |translate}}</span>
                         <span class="form-data">{{editObj?.village}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">School Management</span>
+                        <span class="form-label">{{'Lables.SchoolManagement' |translate}}</span>
                         <span class="form-data">{{'-'}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">Highest Class</span>
+                        <span class="form-label">{{'Lables.HighestClass' |translate}}</span>
                         <span class="form-data">{{editObj?.highestClass}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">UDISE Code</span>
+                        <span class="form-label">{{'Lables.UDISECode' |translate}}</span>
                         <span class="form-data">{{editObj?.schoolCode}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                        <span class="form-label">School Medium</span>
+                        <span class="form-label">{{'Lables.SchoolMedium' |translate}}</span>
                         <span class="form-data">{{editObj?.schoolMedium}}</span>
                     </li>
                 </ul>
@@ -78,8 +78,10 @@
     </mat-dialog-content>
     <mat-dialog-actions class="modal-footer">
         <div class="d-flex align-items-center justify-content-end w-100 gap-2">
-            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">Cancel</button>
-            <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">Edit</button>
+            <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.cancel'
+                |translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit" (click)="onEdit(data?.id, 'Edit')">{{'Lables.Edit'
+                |translate}}</button>
         </div>
     </mat-dialog-actions>
 </form>
@@ -183,7 +185,6 @@
                         {{'Lables.validschoolNameMarathi' | translate}}
                     </mat-error>
                 </mat-form-field>
-
             </div>
             <div class="col-sm-6">
                 <label class="form-label">{{'Lables.SchoolManagement' | translate}}</label>
@@ -287,10 +288,9 @@
                     <label class="form-label">{{'Lables.Standard' |translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-select formControlName="standardId" [disabled]="updateLocal">
-                            <mat-option *ngFor="let standard of standardArray"
-                            [value]="standard.lowestClass">
-                            {{standard.value}}
-                        </mat-option>
+                            <mat-option *ngFor="let standard of standardArray" [value]="standard.lowestClass">
+                                {{standard.value}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -330,13 +330,13 @@
                 </ng-container>
                 <ng-container matColumnDef="division">
                     <th mat-header-cell *matHeaderCellDef>{{webStorage.languageFlag
-                        =='mr-IN' ? 'तुकडी' : 'Division'}}  </th>
+                        =='mr-IN' ? 'तुकडी' : 'Division'}} </th>
                     <td mat-cell *matCellDef="let element">{{webStorage.languageFlag
                         =='mr-IN' ? element.divisionMarathi : element.divisionValue}}</td>
                 </ng-container>
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef>{{webStorage.languageFlag
-                        =='mr-IN' ? 'कृती' : 'Action'}}  </th>
+                        =='mr-IN' ? 'कृती' : 'Action'}} </th>
                     <td mat-cell *matCellDef="let element; let i = index">
                         <button mat-icon-button matTooltip="Edit" type="button" (click)="onEditStandardDiv(element, i)">
                             <mat-icon class="material-symbols-rounded text-warning">

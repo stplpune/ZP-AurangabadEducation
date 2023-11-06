@@ -11,6 +11,8 @@ import { ErrorService } from 'src/app/core/services/error.service';
 import { DatePipe } from '@angular/common';
 import { DownloadPdfExcelService } from 'src/app/core/services/download-pdf-excel.service';
 import { GlobalDialogComponent } from 'src/app/shared/global-dialog/global-dialog.component';
+import { Router } from '@angular/router';
+import { AesencryptDecryptService } from 'src/app/core/services/aesencrypt-decrypt.service';
 export interface PeriodicElement {
   srno: any;
   Name: any;
@@ -61,7 +63,9 @@ export class OfficeUserRegistrationComponent {
     private commonMethod: CommonMethodService,
     private errorsService: ErrorService,
     private datepipe: DatePipe,
-    private downloadFileService: DownloadPdfExcelService) { }
+    private downloadFileService: DownloadPdfExcelService,
+    private router: Router,
+    private AESEncryptDecryptService: AesencryptDecryptService) { }
 
   ngOnInit() {
     this.webStorage.langNameOnChange.subscribe(lang => {
@@ -245,9 +249,12 @@ export class OfficeUserRegistrationComponent {
       case 'Block':
         this.openBlockDialog(obj);
         break;
-      // case 'Edit':
-      //   this.AddUser(obj);
-      //   break;
+      case 'Edit':
+        this.AddUser(obj, 'Edit');
+        break;
+        case 'View':
+        this.AddUser(obj,'View');
+        break;
       case 'Delete':
         this.globalDialogOpen(obj);
         break;
@@ -255,6 +262,17 @@ export class OfficeUserRegistrationComponent {
       //     this.AddUser(obj, 'View');
       //     break;
     }
+  }
+
+  // edit and view user
+  AddUser(obj: any, flag: string){
+    console.log(obj, flag);
+    let officerId: any = this.AESEncryptDecryptService.encrypt(`${obj?.id}`);
+    this.router.navigate(['/add-office-user'], {
+      queryParams: {
+        id: officerId
+      },
+    })
   }
 
   //#region ------------------------------------------ Open dialog and delete method start here-----------------------------------------------
