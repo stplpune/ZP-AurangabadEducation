@@ -10,6 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatTableModule } from '@angular/material/table';
     MatCheckboxModule,
     MatRadioModule,
     MatButtonToggleModule,
-    MatTableModule
+    MatTableModule,
+    TranslateModule
   ]
 })
 export class DashboardModule { }
