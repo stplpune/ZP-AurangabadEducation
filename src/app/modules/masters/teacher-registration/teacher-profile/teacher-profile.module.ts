@@ -5,6 +5,7 @@ import { TeacherProfileRoutingModule } from './teacher-profile-routing.module';
 import { TeacherProfileComponent } from './teacher-profile.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     TeacherProfileRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslateModule
+
   ]
 })
 export class TeacherProfileModule { }
