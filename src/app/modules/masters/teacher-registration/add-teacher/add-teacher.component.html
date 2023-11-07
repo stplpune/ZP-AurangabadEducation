@@ -55,19 +55,19 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.Teacher' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="name" (keypress)="validation.noFirstSpaceAllow($event)">
+                    <input matInput formControlName="name" (keypress)="validation.noFirstSpaceAllow($event); validation.alphabetsWithSpaces($event)">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.Teacher(Marathi)' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="m_Name" (keypress)="validation.noFirstSpaceAllow($event)">
+                    <input matInput formControlName="m_Name" (keypress)="validation.noFirstSpaceAllow($event); validation.unicodeMarathiValidation($event)">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.TeacherID' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="teacherCode" (keypress)="validation.noFirstSpaceAllow($event)">
+                    <input matInput formControlName="teacherCode" (keypress)="validation.noFirstSpaceAllow($event); validation.onlyDigits($event)" maxlength="5">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
@@ -83,20 +83,23 @@
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.MobileNo' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="mobileNo">
+                    <input matInput formControlName="mobileNo" (keypress)="validation.noFirstSpaceAllow($event); validation.onlyDigits($event)" maxlength="10">
+                    <mat-error *ngIf="f['mobileNo'].hasError('pattern')">
+                        Please Enter Valid Mobile No
+                    </mat-error>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.EmailID' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="emailId">
+                    <input matInput formControlName="emailId" (keypress)="validation.noFirstSpaceAllow($event); validation.emailRegex($event)" maxlength="50">
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">{{'Lables.BirthDate' | translate}}</label>
                 <mat-form-field appearance="outline" class="w-100">
                     <input matInput [matDatepicker]="picker" (click)="picker.open()"
-                        readonly (dateChange)="CalculateAge()" formControlName="dob">
+                        readonly (dateChange)="CalculateAge()" formControlName="dob" [max]="date">
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -151,7 +154,7 @@
                             <label class="form-label w-100">
                                 <div class="d-flex justify-content-between w-100 align-items-center">
                                     <span>{{'Lables.PermanentAddress' | translate}}</span>
-                                    <mat-checkbox class="example-margin" [disabled]="!f['currentAddress'].value"
+                                    <mat-checkbox [checked]="checked" class="example-margin" [disabled]="!f['currentAddress'].value"
                                         (change)="setSameAddress($event)">{{'Lables.SameAsCurrentAdd' |
                                         translate}}</mat-checkbox>
                                 </div>
@@ -177,7 +180,7 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" *ngIf="teacherRegForm.value.education.educationQualificationId == 9">
                         <label class="form-label">{{'Lables.Stream' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-select formControlName="streamId">
@@ -187,6 +190,7 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
+                    <ng-container *ngIf="(teacherRegForm.value.education.educationQualificationId != 8) || (teacherRegForm.value.education.educationQualificationId != 9)">
                     <div class="col-sm-4">
                         <label class="form-label">{{'Lables.DegreeSpecilization' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
@@ -197,6 +201,7 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
+                </ng-container>
                     <div class="col-sm-4">
                         <label class="form-label">{{'Lables.Board' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
@@ -220,13 +225,13 @@
                     <div class="col-sm-4">
                         <label class="form-label">{{'Lables.Marks/Percentage' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <input matInput formControlName="percentage">
+                            <input matInput formControlName="percentage" (keypress)="validation.noFirstSpaceAllow($event);" maxlength="5">
                         </mat-form-field>
                     </div>
                     <div class="col-sm-4">
                         <label class="form-label">{{'Lables.PassingYear' | translate}}</label>
                         <mat-form-field appearance="outline" class="w-100">
-                            <input matInput formControlName="passingYear" maxlength="4">
+                            <input matInput formControlName="passingYear" (keypress)="validation.noFirstSpaceAllow($event); validation.onlyDigits($event)" maxlength="4">
                         </mat-form-field>
                     </div>
                 </div>
@@ -277,7 +282,7 @@
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.UDISECode' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <input matInput >
+                        <input matInput (keypress)="validation.noFirstSpaceAllow($event); validation.onlyDigits($event)" maxlength="5">
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
@@ -317,7 +322,7 @@
                 <div class="col-sm-4" *ngIf="f['isClusterHead'].value == true">
                     <label class="form-label">{{'Lables.SelectCluster' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="officerCenterSchoolModel" multiple>
+                        <mat-select formControlName="officerCenterSchoolModel" multiple [compareWith]="compareFn">
                             <mat-option *ngFor="let center of centerArray" [value]="center">{{webStorage.languageFlag
                                 =='mr-IN' ? center.m_Center: center.center}}</mat-option>
                         </mat-select>
@@ -326,13 +331,16 @@
                 <div class="col-sm-4" *ngIf="f['isClusterHead'].value == true">
                     <label class="form-label">{{'Lables.clusterMobileNo' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <input matInput formControlName="kendraMobileNo">
+                        <input matInput formControlName="kendraMobileNo" (keypress)="validation.noFirstSpaceAllow($event); validation.onlyDigits($event)" maxlength="10">
+                        <mat-error *ngIf="f['kendraMobileNo'].hasError('pattern')">
+                            Please Enter Valid Kendra Mobile No
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4" *ngIf="f['isClusterHead'].value == true">
                     <label class="form-label">{{'Lables.clusterEmailId' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <input matInput formControlName="kendraEmailId">
+                        <input matInput formControlName="kendraEmailId" (keypress)="validation.noFirstSpaceAllow($event); validation.emailRegex($event)" maxlength="50">
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4 marginbtm file-upload border rounded-2 p-1 margin-control">
@@ -342,7 +350,7 @@
                 <div class="col-sm-4" *ngIf="f['isClassTeacher'].value == true">
                     <label class="form-label">{{'Lables.Class' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="teacherStandardModel" multiple>
+                        <mat-select formControlName="classTeacherModel" multiple [compareWith]="compareFn">
                             <mat-option *ngFor="let class of classArray" [value]="class">{{webStorage.languageFlag
                                 =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                         </mat-select>
@@ -351,7 +359,7 @@
                 <div class="col-sm-4">
                     <label class="form-label">{{'Lables.AssignedClasses' | translate}}</label>
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-select formControlName="standardTeacherModel" multiple>
+                        <mat-select formControlName="teacherStandardModel" multiple [compareWith]="compareFn">
                                 <mat-option *ngFor="let class of classArray" [value]="class">{{webStorage.languageFlag
                                     =='mr-IN' ? class.m_ClassDivision: class.classDivision}}</mat-option>
                             </mat-select>
@@ -364,7 +372,8 @@
         <div class="d-flex align-items-center justify-content-end w-100 gap-2">
             <button mat-dialog-close mat-flat-button class="btn-main-light" type="button">{{'Lables.Cancel' |
                 translate}}</button>
-            <button mat-flat-button class="btn-main" type="submit">{{'Lables.Submit' | translate}}</button>
+            <button mat-flat-button class="btn-main" type="submit">{{editObj ? ('Lables.update' | translate)
+                :('Lables.submit' | translate)}}</button>
         </div>
     </mat-dialog-actions>
 </form>

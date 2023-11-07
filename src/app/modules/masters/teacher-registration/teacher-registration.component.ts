@@ -119,7 +119,7 @@ export class TeacherRegistrationComponent {
 
   languageChange() {
     this.highLightFlag = true;
-    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', 'action'];
+    this.displayedColumns = ['srNo', this.langTypeName == 'English' ? 'name' : 'm_Name', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center', 'isBlock','action'];
     this.tableData = {
       pageNumber: this.pageNumber,
       img: '', blink: '', badge: '', isBlock: 'isBlock', pagination: this.totalCount > 10 ? true : false,
@@ -189,7 +189,7 @@ export class TeacherRegistrationComponent {
 
   //#region ------------------------------------ Download Excel PDF start here -----------------------------------------------------
   downloadExcelPDF(data?: any, flag?: any) {
-    let apiKeys = [this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
+    let apiKeys = [this.langTypeName == 'English' ? 'name' : 'm_Name', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
     let keyHeader = [this.langTypeName == 'English' ? "Sr.No." : "अनुक्रमांक", this.langTypeName == 'English' ? "Teacher Name" : "शिक्षकाचे नाव", this.langTypeName == 'English' ? "Teacher ID" : "शिक्षक आयडी", this.langTypeName == 'English' ? "Mobile No." : "मोबाईल क्र.", this.langTypeName == 'English' ? "Email ID" : "ई-मेल आयडी", this.langTypeName == 'English' ? "District" : "जिल्हा", this.langTypeName == 'English' ? "Taluka" : "तालुका", this.langTypeName == 'English' ? "Kendra" : "केंद्र"];
     let headerKeySize = [10, 40, 20, 20, 30, 20, 20, 20, 20];
     let keyPDFHeader = ["Sr.No.", "Teacher Name", "Teacher ID", "Mobile No.", "Email ID", "District", "Taluka", "Kendra"];
@@ -203,7 +203,7 @@ export class TeacherRegistrationComponent {
     }
 
     else if (flag == 'excelFlag') {
-      let apiKeys = ['srNo', this.langTypeName == 'English' ? 'teacherName' : 'm_TeacherName', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
+      let apiKeys = ['srNo', this.langTypeName == 'English' ? 'name' : 'm_Name', 'teacherCode', 'mobileNo', 'emailId', this.langTypeName == 'English' ? 'district' : 'm_District', this.langTypeName == 'English' ? 'taluka' : 'm_Taluka', this.langTypeName == 'English' ? 'center' : 'm_Center'];
       let nameArr: any;
       data.map((x:any,i: any)=>{        
         x.srNo = i+1
@@ -257,7 +257,7 @@ export class TeacherRegistrationComponent {
     dialogRef.afterClosed().subscribe((result: any) => {
       if(result == 'yes' && obj){
         this.onClear();
-        this.tableData();
+        // this.tableData();
         this.getDistrict();
       }
       else if(result == 'yes'){
@@ -345,11 +345,13 @@ export class TeacherRegistrationComponent {
 
   blockTeacher(obj: any) { 
     let blockObj = {
-      "id": obj?.id,
+      "userId": obj?.userId,
+      "blockBy": this.webStorage.getUserId(),
       "isBlock": !obj.isBlock,
+      "lan": this.webStorage.languageFlag
     }
 
-    this.apiService.setHttp('put', 'ZP-Education/Teacher/BlockUnblockTeacher', false, blockObj, false, 'zp-Education');
+    this.apiService.setHttp('put', 'ZP-Education/User-Registration/BlockUnblockUser', false, blockObj, false, 'zp-Education');
     this.apiService.getHttp().subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? (this.commonMethod.matSnackBar(res.statusMessage, 0), this.getTableData()) : this.commonMethod.checkDataType(res.statusMessage) == false ? this.errorsService.handelError(res.statusCode) : this.commonMethod.matSnackBar(res.statusMessage, 1);
