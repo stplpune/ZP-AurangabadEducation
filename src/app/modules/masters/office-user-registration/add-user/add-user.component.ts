@@ -305,9 +305,10 @@ export class AddUserComponent {
       next: (res: any) => {
         res.statusCode == "200" ? this.schoolClasArr = res.responseData : this.schoolClasArr = [];
         if(this.editObj){
-          let arr = this.editObj.teacherClassesResponseModel
+          //teacherClassessAssign
+          let arr = this.editObj.teacherClassesResponseModel;
           if (arr.length) {
-            let newArr:any =[]
+            let newArr:any = []
             arr.forEach((element:any) => {
               let obj = {
                 "id": 0,
@@ -320,10 +321,9 @@ export class AddUserComponent {
                 }
                 newArr.push(obj);
             });
-            this.f['assignClassId'].setValue(newArr);
-            console.log("this.f['assignClassId']",this.f['assignClassId'].value);
-            
+            this.f['assignClassId'].setValue(newArr);            
             }
+            //End teacherclassAssign
         }
       }
     });
@@ -519,7 +519,7 @@ export class AddUserComponent {
   }
 
   compareAssignClassFn(object1: any, object2: any) {
-    return object1 && object2 && object1.id === object2.id;
+    return object1 && object2 && object1.standardId === object1.standardId && object1.divisionId === object1.divisionId;
   }
 
   clearDropdown(flag?: string) {
