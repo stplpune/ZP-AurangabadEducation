@@ -316,7 +316,66 @@
       "BaseLevel" : "Base Level",
       "ClassWise" : "Class Wise",
       "Total" : "Total",
-      "WelcomeName" : "Sagar"
+      "WelcomeName" : "Sagar",
+      "FatherName" : "Father Name",
+      "MotherName" : "Mother Name",
+      "DateofBirth" : "Date of Birth",
+      "GuardianName" : "Guardian Name",
+      "Education" : "Education",
+      "Evaluation" : "Evaluation",
+      "Transfer" : "Transfer",
+      "TransferHistory" : "Transfer History",
+      "CurrentSchool" : "Current School",
+      "PreviousEducationDetails" : "Previous Education Details",
+      "StudentProfile" : "Sanket Abhijit Kambale",
+      "StudentUser" : "(संकेत अभिजित कांबळे)",
+      "Location" : "Location",
+      "Duration" : "Duration",
+      "From" : "From",
+      "To" : "To",
+      "Status" : "Status",
+      "Reason" : "Reason",
+      "TotalDays" : "Total Days",
+      "TotalPresent" : "Total Present",
+      "TotalAbsent" : "Total Absent",
+      "Weekends" : "Weekends",
+      "SelectMonth" : "Select Month",
+      "Month-Year" : "Month-Year",
+      "Profile" : "Profile",
+      "EducationalDetails" : "Educational Details",
+      "Experience" : "Experience",
+      "ExitHistory" : "Exit History",
+      "Exit" : "Exit",
+      "WorkedFrom-To" : "Worked From-To",
+      "WorkingAt" : "Working At",
+      "Teachingfor" : "Teaching for",
+      "Stream/Subject" : "Stream/Subject",
+      "Board/University" : "Board/University",
+      "Class/Grade" : "Class/Grade",
+      "Suspended" : "Suspended",
+      "SuspendedError" : "This teacher have been suspended from his duty due to unlawful conduct in school.",
+      "Retired" : "Retired",
+      "RetiredError" : "This teacher have been retired from his duty.",
+      "Active" : "Active",
+      "ID" : "ID",
+      "Headmaster" : "(Headmaster)"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

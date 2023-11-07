@@ -320,35 +320,49 @@
        "BaseLevel" : "बेस लेव्हल",
        "ClassWise" : "वर्गवार",
        "Total" : "एकूण",
-       "WelcomeName" : "सागर"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       "WelcomeName" : "सागर",
+       "FatherName" : "वडिलांचे नाव",
+       "MotherName" : "आईचे नाव",
+       "DateofBirth" : "जन्मतारीख",
+       "GuardianName" : "पालकाचे नाव",
+       "Education" : "शिक्षण",
+       "Evaluation" : "मूल्यमापन",
+       "Transfer" : "हस्तांतरण",
+       "TransferHistory" : "हस्तांतरण इतिहास",
+       "CurrentSchool" : "सध्याची शाळा",
+       "PreviousEducationDetails" : "मागील शिक्षण तपशील",
+       "StudentProfile" : "संकेत अभिजित कांबळे",
+       "StudentUser" : "(Sanket Abhijit Kambale)",
+       "From" : "पासून",
+       "To" : "पर्यंत",
+       "Location" : "स्थान",
+       "Duration" : "कालावधी",
+       "Status" : "स्थिती",
+       "Reason" : "कारण",
+       "TotalDays" : "एकूण दिवस",
+       "TotalPresent" : "एकूण वर्तमान",
+       "TotalAbsent" : "एकूण गैरहजर",
+       "Weekends" : "शनिवार व रविवार",
+       "SelectMonth" : "महिना निवडा",
+       "Month-Year" : "महिना-वर्ष",
+       "Profile" : "प्रोफाइल",
+       "EducationalDetails" : "शैक्षणिक तपशील",
+       "Experience" : "अनुभव",
+       "ExitHistory" : "इतिहासातून बाहेर पडा",
+       "Exit" : "बाहेर पडा",
+       "WorkedFrom-To" : "पासून-तेपर्यंत काम केले",
+       "WorkingAt" : "येथे कार्यरत आहे",
+       "Teachingfor" : "साठी शिकवत आहे",
+       "Stream/Subject" : "प्रवाह/विषय",
+       "Board/University" : "बोर्ड/विद्यापीठ",
+       "Class/Grade" : "वर्ग/ग्रेड",
+       "Suspended" : "निलंबित",
+       "SuspendedError" : "शाळेतील बेकायदेशीर वर्तनामुळे या शिक्षकाला त्याच्या कर्तव्यावरून निलंबित करण्यात आले आहे.",
+       "Retired" : "सेवानिवृत्त",
+       "RetiredError" : "हे शिक्षक आपल्या कर्तव्यातून निवृत्त झाले आहेत.",
+       "Active" : "सक्रिय",
+       "ID" : "आयडी",
+       "Headmaster" : "(मुख्याध्यापक)"
 
 
 
