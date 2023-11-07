@@ -300,7 +300,29 @@
        "ViewDesignation"  : "पदनाम पहा",
        "DependantDesignationLevel" : "अवलंबित पदनाम स्तर",
        "Edit"  : "सुधारणे",
-       "TypeofArea" : "क्षेत्रफळाचा प्रकार"
+       "TypeofArea" : "क्षेत्रफळाचा प्रकार",
+       "Totalschoolsassessed" : "एकूण शाळांचे मूल्यांकन",
+       "SelectYear" : "वर्ष निवडा",
+       "ManagementWiseSchools" : "व्यवस्थापन निहाय शाळा",
+       "Teachers" : "शिक्षक",
+       "Students" : "विद्यार्थी",
+       "ZPOfficers" : "झेडपी अधिकारी",
+       "Piechart" : "पाई चार्ट",
+       "Totalnumberofstudentssurveyed" : "सर्वेक्षण केलेल्या विद्यार्थ्यांची एकूण संख्या",
+       "SelectedCount" : "निवडलेली संख्या",
+       "TopPerformingSchools" : "टॉप परफॉर्मिंग शाळा",
+       "LowPerformingSchools" : "कमी कामगिरी करणाऱ्या शाळा",
+       "SetNumber" : "क्रमांक सेट करा",
+       "Options" : "पर्याय",
+       "TotalAssessment" : "एकूण मूल्यांकन",
+       "Percentage" : "टक्केवारी",
+       "Welcome" : "स्वागत आहे",
+       "BaseLevel" : "बेस लेव्हल",
+       "ClassWise" : "वर्गवार",
+       "Total" : "एकूण",
+       "WelcomeName" : "सागर"
+
+
 
 
 

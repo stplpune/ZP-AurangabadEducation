@@ -298,7 +298,27 @@
       "clusterEmailId" : "Cluster Email Id",
       "ViewDesignation"  : "View Designation",
       "DependantDesignationLevel" : "Dependant Designation Level",
-      "Edit"  : "Edit"
+      "Edit"  : "Edit",
+      "Totalschoolsassessed" : "Total schools assessed",
+      "SelectYear" : "Select Year",
+      "ManagementWiseSchools" : "Management Wise Schools",
+      "Piechart" : "Pie chart",
+      "ZPOfficers" : "ZP Officers",
+      "Totalnumberofstudentssurveyed" : "Total number of students surveyed",
+      "LowPerformingSchools" : "Low Performing Schools",
+      "TopPerformingSchools" : "Top Performing Schools",
+      "SelectedCount" : "Selected Count",
+      "SetNumber" : "Set Number",
+      "Welcome" : "Welcome",
+      "TotalAssessment" : "Total Assessment",
+      "Options" : "Options",
+      "Percentage" : "Percentage",
+      "BaseLevel" : "Base Level",
+      "ClassWise" : "Class Wise",
+      "Total" : "Total",
+      "WelcomeName" : "Sagar"
+
+
 
 
 
