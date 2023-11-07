@@ -1,12 +1,12 @@
 <div class="page-heading">
-    <div class="page-name">Welcome <span class="text-main">Sagar</span></div>
+    <div class="page-name">{{'Lables.Welcome' |translate}} <span class="text-main">{{'Lables.WelcomeName' |translate}}</span></div>
     <div class="d-flex gap-2 align-items-center">
-        Total schools assessed : <span class="text-main fw-bold">26/2111</span>
+        {{'Lables.Totalschoolsassessed' |translate}} : <span class="text-main fw-bold">26/2111</span>
         <mat-form-field appearance="outline">
-            <mat-label>Select Year</mat-label>
+            <mat-label>{{'Lables.SelectYear' |translate}}</mat-label>
             <mat-select>
                 <mat-option>
-                    Select Year
+                    {{'Lables.SelectYear' |translate}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -22,7 +22,7 @@
                             <img src="assets/images/dashboard-icons/school.svg">
                         </div>
                         <h2>2048</h2>
-                        <p>Schools</p>
+                        <p>{{'Lables.School' |translate}}</p>
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -33,7 +33,7 @@
                             <img src="assets/images/dashboard-icons/teacher.svg">
                         </div>
                         <h2>4874</h2>
-                        <p>Teachers</p>
+                        <p>{{'Lables.Teachers' |translate}}</p>
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -44,7 +44,7 @@
                             <img src="assets/images/dashboard-icons/student.svg">
                         </div>
                         <h2>7751</h2>
-                        <p>Students</p>
+                        <p>{{'Lables.Students' |translate}}</p>
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -55,7 +55,7 @@
                             <img src="assets/images/dashboard-icons/officer.svg">
                         </div>
                         <h2>309</h2>
-                        <p>ZP Officers</p>
+                        <p>{{'Lables.ZPOfficers' |translate}}</p>
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -71,10 +71,10 @@
     <div class="col-sm-3">
         <mat-card class="plain-card h-100">
             <mat-card-header class="card-header">
-                Management Wise Schools
+                {{'Lables.ManagementWiseSchools' |translate}}
             </mat-card-header>
             <mat-card-content class="card-body">
-                Pie chart
+                {{"Lables.Piechart" |translate}}
             </mat-card-content>
         </mat-card>
     </div>
@@ -83,15 +83,15 @@
             <mat-card-header class="card-header">
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <div>
-                        Total number of students surveyed
+                        {{'Lables.Totalnumberofstudentssurveyed' |translate}}
                     </div>
                     <div class="d-flex justify-content-between align-items-center gap-2">
                         <mat-button-toggle-group>
-                            <mat-button-toggle value="Base Level">Base Level</mat-button-toggle>
-                            <mat-button-toggle value="Class Wise">Class Wise</mat-button-toggle>
+                            <mat-button-toggle value="Base Level">{{'Lables.BaseLevel' |translate}}</mat-button-toggle>
+                            <mat-button-toggle value="Class Wise">{{'Lables.ClassWise' |translate}}</mat-button-toggle>
                         </mat-button-toggle-group>
                         <div class="small">
-                            Selected Count : <span class="text-main fw-bold">2/7</span>
+                            {{'Lables.SelectedCount' |translate}} : <span class="text-main fw-bold">2/7</span>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                     <div class="col-sm-2 border-end">
                         <div class="filters">
                             <div class="d-flex justify-content-between align-items-center border-bottom mb-2 pb-2">
-                                <p>Total</p>
+                                <p>{{'Lables.Total' |translate}}</p>
                                 <div class="text-main fw-bold">445 / 7751</div>
                             </div>
                             <div class="border-bottom mb-2 pb-2">
@@ -175,7 +175,7 @@
                 <div class="row g-2 w-100">
                     <div class="col-sm">
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Exam Type</mat-label>
+                            <mat-label>{{'Lables.ExamType' |translate}}</mat-label>
                             <mat-select>
                                 <mat-option>
                                     Exam Type
@@ -185,7 +185,7 @@
                     </div>
                     <div class="col-sm">
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Set Number</mat-label>
+                            <mat-label>{{'Lables.SetNumber' |translate}}</mat-label>
                             <mat-select>
                                 <mat-option>
                                     Set Number
@@ -195,7 +195,7 @@
                     </div>
                     <div class="col-sm">
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Subject</mat-label>
+                            <mat-label>{{'Lables.Subject' |translate}}</mat-label>
                             <mat-select>
                                 <mat-option>
                                     Subject
@@ -205,7 +205,7 @@
                     </div>
                     <div class="col-sm">
                         <mat-form-field appearance="outline" class="w-100">
-                            <mat-label>Options</mat-label>
+                            <mat-label>{{'Lables.Options' |translate}}</mat-label>
                             <mat-select>
                                 <mat-option>
                                     Options
@@ -218,7 +218,7 @@
             <mat-card-content class="card-body">
                 <div class="row">
                     <div class="col-sm-6 border-end">
-                        <h6>Top Performing Schools</h6>
+                        <h6>{{'Lables.TopPerformingSchools' |translate}}</h6>
                         <table mat-table [dataSource]="dataSource" class="dashboard-table">
                             <ng-container matColumnDef="photo">
                                 <th mat-header-cell *matHeaderCellDef> </th>
@@ -227,15 +227,15 @@
                                 </td>
                             </ng-container>
                             <ng-container matColumnDef="schoolname">
-                                <th mat-header-cell *matHeaderCellDef> School Name </th>
+                                <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolName' |translate}}</th>
                                 <td mat-cell *matCellDef="let element"> {{element.schoolname}} </td>
                             </ng-container>
                             <ng-container matColumnDef="assessment">
-                                <th mat-header-cell *matHeaderCellDef> Total Assessment </th>
+                                <th mat-header-cell *matHeaderCellDef>{{'Lables.TotalAssessment' |translate}}</th>
                                 <td mat-cell *matCellDef="let element"> {{element.assessment}} </td>
                             </ng-container>
                             <ng-container matColumnDef="percentage">
-                                <th mat-header-cell *matHeaderCellDef> Percentage </th>
+                                <th mat-header-cell *matHeaderCellDef> {{'Lables.Percentage' |translate}} </th>
                                 <td mat-cell *matCellDef="let element">
                                     {{element.percentage}}
                                     <div class="progress" role="progressbar" aria-label="Success example"
@@ -250,7 +250,7 @@
                         </table>
                     </div>
                     <div class="col-sm-6">
-                        <h6>Low Performing Schools</h6>
+                        <h6>{{'Lables.LowPerformingSchools' |translate}}</h6>
                         <table mat-table [dataSource]="dataSource" class="dashboard-table">
                             <ng-container matColumnDef="photo">
                                 <th mat-header-cell *matHeaderCellDef> </th>
@@ -259,15 +259,15 @@
                                 </td>
                             </ng-container>
                             <ng-container matColumnDef="schoolname">
-                                <th mat-header-cell *matHeaderCellDef> School Name </th>
+                                <th mat-header-cell *matHeaderCellDef>{{'Lables.SchoolName' |translate}}</th>
                                 <td mat-cell *matCellDef="let element"> {{element.schoolname}} </td>
                             </ng-container>
                             <ng-container matColumnDef="assessment">
-                                <th mat-header-cell *matHeaderCellDef> Total Assessment </th>
+                                <th mat-header-cell *matHeaderCellDef>{{'Lables.TotalAssessment' |translate}}</th>
                                 <td mat-cell *matCellDef="let element"> {{element.assessment}} </td>
                             </ng-container>
                             <ng-container matColumnDef="percentage">
-                                <th mat-header-cell *matHeaderCellDef> Percentage </th>
+                                <th mat-header-cell *matHeaderCellDef> {{'Lables.Percentage' |translate}} </th>
                                 <td mat-cell *matCellDef="let element">
                                     {{element.percentage}}
                                     <div class="progress" role="progressbar" aria-label="danger example"
