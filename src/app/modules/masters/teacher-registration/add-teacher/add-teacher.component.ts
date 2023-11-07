@@ -212,7 +212,7 @@ export class AddTeacherComponent {
       next: (res: any) => {
         res.statusCode == "200" ? this.centerArray = res.responseData : this.centerArray = [];
         this.editObj ? (this.f['centerId'].setValue(this.editObj.centerId), this.getVillage()) : '';
-        obj ? this.f['officerCenterSchoolModel'].setValue(obj) : '';
+        obj ? (this.f['officerCenterSchoolModel'].setValue(obj)) : '';
       }
     });
   }
@@ -311,8 +311,10 @@ export class AddTeacherComponent {
     this.masterService.getAllSchoolClasses(schoolId, '').subscribe({
       next: (res: any) => {
         res.statusCode == "200" ? this.classArray = res.responseData : this.classArray = [];
-        (obj && flag == 'assignClass') ? (console.log("value: ", this.f['teacherStandardModel'].value, obj),this.f['teacherStandardModel'].setValue(obj)) : '';
-        (obj && flag == 'classTeacher') ? (console.log("value: ", this.f['classTeacherModel'].value, obj),this.f['classTeacherModel'].setValue(obj)) : '';
+        console.log("classArray: ", this.classArray);
+        
+        (obj && flag == 'assignClass') ? (this.f['teacherStandardModel'].setValue(obj)) : '';
+        (obj && flag == 'classTeacher') ? (this.f['classTeacherModel'].setValue(obj)) : '';
       }
     });
   }
@@ -443,6 +445,8 @@ export class AddTeacherComponent {
     })
     formValue.officerCenterSchoolModel = officerCenterSchoolModelArr;
 
+    console.log("formValue?.classTeacherModel before : ", formValue?.classTeacherModel);
+    
     let classTeacherModelArr: any = [];
     formValue?.classTeacherModel?.forEach((x: any) => {
       let teacherStdObj = {
@@ -451,13 +455,12 @@ export class AddTeacherComponent {
         standardId: x.standardId,
         divisionId: x.divisionId,
         isClassTeacher: true,
-        createdBy: this.webStorage.createdByProps().createdBy,
-        modifiedBy: this.webStorage.createdByProps().modifiedBy,
-        isDeleted: this.webStorage.createdByProps().isDeleted
+        ...this.webStorage.createdByProps()
       }
       classTeacherModelArr.push(teacherStdObj);
     })
     formValue.classTeacherModel = classTeacherModelArr;
+    console.log("formValue.classTeacherModel", formValue.classTeacherModel);
 
     let teacherStandardModelArr: any = [];
     formValue?.teacherStandardModel?.forEach((x: any) => {
@@ -467,16 +470,11 @@ export class AddTeacherComponent {
         standardId: x.standardId,
         divisionId: x.divisionId,
         isClassTeacher: true,
-        createdBy: this.webStorage.createdByProps().createdBy,
-        modifiedBy: this.webStorage.createdByProps().modifiedBy,
-        isDeleted: this.webStorage.createdByProps().isDeleted
+        ...this.webStorage.createdByProps()
       }
       teacherStandardModelArr.push(stdTeacherObj);
     })
     formValue.teacherStandardModel = teacherStandardModelArr;
-
-    console.log("formValue", formValue);
-    // return
 
     let url = this.editObj ? 'UpdateTeacher' : 'AddTeacher';
     if (!this.teacherRegForm.valid) {
@@ -564,21 +562,21 @@ export class AddTeacherComponent {
                   divisionId: classStdModel[i].divisionId,
                 }
                 classStdArr.push(obj);
-              }
-              console.log("classStdArr", classStdArr);              
+              }            
               this.getSchoolClasses(classStdArr, 'classTeacher');
             }
 
             let officerCenterModel = this.editObj?.centerSchoolModelRes;
+            
             let officerCenterArr = new Array();
-            if (officerCenterModel?.length) {
+            if (officerCenterModel?.length) {  
               for (let i = 0; i < officerCenterModel.length; i++) {
                 let obj = {
-                  id: officerCenterModel[i].id,
-                  userId: officerCenterModel[i].userId,
-                  centerId: officerCenterModel[i].centerId,
-                  centerSchoolId: officerCenterModel[i].centerSchoolId,
-                  addUpdateBy: 0
+                  id: officerCenterModel[i].centerId,
+                  center: officerCenterModel[i].center,
+                  centerCode: '',
+                  m_Center: officerCenterModel[i].m_Center,
+                  talukaId: this.editObj?.talukaId
                 }
                 officerCenterArr.push(obj);
               }
